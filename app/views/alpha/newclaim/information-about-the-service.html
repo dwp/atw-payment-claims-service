@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Access to Work Claiming Portal
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+
+
+    <span class="govuk-caption-xl">Step 1</span>
+    <h1 class="govuk-heading-xl">Information about the special aids and equipment</h1>
+
+<p>we are going to ask you some questions about the special aids and equipment that was purchased</p>
+
+
+</main>
+</div>
+
+<form action="did-you-purchase-the-equipment" method="post" class="form">
+
+<button type="submit" class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock %}
