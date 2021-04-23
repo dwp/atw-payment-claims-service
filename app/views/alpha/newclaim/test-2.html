@@ -1,8 +1,7 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Access to Work Claiming Portal
+Access to Work Claiming Portal
 {% endblock %}
 
 {% block content %}
@@ -12,48 +11,42 @@
 
   <main class="govuk-main-wrapper">
 
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            test 2
+          </h1>
+        </legend>
+        <div id="changed-name-hint" class="govuk-hint">
+          This includes changing your last name or spelling your name differently.
+        </div>
+        <div class="govuk-radios govuk-radios--inline">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="changed-name">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="changed-name-2">
+              No
+            </label>
+          </div>
+        </div>
 
-
-
-
-
-
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <h1 class="govuk-fieldset__heading">
-        test 2
-      </h1>
-    </legend>
-    <div id="changed-name-hint" class="govuk-hint">
-      This includes changing your last name or spelling your name differently.
-    </div>
-    <div class="govuk-radios govuk-radios--inline">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
-        <label class="govuk-label govuk-radios__label" for="changed-name">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="changed-name-2">
-          No
-        </label>
-      </div>
+      </fieldset>
     </div>
 
-  </fieldset>
-</div>
-
-</main>
+  </main>
 </div>
 
 
 
-  <button class="govuk-button" data-module="govuk-button">
-    <form class="form" action="/url/of/next/page" method="post">
-  Continue
+<button class="govuk-button" data-module="govuk-button">
+  <form class="form" action="/url/of/next/page" method="post">
+    Continue
 </button>
 
 {% endblock %}
