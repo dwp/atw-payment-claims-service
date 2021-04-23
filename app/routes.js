@@ -1,8 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-var newclaimsroutes = require('./views/alpha/newclaim/_new-claim-routes');
 
-router.use('/',newclaimsroutes);
+var alphaRoutes = require('./routes/alpha');
+// var betaRoutes = require('./routes/beta');
+
+router.use('/alpha', alphaRoutes);
+// router.use('/beta', betaRoutes);
 
 module.exports = router
