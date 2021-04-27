@@ -4,8 +4,6 @@
 Access to Work Claiming Portal
 {% endblock %}
 
-
-
 {% block content %}
 
 <div class="govuk-width-container">
@@ -13,33 +11,32 @@ Access to Work Claiming Portal
 
   <main class="govuk-main-wrapper">
 
-    <form action="aids-and-equipment-answer" method="post" class="form">
+    <form action="additional-equipment-answer" method="post" class="form">
 
       <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-two-thirds">
+
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Are you claiming for special aids and equipment?
+              Did you purchase any other special aids or equipment with your grant?
             </h1>
           </legend>
-          <p>For example a wheelchair or a soft touch keyboard, or an adaptation to premises like automatic doors.</p>
+          <p>In addition to the the special aids and equipement already described.</p>
 
 
 
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="aids-and-equipment" name="aids-and-equipment" type="radio"
-                value="Yes">
-              <label class="govuk-label govuk-radios__label" for="aids-and-equipment-1">
+              <input class="govuk-radios__input" id="additional-equipment-1" name="additional-equipment" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="additional-equipment-1">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="aids-and-equipment-2" name="aids-and-equipment" type="radio"
-                value="No">
-              <label class="govuk-label govuk-radios__label" for="aids-and-equipment-2">
+              <input class="govuk-radios__input" id="additional-equipment-2" name="additional-equipment" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="additional-equipment-2">
                 No
               </label>
             </div>

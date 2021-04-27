@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/url/of/previous/page">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+
+      <h2 class="govuk-heading-m">Information about the special aids and equipment</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            New or repeat claim?
+          </dt>
+          <dd class="govuk-summary-list__value">
+          {{data["test"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="new-claim">
+              Change
+              <span class="govuk-visually-hidden"> New or repeat claim</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of claim
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {%if (data['aids-and-equipment']=="Yes") %} Special aids and equipment {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="special-aids-and-equipment">
+              Change
+              <span class="govuk-visually-hidden"> Type of claim</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Who purchased the special aids and equipment
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["purchase-equipment"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="did-you-purchase-the-equipment">
+              Change
+              <span class="govuk-visually-hidden"> Who purchased the special aids and equipment</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of equipment
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["equipment-name"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="description">
+              Change
+              <span class="govuk-visually-hidden"> Type of equipment</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Cost of equipment
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £{{data["equipment-cost"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="equipment-cost">
+              Change
+              <span class="govuk-visually-hidden"> Cost of equipment</span>
+            </a>
+          </dd>
+        </div>
+
+
+      {%if (data['additional-equipment']=="Yes") %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Cost of equipment £
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data["equipment-cost"]}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="equipment-cost">
+            Change
+            <span class="govuk-visually-hidden"> Cost of equipment</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+      <h2 class="govuk-heading-m">Information about the person who purchased the equipement</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Bank or building society account details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["name-on-the-account"]}}
+            <br>{{data["sort-code"]}}
+            <br>{{data["account-number"]}}
+            {%if (data['roll-number']) %}<br>{{data["roll-number"]}}{% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="banking-details">
+              Change
+              <span class="govuk-visually-hidden"> Bank or building society account details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">Supporting claim evidence</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Supporting evidence
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["digital-upload"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="upload-receipt">
+              Change
+              <span class="govuk-visually-hidden"> Supporting evidence</span>
+            </a>
+          </dd>
+        </div>
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Copy of evidence
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data["file-upload"]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="upload-receipt">
+                Change
+                <span class="govuk-visually-hidden"> Supporting evidence</span>
+              </a>
+            </dd>
+          </div>
+
+
+      </dl>
+
+      <h2 class="govuk-heading-m">Now send your application</h2>
+
+      <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+      <form action="declaration" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Accept and send
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

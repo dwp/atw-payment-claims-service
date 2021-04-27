@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation page example
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">Application complete</h1>
+        <div class="govuk-panel__body">
+          Your Access to Work reference number<br><strong>HDJ2123F</strong>
+        </div>
+      </div>
+
+      <p>
+        We have sent you a confirmation email.
+      </p>
+
+        <p>You can also <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">view a copy of your claims submission (opens in a new tab)</a>.</p>
+
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p>We will now process your claim and contact you if you need to supply any additional information. You will receive payment within 3 working days of your claim being approved. </p>
+
+
+      <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
+
+
+    </div>
+  </div>
+
+  <form action="../portal" method="post" class="form">
+
+  <button type="portal" class="govuk-button" data-module="govuk-button">
+    Return to Access to Work Portal
+  </button>
+  </form>
+{% endblock %}

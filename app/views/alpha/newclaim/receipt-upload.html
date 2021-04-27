@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+              Upload your digital invoice or receipt
+              </h1>
+            </legend>
+
+
+
+
+            <p>You’ll need to:</p>
+            <ol class="govuk-list govuk-list--number">
+              <li>Click on the upload button </li>
+              <li>Navigate to and select the files you want to upload </li>
+              <li>Click on the upload button </li>
+            </ol>
+
+    <div class="govuk-form-group">
+    <label class="govuk-label" for="file-upload-1">
+      Upload a file
+    </label>
+    <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+    </div>
+
+<p>We’ll run a basic check on the files you upload, this may take X minutes. The check is for file quality only, it doesn’t mean your claim is approved.  </p>
+
+
+</fieldset>
+
+    <form action="check-your-answers" method="post" class="form">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+  </div>
+
+
+  </main>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

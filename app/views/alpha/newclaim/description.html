@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <form action="equipement-cost" method="post" class="form">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+    <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-name">
+      Tell us about your special aids and equipment
+    </label>
+    </h1>
+    <div id="event-name-hint" class="govuk-hint">
+    Describe your special aids and equipment, for example, a lightweight wheelchair or a soft touch keyboard
+    </div>
+    <input class="govuk-input" id="equipment-name" name="equipment-name" type="text" aria-describedby="equipment-name-hint">
+    </div>
+    </div>
+
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </div>
+    </div>
+    </form>
+
+  </main>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

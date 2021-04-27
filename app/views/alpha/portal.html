@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+
+
+
+  <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Access To work Claims portal</h1>
+        <p class="govuk-body">This is a paragraph inside a two-thirds wide column</p>
+      </div>
+    </div>
+  </main>
+
+
+
+<form action="newclaim/new-claim" method="post">
+
+  <button type="submit" class="govuk-button" data-module="govuk-button">
+    Start the service
+  </button>
+
+</form>
+
+
+
+
+{% endblock %}
