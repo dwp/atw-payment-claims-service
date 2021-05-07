@@ -40,7 +40,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/newclaim/before-you-continue`)
     } else if (aids === 'No') {
 
-      res.redirect(`/${urlPrefix}/newclaim/test-2`)
+      res.redirect(`/${urlPrefix}/newclaim/contact-dwp`)
     }
   });
 
@@ -49,11 +49,11 @@ module.exports = function (folderForViews, urlPrefix, router) {
      const purchase = req.session.data['purchase-equipment']
 
      if (purchase === 'Me') {
-       res.redirect(`/${urlPrefix}/newclaim/description`)
-     } else if (aids === 'My-employer') {
-       res.redirect(`/${urlPrefix}/newclaim/test-2`)
-     } else if (aids === 'Someone-else') {
-       res.redirect(`/${urlPrefix}/newclaim/test-2`)
+       res.redirect(`/${urlPrefix}/newclaim/cost-sharing`)
+     } else if (purchase === 'My-employer') {
+       res.redirect(`/${urlPrefix}/newclaim/cost-sharing`)
+     } else if (purchase === 'Someone-else') {
+       res.redirect(`/${urlPrefix}/newclaim/someone-else`)
      }
    });
 
@@ -73,11 +73,22 @@ module.exports = function (folderForViews, urlPrefix, router) {
        const upload = req.session.data['digital-upload']
 
        if (upload === 'Yes') {
-         res.redirect(`/${urlPrefix}/newclaim/receipt-upload`)
-       } else if (equipment === 'No') {
-         res.redirect(`/${urlPrefix}/newclaim/test-2`)
+         res.redirect(`/${urlPrefix}/newclaim/providing-evidence`)
+       } else if (upload === 'No') {
+         res.redirect(`/${urlPrefix}/newclaim/claim-via-post`)
        }
      });
+
+     //Cost sharing
+      router.post('/newclaim/cost-sharing-answer', function (req, res) {
+        const cost = req.session.data['cost-sharing']
+
+        if (cost === 'No') {
+          res.redirect(`/${urlPrefix}/newclaim/banking-details`)
+        } else if (cost === 'Yes') {
+          res.redirect(`/${urlPrefix}/newclaim/additional-cost-sharing`)
+        }
+      });
 
 
 

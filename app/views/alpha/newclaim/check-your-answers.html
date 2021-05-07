@@ -14,23 +14,9 @@
 
       <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
 
-      <h2 class="govuk-heading-m">Information about the special aids and equipment</h2>
+      <h2 class="govuk-heading-m">Check your answers</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            New or repeat claim?
-          </dt>
-          <dd class="govuk-summary-list__value">
-          {{data["test"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="new-claim">
-              Change
-              <span class="govuk-visually-hidden"> New or repeat claim</span>
-            </a>
-          </dd>
-        </div>
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -49,22 +35,7 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Who purchased the special aids and equipment
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{data["purchase-equipment"]}}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="did-you-purchase-the-equipment">
-              Change
-              <span class="govuk-visually-hidden"> Who purchased the special aids and equipment</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Type of equipment
+            equipment or adaptation name
           </dt>
           <dd class="govuk-summary-list__value">
             {{data["equipment-name"]}}
@@ -76,6 +47,24 @@
             </a>
           </dd>
         </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of purchase
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["purchase-date-day"]}} / {{data["purchase-date-month"]}} / {{data["purchase-date-year"]}}
+
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="description">
+              Change
+              <span class="govuk-visually-hidden"> Type of equipment</span>
+            </a>
+          </dd>
+        </div>
+
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -92,17 +81,50 @@
           </dd>
         </div>
 
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Who purchased the equipment or adaptation?
+          </dt>
+          <dd class="govuk-summary-list__value">
 
-      {%if (data['additional-equipment']=="Yes") %}
+            {%if (data['purchase-equipment']=="Me") %} Me {% endif %}
+            {%if (data['purchase-equipment']=="My-employer") %} My Employer {% endif %}
+            {%if (data['purchase-equipment']=="Someone-else") %} {{data["who-purchased"]}} {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="did-you-purchase-the-equipment">
+              Change
+              <span class="govuk-visually-hidden"> equipment or adaptation?</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you sharing the cost of your equipment or adaptation?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["cost-sharing"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="cost-sharing">
+              Change
+              <span class="govuk-visually-hidden"> Cost of equipment</span>
+            </a>
+          </dd>
+        </div>
+
+
+      {%if (data['cost-sharing']=="Yes") %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Cost of equipment £
+          How much of the £{{data["equipment-cost"]}} has someone else agreed to contribute?
         </dt>
         <dd class="govuk-summary-list__value">
-          {{data["equipment-cost"]}}
+          £{{data["equipment-cost"]}}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a href="equipment-cost">
+          <a href="additional-cost-sharing">
             Change
             <span class="govuk-visually-hidden"> Cost of equipment</span>
           </a>
@@ -110,18 +132,18 @@
       </div>
       {% endif %}
     </dl>
-      <h2 class="govuk-heading-m">Information about the person who purchased the equipement</h2>
+
+      <h2 class="govuk-heading-m">Bank or building society account details</h2>
+      <p>bank details of the person or company who needs to be paid back.</p>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Bank or building society account details
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             {{data["name-on-the-account"]}}
-            <br>{{data["sort-code"]}}
-            <br>{{data["account-number"]}}
-            {%if (data['roll-number']) %}<br>{{data["roll-number"]}}{% endif %}
+
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="banking-details">
@@ -130,14 +152,62 @@
             </a>
           </dd>
         </div>
-      </dl>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Sort code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["sort-code"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="banking-details">
+              Change
+              <span class="govuk-visually-hidden"> Bank or building society account details</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Account Number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["account-number"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="banking-details">
+              Change
+              <span class="govuk-visually-hidden"> Bank or building society account details</span>
+            </a>
+          </dd>
+        </div>
+
+        {%if (data['roll-number']) %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Building society roll number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data["roll-number"]}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="banking-details">
+            Change
+            <span class="govuk-visually-hidden"> Bank or building society account details</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+
+
 
       <h2 class="govuk-heading-m">Supporting claim evidence</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Supporting evidence
+            Are you able to upload receipts or invoices digitally?
           </dt>
           <dd class="govuk-summary-list__value">
             {{data["digital-upload"]}}
@@ -169,16 +239,14 @@
 
       </dl>
 
-      <h2 class="govuk-heading-m">Now send your application</h2>
 
-      <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
       <form action="declaration" method="post" novalidate>
 
         <input type="hidden" name="answers-checked" value="true">
 
         <button type="submit" class="govuk-button" data-module="govuk-button">
-          Accept and send
+          Continue
         </button>
 
       </form>
