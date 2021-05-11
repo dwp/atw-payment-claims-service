@@ -6,16 +6,13 @@ Access to Work Claiming Portal
 
 {% block content %}
 
-<div class="govuk-width-container">
-  <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
 
-  <main class="govuk-main-wrapper">
 
-    <form action="cost-sharing-answer" method="post" class="form">
+
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-
+          <form action="cost-sharing-answer" method="post" class="form">
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -23,8 +20,11 @@ Access to Work Claiming Portal
               Is the cost of the equipment being shared?
             </h1>
           </legend>
-          <p>For example, is your employer or another organisation paying towards your equipment or adaptation? Their contribution is in addition to your Access to Work grant.</p>
+  
 
+          <div id="date-of-purchase-hint" class="govuk-hint">
+            For example, is your employer or another organisation paying towards your equipment or adaptation? Their contribution is in addition to your Access to Work grant.
+          </div>
 
 
           <div class="govuk-radios govuk-radios--inline">
@@ -44,17 +44,17 @@ Access to Work Claiming Portal
 
         </fieldset>
       </div>
-      </div>
-      </div>
 
       <button type="submit" class="govuk-button" data-module="govuk-button">
         Continue
       </button>
 
     </form>
+      </div>
+      </div>
 
-  </main>
-</div>
+
+
 
 
 

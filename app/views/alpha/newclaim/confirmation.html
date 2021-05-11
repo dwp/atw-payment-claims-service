@@ -8,7 +8,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
+  <form action="../portal" method="post" class="form">
       <div class="govuk-panel govuk-panel--confirmation">
         <h1 class="govuk-panel__title">Application complete</h1>
         <div class="govuk-panel__body">
@@ -30,15 +30,15 @@
 
 
 
+      <button type="portal" class="govuk-button" data-module="govuk-button">
+        Finish
+      </button>
+      </form>
+
     </div>
   </div>
 
-  <form action="../portal" method="post" class="form">
 
-  <button type="portal" class="govuk-button" data-module="govuk-button">
-    Finish
-  </button>
-  </form>
 
   <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
 {% endblock %}

@@ -8,16 +8,14 @@ Access to Work Claiming Portal
 
 {% block content %}
 
-<div class="govuk-width-container">
-  <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
-
-  <main class="govuk-main-wrapper">
 
 
 
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+          <form action="check-your-answers" method="post" class="form">
+
           <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
@@ -39,7 +37,7 @@ Access to Work Claiming Portal
     <label class="govuk-label" for="file-upload-1">
       Upload a file
     </label>
-    <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+    <input class="govuk-file-upload" id="file-upload-1" name="file-upload" type="file">
     </div>
 
 
@@ -47,7 +45,7 @@ Access to Work Claiming Portal
 
 </fieldset>
 
-    <form action="check-your-answers" method="post" class="form">
+
       <button type="submit" class="govuk-button" data-module="govuk-button">
         Continue
       </button>
@@ -56,8 +54,6 @@ Access to Work Claiming Portal
   </div>
 
 
-  </main>
-</div>
 
 
 

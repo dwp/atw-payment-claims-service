@@ -8,13 +8,14 @@ Access to Work Claiming Portal
 
 {% block content %}
 
-<div class="govuk-width-container">
-  <a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
 
-  <main class="govuk-main-wrapper">
+
+
+
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+        <form action="confirmation" method="post" class="form">
 
     <h1 class="govuk-heading-xl">Submitting your claim and declare it is legitimate and up to date</h1>
 
@@ -33,14 +34,14 @@ Access to Work Claiming Portal
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
       <strong class="govuk-warning-text__text">
         <span class="govuk-warning-text__assistive">Warning</span>
-        By submitting this claim you are confirming that, to the best of your knowledge, the details you are providing are correct. 
+        By submitting this claim you are confirming that, to the best of your knowledge, the details you are providing are correct.
       </strong>
     </div>
 
 
 
 
-<form action="confirmation" method="post" class="form">
+
 
   <button type="submit" class="govuk-button" data-module="govuk-button">
     Continue
@@ -49,10 +50,11 @@ Access to Work Claiming Portal
 
 
 </form>
-
-
-</main>
 </div>
+</div>
+
+
+
 
 
 
