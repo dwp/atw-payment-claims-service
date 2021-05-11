@@ -5,45 +5,35 @@ Access to Work Claiming Portal
 {% endblock %}
 
 
-
 {% block content %}
 
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="cost-sharing" method="post" class="form">
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="who-purchased">
+                        Tell us who purchased your equipment or adaptation?
+                    </label>
+                    </h1>
+                    <div id="event-name-hint" class="govuk-hint">
+                        If an organisation or supplier purchased your equipment or adaptation tell us their name. If an
+                        individual purchased the equipment or adaptation tell us their name and their relation to you.
+                    </div>
+                    <input class="govuk-input" id="who-purchased" name="who-purchased" type="text"
+                           aria-describedby="who-purchased-hint">
+                </div>
+            </div>
 
 
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <form action="cost-sharing" method="post" class="form">
-    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
-    <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="who-purchased">
-      Tell us who purchased your equipment or adaptation?
-    </label>
-    </h1>
-    <div id="event-name-hint" class="govuk-hint">
-    If an organisation or supplier purchased your equipment or adaptation tell us their name. If an individual purchased the equipment or adaptation tell us their name and their relation to you.
+        </form>
     </div>
-    <input class="govuk-input" id="who-purchased" name="who-purchased" type="text" aria-describedby="who-purchased-hint">
-    </div>
-    </div>
-
-
-      <button type="submit" class="govuk-button" data-module="govuk-button">
-        Continue
-      </button>
-
-    </form>
-    </div>
-    </div>
-
-
-
-
-
-
-
-
+</div>
 
 
 {% endblock %}

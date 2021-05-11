@@ -5,75 +5,71 @@ Access to Work Claiming Portal
 {% endblock %}
 
 
-
 {% block content %}
 
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="purchase-answer" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Who needs to be paid back for your equipment or adaptation?
+                        </h1>
+                    </legend>
+                    <div id="changed-name-hint" class="govuk-hint">
+                        This is the person who Access to Work will reimburse for the initial cost of the equipment
+                    </div>
 
 
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="purchase-equipment-1" name="purchase-equipment"
+                                   type="radio"
+                                   value="Me" aria-describedby="you-purchased-hint">
+                            <label class="govuk-label govuk-radios__label" for="purchase-equipment-1">
+                                You
+                            </label>
+                            <div id="you-purchased-hint" class="govuk-hint govuk-radios__hint">
+                                This includes yourself, a parent or guardian, friend, or an informal carer
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="purchase-equipment-2" name="purchase-equipment"
+                                   type="radio"
+                                   value="My-employer" aria-describedby="employer-purchased-hint">
+                            <label class="govuk-label govuk-radios__label" for="purchase-equipment-2">
+                                Your employer
+                            </label>
+                            <div id="employer-purchased-hint" class="govuk-hint govuk-radios__hint">
+                                This could be your line manager, HR representative or someone else who works at the same
+                                organisation
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="purchase-equipment-3" name="purchase-equipment"
+                                   type="radio"
+                                   value="Someone-else" aria-describedby="someone-else-purchased-hint">
+                            <label class="govuk-label govuk-radios__label" for="purchase-equipment-3">
+                                Someone else
+                            </label>
+                            <div id="someone-else-purchased-hint" class="govuk-hint govuk-radios__hint">
+                                This includes a supplier or a support worker
+                            </div>
+                        </div>
+                    </div>
 
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-
-              <form action="purchase-answer" method="post" class="form">
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Who needs to be paid back for your equipment or adaptation?
-            </h1>
-          </legend>
-          <div id="changed-name-hint" class="govuk-hint">
-               This is the person who Access to Work will reimburse for the initial cost of the equipment
-          </div>
-
-
-          <div class="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="purchase-equipment-1" name="purchase-equipment" type="radio"
-                value="Me" aria-describedby="you-purchased-hint">
-              <label class="govuk-label govuk-radios__label" for="purchase-equipment-1">
-                You
-              </label>
-              <div id="you-purchased-hint" class="govuk-hint govuk-radios__hint">
-                This includes yourself, a parent or guardian, friend, or an informal carer
+                </fieldset>
             </div>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="purchase-equipment-2" name="purchase-equipment" type="radio"
-                value="My-employer" aria-describedby="employer-purchased-hint">
-              <label class="govuk-label govuk-radios__label" for="purchase-equipment-2">
-                Your employer
-              </label>
-              <div id="employer-purchased-hint" class="govuk-hint govuk-radios__hint">
-                This could be your line manager, HR representative or someone else who works at the same organisation
-            </div>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="purchase-equipment-3" name="purchase-equipment" type="radio"
-                value="Someone-else" aria-describedby="someone-else-purchased-hint">
-              <label class="govuk-label govuk-radios__label" for="purchase-equipment-3">
-                Someone else
-              </label>
-              <div id="someone-else-purchased-hint" class="govuk-hint govuk-radios__hint">
-                This includes a supplier or a support worker
-            </div>
-            </div>
-          </div>
 
-        </fieldset>
-      </div>
-
-      <button type="submit" class="govuk-button" data-module="govuk-button">
-        Continue
-      </button>
-  </form>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
     </div>
-      </div>
-
-
-
+</div>
 
 
 {% endblock %}

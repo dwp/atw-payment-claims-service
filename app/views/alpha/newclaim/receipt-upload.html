@@ -5,60 +5,45 @@ Access to Work Claiming Portal
 {% endblock %}
 
 
-
 {% block content %}
 
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="check-your-answers" method="post" class="form">
+
+            <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                        Upload your digital invoice or receipt
+                    </h1>
+                </legend>
 
 
+                <p>You’ll need to:</p>
+                <ol class="govuk-list govuk-list--number">
+                    <li>Click on the upload button</li>
+                    <li>Navigate to and select the files you want to upload</li>
+                    <li>Click on the upload button</li>
+                </ol>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <form action="check-your-answers" method="post" class="form">
-
-          <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-              Upload your digital invoice or receipt
-              </h1>
-            </legend>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="file-upload-1">
+                        Upload a file
+                    </label>
+                    <input class="govuk-file-upload" id="file-upload-1" name="file-upload" type="file">
+                </div>
 
 
+            </fieldset>
 
 
-            <p>You’ll need to:</p>
-            <ol class="govuk-list govuk-list--number">
-              <li>Click on the upload button </li>
-              <li>Navigate to and select the files you want to upload </li>
-              <li>Click on the upload button </li>
-            </ol>
-
-    <div class="govuk-form-group">
-    <label class="govuk-label" for="file-upload-1">
-      Upload a file
-    </label>
-    <input class="govuk-file-upload" id="file-upload-1" name="file-upload" type="file">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
     </div>
-
-
-
-
-</fieldset>
-
-
-      <button type="submit" class="govuk-button" data-module="govuk-button">
-        Continue
-      </button>
-    </form>
-  </div>
-  </div>
-
-
-
-
-
-
-
+</div>
 
 
 {% endblock %}

@@ -1,39 +1,27 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Access to Work Claiming Portal
+Access to Work Claiming Portal
 {% endblock %}
 
 {% block content %}
 
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-
-
-
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        
         <form action="newclaim/special-aids-and-equipment" method="post">
-        <h1 class="govuk-heading-xl">Access To work Claims portal</h1>
-        <p class="govuk-body">For the time being use your imagination</p>
+            <h1 class="govuk-heading-xl">Access To work Claims portal</h1>
+            <p class="govuk-body">For the time being use your imagination</p>
 
 
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Make a claim
+            </button>
 
-
-
-
-
-  <button type="submit" class="govuk-button" data-module="govuk-button">
-    Make a claim
-  </button>
-
-</form>
+        </form>
+    </div>
 </div>
-</div>
-
 
 
 {% endblock %}

@@ -5,74 +5,69 @@ Access to Work Claiming Portal
 {% endblock %}
 
 
-
 {% block content %}
 
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="equipement-cost" method="post" class="form">
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <form action="equipement-cost" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-purchase-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            When was your equipment or adaptation purchased?
+                        </h1>
+                    </legend>
 
-          <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-purchase-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <h1 class="govuk-fieldset__heading">
-          When was your equipment or adaptation purchased?
-        </h1>
-      </legend>
+                    <p>You can find this on the invoice, receipt or order confirmation of your equipment or
+                        adaptation.</p>
 
-      <p>You can find this on the invoice, receipt or order confirmation of your equipment or adaptation.</p>
-
-      <div id="date-of-purchase-hint" class="govuk-hint">
-        For example, 12 11 2021
-      </div>
+                    <div id="date-of-purchase-hint" class="govuk-hint">
+                        For example, 12 11 2021
+                    </div>
 
 
+                    <div class="govuk-date-input" id="purchase-date">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="purchase-date-day">
+                                    Day
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                                       id="purchase-date-day" name="purchase-date-day" type="text" pattern="[0-9]*"
+                                       inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="purchase-date-month">
+                                    Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                                       id="purchase-date-month" name="purchase-date-month" type="text" pattern="[0-9]*"
+                                       inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="purchase-date-year">
+                                    Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                                       id="purchase-date-year" name="purchase-date-year" type="text" pattern="[0-9]*"
+                                       inputmode="numeric"></div>
+                        </div>
+                    </div>
 
-      <div class="govuk-date-input" id="purchase-date">
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <label class="govuk-label govuk-date-input__label" for="purchase-date-day">
-              Day
-            </label>
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="purchase-date-day" name="purchase-date-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <label class="govuk-label govuk-date-input__label" for="purchase-date-month">
-              Month
-            </label>
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="purchase-date-month" name="purchase-date-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-        </div>
-        <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
-            <label class="govuk-label govuk-date-input__label" for="purchase-date-year">
-              Year
-            </label>
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="purchase-date-year" name="purchase-date-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
-        </div>
-      </div>
+                </fieldset>
+            </div>
 
-    </fieldset>
-  </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
 
-      <button type="submit" class="govuk-button" data-module="govuk-button">
-        Continue
-      </button>
-
-    </form>
+        </form>
     </div>
-    </div>
-
-
-
-
-
-
-
-
-
+</div>
 
 
 {% endblock %}
