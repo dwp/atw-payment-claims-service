@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-xl">Access To work Claims portal</h1>
+
+        <h1 class="govuk-body">Contents</h1>
+        <nav role="navigation" aria-labelledby="contents">
+        <ul class="govuk-list--bullet">
+            <li><a class="govuk-link" href="portal">Make a claim</a></li>
+            <li><a class="govuk-link" href="personal-information">Personal information</a></li>
+            <li><a class="govuk-link" href="submitted-claims">Submitted claims</a></li>
+            <li><a class="govuk-link" href="claim-offline">How to claim offline</a></li>
+        </ul>
+        </nav>
+
+    </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 class="govuk-heading-m">Submitted claims</h1>
+
+
+
+
+<table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Description</th>
+      <!-- <th scope="col" class="govuk-table__header govuk-table__header--numeric">Date</th> -->
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">30/04/2021</th>
+      <td class="govuk-table__cell govuk-table__cell--numeric">Dragon Naturally speaking individual and headset</td>
+      <!-- <td class="govuk-table__cell govuk-table__cell--numeric">01/03/2021</td> -->
+      <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">Submitted</strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">15/10/2020</th>
+      <td class="govuk-table__cell govuk-table__cell--numeric">Bespoke office chair with moulded lumbar support</td>
+      <!-- <td class="govuk-table__cell govuk-table__cell--numeric">01/02/2021</td> -->
+      <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag">Paid</strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">21/01/2020</th>
+      <td class="govuk-table__cell govuk-table__cell--numeric">Taxi journeys – April21</td>
+      <!-- <td class="govuk-table__cell govuk-table__cell--numeric">01/01/2021</td> -->
+      <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag">Paid</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<div class="govuk-inset-text">
+  After you’ve made a claim you’ll be able to see it and what stage it’s in here.
+</div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+      </div>
+
+
+
+{% endblock %}

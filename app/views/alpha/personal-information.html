@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-xl">Access To work Claims portal</h1>
+
+        <h1 class="govuk-body">Contents</h1>
+        <nav role="navigation" aria-labelledby="contents">
+        <ul class="govuk-list--bullet">
+            <li><a class="govuk-link" href="portal">Make a claim</a></li>
+            <li><a class="govuk-link" href="personal-information">Personal information</a></li>
+            <li><a class="govuk-link" href="submitted-claims">Submitted claims</a></li>
+            <li><a class="govuk-link" href="claim-offline">How to claim offline</a></li>
+        </ul>
+        </nav>
+
+    </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+
+        <table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Personal information</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Joe Bloggs</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Grant type</th>
+      <td class="govuk-table__cell">Equipment and adaptations</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Remaining grant allowance</th>
+      <td class="govuk-table__cell">£7200</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Employer</th>
+      <td class="govuk-table__cell">Deaf Action Charity</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Contact number</th>
+      <td class="govuk-table__cell">07700900457</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Contact email</th>
+      <td class="govuk-table__cell">joe.bloggs@example.com</td>
+    </tr>
+  </tbody>
+</table>
+
+        <div class="govuk-body">
+          If any of your personal information is incorrect or has changed you must <a href="#">make a reasonable adjustments application (opens in a new tab)</a> to update your details. If you have not updated your details Access to Work may recover any money wrongly paid.
+        </div>
+
+        <h1 class="govuk-heading-m">payee recipiant banking details</h1>
+
+
+        <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sarah Philips
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 1978
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="govuk-summary-list__value">
+            72 Guild Street<br>London<br>SE23 6FH
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> contact information</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">07700 900457</p>
+            <p class="govuk-body">sarah.phillips@example.com</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> contact details</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+
+
+    </div>
+    </div>
+
+
+
+{% endblock %}
