@@ -1,27 +1,154 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
+
 Access to Work Claiming Portal
+
 {% endblock %}
 
 {% block content %}
 
-
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl">Access To work Claims portal</h1>
 
-        <form action="newclaim/special-aids-and-equipment" method="post">
-            <h1 class="govuk-heading-xl">Access To work Claims portal</h1>
-            <p class="govuk-body">For the time being use your imagination</p>
+        <h1 class="govuk-body">Contents</h1>
+        <!-- <nav role="navigation" aria-labelledby="contents">
+              <ul class="govuk-list">
+                  <li><a class="govuk-link" href="portal">Make a claim</a></li>
+                  <li><a class="govuk-link" href="personal-information">Personal information</a></li>
+                  <li><a class="govuk-link" href="submitted-claims">Submitted claims</a></li>
+                  <li><a class="govuk-link" href="claim-offline">How to claim offline</a></li>
+              </ul>
+              </nav> -->
 
+        <div class="govuk-grid-row">
+            <div class="card govuk-grid-column-one-third" id="test-card">
+                <div class="card-body active" @if(url)>
+                    <h2 class="heading-small card-heading">
+                        <a class="card-link" href="@url">
+                            some words
+                        </a>
+                    </h2>
+                    <p class="govuk-body">some action content</p>
+                </div>
 
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Make a claim
-            </button>
+                <div class="card-action">
+                    <p class="govuk-body">some action content</p>
+                </div>
+            </div>
 
-        </form>
+            <div class="card govuk-grid-column-one-third" id="test-card">
+                <div class="card-body active" @if(url)>
+                    <h2 class="heading-small card-heading">
+                        <a class="card-link" href="@url">
+                            some words
+                        </a>
+                    </h2>
+                    <p class="govuk-body">some action content</p>
+                </div>
+
+                <div class="card-action">
+                    <p class="govuk-body">some action content</p>
+                </div>
+            </div><div class="card govuk-grid-column-one-third" id="test-card">
+                <div class="card-body active" @if(url)>
+                    <h2 class="heading-small card-heading">
+                        <a class="card-link" href="@url">
+                            some words
+                        </a>
+                    </h2>
+                    <p class="govuk-body">some action content</p>
+                </div>
+
+                <div class="card-action">
+                    <p class="govuk-body">some action content</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+
+        <form action="newclaim/special-aids-and-equipment" method="post">
+            <h1 class="govuk-heading-l">How to claim</h1>
+
+            <p>To claim online you’ll need a digital copy of a receipt or invoice, or if you have a paper receipt or invoice you’ll need to take a photo or scan in to upload.</p>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+        </form>
+
+        <p>After completing your claim it will be sent to the Access to Work team for review, they will contact you via your chosen contact details if they require more information to support your claim.</p>
+        <p>Once your claim is reviewed and approved Access to Work will send the payment to the bank details you provided during your claim.</p>
+
+        <!-- <div class="govuk-body">
+          If any of your personal information is incorrect or has changed you must <a href="#">make a reasonable adjustments application (opens in a new tab)</a> to update your details. If you have not updated your details Access to Work may recover any money wrongly paid.
+        </div> -->
+
+        <!-- <h1 class="govuk-heading-l">Submitted claims</h1>
+
+{%if (data['file-upload']) %} -->
+
+        <!-- <table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Date</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Description</th>
+
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">30/04/2021</th>
+      <td class="govuk-table__cell govuk-table__cell--numeric">Dragon Naturally speaking individual and headset</td>
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag govuk-tag--grey">Submitted</strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">15/10/2020</th>
+      <td class="govuk-table__cell govuk-table__cell--numeric">Bespoke office chair with moulded lumbar support</td>
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag">Paid</strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">21/01/2020</th>
+      <td class="govuk-table__cell govuk-table__cell--numeric">Taxi journeys – April21</td>
+
+      <td class="govuk-table__cell govuk-table__cell--numeric"><strong class="govuk-tag">Paid</strong></td>
+    </tr>
+  </tbody>
+</table> -->
+
+        <!-- <p><a href="#">View your previous historical claims in more detail</a></p> -->
+
+        <!-- {% else %}
+
+<div class="govuk-inset-text">
+  After you’ve made a claim you’ll be able to see it and what stage it’s in here.
+</div>
+
+{% endif %} -->
+
+        <!-- <h1 class="govuk-heading-l">Information on how to claim offline</h1>
+
+<p>If you cannot upload your receipt or invoice online you’ll need to <a href="#">submit your claim by post (opens in a new tab)</a>.</p> -->
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+
+        <p class="govuk-body govuk-!-font-weight-bold">Grant amount allocated</p>
+        <p class="govuk-body">£7200</p>
+        <p class="govuk-body govuk-!-font-weight-bold">Remaining grant allowance</p>
+        <p class="govuk-body">£6500</p>
+    </div>
+</div>
 
 {% endblock %}
