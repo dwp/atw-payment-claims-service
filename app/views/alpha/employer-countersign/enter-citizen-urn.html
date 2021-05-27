@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="review-claim" method="post" class="form">
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="citizens-urn">
+                        Tell us the citizen's Unique Reference Number (URN)
+                    </label>
+                    </h1>
+                    <div id="citizens-urn-hint" class="govuk-body">
+                        You will need to enter the claim Unique Reference Number (URN) that is associated with that claim you want to review. This can be found on the citizens confirmation email or a saved copy of their submission.
+                    </div>
+
+                    <div id="citizens-urn-hint" class="govuk-hint">
+                        For example, AB12438392
+                    </div>
+                    <input class="govuk-input" id="citizens-urn" name="citizens-urn" type="text"
+                           aria-describedby="citizens-urn-hint">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -30,6 +30,7 @@
 {% from "govuk/components/tag/macro.njk"                 import govukTag %}
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
+{% from "hmrc/components/header/macro.njk" import hmrcHeader %}
 
 {% block head %}
 {% include "includes/head.html" %}
@@ -41,12 +42,21 @@ GOV.UK Prototype Kit
 
 {% block header %}
 {# Set serviceName in config.js. #}
-{{ govukHeader({
-homepageUrl: "/",
-serviceName: serviceName,
-serviceUrl: "/",
-containerClasses: "govuk-width-container"
+
+
+
+{{ hmrcHeader({
+"serviceName": serviceName,
+"serviceUrl" : "/",
+"phaseBanner" : false,
+"signOutHref" : "/sign-out-change-this-when-log-in-is-built"
 }) }}
+
+
+<!-- //change the above line when ive built the login screens to sign out correctly -->
+
+
+
 {% endblock %}
 
 {% block beforeContent %}

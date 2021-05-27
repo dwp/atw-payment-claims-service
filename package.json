@@ -34,6 +34,7 @@
     "gulp-nodemon": "^2.5.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.0",
+    "hmrc-frontend": "^1.35.1",
     "inquirer": "^7.1.0",
     "keypather": "^3.0.0",
     "marked": "^1.2.0",

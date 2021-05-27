@@ -4,8 +4,15 @@
 Access to Work Claiming Portal
 {% endblock %}
 
-{% block content %}
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
 
+<<<<<<< Updated upstream
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -22,6 +29,115 @@ Access to Work Claiming Portal
         </form>
     </div>
 </div>
+=======
+
+
+
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="portal">Home</a>
+    </li>
+
+  </ol>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+
+        <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+                <span class="govuk-caption-xl">Account home</span>
+                <h1 class="govuk-heading-xl">Joe Bloggs</h1></div>
+            </div>
+
+
+
+        <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
+
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+              <div class="card" id="test-card">
+                  <div class="card-body active" @if(url)>
+                      <h2 class="heading-small card-heading">
+                          <a class="card-link" href="start-a-claim">
+                              Start a claim
+                          </a>
+                      </h2>
+                      <p class="govuk-body"> Claim online and upload a copy of your receipt or invoice.</p>
+                  </div>
+
+                  <!-- <div class="card-action">
+                      <p class="govuk-body">Once your claim is reviewed and approved Access to Work will send the payment to the bank details you provided during your claim.</p>
+                  </div> -->
+              </div>
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+                <div class="card" id="test-card">
+                    <div class="card-body active" @if(url)>
+                        <h2 class="heading-small card-heading">
+                            <a class="card-link" href="@url">
+                                Submitted claims
+                            </a>
+                        </h2>
+                        <p class="govuk-body">View submitted claims and their status.</p>
+                    </div>
+
+                    <!-- <div class="card-action">
+                        <p class="govuk-body">some content</p>
+                    </div> -->
+                </div>
+              </div>
+
+              <div class="govuk-grid-column-one-third">
+                  <div class="card" id="test-card">
+                      <div class="card-body active" @if(url)>
+                          <h2 class="heading-small card-heading">
+                              <a class="card-link" href="personal-information">
+                                  Personal information
+                              </a>
+                          </h2>
+                          <p class="govuk-body">View your contact information and previous payment details if you have claimed before.</p>
+                      </div>
+
+                      <!-- <div class="card-action">
+                        <p class="govuk-body">
+                          some content
+                        </p>
+                      </div> -->
+                  </div>
+                </div>
+
+                <div class="govuk-grid-column-one-third">
+                    <div class="card" id="test-card">
+                        <div class="card-body active" @if(url)>
+                            <h2 class="heading-small card-heading">
+                                <a class="card-link" href="@url">
+                                    Claim by post
+                                </a>
+                            </h2>
+                            <p class="govuk-body">Find out how to claim by post if you cannot submit a claim online.</p>
+                        </div>
+
+                        <!-- <div class="card-action">
+                          <p class="govuk-body">
+                            some content
+                          </p>
+                        </div> -->
+                    </div>
+                  </div>
+
+
+          </div>
+
+
+>>>>>>> Stashed changes
 
 
 {% endblock %}

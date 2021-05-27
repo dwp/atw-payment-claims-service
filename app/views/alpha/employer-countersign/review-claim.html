@@ -1,0 +1,215 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Joe Bloggs Support Worker claim</h1>
+        <p>As Joe Blogg's employer you are required to declare that the answers your employee has provided are correct to the best of your knowledge. Please take time to review carfully.</p>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+        <h2 class="govuk-heading-m">Employee information</h2>
+        <p>Details relating to Joe Bloggs.</p>
+
+                  <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Employee name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Joe Bloggs
+                    </dd>
+                  </div>
+                  <!-- <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Date of birth
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      5 January 1978
+                    </dd>
+                  </div> -->
+                  <!-- <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Contact information
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      72 Guild Street<br>London<br>SE23 6FH
+                    </dd>
+                  </div> -->
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Contact details
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <p class="govuk-body">07700 900457</p>
+                      <p class="govuk-body">joe.bloggs@your-workplace.com</p>
+                    </dd>
+                  </div>
+                </dl>
+
+        <h2 class="govuk-heading-m">Claim details</h2>
+        <p>Details relating to the claim that Joe Bloggs submitted.</p>
+
+              <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Type of claim
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Support Worker
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Claim start date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  01 January 2021
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Claim end date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  31 January 2021
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Days Joe Bloggs required support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  16
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total Hours Joe Bloggs required support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  80 hours, 30 minutes
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total cost of support required
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £8050
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Person or Company to be reimbursed
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">Deaf Action Charity</p>
+                  <p class="govuk-body">Employer</p>
+                </dd>
+              </div>
+            </dl>
+
+            <h2 class="govuk-heading-m">Support worker information</h2>
+            <p>Information relating to the support worker.</p>
+
+                      <dl class="govuk-summary-list">
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Support worker name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                        Shirley Dupinda
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Employer
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          Royal National Institute of Blind People
+                        </dd>
+                      </div>
+                      <!-- <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Contact information
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          72 Guild Street<br>London<br>SE23 6FH
+                        </dd>
+                      </div> -->
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Contact details
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">07862 957284</p>
+                          <p class="govuk-body">shirley.dupinda@RNIB.com</p>
+                        </dd>
+                      </div>
+                    </dl>
+
+
+        <h2 class="govuk-heading-m">Supporting claim evidence</h2>
+        <p>invoices provided by employee showing proof of support.</p>
+
+          <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Invoices
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body"><a href="#">invoice12-12-21.PDF</a></p>
+              <p class="govuk-body"><a href="#">invoice18-12-21.PDF</a></p>
+              <p class="govuk-body"><a href="#">invoice25-12-21.PDF</a></p>
+            </dd>
+          </div>
+        </dl>
+
+
+
+        <form action="employer-countersign-answer" method="post" class="form">
+                  <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" aria-describedby="employer-agree-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">
+                        Do you agree that the details entered are correct?
+                      </h1>
+                    </legend>
+                    <div id="employer-agree-hint" class="govuk-body">
+                      To the best of your knowledge, are the answers given by your employee correct?
+                    </div>
+                    <div class="govuk-radios govuk-radios--inline">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="employer-agree" name="employer-agree" type="radio" value="Yes">
+                        <label class="govuk-label govuk-radios__label" for="employer-agree">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="employer-agree-2" name="employer-agree" type="radio" value="No">
+                        <label class="govuk-label govuk-radios__label" for="employer-agree-2">
+                          No
+                        </label>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}
