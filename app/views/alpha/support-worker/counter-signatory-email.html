@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="check-your-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="counter-signatory-email">
+
+                </label>
+
+
+                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l"
+                                                       for="counter-signatory-email">
+                    Email address
+                </label>
+                </h1>
+                <p class="govuk-body">What is email address of the person we need to get in touch with to counter sign?</p>
+                <p class="govuk-hint" id="email-hint">HINT</p>
+                <input class="govuk-input" id="counter-signatory-email" name="counter-signatory-email" type="email" spellcheck="false" aria-describedby="email-hint"
+                       autocomplete="email">
+            </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

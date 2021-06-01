@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <span class="govuk-caption-xl">Guidance</span>
+        <h1 class="govuk-heading-xl">How to enter claim info day-by-day</h1>
+
+
+        <h1 class="govuk-heading-m">To do this:</h1>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+            <li>Enter hours
+            </li>
+            <li>next advice
+            </li>
+        </ul>
+
+        <form action="hours-for-day" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

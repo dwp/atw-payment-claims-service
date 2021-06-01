@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="how-to-enter-claim-info" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="month-of-support-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            What month are you claiming for?
+                        </h1>
+                    </legend>
+
+                    <p>EXTRA INFO - COULD MAKE THIS A RADIO LIST FOR LAST 9 MONTHS</p>
+
+                    <div id="month-of-support-hint" class="govuk-hint">
+                        For example, 11 2021
+                    </div>
+
+
+                    <div class="govuk-date-input" id="support-date">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="support-date-month">
+                                    Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                                       id="support-date-month" name="support-date-month" type="text" pattern="[0-9]*"
+                                       inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="support-date-year">
+                                    Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                                       id="support-date-year" name="support-date-year" type="text" pattern="[0-9]*"
+                                       inputmode="numeric"></div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

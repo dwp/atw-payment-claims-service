@@ -13,31 +13,23 @@ GOV.UK Prototype Kit test
             <span class="govuk-caption-xl">{{releaseVersion}}</span>
         </h1>{{releaseVersion | log }}
 
-        <h2 class="govuk-heading-m">Alpha</h2>
+        <h2 class="govuk-heading-m">Alpha journeys</h2>
 
-        <form action="alpha/portal" method="post">
-            <button class="govuk-button" data-module="govuk-button">
-                Start Alpha
-            </button>
-        </form>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+                <a class="govuk-link" href="alpha/portal.html">Portal</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="alpha/equipment-and-adaptations/start-a-claim.html">Equipment and adaptations</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="alpha/employer-countersign/enter-citizen-urn.html">Employer Countersign</a>
+            </li>
+            <li>
+                <a class="govuk-link" href="alpha/support-worker/start-a-claim.html">Support Workers</a>
+            </li>
+        </ul>
 
-
-        <p>
-            This kit lets you rapidly create HTML prototypes of GOV.UK services. TEST test
-
-        </p>
-
-        <p>
-            It contains all you need to prototype anything from simple static pages to complex, data-driven
-            transactions.
-        </p>
-
-        <h2 class="govuk-heading-m">About this page</h2>
-
-        <p>We recommend you add links to your prototype to this page, rather than delete it.
-            You'll find this page in the kit at '/app/views/index.html'.</p>
-
-        <p>You can change the service name by editing the file '/app/config.js'.</p>
 
         <h2 class="govuk-heading-m">Examples and documentation</h2>
 
