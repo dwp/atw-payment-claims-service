@@ -1,5 +1,4 @@
 module.exports = function (folderForViews, urlPrefix, router) {
-  // Load Portal
 
   // post - aids and equipment answer
   router.post('/employer-countersign/employer-countersign-answer', function (req, res) {

@@ -20,8 +20,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
     let allHours = req.session.data.hours // This is the running list of hours
 
     const submittedDay = req.session.data['hours-of-day-date-day'] // User submitted day
-    const submittedMonth = req.session.data['hours-of-day-date-month'] // User submitted month
-    const submittedYear = req.session.data['hours-of-day-date-year'] // User submitted year
     const submittedHours = req.session.data['hours-of-day-worked'] // User submitted hours worked
 
     // Stop null pointer
@@ -31,8 +29,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     allHours.push({
       day: submittedDay,
-      month: submittedMonth,
-      year: submittedYear,
       hours: submittedHours
     })
 
@@ -139,7 +135,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
-  // post - Add more hours
+  // post - Add more receipts
   router.post('/support-worker/receipt-upload-more', function (req, res) {
     const anotherReceipt = req.session.data['add-another-receipt']
     if (anotherReceipt === 'Yes') {

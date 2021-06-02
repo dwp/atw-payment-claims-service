@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="confirmation" method="post" class="form">
+
+            <h1 class="govuk-heading-xl">Submitting your claim and declare it is legitimate and up to date</h1>
+
+
+            <p>By submitting this claim you understand that:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>Access to Work may not accept claims for reimbursement if the claim is 9 months or more after the
+                    purchase date
+                </li>
+                <li>if you spend the grant on items not agreed by Access to Work, DWP may not reimburse you</li>
+                <li>we may check or validate your claim with other sources, including employers, suppliers and
+                    providers
+                </li>
+                <li>DWP may recover any amount of money wrongly paid to you because you didn’t provide correct information or
+                    accurately report a change in your circumstances
+                </li>
+            </ul>
+
+
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    By submitting this claim you are confirming that, to the best of your knowledge, the details you are
+                    providing are correct.
+                </strong>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

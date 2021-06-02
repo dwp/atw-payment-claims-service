@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <span class="govuk-caption-xl">Before you continue</span>
+        <h1 class="govuk-heading-xl">What you need to submit a claim (travel to work)</h1>
+
+
+        <h1 class="govuk-heading-m">You’ll need:</h1>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+            <li>to know who bought your support worker (this could be yourself, your employer, or the
+                supplier)
+            </li>
+            <li>the date of when your support worker was bought, (you can find this on the invoice, receipt or
+                order confirmation of your equipment or adaptation)
+            </li>
+            <li>a digital receipt or invoice, or if you have a paper receipt or invoice you’ll need a smart phone,
+                camera, or scanner to upload them
+            </li>
+            <li>the bank details of who bought your support worker</li>
+        </ul>
+
+        <p class="govuk-body">If you can’t digitally upload your receipt or invoice you’ll need to submit your claim
+            with the paper form by post. Your paper form will have been sent to you.</p>
+
+
+        <form action="claiming-for-month" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

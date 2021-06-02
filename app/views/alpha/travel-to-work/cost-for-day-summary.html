@@ -7,68 +7,64 @@ Access to Work Claiming Portal
 
 {% block content %}
 
-{% set hourTotal = 0 %}
-{% for day in data['hours'] %}
-{% set hourTotal = hourTotal | float + day.hours | float %}
+{% set costTotal = 0 %}
+{% for day in data['costs'] %}
+{% set costTotal = costTotal | float + day.cost | float %}
 {% else %}
-{% set hourTotal = 0 | float %}
+{% set costTotal = 0 | float %}
 {% endfor %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
         <div class="govuk-form-group">
-            <h1 class="govuk-heading-l">You have entered {{hourTotal}} hours</h1>
+            <h1 class="govuk-heading-l">You have entered £{{costTotal}}</h1>
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
-                {% for day in data['hours'] %}
+                {% for day in data['costs'] %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{day.day}}/{{data['support-date-month']}}/{{data['support-date-year']}} - {{day.hours}} hours
+        {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}}<br>£{{day.cost}} {% if day['passengers'] %} <br>{{day['passengers']}} passenger(s) {% endif %}
       </span>
-<!--                    <span class="hmrc-add-to-a-list__change">-->
-<!--        <a class="govuk-link" href="#">-->
-<!--          <span aria-hidden="true">Change</span>-->
-<!--          <span class="govuk-visually-hidden">Change Sydney Russell</span>-->
-<!--        </a>-->
-<!--      </span>-->
-                    <span class="hmrc-add-to-a-list__remove">
-        <a class="govuk-link" href="remove-day-hours?removeId={{loop.index0}}">
+                    <span class="hmrc-add-to-a-list__change">
+        <a class="govuk-link" href="remove-day-cost?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
           <span class="govuk-visually-hidden">Remove Sydney Russell from the list</span>
         </a>
       </span>
                 </li>
-                {% else %}
-                <li>Please enter hours to continue</li>
-                {% endfor %}
 
+            {% else %}
+            <p>Please enter journeys to continue</p>
+            {% endfor %}
 
             </ul>
         </div>
 
-        <form method="post" action="hours-for-day-more">
+        <form method="post" action="cost-for-day-more">
 
             <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="add-another-day-hint">
+                <fieldset class="govuk-fieldset" aria-describedby="add-more-cost-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-                        Do you need to add more hours?
+                        Do you need to add more trips?
                     </legend>
-                    <div id="add-another-day-hint" class="govuk-hint">
+                    <div id="add-more-cost-hint" class="govuk-hint">
                         HINT
                     </div>
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-another-day-yes" name="add-another-day" type="radio"
+                            <input class="govuk-radios__input" id="add-more-cost-yes" name="add-more-cost"
+                                   type="radio"
                                    value="Yes">
-                            <label class="govuk-label govuk-radios__label" for="add-another-day-yes">
+                            <label class="govuk-label govuk-radios__label" for="add-more-cost-yes">
                                 Yes
                             </label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-another-day-no" name="add-another-day" type="radio"
+                            <input class="govuk-radios__input" id="add-more-cost-no" name="add-more-cost"
+                                   type="radio"
                                    value="No">
-                            <label class="govuk-label govuk-radios__label" for="add-another-day-no">
+                            <label class="govuk-label govuk-radios__label" for="add-more-cost-no">
                                 No
                             </label>
                         </div>

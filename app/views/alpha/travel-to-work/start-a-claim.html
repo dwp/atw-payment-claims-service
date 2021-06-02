@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Start a claim</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Start a claim (travel to work)</h1>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <form action="travel-to-work" method="post">
+            <p>To claim online you’ll need a digital copy of a receipt or invoice. If you have a paper receipt or
+                invoice, you’ll need to take a photo or scan it in to upload it.</p>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+        </form>
+        <h2 class="govuk-heading-m">What happens after you claim</h2>
+
+        <p>After completing your claim, it will be sent to the Access to Work team for review, they will contact you via
+            your chosen contact details if they require more information to support your claim.</p>
+        <p>Once your claim is reviewed and approved, Access to Work will send the payment to the bank details you
+            provided during your claim.</p>
+        <p>If any of your personal information is incorrect or has changed you must <a href="#">make a reasonable
+            adjustments application (opens in a new tab)</a> to update your details. If you have not updated your
+            details, Access to Work may recover any money wrongly paid.
+        <p>
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+        <p class="govuk-body govuk-!-font-weight-bold">Grant amount allocated</p>
+        <p class="govuk-body">£7200</p>
+        <p class="govuk-body govuk-!-font-weight-bold">Remaining grant allowance</p>
+        <p class="govuk-body">£6500</p>
+    </div>
+</div>
+{% endblock %}

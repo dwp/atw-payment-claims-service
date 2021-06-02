@@ -1,0 +1,305 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+
+{% block content %}
+
+{% set hourTotal = 0 %}
+{% for day in data['hours'] %}
+{% set hourTotal = hourTotal | float + day.hours | float %}
+{% else %}
+{% set hourTotal = 0 | float %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+
+        <h2 class="govuk-heading-m">Check your answers</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Type of claim
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {%if (data['travel-to-work']=="Yes") %} Travel to Work {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="support-for-workplace">
+                        Change
+                        <span class="govuk-visually-hidden"> Type of claim</span>
+                    </a>
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    What month are you claiming for?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["travel-to-work-date-month"]}}/{{data["travel-to-work-date-year"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="claiming-for-month">
+                        Change
+                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+                    </a>
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Travel option
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {%if (data["transport-option"]=="taxi") %} Taxi {% elif data["transport-option"]=="lift" %} Lift {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="transport-option-answers">
+                        Change
+                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+                    </a>
+                </dd>
+            </div>
+
+            {% if data['agreed-monthly-taxi-cost'] %}
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Agreed monthly cost
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £{{ data['agreed-monthly-taxi-cost'] | float }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="transport-option-answers">
+                        Change
+                        <span class="govuk-visually-hidden"> Fixed monthly cost</span>
+                    </a>
+                </dd>
+            </div>
+            {% endif %}
+
+
+            {% if data['mileages'].length %}
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Mileage received
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {% for day in data['mileages'] %}
+                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - {{day.mileage}} miles</br>
+                    {% endfor %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="hours-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> miles for travel to work received</span>
+                    </a>
+                </dd>
+            </div>
+            {% endif %}
+
+            {% if data['costs'].length %}
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Cost of taxi received
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {% for day in data['costs'] %}
+                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - £{{day.cost}} - {% if day['passengers'] %} <br>{{day['passengers']}} passenger(s) {% endif %}</br>
+                    {% endfor %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="hours-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> cost for travel to work received</span>
+                    </a>
+                </dd>
+            </div>
+            {% endif %}
+
+            {%if (data['employer-contributing']=="Yes") %}
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total of [data] has been agreed to be paid by the employer
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    data['employer-contributing']
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="employer-contribution.html">
+                        Change
+                        <span class="govuk-visually-hidden"> How much of the £{{data["equipment-cost"]}} has someone else agreed to contribute?</span>
+                    </a>
+                </dd>
+            </div>
+            {% endif %}
+        </dl>
+
+        <h2 class="govuk-heading-m">Bank or building society account details</h2>
+        <p>bank details of the person or company who needs to be paid back.</p>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["name-on-the-account"]}}
+
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["sort-code"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Account Number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["account-number"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+            </div>
+
+            {%if (data['roll-number']) %}
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Building society roll number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["roll-number"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+            </div>
+            {% endif %}
+        </dl>
+
+
+        <h2 class="govuk-heading-m">Supporting claim evidence</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+<!--            <div class="govuk-summary-list__row">-->
+<!--                <dt class="govuk-summary-list__key">-->
+<!--                    Are you able to upload receipts or invoices digitally?-->
+<!--                </dt>-->
+<!--                <dd class="govuk-summary-list__value">-->
+<!--                    {{data["digital-upload"]}}-->
+<!--                </dd>-->
+<!--                <dd class="govuk-summary-list__actions">-->
+<!--                    <a href="upload-receipt">-->
+<!--                        Change-->
+<!--                        <span class="govuk-visually-hidden"> Are you able to upload receipts or invoices digitally?</span>-->
+<!--                    </a>-->
+<!--                </dd>-->
+<!--            </div>-->
+
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Copy of evidence
+                </dt>
+
+                <dd class="govuk-summary-list__value">
+                    {% for file in data['uploads'] %}
+
+                    {{file['file']}}
+                    {% endfor %}
+
+                </dd>
+
+                <dd class="govuk-summary-list__actions">
+                    <a href="upload-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Supporting evidence</span>
+                    </a>
+                </dd>
+            </div>
+
+
+        </dl>
+
+        <h2 class="govuk-heading-m">Counter signatory details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["counter-signatory-full-name"]}}
+
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="counter-signatory-name">
+                        Change
+                        <span class="govuk-visually-hidden"> name of counter signatory</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Email
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["counter-signatory-email"]}}
+
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="counter-signatory-name">
+                        Change
+                        <span class="govuk-visually-hidden"> email of counter signatory</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+
+
+        <form action="declaration" method="post" novalidate>
+
+            <input type="hidden" name="answers-checked" value="true">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

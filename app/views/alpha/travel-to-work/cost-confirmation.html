@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+{% set costTotal = 0 %}
+{% for day in data['costs'] %}
+{% set costTotal = costTotal | float + day.cost | float %}
+{% else %}
+{% set costTotal = 0 | float %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="cost-confirmation-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="cost-confirmation-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Confirm you are claiming for £{{costTotal}} for {{data['costs'] | length}} number of days?
+                        </h1>
+                    </legend>
+
+                    <div id="cost-confirmation-hint" class="govuk-body">
+                        HINT
+                    </div>
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cost-confirmation-yes" name="cost-confirmation"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="cost-confirmation-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cost-confirmation-no" name="cost-confirmation"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="cost-confirmation-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

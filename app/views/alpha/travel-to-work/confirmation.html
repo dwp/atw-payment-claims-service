@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="../portal" method="post" class="form">
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">Application complete</h1>
+                <div class="govuk-panel__body">
+                    Your Access to Work reference number<br><strong>HDJ2123F</strong>
+                </div>
+            </div>
+
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+
+            <p>Your claim has been submitted. The Access to Work payments team will review and process your claim. They
+                may need to contact you if they require any further information to support your claim.</p>
+
+            <p>Once your claim has been reviewed and approved your payment will be sent to the bank details you have
+                provided. You’ll be able to see updates to your claim and to your Access to Work grant in your portal
+                area.</p>
+
+            <p>You can also <a
+                    href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">view
+                a copy of your claims submission (opens in a new tab)</a>.</p>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Finish
+            </button>
+        </form>
+
+    </div>
+</div>
+
+
+<p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
+    think of this service?</a> (takes 30 seconds)</p>
+{% endblock %}

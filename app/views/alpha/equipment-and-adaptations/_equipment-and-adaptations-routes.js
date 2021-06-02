@@ -1,5 +1,9 @@
 module.exports = function (folderForViews, urlPrefix, router) {
-  // Load Portal
+  router.get('/equipment-and-adaptations/start-a-claim', function (req, res) {
+    // Clear session
+    req.session.destroy()
+    res.render(`./${folderForViews}/equipment-and-adaptations/start-a-claim`)
+  })
 
   router.post('/equipment-and-adaptations/test-answer', function (req, res) {
     const test = req.session.data.test

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="remove-day-cost" method="post" class="form">
+
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="day-cost-remove-confirmation-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Are you sure you would like to remove this?
+                        </h1>
+                    </legend>
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="day-cost-remove-confirmation-yes" name="day-cost-remove-confirmation"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="day-cost-remove-confirmation-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="day-cost-remove-confirmation-no" name="day-cost-remove-confirmation"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="day-cost-remove-confirmation-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
