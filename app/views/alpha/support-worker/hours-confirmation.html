@@ -19,14 +19,9 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" aria-describedby="hours-confirmation-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Confirm you are claiming for {{hourTotal}} for {{data['hours'] | length}} number of days?
+                            Have you had {{hourTotal}} hours of support for {% data['hours'] | length %}} days in [month]?
                         </h1>
                     </legend>
-
-                    <div id="hours-confirmation-hint" class="govuk-body">
-                        HINT
-                    </div>
-
 
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">

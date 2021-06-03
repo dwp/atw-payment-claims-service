@@ -18,7 +18,7 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
         <div class="govuk-form-group">
-            <h1 class="govuk-heading-l">You have entered {{hourTotal}} hours</h1>
+            <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for [month]</h1>
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for day in data['hours'] %}
@@ -26,21 +26,15 @@ Access to Work Claiming Portal
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
         {{day.day}}/{{data['support-date-month']}}/{{data['support-date-year']}} - {{day.hours}} hours
       </span>
-<!--                    <span class="hmrc-add-to-a-list__change">-->
-<!--        <a class="govuk-link" href="#">-->
-<!--          <span aria-hidden="true">Change</span>-->
-<!--          <span class="govuk-visually-hidden">Change Sydney Russell</span>-->
-<!--        </a>-->
-<!--      </span>-->
                     <span class="hmrc-add-to-a-list__remove">
         <a class="govuk-link" href="remove-day-hours?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
-          <span class="govuk-visually-hidden">Remove Sydney Russell from the list</span>
+          <span class="govuk-visually-hidden">Remove {{day.day}}</span>
         </a>
       </span>
                 </li>
                 {% else %}
-                <li>Please enter hours to continue</li>
+                <li>Enter hours to continue</li>
                 {% endfor %}
 
 
@@ -52,11 +46,8 @@ Access to Work Claiming Portal
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="add-another-day-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-                        Do you need to add more hours?
+                        Do you need to add more?
                     </legend>
-                    <div id="add-another-day-hint" class="govuk-hint">
-                        HINT
-                    </div>
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="add-another-day-yes" name="add-another-day" type="radio"
