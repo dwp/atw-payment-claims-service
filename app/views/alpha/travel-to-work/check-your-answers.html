@@ -95,7 +95,7 @@ Check your answers
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for day in data['mileages'] %}
-                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - {{day.mileage}} miles</br>
+                    <br>{{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - {{day.mileage}} miles</br>
                     {% endfor %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
@@ -114,7 +114,7 @@ Check your answers
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for day in data['costs'] %}
-                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - £{{day.cost}} - {% if day['passengers'] %} <br>{{day['passengers']}} passenger(s) {% endif %}</br>
+                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - £{{day.cost}} {% if day['passengers'] %} <br> - {{day['passengers']}} passenger(s) {% endif %}</br>
                     {% endfor %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
@@ -239,7 +239,7 @@ Check your answers
                 <dd class="govuk-summary-list__value">
                     {% for file in data['uploads'] %}
 
-                    {{file['file']}}
+                    {{file['file']}} </br>
                     {% endfor %}
 
                 </dd>

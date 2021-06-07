@@ -43,7 +43,22 @@ Check your answers
                     What month are you claiming for?
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{data["support-date-month"]}}/{{data["support-date-year"]}}
+
+
+                    {%if (data['support-date-month']=="01") %} January {% endif %}
+                    {%if (data['support-date-month']=="02") %} Febuary {% endif %}
+                    {%if (data['support-date-month']=="03") %} March {% endif %}
+                    {%if (data['support-date-month']=="04") %} April {% endif %}
+                    {%if (data['support-date-month']=="05") %} May {% endif %}
+                    {%if (data['support-date-month']=="06") %} June {% endif %}
+                    {%if (data['support-date-month']=="07") %} July {% endif %}
+                    {%if (data['support-date-month']=="08") %} August {% endif %}
+                    {%if (data['support-date-month']=="09") %} September {% endif %}
+                    {%if (data['support-date-month']=="10") %} October {% endif %}
+                    {%if (data['support-date-month']=="11") %} November {% endif %}
+                    {%if (data['support-date-month']=="12") %} December {% endif %}
+                    - {{data["support-date-year"]}}
+
 
 
                 </dd>
@@ -217,7 +232,7 @@ Check your answers
                 <dd class="govuk-summary-list__value">
                     {% for file in data['uploads'] %}
 
-                    {{file['file']}}
+                     {{file['file']}} </br>
                     {% endfor %}
 
                 </dd>

@@ -12,45 +12,100 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
 
-        <h1 class="govuk-heading-l">Hours for day</h1>
-
+        <h1 class="govuk-heading-l">When in
+        {%if (data['support-date-month']=="01") %} January {% endif %}
+        {%if (data['support-date-month']=="02") %} Febuary {% endif %}
+        {%if (data['support-date-month']=="03") %} March {% endif %}
+        {%if (data['support-date-month']=="04") %} April {% endif %}
+        {%if (data['support-date-month']=="05") %} May {% endif %}
+        {%if (data['support-date-month']=="06") %} June {% endif %}
+        {%if (data['support-date-month']=="07") %} July {% endif %}
+        {%if (data['support-date-month']=="08") %} August {% endif %}
+        {%if (data['support-date-month']=="09") %} September {% endif %}
+        {%if (data['support-date-month']=="10") %} October {% endif %}
+        {%if (data['support-date-month']=="11") %} November {% endif %}
+        {%if (data['support-date-month']=="12") %} December {% endif %}
+        did you have support and for how long?</h1>
         <form action="hours-for-day-add" method="post" class="form">
 
 
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" role="group" aria-describedby="hours-of-day-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend">
-                        <h1 class="govuk-fieldset__heading">
-                            When in [month] did you have support and for how long?
-                        </h1>
-                    </legend>
-
-                    <div id="hours-of-day-hint" class="govuk-hint">
-                        For example, 21
-                    </div>
-
-
+                  <!-- <div class="govuk-form-group">
                     <div class="govuk-date-input" id="hours-of-day-date">
                         <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
+
                                 <label class="govuk-label govuk-date-input__label" for="hours-of-day-date-day">
                                     Day in month
                                 </label>
+
                                 <input class="govuk-input govuk-date-input__input govuk-input--width-5"
                                        id="hours-of-day-date-day" name="hours-of-day-date-day" type="text"
-                                       pattern="[0-9]*"
-                                       inputmode="numeric"></div>
+
+
+                                       inputmode="numeric">
                         </div>
+                      </div>
+                    </div> -->
+
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="hours-of-day-date-day">
+                        Tell us about a day in {%if (data['support-date-month']=="01") %} January {% endif %}
+                        {%if (data['support-date-month']=="02") %} Febuary {% endif %}
+                        {%if (data['support-date-month']=="03") %} March {% endif %}
+                        {%if (data['support-date-month']=="04") %} April {% endif %}
+                        {%if (data['support-date-month']=="05") %} May {% endif %}
+                        {%if (data['support-date-month']=="06") %} June {% endif %}
+                        {%if (data['support-date-month']=="07") %} July {% endif %}
+                        {%if (data['support-date-month']=="08") %} August {% endif %}
+                        {%if (data['support-date-month']=="09") %} September {% endif %}
+                        {%if (data['support-date-month']=="10") %} October {% endif %}
+                        {%if (data['support-date-month']=="11") %} November {% endif %}
+                        {%if (data['support-date-month']=="12") %} December {% endif %}
+                        that you received support
+                      </label>
+                      <div id="hours-of-day-hint" class="govuk-hint">
+                          For example, 21
+                      </div>
+                      <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-2" id="hours-of-day-date-day" name="hours-of-day-date-day" type="text" spellcheck="false" inputmode="numeric">
+                        <div class="govuk-input__suffix" aria-hidden="true">
+                        {%if (data['support-date-month']=="01") %} January {% endif %}
+                        {%if (data['support-date-month']=="02") %} Febuary {% endif %}
+                        {%if (data['support-date-month']=="03") %} March {% endif %}
+                        {%if (data['support-date-month']=="04") %} April {% endif %}
+                        {%if (data['support-date-month']=="05") %} May {% endif %}
+                        {%if (data['support-date-month']=="06") %} June {% endif %}
+                        {%if (data['support-date-month']=="07") %} July {% endif %}
+                        {%if (data['support-date-month']=="08") %} August {% endif %}
+                        {%if (data['support-date-month']=="09") %} September {% endif %}
+                        {%if (data['support-date-month']=="10") %} October {% endif %}
+                        {%if (data['support-date-month']=="11") %} November {% endif %}
+                        {%if (data['support-date-month']=="12") %} December {% endif %} 2021</div>
+                      </div>
                     </div>
-                </fieldset>
-            </div>
-            <div class="govuk-form-group">
+
+
+
+            <!-- <div class="govuk-form-group">
                 <label class="govuk-label" for="hours-of-day-worked">
-                    Hours of support
+                    Tell us how many hours of support you received on this day
                 </label>
                 <input class="govuk-input govuk-input--width-5" id="hours-of-day-worked" name="hours-of-day-worked" type="text"
-                       spellcheck="false" aria-describedby="hours-of-day-worked-hint" pattern="[0-9]*" inputmode="numeric">
+                       spellcheck="false" aria-describedby="hours-of-day-worked-hint" inputmode="numeric">
 
+            </div> -->
+
+
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="hours-of-day-worked">
+                Tell us how many hours of support you received on this day
+              </label>
+              <div id="hours-of-day-worked-hint" class="govuk-hint">
+                   Including half hours, for example 3.5 hours
+              </div>
+              <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-4" id="hours-of-day-worked" name="hours-of-day-worked" type="text" spellcheck="false" inputmode="numeric">
+                <div class="govuk-input__suffix" aria-hidden="true">hours</div>
+              </div>
             </div>
 
             <button type="submit" class="govuk-button" data-module="govuk-button">

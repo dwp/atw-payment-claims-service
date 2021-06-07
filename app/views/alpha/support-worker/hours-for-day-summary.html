@@ -18,7 +18,19 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
         <div class="govuk-form-group">
-            <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for [month]</h1>
+            <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for
+            {%if (data['support-date-month']=="01") %} January {% endif %}
+            {%if (data['support-date-month']=="02") %} Febuary {% endif %}
+            {%if (data['support-date-month']=="03") %} March {% endif %}
+            {%if (data['support-date-month']=="04") %} April {% endif %}
+            {%if (data['support-date-month']=="05") %} May {% endif %}
+            {%if (data['support-date-month']=="06") %} June {% endif %}
+            {%if (data['support-date-month']=="07") %} July {% endif %}
+            {%if (data['support-date-month']=="08") %} August {% endif %}
+            {%if (data['support-date-month']=="09") %} September {% endif %}
+            {%if (data['support-date-month']=="10") %} October {% endif %}
+            {%if (data['support-date-month']=="11") %} November {% endif %}
+            {%if (data['support-date-month']=="12") %} December {% endif %}</h1>
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for day in data['hours'] %}

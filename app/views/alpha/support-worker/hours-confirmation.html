@@ -19,9 +19,24 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" aria-describedby="hours-confirmation-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Have you had {{hourTotal}} hours of support for {% data['hours'] | length %}} days in [month]?
+                            Have you had {{hourTotal}} hours of support for {{data['hours'] | length}} days in
+                            {%if (data['support-date-month']=="01") %} January {% endif %}
+                            {%if (data['support-date-month']=="02") %} Febuary {% endif %}
+                            {%if (data['support-date-month']=="03") %} March {% endif %}
+                            {%if (data['support-date-month']=="04") %} April {% endif %}
+                            {%if (data['support-date-month']=="05") %} May {% endif %}
+                            {%if (data['support-date-month']=="06") %} June {% endif %}
+                            {%if (data['support-date-month']=="07") %} July {% endif %}
+                            {%if (data['support-date-month']=="08") %} August {% endif %}
+                            {%if (data['support-date-month']=="09") %} September {% endif %}
+                            {%if (data['support-date-month']=="10") %} October {% endif %}
+                            {%if (data['support-date-month']=="11") %} November {% endif %}
+                            {%if (data['support-date-month']=="12") %} December {% endif %}?
                         </h1>
                     </legend>
+
+                    <br>
+                    
 
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">

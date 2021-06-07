@@ -111,14 +111,14 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   // post - Remove receipt confirmation
   router.post('/support-worker/remove-day-hours', function (req, res) {
-    const allUploads = req.session.data.hours
+    const allhours = req.session.data.hours
     const hoursToRemove = req.session.data['day-hours-to-remove']
     const removeFile = req.session.data['day-hours-remove-confirmation']
 
     if (removeFile === 'Yes') {
-      allUploads.splice(hoursToRemove, 1)
+      allhours.splice(hoursToRemove, 1)
     }
-    req.session.data.uploads = allUploads
+    req.session.data.hours = allhours
     req.session.data['day-hours-to-remove'] = null
     req.session.data['day-hours-remove-confirmation'] = null
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
