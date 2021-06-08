@@ -19,7 +19,7 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" aria-describedby="hours-confirmation-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Have you had {{hourTotal}} hours of support for {{data['hours'] | length}} days in
+                            You’ve told us you’ve had {{hourTotal}} hours of support across {{data['hours'] | length}} days in
                             {%if (data['support-date-month']=="01") %} January {% endif %}
                             {%if (data['support-date-month']=="02") %} Febuary {% endif %}
                             {%if (data['support-date-month']=="03") %} March {% endif %}
@@ -35,8 +35,8 @@ Access to Work Claiming Portal
                         </h1>
                     </legend>
 
-                    <br>
-                    
+                    <p>Is this correct?<p>
+
 
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
