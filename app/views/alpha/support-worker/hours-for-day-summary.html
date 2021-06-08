@@ -19,24 +19,13 @@ Access to Work Claiming Portal
 
         <div class="govuk-form-group">
             <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for
-            {%if (data['support-date-month']=="01") %} January {% endif %}
-            {%if (data['support-date-month']=="02") %} Febuary {% endif %}
-            {%if (data['support-date-month']=="03") %} March {% endif %}
-            {%if (data['support-date-month']=="04") %} April {% endif %}
-            {%if (data['support-date-month']=="05") %} May {% endif %}
-            {%if (data['support-date-month']=="06") %} June {% endif %}
-            {%if (data['support-date-month']=="07") %} July {% endif %}
-            {%if (data['support-date-month']=="08") %} August {% endif %}
-            {%if (data['support-date-month']=="09") %} September {% endif %}
-            {%if (data['support-date-month']=="10") %} October {% endif %}
-            {%if (data['support-date-month']=="11") %} November {% endif %}
-            {%if (data['support-date-month']=="12") %} December {% endif %}</h1>
+            {{data['support-date-month'] | numberMonth}}</h1>
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for day in data['hours'] %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{day.day}}/{{data['support-date-month']}}/{{data['support-date-year']}} - {{day.hours}} hours
+        {{day.day}} {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}} - {{day.hours}} hours
       </span>
                     <span class="hmrc-add-to-a-list__remove">
         <a class="govuk-link" href="remove-day-hours?removeId={{loop.index0}}">
@@ -46,7 +35,9 @@ Access to Work Claiming Portal
       </span>
                 </li>
                 {% else %}
-                <li>Enter hours to continue</li>
+                <div class="govuk-inset-text">
+                  Tell us about the support you received to continue.
+                </div>
                 {% endfor %}
 
 
@@ -58,7 +49,12 @@ Access to Work Claiming Portal
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="add-another-day-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-                        Do you need to add more?
+                      {% if hourTotal=="0" %}
+                      Do you need to add hours of support?
+                      {% else %}
+                      Do you need to add more?
+                      {% endif %}
+
                     </legend>
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">

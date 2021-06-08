@@ -20,22 +20,11 @@ Access to Work Claiming Portal
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
                             You’ve told us you’ve had {{hourTotal}} hours of support across {{data['hours'] | length}} days in
-                            {%if (data['support-date-month']=="01") %} January {% endif %}
-                            {%if (data['support-date-month']=="02") %} Febuary {% endif %}
-                            {%if (data['support-date-month']=="03") %} March {% endif %}
-                            {%if (data['support-date-month']=="04") %} April {% endif %}
-                            {%if (data['support-date-month']=="05") %} May {% endif %}
-                            {%if (data['support-date-month']=="06") %} June {% endif %}
-                            {%if (data['support-date-month']=="07") %} July {% endif %}
-                            {%if (data['support-date-month']=="08") %} August {% endif %}
-                            {%if (data['support-date-month']=="09") %} September {% endif %}
-                            {%if (data['support-date-month']=="10") %} October {% endif %}
-                            {%if (data['support-date-month']=="11") %} November {% endif %}
-                            {%if (data['support-date-month']=="12") %} December {% endif %}?
+                            {{data['support-date-month'] | numberMonth}}, is this correct?
                         </h1>
                     </legend>
 
-                    <p>Is this correct?<p>
+                    <br>
 
 
                     <div class="govuk-radios govuk-radios--inline">
