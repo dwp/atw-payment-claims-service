@@ -18,8 +18,17 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
         <div class="govuk-form-group">
-            <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for
-            {{data['support-date-month'] | numberMonth}}</h1>
+
+          {% if data['hours'].length === 0 %}
+          <h1 class="govuk-heading-l">You haven't told us about any hours of support for
+          {{data['support-date-month'] | numberMonth}}</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for
+          {{data['support-date-month'] | numberMonth}}</h1>
+          {% endif %}
+
+
+
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for day in data['hours'] %}
@@ -50,9 +59,9 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" aria-describedby="add-another-day-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
                       {% if hourTotal=="0" %}
-                      Do you need to tell us about any support you received in {{data['support-date-month'] | numberMonth}}?
+                      Do you need to tell us about support you received in {{data['support-date-month'] | numberMonth}}?
                       {% else %}
-                      Do you need to tell us about more support you received in {{data['support-date-month'] | numberMonth}}?
+                      Do you need to tell us about more support in {{data['support-date-month'] | numberMonth}}?
                       {% endif %}
 
                     </legend>

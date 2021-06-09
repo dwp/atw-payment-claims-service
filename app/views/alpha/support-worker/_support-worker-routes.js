@@ -48,7 +48,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
     } else if (addAnotherDay === 'No' && (req.session.data.hours === undefined||req.session.data.hours.length == 0)){
-      res.redirect(`/${urlPrefix}/support-worker/test`)
+      res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
     } else {
       res.redirect(`/${urlPrefix}/support-worker/hours-confirmation`)
     }

@@ -11,30 +11,15 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <form action="hours-for-day-add" method="post" class="form">
 
-        <h1 class="govuk-heading-l">When in
-        {{data['support-date-month'] | numberMonth}}
-        did you receive support and for how long?</h1>
-        <form action="hours-for-day-add" method="post" class="form">
-
-
-                  <!-- <div class="govuk-form-group">
-                    <div class="govuk-date-input" id="hours-of-day-date">
-                        <div class="govuk-date-input__item">
-
-                                <label class="govuk-label govuk-date-input__label" for="hours-of-day-date-day">
-                                    Day in month
-                                </label>
-
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-5"
-                                       id="hours-of-day-date-day" name="hours-of-day-date-day" type="text"
-
-
-                                       inputmode="numeric">
-                        </div>
-                      </div>
-                    </div> -->
-
+      {% if data['hours'].length === 0 %}
+      <h1 class="govuk-heading-l">
+      What was the first day you had support in {{data['support-date-month'] | numberMonth}}?</h1>
+      {% else %}
+      <h1 class="govuk-heading-l">
+      When else in {{data['support-date-month'] | numberMonth}} did you have support?</h1>
+      {% endif %}
 
                     <div class="govuk-form-group">
                       <label class="govuk-label govuk-date-input__label" for="hours-of-day-date-day">
@@ -52,28 +37,18 @@ Access to Work Claiming Portal
 
 
 
-            <!-- <div class="govuk-form-group">
-                <label class="govuk-label" for="hours-of-day-worked">
-                    Tell us how many hours of support you received on this day
-                </label>
-                <input class="govuk-input govuk-input--width-5" id="hours-of-day-worked" name="hours-of-day-worked" type="text"
-                       spellcheck="false" aria-describedby="hours-of-day-worked-hint" inputmode="numeric">
 
-            </div> -->
-
-
-
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="hours-of-day-worked">
-                Tell us how many hours of support you received on this day
-              </label>
-              <div id="hours-of-day-worked-hint" class="govuk-hint">
-                   Including half hours, for example 3.5 hours
-              </div>
-              <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-4" id="hours-of-day-worked" name="hours-of-day-worked" type="text" spellcheck="false" inputmode="numeric">
-                <div class="govuk-input__suffix" aria-hidden="true">hours</div>
-              </div>
-            </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="hours-of-day-worked">
+                        Tell us how many hours of support you received on this day
+                      </label>
+                      <div id="hours-of-day-worked-hint" class="govuk-hint">
+                           Including half hours, for example 3.5 hours
+                      </div>
+                      <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-4" id="hours-of-day-worked" name="hours-of-day-worked" type="text" spellcheck="false" inputmode="numeric">
+                        <div class="govuk-input__suffix" aria-hidden="true">hours</div>
+                      </div>
+                    </div>
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
