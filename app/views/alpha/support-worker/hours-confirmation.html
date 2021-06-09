@@ -19,7 +19,7 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" aria-describedby="hours-confirmation-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            You’ve told us you’ve had {{hourTotal}} hours of support across {{data['hours'] | length}} days in
+                            You’ve told us you’ve had {{hourTotal}} hours of support across {{data['hours'] | length}} {% if data['hours'].length === 1 %} day {% else %} days {% endif %} in
                             {{data['support-date-month'] | numberMonth}}, is this correct?
                         </h1>
                     </legend>

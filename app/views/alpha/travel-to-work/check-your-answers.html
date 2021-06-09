@@ -84,11 +84,11 @@ Check your answers
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for day in data['mileages'] %}
-                    {{day.day}} {{data['travel-to-work-date-month']}} {{data['travel-to-work-date-month'] | numberMonth}} - {{day.mileage}} miles</br>
+                    {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} - {{day.mileage}} miles</br>
                     {% endfor %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a href="hours-for-day-summary">
+                    <a href="mileage-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> miles for travel to work received</span>
                     </a>
@@ -104,7 +104,7 @@ Check your answers
                   {{data['mileages'] | length}} {% if data['mileages'].length === 1 %} day {% else %} days {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a href="hours-for-day-summary">
+                    <a href="mileage-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> miles for travel to work received</span>
                     </a>
@@ -121,7 +121,7 @@ Check your answers
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for day in data['journeys'] %}
-                    {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} {{data['travel-to-work-date-year']}} - {{ day.journeys }} journey(s)</br>
+                    {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} {{data['travel-to-work-date-year']}} - {{ day.journeys }} {% if data['journeys'].length === 1 %} journey {% else %} journeys {% endif %}</br>
                     {% endfor %}
 
                 </dd>
@@ -140,7 +140,7 @@ Check your answers
                 <dd class="govuk-summary-list__value">
 
                   {{journeyTotal}} journeys <br>
-                  {{data['journeys'] | length}} days
+                  {{data['journeys'] | length}} {% if data['journeys'].length === 1 %} day {% else %} days {% endif %}
 
                 </dd>
                 <dd class="govuk-summary-list__actions">
@@ -255,7 +255,7 @@ Check your answers
         </dl>
 
         {%if (data["transport-option"]=="taxi") %}
-        <h2 class="govuk-heading-m">Supporting claim evidence</h2>
+        <h2 class="govuk-heading-m">Supporting claim documents</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
@@ -263,7 +263,7 @@ Check your answers
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Copy of evidence
+                    Copy of receipt or invoice
                 </dt>
 
                 <dd class="govuk-summary-list__value">
@@ -286,7 +286,7 @@ Check your answers
         </dl>
         {% endif %}
 
-        <h2 class="govuk-heading-m">Counter signatory details</h2>
+        <h2 class="govuk-heading-m">Named contact details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">

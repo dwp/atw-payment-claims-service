@@ -14,7 +14,7 @@ Access to Work Claiming Portal
 
             <div class="govuk-form-group">
                 <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-taxi">
-                    How much did your taxi journeys cost in {{data['travel-to-work-date-month'] | numberMonth}} in total?
+                    How much did your taxi {% if data['journeys'].length === 1 %} journey {% else %} journeys {% endif %} cost in {{data['travel-to-work-date-month'] | numberMonth}} in total?
                 </label>
                 </h1>
                 <p>This includes VAT</p>

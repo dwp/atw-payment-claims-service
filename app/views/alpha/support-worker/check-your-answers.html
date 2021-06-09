@@ -83,7 +83,7 @@ Check your answers
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{ hourTotal }} hours <br>
-                    {{ data['hours'] | length }} days
+                    {{ data['hours'] | length }} {% if data['hours'].length === 1 %} day {% else %} days {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a href="hours-for-day-summary">
