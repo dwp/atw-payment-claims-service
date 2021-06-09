@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">Taxi for day</h1>
+
+        <form action="taxi-journeys-for-day-add" method="post" class="form">
+
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="taxi-journeys-for-day-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend">
+                        <h1 class="govuk-fieldset__heading">
+                            Day of month for which journeys occurred
+                        </h1>
+                    </legend>
+
+                    <div id="taxi-journeys-for-day-hint" class="govuk-hint">
+                        For example, 121
+                    </div>
+
+
+                    <div class="govuk-date-input" id="taxi-journeys-for-day-date">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="taxi-journeys-for-day-date-day">
+                                    Day in month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-5"
+                                       id="taxi-journeys-for-day-date-day" name="taxi-journeys-for-day-date-day" type="text" inputmode="numeric"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="taxi-journeys-for-day-journeys">
+                    Number of journeys on day
+                </label>
+                <div id="taxi-journeys-for-day-journeys-hint" class="govuk-hint">
+                    HINT
+                </div>
+
+                <input class="govuk-input govuk-input--width-5" id="taxi-journeys-for-day-journeys" name="taxi-journeys-for-day-journeys"
+                       type="text"
+                       spellcheck="false" aria-describedby="taxi-journeys-for-day-journeys-hint"
+                       inputmode="numeric">
+            </div>
+
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

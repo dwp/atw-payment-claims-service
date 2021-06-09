@@ -5,43 +5,43 @@ Access to Work Claiming Portal
 {% endblock %}
 
 {% block content %}
-{% set costTotal = 0 %}
-{% for day in data['costs'] %}
-{% set costTotal = costTotal | float + day.cost | float %}
+{% set journeyTotal = 0 %}
+{% for day in data['journeys'] %}
+{% set journeyTotal = journeyTotal | float + day.journeys | float %}
 {% else %}
-{% set costTotal = 0 | float %}
+{% set journeyTotal = 0 | float %}
 {% endfor %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="cost-confirmation-answers" method="post" class="form">
+        <form action="taxi-confirmation-answers" method="post" class="form">
             <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="cost-confirmation-hint">
+                <fieldset class="govuk-fieldset" aria-describedby="taxi-confirmation-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Confirm you are claiming for £{{costTotal}} for {{data['costs'] | length}} number of days?
+                            Confirm you are claiming £{{data['cost-of-taxi']}} for {{journeyTotal}} journeys over {{data['journeys'] | length}} day(s)?
                         </h1>
                     </legend>
 
-                    <div id="cost-confirmation-hint" class="govuk-body">
+                    <div id="taxi-confirmation-hint" class="govuk-body">
                         HINT
                     </div>
 
 
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="cost-confirmation-yes" name="cost-confirmation"
+                            <input class="govuk-radios__input" id="taxi-confirmation-yes" name="taxi-confirmation"
                                    type="radio"
                                    value="Yes">
-                            <label class="govuk-label govuk-radios__label" for="cost-confirmation-yes">
+                            <label class="govuk-label govuk-radios__label" for="taxi-confirmation-yes">
                                 Yes
                             </label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="cost-confirmation-no" name="cost-confirmation"
+                            <input class="govuk-radios__input" id="taxi-confirmation-no" name="taxi-confirmation"
                                    type="radio"
                                    value="No">
-                            <label class="govuk-label govuk-radios__label" for="cost-confirmation-no">
+                            <label class="govuk-label govuk-radios__label" for="taxi-confirmation-no">
                                 No
                             </label>
                         </div>

@@ -18,30 +18,30 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const aids = req.session.data['transport-option']
 
     if (aids === 'taxi') {
-      res.redirect(`/${urlPrefix}/travel-to-work/agreed-monthly-taxi`)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
     } else if (aids === 'lift') {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
     }
   })
 
-  router.post('/travel-to-work/agreed-monthly-taxi-answers', function (req, res) {
-    const aids = req.session.data['agreed-monthly-taxi']
-
-    if (aids === 'Yes') {
-      res.redirect(`/${urlPrefix}/travel-to-work/exceed-agreed-monthly-taxi`)
-    } else if (aids === 'No') {
-      res.redirect(`/${urlPrefix}/travel-to-work/cost-for-day`)
-    }
-  })
-  router.post('/travel-to-work/exceed-agreed-monthly-taxi-answers', function (req, res) {
-    const aids = req.session.data['exceed-agreed-monthly-taxi']
-
-    if (aids === 'Yes') {
-      res.redirect(`/${urlPrefix}/travel-to-work/cost-for-day`)
-    } else if (aids === 'No') {
-      res.redirect(`/${urlPrefix}/travel-to-work/agreed-monthly-taxi-cost`)
-    }
-  })
+  // router.post('/travel-to-work/agreed-monthly-taxi-answers', function (req, res) {
+  //   const aids = req.session.data['agreed-monthly-taxi']
+  //
+  //   if (aids === 'Yes') {
+  //     res.redirect(`/${urlPrefix}/travel-to-work/exceed-agreed-monthly-taxi`)
+  //   } else if (aids === 'No') {
+  //     res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+  //   }
+  // })
+  // router.post('/travel-to-work/exceed-agreed-monthly-taxi-answers', function (req, res) {
+  //   const aids = req.session.data['exceed-agreed-monthly-taxi']
+  //
+  //   if (aids === 'Yes') {
+  //     res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+  //   } else if (aids === 'No') {
+  //     res.redirect(`/${urlPrefix}/travel-to-work/agreed-monthly-taxi-cost`)
+  //   }
+  // })
 
   // post - Submit for upload
   router.post('/travel-to-work/receipt-upload-add', function (req, res) {
@@ -102,7 +102,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     const submittedDay = req.session.data['mileage-of-day-date-day']
     const submittedMileage = req.session.data['mileage-of-day-distance']
-    const submittedPassengers = req.session.data['passengers-for-day']
 
     // Stop null pointer
     if (allDays == null) {
@@ -111,8 +110,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     allDays.push({
       day: submittedDay,
-      mileage: submittedMileage,
-      passengers: submittedPassengers
+      mileage: submittedMileage
     })
 
     req.session.data.mileages = allDays
@@ -126,7 +124,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
       // Reset to stop pre-population of previous visit to page
       req.session.data['mileage-of-day-date-day'] = null
       req.session.data['mileage-of-day-distance'] = null
-      req.session.data['passengers-for-day'] = null
 
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
     } else {
@@ -155,16 +152,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
   })
 
-
-
-
   // post - Submit for taxi
-  router.post('/travel-to-work/cost-for-day-add', function (req, res) {
-    let allDays = req.session.data.costs // This is the running list of days with mileage
+  router.post('/travel-to-work/taxi-journeys-for-day-add', function (req, res) {
+    let allDays = req.session.data.journeys // This is the running list of days with mileage
 
-    const submittedDay = req.session.data['cost-of-day-date-day']
-    const submittedCost = req.session.data['cost-of-day-distance']
-    const submittedPassengers = req.session.data['passengers-for-day']
+    const submittedDay = req.session.data['taxi-journeys-for-day-date-day']
+    const submittedCost = req.session.data['taxi-journeys-for-day-journeys']
 
     // Stop null pointer
     if (allDays == null) {
@@ -173,56 +166,54 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     allDays.push({
       day: submittedDay,
-      cost: submittedCost,
-      passengers: submittedPassengers
+      journeys: submittedCost
     })
 
-    req.session.data.costs = allDays
-    res.redirect(`/${urlPrefix}/travel-to-work/cost-for-day-summary`)
+    req.session.data.journeys = allDays
+    res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
   })
 
   // post - Add more hours
-  router.post('/travel-to-work/cost-for-day-more', function (req, res) {
-    const addAnotherDay = req.session.data['add-more-cost']
+  router.post('/travel-to-work/taxi-journeys-for-day-more', function (req, res) {
+    const addAnotherDay = req.session.data['add-more-taxi-journeys']
     if (addAnotherDay === 'Yes') {
       // Reset to stop pre-population of previous visit to page
-      req.session.data['cost-of-day-date-day'] = null
-      req.session.data['cost-of-day-distance'] = null
-      req.session.data['passengers-for-day'] = null
+      req.session.data['taxi-journeys-for-day-date-day'] = null
+      req.session.data['taxi-journeys-for-day-journeys'] = null
 
-      res.redirect(`/${urlPrefix}/travel-to-work/cost-for-day`)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
     } else {
-      res.redirect(`/${urlPrefix}/travel-to-work/cost-confirmation`)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     }
   })
 
   // Get
-  router.get('/travel-to-work/remove-day-cost', function (req, res) {
-    req.session.data['cost-day-to-remove'] = req.query.removeId
-    res.render(`./${folderForViews}/travel-to-work/remove-day-cost`)
+  router.get('/travel-to-work/remove-day-journeys', function (req, res) {
+    req.session.data['day-to-remove'] = req.query.removeId
+    res.render(`./${folderForViews}/travel-to-work/remove-day-journeys`)
   })
 
   // post - Remove receipt confirmation
-  router.post('/travel-to-work/remove-day-cost', function (req, res) {
-    const allUploads = req.session.data.costs
-    const costToRemove = req.session.data['day-cost-to-remove']
-    const confirmationToRemove = req.session.data['day-cost-remove-confirmation']
+  router.post('/travel-to-work/remove-day-journeys', function (req, res) {
+    const all = req.session.data.journeys
+    const toRemove = req.session.data['day-to-remove']
+    const confirmationToRemove = req.session.data['day-to-remove-confirmation']
 
     if (confirmationToRemove === 'Yes') {
-      allUploads.splice(costToRemove, 1)
+      all.splice(toRemove, 1)
     }
-    req.session.data.costs = allUploads
-    req.session.data['cost-day-to-remove'] = null
-    req.session.data['day-cost-remove-confirmation'] = null
-    res.redirect(`/${urlPrefix}/travel-to-work/cost-for-day-summary`)
+    req.session.data.journeys = all
+    req.session.data['day-to-remove'] = null
+    req.session.data['day-to-remove-confirmation'] = null
+    res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
   })
 
-  router.post('/travel-to-work/cost-confirmation-answers', function (req, res) {
-    const confirm = req.session.data['cost-confirmation']
+  router.post('/travel-to-work/taxi-confirmation-answers', function (req, res) {
+    const confirm = req.session.data['taxi-confirmation']
     if (confirm === 'Yes') {
       res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
     } else {
-      res.redirect(`/${urlPrefix}/travel-to-work/cost-for-day-summary`)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
     }
   })
 
@@ -232,6 +223,16 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
+    }
+  })
+
+  router.post('/travel-to-work/banking-details-answers', function (req, res) {
+    const answer = req.session.data['transport-option']
+
+    if (answer === 'taxi') {
+      res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
+    } else if (answer === 'lift') {
+      res.redirect(`/${urlPrefix}/travel-to-work/counter-signatory-name`)
     }
   })
 }
