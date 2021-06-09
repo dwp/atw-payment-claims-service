@@ -50,9 +50,9 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" aria-describedby="add-another-day-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
                       {% if hourTotal=="0" %}
-                      Do you need to add hours of support?
+                      Do you need to tell us about any support you received in {{data['support-date-month'] | numberMonth}}?
                       {% else %}
-                      Do you need to add more?
+                      Do you need to tell us about more support you received in {{data['support-date-month'] | numberMonth}}?
                       {% endif %}
 
                     </legend>
