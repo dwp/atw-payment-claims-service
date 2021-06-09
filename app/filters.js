@@ -7,6 +7,39 @@ module.exports = function (env) {
    */
   var filters = {}
 
+filters.numberMonth = function(i) {
+
+    if (i == '1' || i == '01'){
+    return "January"
+  } else if (i == '2' || i == '02'){
+    return "Febuary"
+  } else if (i == '3' || i == '03'){
+    return "March"
+  } else if (i == '4' || i == '04'){
+    return "April"
+  } else if (i == '5' || i == '05'){
+    return "May"
+  } else if (i == '6' || i == '06'){
+    return "June"
+  } else if (i == '7' || i == '07'){
+    return "July"
+  } else if (i == '8' || i == '08'){
+    return "August"
+  } else if (i == '9' || i == '09'){
+    return "September"
+  } else if (i == '10'){
+    return "October"
+  } else if (i == '11'){
+    return "November"
+  } else if (i == '12'){
+    return "December"
+  } else {
+    return i
+  }
+
+
+}
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

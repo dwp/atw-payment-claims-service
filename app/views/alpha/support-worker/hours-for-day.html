@@ -13,19 +13,8 @@ Access to Work Claiming Portal
 
 
         <h1 class="govuk-heading-l">When in
-        {%if (data['support-date-month']=="01") %} January {% endif %}
-        {%if (data['support-date-month']=="02") %} Febuary {% endif %}
-        {%if (data['support-date-month']=="03") %} March {% endif %}
-        {%if (data['support-date-month']=="04") %} April {% endif %}
-        {%if (data['support-date-month']=="05") %} May {% endif %}
-        {%if (data['support-date-month']=="06") %} June {% endif %}
-        {%if (data['support-date-month']=="07") %} July {% endif %}
-        {%if (data['support-date-month']=="08") %} August {% endif %}
-        {%if (data['support-date-month']=="09") %} September {% endif %}
-        {%if (data['support-date-month']=="10") %} October {% endif %}
-        {%if (data['support-date-month']=="11") %} November {% endif %}
-        {%if (data['support-date-month']=="12") %} December {% endif %}
-        did you have support and for how long?</h1>
+        {{data['support-date-month'] | numberMonth}}
+        did you receive support and for how long?</h1>
         <form action="hours-for-day-add" method="post" class="form">
 
 
@@ -49,18 +38,7 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                       <label class="govuk-label govuk-date-input__label" for="hours-of-day-date-day">
-                        Tell us about a day in {%if (data['support-date-month']=="01") %} January {% endif %}
-                        {%if (data['support-date-month']=="02") %} Febuary {% endif %}
-                        {%if (data['support-date-month']=="03") %} March {% endif %}
-                        {%if (data['support-date-month']=="04") %} April {% endif %}
-                        {%if (data['support-date-month']=="05") %} May {% endif %}
-                        {%if (data['support-date-month']=="06") %} June {% endif %}
-                        {%if (data['support-date-month']=="07") %} July {% endif %}
-                        {%if (data['support-date-month']=="08") %} August {% endif %}
-                        {%if (data['support-date-month']=="09") %} September {% endif %}
-                        {%if (data['support-date-month']=="10") %} October {% endif %}
-                        {%if (data['support-date-month']=="11") %} November {% endif %}
-                        {%if (data['support-date-month']=="12") %} December {% endif %}
+                        Tell us about a day in {{data['support-date-month'] | numberMonth}}
                         that you received support
                       </label>
                       <div id="hours-of-day-hint" class="govuk-hint">
@@ -68,18 +46,7 @@ Access to Work Claiming Portal
                       </div>
                       <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-2" id="hours-of-day-date-day" name="hours-of-day-date-day" type="text" spellcheck="false" inputmode="numeric">
                         <div class="govuk-input__suffix" aria-hidden="true">
-                        {%if (data['support-date-month']=="01") %} January {% endif %}
-                        {%if (data['support-date-month']=="02") %} Febuary {% endif %}
-                        {%if (data['support-date-month']=="03") %} March {% endif %}
-                        {%if (data['support-date-month']=="04") %} April {% endif %}
-                        {%if (data['support-date-month']=="05") %} May {% endif %}
-                        {%if (data['support-date-month']=="06") %} June {% endif %}
-                        {%if (data['support-date-month']=="07") %} July {% endif %}
-                        {%if (data['support-date-month']=="08") %} August {% endif %}
-                        {%if (data['support-date-month']=="09") %} September {% endif %}
-                        {%if (data['support-date-month']=="10") %} October {% endif %}
-                        {%if (data['support-date-month']=="11") %} November {% endif %}
-                        {%if (data['support-date-month']=="12") %} December {% endif %} 2021</div>
+                        {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}}</div>
                       </div>
                     </div>
 
