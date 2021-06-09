@@ -45,18 +45,7 @@ Check your answers
                 <dd class="govuk-summary-list__value">
 
 
-                    {%if (data['support-date-month']=="01") %} January {% endif %}
-                    {%if (data['support-date-month']=="02") %} Febuary {% endif %}
-                    {%if (data['support-date-month']=="03") %} March {% endif %}
-                    {%if (data['support-date-month']=="04") %} April {% endif %}
-                    {%if (data['support-date-month']=="05") %} May {% endif %}
-                    {%if (data['support-date-month']=="06") %} June {% endif %}
-                    {%if (data['support-date-month']=="07") %} July {% endif %}
-                    {%if (data['support-date-month']=="08") %} August {% endif %}
-                    {%if (data['support-date-month']=="09") %} September {% endif %}
-                    {%if (data['support-date-month']=="10") %} October {% endif %}
-                    {%if (data['support-date-month']=="11") %} November {% endif %}
-                    {%if (data['support-date-month']=="12") %} December {% endif %}
+                    {{data['support-date-month'] | numberMonth}}
                     - {{data["support-date-year"]}}
 
 
@@ -77,7 +66,7 @@ Check your answers
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for day in data['hours'] %}
-                    {{day.day}}/{{data['support-date-month']}}/{{data['support-date-year']}} - {{day.hours}} hours</br>
+                    {{day.day}} {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}} - {{day.hours}} hours</br>
                     {% endfor %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
