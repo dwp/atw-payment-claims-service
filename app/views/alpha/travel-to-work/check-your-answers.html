@@ -107,14 +107,14 @@ Check your answers
             </div>
             {% endif %}
 
-            {% if data['costs'].length %}
+            {% if data['journeys'].length %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Cost of taxi received
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {% for day in data['costs'] %}
-                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - £{{day.cost}} {% if day['passengers'] %} <br> - {{day['passengers']}} passenger(s) {% endif %}</br>
+                    {% for day in data['journeys'] %}
+                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - £{{day.cost}}</br>
                     {% endfor %}
                 </dd>
                 <dd class="govuk-summary-list__actions">

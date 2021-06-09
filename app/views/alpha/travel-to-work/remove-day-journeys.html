@@ -4,37 +4,37 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+
 {% block content %}
+
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="exceed-agreed-monthly-taxi-answers" method="post" class="form">
+        <form action="remove-day-journeys" method="post" class="form">
+
+
             <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="exceed-agreed-monthly-taxi-hint">
+                <fieldset class="govuk-fieldset" aria-describedby="day-to-remove-confirmation-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Did any of the taxi journeys you took during this period result in excess or less cost than you previously agreed?
+                            Are you sure you would like to remove this?
                         </h1>
                     </legend>
 
-                    <div id="exceed-agreed-monthly-taxi-hint" class="govuk-hint">
-                        HINT
-                    </div>
-
-
-                    <div class="govuk-radios--inline">
+                    <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="exceed-agreed-monthly-taxi-yes" name="exceed-agreed-monthly-taxi"
+                            <input class="govuk-radios__input" id="day-to-remove-confirmation-yes" name="day-to-remove-confirmation"
                                    type="radio"
                                    value="Yes">
-                            <label class="govuk-label govuk-radios__label" for="exceed-agreed-monthly-taxi-yes">
+                            <label class="govuk-label govuk-radios__label" for="day-to-remove-confirmation-yes">
                                 Yes
                             </label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="exceed-agreed-monthly-taxi-no" name="exceed-agreed-monthly-taxi"
+                            <input class="govuk-radios__input" id="day-to-remove-confirmation-no" name="day-to-remove-confirmation"
                                    type="radio"
                                    value="No">
-                            <label class="govuk-label govuk-radios__label" for="exceed-agreed-monthly-taxi-no">
+                            <label class="govuk-label govuk-radios__label" for="day-to-remove-confirmation-no">
                                 No
                             </label>
                         </div>
@@ -42,14 +42,10 @@ Access to Work Claiming Portal
 
                 </fieldset>
             </div>
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
+            <button class="govuk-button" data-module="govuk-button">
                 Continue
             </button>
-
         </form>
     </div>
 </div>
-
-
 {% endblock %}

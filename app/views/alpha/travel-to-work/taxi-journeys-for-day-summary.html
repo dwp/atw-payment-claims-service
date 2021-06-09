@@ -7,27 +7,27 @@ Access to Work Claiming Portal
 
 {% block content %}
 
-{% set costTotal = 0 %}
-{% for day in data['costs'] %}
-{% set costTotal = costTotal | float + day.cost | float %}
+{% set journeysTotal = 0 %}
+{% for day in data['journeys'] %}
+{% set journeysTotal = journeysTotal | float + day.journeys | float %}
 {% else %}
-{% set costTotal = 0 | float %}
+{% set journeysTotal = 0 | float %}
 {% endfor %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
         <div class="govuk-form-group">
-            <h1 class="govuk-heading-l">You have entered £{{costTotal}}</h1>
+            <h1 class="govuk-heading-l">You have entered {{journeysTotal}} journeys</h1>
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
-                {% for day in data['costs'] %}
+                {% for day in data['journeys'] %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}}<br>£{{day.cost}} {% if day['passengers'] %} <br>{{day['passengers']}} passenger(s) {% endif %}
+        {{day.day}}/{{data['travel-to-work-date-month']}}/{{ data['travel-to-work-date-year'] }} - {{ day.journeys }} journey(s)
       </span>
                     <span class="hmrc-add-to-a-list__change">
-        <a class="govuk-link" href="remove-day-cost?removeId={{loop.index0}}">
+        <a class="govuk-link" href="remove-day-journeys?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
           <span class="govuk-visually-hidden">Remove Sydney Russell from the list</span>
         </a>
@@ -41,30 +41,30 @@ Access to Work Claiming Portal
             </ul>
         </div>
 
-        <form method="post" action="cost-for-day-more">
+        <form method="post" action="taxi-journeys-for-day-more">
 
             <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="add-more-cost-hint">
+                <fieldset class="govuk-fieldset" aria-describedby="add-more-taxi-journeys-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
                         Do you need to add more trips?
                     </legend>
-                    <div id="add-more-cost-hint" class="govuk-hint">
+                    <div id="add-more-taxi-journeys-hint" class="govuk-hint">
                         HINT
                     </div>
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-more-cost-yes" name="add-more-cost"
+                            <input class="govuk-radios__input" id="add-more-taxi-journeys-yes" name="add-more-taxi-journeys"
                                    type="radio"
                                    value="Yes">
-                            <label class="govuk-label govuk-radios__label" for="add-more-cost-yes">
+                            <label class="govuk-label govuk-radios__label" for="add-more-taxi-journeys-yes">
                                 Yes
                             </label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-more-cost-no" name="add-more-cost"
+                            <input class="govuk-radios__input" id="add-more-taxi-journeys-no" name="add-more-taxi-journeys"
                                    type="radio"
                                    value="No">
-                            <label class="govuk-label govuk-radios__label" for="add-more-cost-no">
+                            <label class="govuk-label govuk-radios__label" for="add-more-taxi-journeys-no">
                                 No
                             </label>
                         </div>
