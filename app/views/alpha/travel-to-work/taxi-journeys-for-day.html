@@ -12,7 +12,15 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
 
-        <h1 class="govuk-heading-l">Taxi for day</h1>
+
+
+        {% if (data['journeys'].length === 0) or (data['journeys'].length === undefined) %}
+        <h1 class="govuk-heading-l">
+        When was the first day you travelled in {{data['travel-to-work-date-month'] | numberMonth}}?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l">
+        When else in {{data['travel-to-work-date-month'] | numberMonth}} did you travel?</h1>
+        {% endif %}
 
         <form action="taxi-journeys-for-day-add" method="post" class="form">
 
@@ -21,39 +29,36 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" role="group" aria-describedby="taxi-journeys-for-day-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend">
                         <h1 class="govuk-fieldset__heading">
-                            Day of month for which journeys occurred
+                          Tell us about a day in {{data['travel-to-work-date-month'] | numberMonth}}
+                          that you travelled
                         </h1>
                     </legend>
 
                     <div id="taxi-journeys-for-day-hint" class="govuk-hint">
-                        For example, 121
+                        For example, 21
                     </div>
 
-
-                    <div class="govuk-date-input" id="taxi-journeys-for-day-date">
-                        <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label govuk-date-input__label" for="taxi-journeys-for-day-date-day">
-                                    Day in month
-                                </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-5"
-                                       id="taxi-journeys-for-day-date-day" name="taxi-journeys-for-day-date-day" type="text" inputmode="numeric"></div>
-                        </div>
+                    <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-2" id="taxi-journeys-for-day-date" for="taxi-journeys-for-day-date-day" name="taxi-journeys-for-day-date-day" type="text" spellcheck="false" inputmode="numeric">
+                      <div class="govuk-input__suffix" aria-hidden="true">
+                        {{data['travel-to-work-date-month'] | numberMonth}} {{data['travel-to-work-date-year']}}</div>
                     </div>
                 </fieldset>
             </div>
+
+
             <div class="govuk-form-group">
                 <label class="govuk-label" for="taxi-journeys-for-day-journeys">
-                    Number of journeys on day
+                    Tell us how many journeys you took on this day
                 </label>
                 <div id="taxi-journeys-for-day-journeys-hint" class="govuk-hint">
-                    HINT
+                    For example, 2
                 </div>
 
-                <input class="govuk-input govuk-input--width-5" id="taxi-journeys-for-day-journeys" name="taxi-journeys-for-day-journeys"
-                       type="text"
-                       spellcheck="false" aria-describedby="taxi-journeys-for-day-journeys-hint"
-                       inputmode="numeric">
+
+                       <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-4" id="taxi-journeys-for-day-journeys" name="taxi-journeys-for-day-journeys" type="text" spellcheck="false" inputmode="numeric">
+                         <div class="govuk-input__suffix" aria-hidden="true">
+                           Journeys</div>
+                       </div>
             </div>
 
                 <button type="submit" class="govuk-button" data-module="govuk-button">

@@ -182,8 +182,10 @@ module.exports = function (folderForViews, urlPrefix, router) {
       req.session.data['taxi-journeys-for-day-journeys'] = null
 
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+    } else if (addAnotherDay === 'No' && (req.session.data.journeys === undefined||req.session.data.journeys.length == 0)){
+      res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
     } else {
-      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-confirmation`)
     }
   })
 
@@ -211,7 +213,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-to-work/taxi-confirmation-answers', function (req, res) {
     const confirm = req.session.data['taxi-confirmation']
     if (confirm === 'Yes') {
-      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
     }

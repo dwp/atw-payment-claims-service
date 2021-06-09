@@ -12,8 +12,7 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
       <form action="hours-for-day-add" method="post" class="form">
-
-      {% if data['hours'].length === 0 %}
+      {% if (data['hours'].length === 0) or (data['hours'].length === undefined) %}
       <h1 class="govuk-heading-l">
       What was the first day you had support in {{data['support-date-month'] | numberMonth}}?</h1>
       {% else %}

@@ -6,12 +6,18 @@ Check your answers
 
 
 {% block content %}
-
-{% set hourTotal = 0 %}
-{% for day in data['hours'] %}
-{% set hourTotal = hourTotal | float + day.hours | float %}
+{% set journeyTotal = 0 %}
+{% for day in data['journeys'] %}
+{% set journeyTotal = journeyTotal | float + day.journeys | float %}
 {% else %}
-{% set hourTotal = 0 | float %}
+{% set journeyTotal = 0 | float %}
+{% endfor %}
+
+{% set mileageTotal = 0 %}
+{% for day in data['mileages'] %}
+{% set mileageTotal = mileageTotal | float + day.mileage | float %}
+{% else %}
+{% set mileageTotal = 0 | float %}
 {% endfor %}
 
 <div class="govuk-grid-row">
@@ -19,7 +25,7 @@ Check your answers
 
         <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
 
-        <h2 class="govuk-heading-m">Check your answers</h2>
+        <h2 class="govuk-heading-m">Claim information</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
@@ -31,7 +37,7 @@ Check your answers
                     {%if (data['travel-to-work']=="Yes") %} Travel to Work {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a href="support-for-workplace">
+                    <a href="travel-to-work">
                         Change
                         <span class="govuk-visually-hidden"> Type of claim</span>
                     </a>
@@ -43,7 +49,7 @@ Check your answers
                     What month are you claiming for?
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{data["travel-to-work-date-month"]}}/{{data["travel-to-work-date-year"]}}
+                    {{data['travel-to-work-date-month'] | numberMonth}} - {{data["travel-to-work-date-year"]}}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a href="claiming-for-month">
@@ -68,35 +74,34 @@ Check your answers
                 </dd>
             </div>
 
-            {% if data['agreed-monthly-taxi-cost'] %}
+
+
+            {%if (data["transport-option"]=="lift") %}
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Agreed monthly cost
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £{{ data['agreed-monthly-taxi-cost'] | float }}
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                    <a href="transport-option-answers">
-                        Change
-                        <span class="govuk-visually-hidden"> Fixed monthly cost</span>
-                    </a>
-                </dd>
-            </div>
-            {% endif %}
-
-
-            {% if data['mileages'].length %}
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Mileage received
+                    Number of journeys taken
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for day in data['mileages'] %}
-                    <br>{{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - {{day.mileage}} miles</br>
+                    {{day.day}} {{data['travel-to-work-date-month']}} {{data['travel-to-work-date-month'] | numberMonth}} - {{day.mileage}} miles</br>
                     {% endfor %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="hours-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> miles for travel to work received</span>
+                    </a>
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total miles travelled
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{mileageTotal}} miles <br>
+                  {{data['mileages'] | length}} {% if data['mileages'].length === 1 %} day {% else %} days {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a href="hours-for-day-summary">
@@ -107,15 +112,52 @@ Check your answers
             </div>
             {% endif %}
 
-            {% if data['journeys'].length %}
+            <!-- // taxi number of journeys -->
+
+            {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Cost of taxi received
+                    Number of Journeys taken
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for day in data['journeys'] %}
-                    {{day.day}}/{{data['travel-to-work-date-month']}}/{{data['travel-to-work-date-year']}} - £{{day.cost}}</br>
+                    {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} {{data['travel-to-work-date-year']}} - {{ day.journeys }} journey(s)</br>
                     {% endfor %}
+
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="taxi-journeys-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Number of journeys taken</span>
+                    </a>
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total number of journeys
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+                  {{journeyTotal}} journeys <br>
+                  {{data['journeys'] | length}} days
+
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a href="taxi-journeys-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total number of journeys</span>
+                    </a>
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total cost of the taxi journeys
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £{{data["cost-of-taxi"]}}
+
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a href="hours-for-day-summary">
@@ -124,6 +166,7 @@ Check your answers
                     </a>
                 </dd>
             </div>
+
             {% endif %}
 
             {%if (data['employer-contributing']=="Yes") %}
@@ -132,7 +175,7 @@ Check your answers
                     Total of [data] has been agreed to be paid by the employer
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    data['employer-contributing']
+                    {{data["employer-contributing"]}}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a href="employer-contribution.html">
@@ -211,24 +254,11 @@ Check your answers
             {% endif %}
         </dl>
 
-
+        {%if (data["transport-option"]=="taxi") %}
         <h2 class="govuk-heading-m">Supporting claim evidence</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-<!--            <div class="govuk-summary-list__row">-->
-<!--                <dt class="govuk-summary-list__key">-->
-<!--                    Are you able to upload receipts or invoices digitally?-->
-<!--                </dt>-->
-<!--                <dd class="govuk-summary-list__value">-->
-<!--                    {{data["digital-upload"]}}-->
-<!--                </dd>-->
-<!--                <dd class="govuk-summary-list__actions">-->
-<!--                    <a href="upload-receipt">-->
-<!--                        Change-->
-<!--                        <span class="govuk-visually-hidden"> Are you able to upload receipts or invoices digitally?</span>-->
-<!--                    </a>-->
-<!--                </dd>-->
-<!--            </div>-->
+
 
 
             <div class="govuk-summary-list__row">
@@ -254,6 +284,7 @@ Check your answers
 
 
         </dl>
+        {% endif %}
 
         <h2 class="govuk-heading-m">Counter signatory details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">

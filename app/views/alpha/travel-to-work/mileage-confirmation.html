@@ -19,13 +19,14 @@ Access to Work Claiming Portal
                 <fieldset class="govuk-fieldset" aria-describedby="mileage-confirmation-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Confirm you are claiming for {{mileageTotal}} miles over {{data['mileages'] | length}} day(s)?
+
+
+                            You’ve told us you’ve travelled {{mileageTotal}} miles over {{data['mileages'] | length}} {% if data['mileages'].length === 1 %} day {% else %} days {% endif %} in
+                            {{data['travel-to-work-date-month'] | numberMonth}}, is this correct?
                         </h1>
                     </legend>
 
-                    <div id="mileage-confirmation-hint" class="govuk-body">
-                        HINT
-                    </div>
+                  
 
 
                     <div class="govuk-radios govuk-radios--inline">

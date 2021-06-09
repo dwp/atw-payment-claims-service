@@ -11,7 +11,14 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
         <div class="govuk-form-group">
-            <h1 class="govuk-heading-l">Uploaded receipts</h1>
+          <div class="govuk-form-group">
+              {% if data['uploads'].length === 1 %}
+              <h1 class="govuk-heading-l">You’ve uploaded {{data['uploads'] | length}} receipt or invoice </h1>
+              {% else %}
+              <h1 class="govuk-heading-l">You’ve uploaded {{data['uploads'] | length}} receipts or invoices </h1>
+              {% endif %}
+
+
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for file in data['uploads'] %}
@@ -38,11 +45,14 @@ Access to Work Claiming Portal
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="add-another-receipt-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-                        Do you need to upload more receipts?
+
+                      {% if (data['uploads'].length === 0) or (data['uploads'].length === undefined) %}
+                        Do you need to upload a receipt or invoice?
+                        {% else %}
+                        Do you need to upload another receipt or invoice? 
+                        {% endif %}
                     </legend>
-                    <div id="add-another-receipt-hint" class="govuk-hint">
-                        HINT
-                    </div>
+
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="add-another-receipt-yes" name="add-another-receipt" type="radio"
@@ -60,13 +70,21 @@ Access to Work Claiming Portal
                         </div>
                     </div>
 
+
                 </fieldset>
             </div>
+
+            <br>
+
 
             <button class="govuk-button" data-module="govuk-button">
                 Continue
             </button>
         </form>
+
+
+
+
     </div>
 </div>
 

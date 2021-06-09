@@ -13,19 +13,7 @@ Access to Work Claiming Portal
 
                 <div class="govuk-form-group">
                     <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-support">
-                        How much did your support cost in
-                        {%if (data['support-date-month']=="01") %} January {% endif %}
-                        {%if (data['support-date-month']=="02") %} Febuary {% endif %}
-                        {%if (data['support-date-month']=="03") %} March {% endif %}
-                        {%if (data['support-date-month']=="04") %} April {% endif %}
-                        {%if (data['support-date-month']=="05") %} May {% endif %}
-                        {%if (data['support-date-month']=="06") %} June {% endif %}
-                        {%if (data['support-date-month']=="07") %} July {% endif %}
-                        {%if (data['support-date-month']=="08") %} August {% endif %}
-                        {%if (data['support-date-month']=="09") %} September {% endif %}
-                        {%if (data['support-date-month']=="10") %} October {% endif %}
-                        {%if (data['support-date-month']=="11") %} November {% endif %}
-                        {%if (data['support-date-month']=="12") %} December {% endif %} in total?
+                        How much did your support cost in {{data['support-date-month'] | numberMonth}} in total?
                     </label>
                     </h1>
                     <p>This includes VAT</p>

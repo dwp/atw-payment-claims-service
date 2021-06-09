@@ -17,40 +17,55 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+        <form method="post" action="taxi-journeys-for-day-more">
+
         <div class="govuk-form-group">
-            <h1 class="govuk-heading-l">You have entered {{journeysTotal}} journeys</h1>
+
+            {% if data['journeys'].length === 0 %}
+            <h1 class="govuk-heading-l">You haven't told us about any times you have travelled in
+            {{data['travel-to-work-date-month'] | numberMonth}}</h1>
+            {% else %}
+            <h1 class="govuk-heading-l">You’ve told us about {{journeysTotal}} journeys in
+            {{data['travel-to-work-date-month'] | numberMonth}}</h1>
+            {% endif %}
+
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for day in data['journeys'] %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{day.day}}/{{data['travel-to-work-date-month']}}/{{ data['travel-to-work-date-year'] }} - {{ day.journeys }} journey(s)
+        {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} {{ data['travel-to-work-date-year'] }} - {{ day.journeys }} journey(s)
       </span>
+
                     <span class="hmrc-add-to-a-list__change">
         <a class="govuk-link" href="remove-day-journeys?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
-          <span class="govuk-visually-hidden">Remove Sydney Russell from the list</span>
+          <span class="govuk-visually-hidden">Remove a taxi journey entry from the list</span>
         </a>
       </span>
                 </li>
 
             {% else %}
-            <p>Please enter journeys to continue</p>
+            <div class="govuk-inset-text">
+              Tell us about a time you travelled in {{data['travel-to-work-date-month'] | numberMonth}} to continue.
+            </div>
             {% endfor %}
 
             </ul>
         </div>
 
-        <form method="post" action="taxi-journeys-for-day-more">
+
 
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="add-more-taxi-journeys-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-                        Do you need to add more trips?
+                      {% if journeysTotal=="0" %}
+                      Do you need to tell us when you travelled in {{data['travel-to-work-date-month'] | numberMonth}}?
+                      {% else %}
+                      Do you need to tell us another time you travelled in {{data['travel-to-work-date-month'] | numberMonth}}?
+                      {% endif %}
                     </legend>
-                    <div id="add-more-taxi-journeys-hint" class="govuk-hint">
-                        HINT
-                    </div>
+
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="add-more-taxi-journeys-yes" name="add-more-taxi-journeys"
