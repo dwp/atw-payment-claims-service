@@ -31,14 +31,14 @@ Access to Work Claiming Portal
 
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
-                {% for day in data['journeys'] %}
+                {% for day in data['journeys'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
         {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} {{ data['travel-to-work-date-year'] }} - {{ day.journeys }} journey(s)
       </span>
 
                     <span class="hmrc-add-to-a-list__change">
-        <a class="govuk-link" href="remove-day-journeys?removeId={{loop.index0}}">
+        <a class="govuk-link--no-visited-state" href="remove-day-journeys?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
           <span class="govuk-visually-hidden">Remove a taxi journey entry from the list</span>
         </a>

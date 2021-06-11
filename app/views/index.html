@@ -19,19 +19,37 @@ GOV.UK Prototype Kit test
             <li>
                 <a class="govuk-link" href="alpha/portal.html">Portal</a>
             </li>
-            <li>
-                <a class="govuk-link" href="alpha/equipment-and-adaptations/start-a-claim.html">Equipment and adaptations</a>
-            </li>
+
             <li>
                 <a class="govuk-link" href="alpha/employer-countersign/enter-citizen-urn.html">Employer Countersign</a>
             </li>
-            <li>
-                <a class="govuk-link" href="alpha/support-worker/start-a-claim.html">Support Workers</a>
-            </li>
-            <li>
-                <a class="govuk-link" href="alpha/travel-to-work/start-a-claim.html">Travel to Work</a>
-            </li>
+
+
         </ul>
+
+        <form action="alpha/start-journey" method="post" class="form">
+          <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              travel to work
+          </button>
+        </form>
+
+      <form action="alpha/start-journey" method="post" class="form">
+        <input type="hidden" id="journey-type" name="journey-type" value="supportworker">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Support worker
+        </button>
+      </form>
+
+      <form action="alpha/start-journey" method="post" class="form">
+        <input type="hidden" id="journey-type" name="journey-type" value="specialaidsandequipment">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Equipment and adaptations
+        </button>
+
+    </form>
+
+
 
 
         <h2 class="govuk-heading-m">Examples and documentation</h2>

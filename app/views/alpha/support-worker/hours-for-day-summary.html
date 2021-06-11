@@ -32,13 +32,13 @@ Access to Work Claiming Portal
 
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
-                {% for day in data['hours'] %}
+                {% for day in data['hours'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
         {{day.day}} {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}} - {{day.hours}} hours
       </span>
                     <span class="hmrc-add-to-a-list__remove">
-        <a class="govuk-link" href="remove-day-hours?removeId={{loop.index0}}">
+        <a id="{{day.day}}" class="govuk-link--no-visited-state" href="remove-day-hours?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
           <span class="govuk-visually-hidden">Remove {{day.day}}</span>
         </a>

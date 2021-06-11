@@ -24,6 +24,17 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+
+  router.post('/travel-to-work/taxi-cost-answer', function (req, res) {
+    const cost = req.session.data['cost-of-taxi']
+
+    if (cost === '100') {
+      res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
+    } else if (aids === 'lift') {
+      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
+    }
+  })
+
   // router.post('/travel-to-work/agreed-monthly-taxi-answers', function (req, res) {
   //   const aids = req.session.data['agreed-monthly-taxi']
   //

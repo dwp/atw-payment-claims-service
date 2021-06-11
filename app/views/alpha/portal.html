@@ -47,9 +47,21 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               <div class="card" id="test-card">
                   <div class="card-body active" @if(url)>
                       <h2 class="heading-small card-heading">
-                          <a class="card-link" href="./equipment-and-adaptations/start-a-claim.html">
+                        {%if (data['journey-type'] == "specialaidsandequipment") %}
+                          <a class="card-link" href="./equipment-and-adaptations/start-a-claim">
                               Start a claim
                           </a>
+                        {% endif %}
+                        {%if (data['journey-type'] == "supportworker") %}
+                          <a class="card-link" href="./support-worker/start-a-claim">
+                              Start a claim
+                          </a>
+                        {% endif %}
+                        {%if (data['journey-type'] == "traveltowork") %}
+                          <a class="card-link" href="./travel-to-work/start-a-claim">
+                              Start a claim
+                          </a>
+                        {% endif %}
                       </h2>
                       <p class="govuk-body"> Claim online and upload a copy of your receipt or invoice.</p>
                   </div>
