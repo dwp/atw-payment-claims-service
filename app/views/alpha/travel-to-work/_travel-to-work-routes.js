@@ -30,7 +30,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
-    } else if (aids === 'lift') {
+    } else {
       res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
     }
   })
