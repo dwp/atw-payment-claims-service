@@ -49,7 +49,8 @@ GOV.UK Prototype Kit
 "serviceName": serviceName,
 "serviceUrl" : "/",
 "phaseBanner" : false,
-"signOutHref" : "/sign-out-change-this-when-log-in-is-built"
+"signOutHref" : "/index",
+"navigationClasses" : "govuk-!-display-none-print"
 }) }}
 
 
@@ -64,10 +65,11 @@ GOV.UK Prototype Kit
 tag: {
 text: "alpha"
 },
+classes: "govuk-!-display-none-print",
 html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
 
-<a href="javascript: history.go(-1)" class="govuk-back-link">Back</a>
+<a href="javascript: history.go(-1)" class="govuk-back-link govuk-!-display-none-print">Back</a>
 
 {% endblock %}
 
@@ -76,6 +78,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 {% if useAutoStoreData %}
 {% block footer %}
 {{ govukFooter({
+classes: "govuk-!-display-none-print",
 meta: {
 items: [
 {

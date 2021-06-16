@@ -13,6 +13,8 @@ GOV.UK Prototype Kit test
             <span class="govuk-caption-xl">{{releaseVersion}}</span>
         </h1>{{releaseVersion | log }}
 
+        <h2 class="govuk-heading-xl">This page is not part of the service. It is just to easily direct people to places within the prototype.</h2>
+
         <h2 class="govuk-heading-m">Alpha journeys</h2>
 
         <ul class="govuk-list govuk-list--bullet">
@@ -21,7 +23,7 @@ GOV.UK Prototype Kit test
             </li>
 
             <li>
-                <a class="govuk-link" href="alpha/employer-countersign/enter-citizen-urn.html">Employer Countersign</a>
+                <a class="govuk-link" href="alpha/employer-countersign/before-you-continue.html">Employer Countersign</a>
             </li>
 
 
@@ -48,6 +50,24 @@ GOV.UK Prototype Kit test
         </button>
 
     </form>
+
+    <form action="alpha/populate-answers" method="post" class="form">
+
+      <div class="govuk-form-group">
+  <label class="govuk-label" for="journeytype">
+    populate for
+  </label>
+  <select class="govuk-select" id="journeytype" name="journeytype">
+    <option value="equipment-and-adaptations">Equipment and Adaptations</option>
+    <option value="travel-to-work">Travel to Work</option>
+    <option value="Support-worker">Support worker</option>
+  </select>
+</div>
+
+<button type="submit" class="govuk-button" data-module="govuk-button">
+    Submit
+</button>
+  </form>
 
 
 

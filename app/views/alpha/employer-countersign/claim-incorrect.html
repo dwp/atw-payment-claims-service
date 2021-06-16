@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="employees-claim-incorrect" method="post" class="form">
+
+
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+            <div class="govuk-form-group">
+              <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="with-hint">
+                  Tell us why you disagree with the claim
+                </label>
+              </h1>
+              {% if (data["journey-type"]=="supportworker") %}
+              <div id="claim-incorrect-hint" class="govuk-body">
+                  For example, there’s too many days of support recorded or not enough support hours
+              </div>
+              {% elseif (data["journey-type"]=="traveltowork") %}
+              <div id="job-description-hint" class="govuk-body">
+                  For example, there is a travel to work date missing or too many journeys for the month
+              </div>
+              {% endif %}
+              <textarea class="govuk-textarea govuk-js-character-count" id="claim-incorrect" name="claim-incorrect" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+            </div>
+
+            <div id="claim-incorrect-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+              You can enter up to 200 characters
+            </div>
+
+          </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

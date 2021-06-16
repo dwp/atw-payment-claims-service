@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="incorrect-what-happens-next" method="post" class="form">
+        <h1 class="govuk-heading-l">Send the claim back to your employee to make updates</h1>
+
+
+
+        <p>The claim and the reason you disagreed with the claim will be sent back to your employee for them to make updates. Once they have updated their claim it will be sent back to you for review again.
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+                <h3 class="govuk-heading-m">Claim details </h3>
+                <dl class="govuk-summary-list govuk-summary-list--no-border">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Date of claim
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    02 June - 2021
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Unique Reference Number
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">SW112200483</p>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Type of claim
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">
+                      {%if (data["journey-type"]=="specialaidsandequipment") %}
+                      Equipment and adaptations
+                      {% elseif (data["journey-type"]=="supportworker") %}
+                      Support worker
+                      {% elseif (data["journey-type"]=="traveltowork") %}
+                      Travel to Work
+                      {% endif %}</p>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Reason claim is incorrect
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">
+                      {{data['claim-incorrect']}}</p>
+                  </dd>
+                </div>
+              </dl>
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                I agree – send claim back
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

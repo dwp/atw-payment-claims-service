@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="review-the-claim-answer" method="post" class="form">
+        <h1 class="govuk-heading-l">Your employee’s claim Information</h1>
+
+
+
+                <h3 class="govuk-heading-m">Claim details </h3>
+                <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Employee name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Joe Bloggs
+                    </dd>
+                  </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Date of claim
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    02 June - 2021
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Claim number
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">{{data['citizens-urn']}}</p>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Type of claim
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">
+                      {%if (data["journey-type"]=="specialaidsandequipment") %}
+                      Equipment and adaptations
+                      {% elseif (data["journey-type"]=="supportworker") %}
+                      Support worker
+                      {% elseif (data["journey-type"]=="traveltowork") %}
+                      Travel to Work
+                      {% endif %}</p>
+                  </dd>
+                </div>
+              </dl>
+
+              <br>
+                        <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="correct-claim-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <h1 class="govuk-fieldset__heading">
+                              Is this the claim you want to review?
+                            </h1>
+                          </legend>
+
+                          <div class="govuk-radios govuk-radios--inline">
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="correct-claim" name="correct-claim" type="radio" value="Yes">
+                              <label class="govuk-label govuk-radios__label" for="correct-claim">
+                                Yes
+                              </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="correct-claim-2" name="correct-claim" type="radio" value="No">
+                              <label class="govuk-label govuk-radios__label" for="correct-claim-2">
+                                No
+                              </label>
+                            </div>
+                          </div>
+
+                        </fieldset>
+                      </div>
+
+
+
+
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

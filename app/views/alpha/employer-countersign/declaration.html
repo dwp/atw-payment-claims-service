@@ -12,36 +12,34 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
         <form action="confirmation" method="post" class="form">
 
-            <h1 class="govuk-heading-xl">employer declaration</h1>
+            <h1 class="govuk-heading-xl">Declaration</h1>
 
-
-            <p>By submitting this claim you understand that:</p>
+            {% if (data["journey-type"]=="supportworker") %}
+            <p>By confirming your employee’s claim, you agree that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-                <li>Access to Work may not accept claims for reimbursement if the claim is 9 months or more after the
-                    purchase date
-                </li>
-                <li>if you spend the grant on items not agreed by Access to Work, DWP may not reimburse you</li>
-                <li>we may check or validate your claim with other sources, including employers, suppliers and
-                    providers
-                </li>
-                <li>DWP may recover any amount of money wrongly paid to you because you didn’t provide correct information or
-                    accurately report a change in your circumstances
-                </li>
+                <li>your employee received support on the days they are claiming for </li>
+                <li>they are claiming for support that was received in the last 9 months</li>
+                <li>Access to Work can contact you if they require more information to process the claim</li>
             </ul>
+            {% elseif (data["journey-type"]=="traveltowork") %}
+            <p>By confirming your employee’s claim, you agree that:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>your employee travelled to work on the days they are claiming for</li>
+                <li>they are claiming for journeys that were taken in the last 9 months</li>
+                <li>Access to Work can contact you if they require more information to process the claim</li>
+            </ul>
+            {% endif %}
 
+            <div class="govuk-inset-text">
 
-            <div class="govuk-warning-text">
-                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                <strong class="govuk-warning-text__text">
-                    <span class="govuk-warning-text__assistive">Warning</span>
                     By submitting this claim you are confirming that, to the best of your knowledge, the details you are
                     providing are correct.
-                </strong>
+
             </div>
 
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
+                I agree - sent the claim
             </button>
 
 

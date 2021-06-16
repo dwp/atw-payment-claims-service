@@ -1,7 +1,6 @@
 module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/equipment-and-adaptations/start-a-claim', function (req, res) {
-    // Clear session
-    req.session.destroy()
+
     res.render(`./${folderForViews}/equipment-and-adaptations/start-a-claim`)
   })
 
