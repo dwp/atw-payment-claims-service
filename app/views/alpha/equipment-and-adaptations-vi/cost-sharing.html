@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="cost-sharing-answer" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Is the cost of the equipment being shared?
+                        </h1>
+                    </legend>
+
+
+                    <div id="date-of-purchase-hint" class="govuk-body">
+                        For example, is your employer or another organisation paying towards your equipment or
+                        adaptation? Their contribution is in addition to your Access to Work grant.
+                    </div>
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cost-sharing-1" name="cost-sharing" type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="cost-sharing-1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cost-sharing-2" name="cost-sharing" type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="cost-sharing-2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

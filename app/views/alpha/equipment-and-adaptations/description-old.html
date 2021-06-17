@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="equipment-summary" method="post" class="form">
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-name">
+                        Tell us the brand and model of your equipment or describe the adaptation to your workplace
+                    </label>
+                    </h1>
+
+                </div>
+            </div>
+
+
+
+            <div data-module="moj-add-another">
+      {% for item in data['equipment'] %}
+      <fieldset class="govuk-fieldset moj-add-another__item">
+
+        <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
+
+          Equipment or adaptation
+
+        </legend>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="equipment_name">
+            Description
+          </label>
+          <div id="equipment-name-hint" class="govuk-hint">
+               For
+              example, a Karma Ergo 115 wheelchair or a lowered curb
+          </div>
+
+          <input class="govuk-input" id="equipment_name" name="equipment_name" type="text" data-name="equipment[%index%][equipment_name]" data-id="equipment[%index%][equipment_name]">
+        </div>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+
+              Date of purchase
+
+            </legend>
+
+            <div id="date-of-birth-hint" class="govuk-hint">
+              For example, 31 3 1980
+            </div>
+
+            <div class="govuk-date-input" id="date-of-birth">
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="{{loop.index0}}-day">
+                    Day
+                  </label>
+
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="{{loop.index0}}-day" name="{{loop.index0}}-day" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][dateofpurchase][day]" data-id="equipment[%index%][dateofpurchase][day]">
+                </div>
+              </div>
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="{{loop.index0}}-month">
+                    Month
+                  </label>
+
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="{{loop.index0}}-month" name="{{loop.index0}}-month" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][dateofpurchase][month]" data-id="equipment[%index%][dateofpurchase][month]">
+                </div>
+              </div>
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="{{loop.index0}}-year">
+                    Year
+                  </label>
+
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="{{loop.index0}}-year" name="{{loop.index0}}-year" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][dateofpurchase][year]" data-id="equipment[%index%][dateofpurchase][year]">
+                </div>
+              </div>
+
+            </div>
+
+          </fieldset>
+
+        </div>
+
+      </fieldset>
+      {% else %}
+      <fieldset class="govuk-fieldset moj-add-another__item">
+
+        <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
+
+          Equipment or adaptation
+
+        </legend>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="{{loop.index0}}-description">
+            Description
+          </label>
+          <div id="equipment-name-hint" class="govuk-hint">
+               For
+              example, a Karma Ergo 115 wheelchair or a lowered curb
+          </div>
+
+          <input class="govuk-input" id="{{loop.index0}}-description" name="{{loop.index0}}-description" type="text" data-name="equipment[%index%][equipment_name]" data-id="equipment[%index%][equipment_name]">
+        </div>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+
+              Date of purchase
+
+            </legend>
+
+            <div id="date-of-birth-hint" class="govuk-hint">
+              For example, 31 3 1980
+            </div>
+
+            <div class="govuk-date-input" id="date-of-birth">
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="{{loop.index0}}-day">
+                    Day
+                  </label>
+
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="{{loop.index0}}-day" name="{{loop.index0}}-day" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][dateofpurchase][day]" data-id="equipment[%index%][dateofpurchase][day]">
+                </div>
+              </div>
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="{{loop.index0}}-month">
+                    Month
+                  </label>
+
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="{{loop.index0}}-month" name="{{loop.index0}}-month" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][dateofpurchase][month]" data-id="equipment[%index%][dateofpurchase][month]">
+                </div>
+              </div>
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="{{loop.index0}}-year">
+                    Year
+                  </label>
+
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="{{loop.index0}}-year" name="{{loop.index0}}-year" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][dateofpurchase][year]" data-id="equipment[%index%][dateofpurchase][year]">
+                </div>
+              </div>
+
+            </div>
+
+          </fieldset>
+
+        </div>
+
+      </fieldset>
+      {% endfor %}
+
+      <div class="moj-button-action">
+
+        <button class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
+          Add another equipment
+        </button>
+
+      </div>
+
+
+      </div>
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
