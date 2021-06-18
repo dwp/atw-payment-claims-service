@@ -1,42 +1,37 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Your health condition
+Your health item
 {% endblock %}
 {% block beforeContent %}
 
 {% endblock %}
-{% set conditionsLength %}
-{{ data.conditions | length }}
+{% set equipmentLength %}
+{{ data.equipment | length }}
 {% endset %}
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
-            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">What health conditions or disabilities do you
-                have?</h1>
-            <p>By condition or disability, we mean:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>physical conditions, such as arthritis, heart disease or diabetes</li>
-                <li>blindness and sight impairment</li>
-                <li>hearing and speech difficulties</li>
-                <li>learning, developmental or behavioural difficulties</li>
-                <li>cognitive impairment</li>
-                <li>mental health conditions, such as depression, anxiety or bipolar disorder</li>
-                <li>neurological conditions, such as Parkinson's or epilepsy</li>
-            </ul>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us the brand and model of your equipment or describe the adaptation to your workplace</h1>
+
+
             <div data-module="moj-add-another">
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
                     <p class="govuk-body govuk-!-font-weight-bold"></p>
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-!-font-weight-bold" for="conditions[0][condition_name]">
-                            Name of condition or disability
+                        <label class="govuk-label govuk-!-font-weight-bold" for="equipment[0][equipment_name]">
+                            Equipment or adaptation
                         </label>
-                        <input class="govuk-input" id="conditions[0][condition_name]"
-                               name="conditions[0][condition_name]" type="text"
-                               data-name="conditions[%index%][condition_name]"
-                               data-id="conditions[%index%][condition_name]">
+                        <div id="equipment-name-hint" class="govuk-hint">
+                             For
+                            example, a Karma Ergo 115 wheelchair or a lowered curb
+                        </div>
+                        <input class="govuk-input" id="equipment[0][equipment_name]"
+                               name="equipment[0][equipment_name]" type="text"
+                               data-name="equipment[%index%][equipment_name]"
+                               data-id="equipment[%index%][equipment_name]">
                     </div> <!-- govuk-form-group -->
                     <div class="govuk-form-group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -46,38 +41,67 @@ Your health condition
                             For example, 3 1980
                         </div>
                         <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label govuk-date-input__label" for="conditions[0][date]">
-                                    Approx date
-                                </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-20"
-                                       id="conditions[0][date]" name="conditions[0][date]" type="text"
-                                       data-name="conditions[%index%][date]" data-id="conditions[%index%][date]">
-                            </div> <!-- govuk-form-group -->
+                            <div class="govuk-date-input" id="date-of-birth">
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="equipment[0][day]">
+                                    Day
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="equipment[0][day]" name="equipment[0][day]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][day]" data-id="equipment[%index%][day]">
+                                </div>
+                              </div>
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="equipment[0][month]">
+                                    Month
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="equipment[0][month]" name="equipment[0][month]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][month]" data-id="equipment[%index%][month]">
+                              </div>
+                              </div>
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="equipment[0][year]">
+                                    Year
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="equipment[0][year]" name="equipment[0][year]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][year]" data-id="equipment[%index%][year]">
+                              </div>
+                              </div>
+
+                            </div>
                         </div> <!-- govuk-date-input__item -->
                     </div> <!-- govuk-form-group -->
-                    {% if conditionsLength > 1 %}
+                    {% if equipmentLength > 1 %}
                     <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">
                         Remove
                     </button>
                     {% endif %}
                 </fieldset>
                 <!-- ENDS HERE -->
-                {% if conditionsLength > 1 %}
-                {% for condition in data.conditions %}
+                {% if equipmentLength > 1 %}
+                {% for item in data.equipment %}
                 {% if not loop.first %}
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
                     <p class="govuk-body govuk-!-font-weight-bold"></p>
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-!-font-weight-bold"
-                               for="conditions[{{loop.index0}}][condition_name]">
-                            Name of condition or disability
+                               for="equipment[{{loop.index0}}][item_name]">
+                            Equipment or adaptation
                         </label>
-                        <input class="govuk-input" id="conditions[{{loop.index0}}][condition_name]"
-                               name="conditions[{{loop.index0}}][condition_name]" type="text"
-                               value="condition.condition_name" data-name="conditions[%index%][condition_name]"
-                               data-id="conditions[%index%][condition_name]">
+                        <div id="equipment-name-hint" class="govuk-hint">
+                             For
+                            example, a Karma Ergo 115 wheelchair or a lowered curb
+                        </div>
+                        <input class="govuk-input" id="equipment[{{loop.index0}}][equipment_name]"
+                               name="equipment[{{loop.index0}}][equipment_name]" type="text"
+                               value="item.equipment_name" data-name="equipment[%index%][equipment_name]"
+                               data-id="equipment[%index%][equipment_name]">
                     </div> <!-- govuk-form-group -->
                     <div class="govuk-form-group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -87,16 +111,42 @@ Your health condition
                             For example, 3 1980
                         </div>
                         <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label govuk-date-input__label"
-                                       for="conditions[{{loop.index0}}][date]">
-                                    Approx date
-                                </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-20"
-                                       id="conditions[{{loop.index0}}][date]" name="conditions[{{loop.index0}}][date]"
-                                       type="text" data-name="conditions[%index%][date]"
-                                       data-id="conditions[%index%][date]" value="condition.date">
-                            </div> <!-- govuk-form-group -->
+                            <div class="govuk-date-input" id="date-of-birth">
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="equipment[{{loop.index0}}][day]">
+                                    Day
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="equipment[{{loop.index0}}][day]" name="equipment[{{loop.index0}}][day]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][day]" data-id="equipment[%index%][day]"
+                                  value="item.day">
+                                </div>
+                              </div>
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="equipment[{{loop.index0}}][month]">
+                                    Month
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="equipment[{{loop.index0}}][month]" name="equipment[{{loop.index0}}][month]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="equipment[%index%][month]"
+                                  data-id="equipment[%index%][month]" value="item.month">
+                              </div>
+                              </div>
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="equipment[{{loop.index0}}][year]">
+                                    Year
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="equipment[{{loop.index0}}][year]" name="equipment[{{loop.index0}}][year]" type="text" pattern="[0-9]*" inputmode="numeric"
+                                  data-name="equipment[%index%][year]" data-id="equipment[%index%][year]" value="item.year">
+                              </div>
+                              </div>
+
+                            </div>
                         </div> <!-- govuk-date-input__item -->
                     </div> <!-- govuk-form-group -->
                     <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">
@@ -111,7 +161,7 @@ Your health condition
                     <button
                             class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
                             data-module="govuk-button">
-                        Add another condition or disability
+                        Add another item or disability
                     </button>
                 </div>
                 <div class="moj-button-action">
