@@ -1,0 +1,22 @@
+{% extends "layout_print.html" %}
+
+{% block pageTitle %}
+Confirmation
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% set print = true %}
+
+<input type="button" class="govuk-button govuk-!-display-none-print" data-module="govuk-button" value="Print this page" onClick="window.print()">
+
+
+<p>this is a test</p>
+
+{% include "alpha/equipment-and-adaptations/check-your-answers-body.html" %}
+
+{% endblock %}

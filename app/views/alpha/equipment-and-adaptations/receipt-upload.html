@@ -10,27 +10,28 @@ Access to Work Claiming Portal
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="check-your-answers" method="post" class="form">
+        <form action="receipt-upload-add" method="post" class="form">
 
             <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        Upload your digital invoice or receipt
-                    </h1>
+                    <h1 class="govuk-fieldset__heading">Upload your receipt or invoice</h1>
                 </legend>
 
+                <p>To upload your receipt or invoice you’ll need to save your digital copy, your photo or your scan on the device you are using.</p>
 
                 <p>You’ll need to:</p>
                 <ol class="govuk-list govuk-list--number">
-                    <li>Click on the “choose file” button </li>
-                    <li>Select the file you want and upload </li>
+                    <li>Click on the upload button</li>
+                    <li>Select the files you want to upload</li>
                 </ol>
 
+                <p>Make sure that it is the correct file format (PNG,JPEG,PDF,GIF,DOCX), the document is not password protected and the total files are smaller than 20mb.</p>
+
                 <div class="govuk-form-group">
-                    <label class="govuk-label" for="file-upload-1">
+                    <label class="govuk-label" for="file-upload">
                         Upload a file
                     </label>
-                    <input class="govuk-file-upload" id="file-upload-1" name="file-upload" type="file">
+                    <input class="govuk-file-upload" id="file-upload" name="file-upload" type="file">
                 </div>
 
 
@@ -38,7 +39,7 @@ Access to Work Claiming Portal
 
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
+                Upload
             </button>
         </form>
     </div>

@@ -1,11 +1,9 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Your health item
+Access to Work Claiming Portal
 {% endblock %}
-{% block beforeContent %}
 
-{% endblock %}
 {% set equipmentLength %}
 {{ data.equipment | length }}
 {% endset %}
@@ -13,20 +11,23 @@ Your health item
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us the brand and model of your equipment or describe the adaptation to your workplace</h1>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about your equipment or adaptation</h1>
+            <p>You must include any training or installation related to your equipment or adaptation as its own entry.</p>
 
 
             <div data-module="moj-add-another">
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
-                    <p class="govuk-body govuk-!-font-weight-bold"></p>
+
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-!-font-weight-bold" for="equipment[0][equipment_name]">
-                            Equipment or adaptation
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--m" for="equipment[0][equipment_name]">
+                            Name of your equipment or adaptation
                         </label>
+                        <div id="equipment-name-body" class="govuk-body">
+                             You’ll find this on your receipt or invoice.
+                        </div>
                         <div id="equipment-name-hint" class="govuk-hint">
-                             For
-                            example, a Karma Ergo 115 wheelchair or a lowered curb
+                              For example, a Karma Ergo 115 wheelchair or a lowered curb.
                         </div>
                         <input class="govuk-input" id="equipment[0][equipment_name]"
                                name="equipment[0][equipment_name]" type="text"
@@ -34,11 +35,14 @@ Your health item
                                data-id="equipment[%index%][equipment_name]">
                     </div> <!-- govuk-form-group -->
                     <div class="govuk-form-group">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            Approximate start date
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            Tell us the date your equipment or adaptation was purchased
                         </legend>
+                        <div id="date-of-birth-hint" class="govuk-body">
+                            This could be the date it was delivered or the date it was completed.
+                        </div>
                         <div id="date-of-birth-hint" class="govuk-hint">
-                            For example, 3 1980
+                            For example, 21 05 2021
                         </div>
                         <div class="govuk-date-input__item">
                             <div class="govuk-date-input" id="date-of-birth">
@@ -76,6 +80,7 @@ Your health item
                             </div>
                         </div> <!-- govuk-date-input__item -->
                     </div> <!-- govuk-form-group -->
+
                     {% if equipmentLength > 1 %}
                     <button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">
                         Remove
@@ -88,15 +93,17 @@ Your health item
                 {% if not loop.first %}
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
-                    <p class="govuk-body govuk-!-font-weight-bold"></p>
+
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-!-font-weight-bold"
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--m"
                                for="equipment[{{loop.index0}}][item_name]">
-                            Equipment or adaptation
+                            Name of your equipment or adaptation
                         </label>
+                        <div id="equipment-name-body" class="govuk-body">
+                             You’ll find this on your receipt or invoice.
+                        </div>
                         <div id="equipment-name-hint" class="govuk-hint">
-                             For
-                            example, a Karma Ergo 115 wheelchair or a lowered curb
+                              For example, a Karma Ergo 115 wheelchair or a lowered curb.
                         </div>
                         <input class="govuk-input" id="equipment[{{loop.index0}}][equipment_name]"
                                name="equipment[{{loop.index0}}][equipment_name]" type="text"
@@ -104,14 +111,17 @@ Your health item
                                data-id="equipment[%index%][equipment_name]">
                     </div> <!-- govuk-form-group -->
                     <div class="govuk-form-group">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            Approximate start date
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            Tell us the date your equipment or adaptation was purchased
                         </legend>
+                        <div id="date-of-birth-hint" class="govuk-body">
+                            You can find this on the invoice, receipt of your equipment or adaptation. This could be the date it was delivered or the date it was completed.
+                        </div>
                         <div id="date-of-birth-hint" class="govuk-hint">
-                            For example, 3 1980
+                            For example, 21 05 2021
                         </div>
                         <div class="govuk-date-input__item">
-                            <div class="govuk-date-input" id="date-of-birth">
+                            <div class="govuk-date-input" id="date-equipment-purchased">
 
                               <div class="govuk-date-input__item">
                                 <div class="govuk-form-group">
@@ -161,12 +171,12 @@ Your health item
                     <button
                             class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
                             data-module="govuk-button">
-                        Add another item or disability
+                        Add more equipment or adaptations
                     </button>
                 </div>
                 <div class="moj-button-action">
                     <button class="govuk-button" data-module="govuk-button">
-                        Save and continue
+                        Continue
                     </button>
                 </div>
             </div> <!-- data module -->

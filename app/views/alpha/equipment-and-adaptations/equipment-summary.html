@@ -4,6 +4,9 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+{% set equipmentLength %}
+{{ data.equipment | length }}
+{% endset %}
 
 {% block content %}
 
@@ -11,17 +14,13 @@ Access to Work Claiming Portal
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post" action="equipment-more">
+      <form method="post" action="#">
 
         <div class="govuk-form-group">
 
-          {% if data['equipment'].length === 0 %}
-          <h1 class="govuk-heading-l">You haven't told us about any hours of support for
-          {{data['support-date-month'] | numberMonth}}</h1>
-          {% else %}
-          <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for
-          {{data['support-date-month'] | numberMonth}}</h1>
-          {% endif %}
+
+          <h1 class="govuk-heading-l">You’ve told us about {{equipmentLength}} peices of equipment or adaptations</h1>
+
 
 
 
@@ -30,14 +29,20 @@ Access to Work Claiming Portal
                 {% for item in data['equipment'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{item.dateofpurchase.day}} {{item.dateofpurchase.month| numberMonth}}  {{item.dateofpurchase.year}} - {{item.equipment_name}}
+        {{item.day}} {{item.month| numberMonth}} {{item.year}} <br><b>{{item.equipment_name}}</b>
       </span>
-                    <span class="hmrc-add-to-a-list__remove">
-        <a id="{{item.dateofpurchase.day}}" class="govuk-link--no-visited-state" href="remove-day-hours?removeId={{loop.index0}}">
+      <span class="hmrc-add-to-a-list__change">
+       <a id="{{item.day}}-change" class="govuk-link" href="javascript: history.go(-1)">
+         <span aria-hidden="true">Change</span>
+         <span class="govuk-visually-hidden">Change {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
+       </a>
+     </span>
+      <!-- <span class="hmrc-add-to-a-list__remove">
+        <a id="{{item.day}}-remove" class="govuk-link--no-visited-state" href="remove-equipment?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
-          <span class="govuk-visually-hidden">Remove {{item.day}}</span>
+          <span class="govuk-visually-hidden">Remove {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
         </a>
-      </span>
+      </span> -->
                 </li>
                 {% else %}
                 <div class="govuk-inset-text">
@@ -49,37 +54,6 @@ Access to Work Claiming Portal
             </ul>
         </div>
 
-
-
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="add-another-day-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-                      {% if hourTotal=="0" %}
-                      Do you need to tell us about support you received in {{data['support-date-month'] | numberMonth}}?
-                      {% else %}
-                      Do you need to tell us about more support in {{data['support-date-month'] | numberMonth}}?
-                      {% endif %}
-
-                    </legend>
-                    <div class="govuk-radios govuk-radios--inline">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-equipment-yes" name="add-equipment" type="radio"
-                                   value="Yes">
-                            <label class="govuk-label govuk-radios__label" for="add-equipment-yes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-equipment-no" name="add-equipment" type="radio"
-                                   value="No">
-                            <label class="govuk-label govuk-radios__label" for="add-equipment-no">
-                                No
-                            </label>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </div>
 
             <button class="govuk-button" data-module="govuk-button">
                 Continue

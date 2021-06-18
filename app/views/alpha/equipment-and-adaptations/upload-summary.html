@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-form-group">
+            {% if data['uploads'].length === 1 %}
+            <h1 class="govuk-heading-l">You’ve uploaded {{data['uploads'] | length}} receipt or invoice </h1>
+            {% else %}
+            <h1 class="govuk-heading-l">You’ve uploaded {{data['uploads'] | length}} receipts or invoices </h1>
+            {% endif %}
+
+            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+
+                {% for file in data['uploads'] %}
+                <li class="hmrc-add-to-a-list__contents">
+      <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+        {{ file['file'] }}
+      </span>
+                    <span class="hmrc-add-to-a-list__remove">
+        <a class="govuk-link" href="remove-receipt-upload?removeId={{loop.index0}}" >
+          <span aria-hidden="true">Remove</span>
+          <span class="govuk-visually-hidden">Remove {{file['file']}}</span>
+        </a>
+      </span>
+                </li>
+
+                {% endfor %}
+
+
+            </ul>
+        </div>
+
+        <form method="post" action="receipt-upload-more">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="add-another-receipt-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+                        Do you need to upload another?
+                    </legend>
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="add-another-receipt-yes" name="add-another-receipt" type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="add-another-receipt-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="add-another-receipt-no" name="add-another-receipt" type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="add-another-receipt-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

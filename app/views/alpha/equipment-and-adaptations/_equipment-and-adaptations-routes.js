@@ -90,15 +90,13 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // add more equipment
 
   // post - Add more hours
-  router.post('/equipment-and-adaptations/equipment-more', function (req, res) {
-    const addMoreEquipment = req.session.data['add-equipment']
+  router.post('/equipment-and-adaptations/equipment-summary', function (req, res) {
     console.log(req.session.data['equipment'])
-    if (addMoreEquipment === 'Yes') {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/description`)
-    } else if (addMoreEquipment === 'No' && (req.session.data.equipment === undefined || req.session.data.equipment.length == 0)) {
+
+     if (req.session.data.equipment === undefined || req.session.data.equipment.length == 0) {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/no-hours-entered`)
     } else {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/hours-confirmation`)
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipement-cost`)
     }
   })
 
@@ -107,6 +105,104 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   router.post('/equipment-and-adaptations/description', function (req, res) {
-    res.redirect(`/${urlPrefix}/equipment-and-adaptations/date-of-purchase`)
+    res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipment-summary`)
+  })
+
+  // //remove a submission
+  // // Get
+  // router.get('/equipment-and-adaptations/remove-equipment', function (req, res) {
+  //   req.session.data['equipment-to-remove'] = req.query.removeId
+  //   res.render(`./${folderForViews}/support-worker/remove-day-hours`)
+  // })
+  //
+  // // post - Remove receipt confirmation
+  // router.post('/equipment-and-adaptations/remove-equipment', function (req, res) {
+  //   const allhours = req.session.data.hours
+  //   const hoursToRemove = req.session.data['equipment-to-remove']
+  //   const removeFile = req.session.data['day-hours-remove-confirmation']
+  //
+  //   if (removeFile === 'Yes') {
+  //     allhours.splice(hoursToRemove, 1)
+  //   }
+  //   req.session.data.hours = allhours
+  //   req.session.data['equipment-to-remove'] = null
+  //   req.session.data['day-hours-remove-confirmation'] = null
+  //   res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipment-summary`)
+  // })
+
+
+  // receipt upload summary
+  // post - Submit for upload
+  router.post('/equipment-and-adaptations/receipt-upload-add', function (req, res) {
+    let allUploads = req.session.data.uploads // This is the running list of files
+
+    const fileToUpload = req.session.data['file-upload'] // User submitted file
+
+    // Stop null pointer
+    if (allUploads == null) {
+      allUploads = []
+    }
+
+    allUploads.push({
+      file: fileToUpload
+    })
+
+    req.session.data.uploads = allUploads
+    res.redirect(`/${urlPrefix}/equipment-and-adaptations/upload-summary`)
+  })
+
+  // Get
+  router.get('/equipment-and-adaptations/remove-receipt-upload', function (req, res) {
+    req.session.data['file-receipt-to-remove'] = req.query.removeId
+    res.render(`./${folderForViews}/equipment-and-adaptations/remove-receipt-upload`)
+  })
+
+  // post - Remove receipt confirmation
+  router.post('/equipment-and-adaptations/remove-receipt-upload', function (req, res) {
+    const allUploads = req.session.data.uploads
+    const fileToDelete = req.session.data['file-receipt-to-remove']
+    const removeFile = req.session.data['file-upload-remove']
+
+    if (removeFile === 'Yes') {
+      allUploads.splice(fileToDelete, 1)
+    }
+    req.session.data.uploads = allUploads
+    req.session.data['file-receipt-to-remove'] = null
+    req.session.data['confirm-file-upload-remove'] = null
+    res.redirect(`/${urlPrefix}/support-worker/upload-summary`)
+  })
+
+  // Get
+  router.get('/equipment-and-adaptations/remove-day-hours', function (req, res) {
+    req.session.data['day-hours-to-remove'] = req.query.removeId
+    res.render(`./${folderForViews}/support-worker/remove-day-hours`)
+  })
+
+  // post - Remove receipt confirmation
+  router.post('/equipment-and-adaptations/remove-day-hours', function (req, res) {
+    const allhours = req.session.data.hours
+    const hoursToRemove = req.session.data['day-hours-to-remove']
+    const removeFile = req.session.data['day-hours-remove-confirmation']
+
+    if (removeFile === 'Yes') {
+      allhours.splice(hoursToRemove, 1)
+    }
+    req.session.data.hours = allhours
+    req.session.data['day-hours-to-remove'] = null
+    req.session.data['day-hours-remove-confirmation'] = null
+    res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
+  })
+
+  // post - Add more receipts
+  router.post('/equipment-and-adaptations/receipt-upload-more', function (req, res) {
+    const anotherReceipt = req.session.data['add-another-receipt']
+    if (anotherReceipt === 'Yes') {
+      // Reset to stop pre-population of previous visit to page
+      req.session.data['file-upload'] = null
+
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/receipt-upload`)
+    } else {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/banking-details`)
+    }
   })
 }
