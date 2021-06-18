@@ -86,4 +86,27 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/additional-cost-sharing`)
     }
   })
+
+  // add more equipment
+
+  // post - Add more hours
+  router.post('/equipment-and-adaptations/equipment-more', function (req, res) {
+    const addMoreEquipment = req.session.data['add-equipment']
+    console.log(req.session.data['equipment'])
+    if (addMoreEquipment === 'Yes') {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/description`)
+    } else if (addMoreEquipment === 'No' && (req.session.data.equipment === undefined || req.session.data.equipment.length == 0)) {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/no-hours-entered`)
+    } else {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/hours-confirmation`)
+    }
+  })
+
+  router.post('/equipment-and-adaptations/before-you-continue', function (req, res) {
+    res.redirect(`/${urlPrefix}/equipment-and-adaptations/description`)
+  })
+
+  router.post('/equipment-and-adaptations/description', function (req, res) {
+    res.redirect(`/${urlPrefix}/equipment-and-adaptations/date-of-purchase`)
+  })
 }

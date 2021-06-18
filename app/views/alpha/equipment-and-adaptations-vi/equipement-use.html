@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="equipement-cost" method="post" class="form">
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-use">
+                        What do you use your special aids and equipment for?
+                    </label>
+                    </h1>
+                    <div id="with-hint-hint" class="govuk-hint">
+                        For example, to get in and out of your car or to sit at a desk
+                    </div>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="equipment-use" name="equipment-use"
+                              rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+                </div>
+
+                <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                    You can enter up to 200 characters
+                </div>
+
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

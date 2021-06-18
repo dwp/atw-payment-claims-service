@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="did-you-purchase-the-equipment" method="post" class="form">
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-cost">
+                    How much did your equipment or adaptation cost in total?
+                </label>
+                </h1>
+                <div class="govuk-input__wrapper">
+                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                    <input class="govuk-input govuk-input--width-5" id="equipment-cost" name="equipment-cost"
+                           type="text" spellcheck="false">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
