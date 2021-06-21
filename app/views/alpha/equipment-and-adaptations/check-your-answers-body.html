@@ -35,7 +35,7 @@
               </dt>
               <dd class="govuk-summary-list__value">
                   {% for item in data['equipment'] %}
-                  {{item.day}} {{item.month| numberMonth}} {{item.year}} -<br><b>{{item.equipment_name}}</b><br>
+                  {{item.day}} {{item.month| numberMonth}} {{item.year}} -<br>{{item.equipment_name}}<br>
                   {% endfor %}
               </dd>
               {% if print != true %}
@@ -56,7 +56,7 @@
                     £{{data["equipment-cost"]}}
                 </dd>
                 {% if print != true %}
-                <dd class="govuk-summary-list__actions">
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="equipment-cost">
                         Change
                         <span class="govuk-visually-hidden"> Cost of equipment</span>

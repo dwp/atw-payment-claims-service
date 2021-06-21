@@ -19,7 +19,7 @@ Access to Work Claiming Portal
         <div class="govuk-form-group">
 
 
-          <h1 class="govuk-heading-l">You’ve told us about {{equipmentLength}} peices of equipment or adaptations</h1>
+          <h1 class="govuk-heading-l">You’ve told us about {{equipmentLength}} pieces of equipment or adaptations</h1>
 
 
 
@@ -29,7 +29,7 @@ Access to Work Claiming Portal
                 {% for item in data['equipment'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{item.day}} {{item.month| numberMonth}} {{item.year}} <br><b>{{item.equipment_name}}</b>
+        {{item.day}} {{item.month| numberMonth}} {{item.year}} - <br>{{item.equipment_name}}
       </span>
       <span class="hmrc-add-to-a-list__change">
        <a id="{{item.day}}-change" class="govuk-link" href="javascript: history.go(-1)">
