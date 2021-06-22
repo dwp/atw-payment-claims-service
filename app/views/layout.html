@@ -69,7 +69,11 @@ classes: "govuk-!-display-none-print",
 html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
 
+{% if print != true %}
+
 <a href="javascript: history.go(-1)" class="govuk-back-link govuk-!-display-none-print">Back</a>
+
+{% endif %}
 
 {% endblock %}
 
