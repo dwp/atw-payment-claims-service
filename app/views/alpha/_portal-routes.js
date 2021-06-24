@@ -54,5 +54,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/index`)
   })
 
+  // Get
+  router.get('/post-login-routing', function (req, res) {
+    const useremail = req.query.email
+    if (useremail === 'supportworker@email.com') {
+    req.session.data['journey-type'] = "supportworker"
+    res.redirect(`/${urlPrefix}/portal`)
+    } else if (useremail === 'equipment@email.com') {
+    req.session.data['journey-type'] = "specialaidsandequipment"
+    res.redirect(`/${urlPrefix}/portal`)
+    } else if (useremail === 'travel@email.com') {
+    req.session.data['journey-type'] = "traveltowork"
+    res.redirect(`/${urlPrefix}/portal`)
+    } else {
+      res.redirect(`/index`)
+    }
+
+
+    })
+
 
 }

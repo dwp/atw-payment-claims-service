@@ -46,7 +46,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    What month are you claiming for?
+                    Month travel costs claimed for
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{data['travel-to-work-date-month'] | numberMonth}} - {{data["travel-to-work-date-year"]}}
@@ -63,7 +63,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Travel option
+                    Type of travel
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {%if (data["transport-option"]=="taxi") %} Taxi {% elif data["transport-option"]=="lift" %} Lift {% endif %}
