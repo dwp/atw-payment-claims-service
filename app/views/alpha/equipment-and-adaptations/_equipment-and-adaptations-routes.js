@@ -1,6 +1,5 @@
 module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/equipment-and-adaptations/start-a-claim', function (req, res) {
-
     res.render(`./${folderForViews}/equipment-and-adaptations/start-a-claim`)
   })
 
@@ -91,9 +90,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   // post - Add more hours
   router.post('/equipment-and-adaptations/equipment-summary', function (req, res) {
-    console.log(req.session.data['equipment'])
+    console.log(req.session.data.equipment)
 
-     if (req.session.data.equipment === undefined || req.session.data.equipment.length == 0) {
+    if (req.session.data.equipment === undefined || req.session.data.equipment.length == 0) {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/no-hours-entered`)
     } else {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipement-cost`)
@@ -105,7 +104,27 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   router.post('/equipment-and-adaptations/description', function (req, res) {
-    res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipment-summary`)
+    if (req.session.data.remove !== undefined) {
+      console.log('Remove')
+      req.session.data.remove = undefined
+      req.session.data.equipment.splice(req.session.data.remove, 1)
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/description`)
+    } else {
+      if (req.session.data.action === 'add') {
+        console.log('Add')
+        console.log(req.session.data)
+        req.session.data.equipment = [...req.session.data.equipment, {
+          equipment_name: '',
+          day: '',
+          month: '',
+          year: ''
+        }]
+        res.redirect(`/${urlPrefix}/equipment-and-adaptations/description`)
+      } else {
+        console.log('Continue')
+        res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipment-summary`)
+      }
+    }
   })
 
   // //remove a submission
@@ -129,7 +148,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
   //   req.session.data['day-hours-remove-confirmation'] = null
   //   res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipment-summary`)
   // })
-
 
   // receipt upload summary
   // post - Submit for upload
