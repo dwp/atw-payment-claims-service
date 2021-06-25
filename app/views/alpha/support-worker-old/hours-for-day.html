@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="hours-for-day-add" method="post" class="form">
+      {% if (data['hours'].length === 0) or (data['hours'].length === undefined) %}
+      <h1 class="govuk-heading-l">
+      What was the first day you had support in {{data['support-date-month'] | numberMonth}}?</h1>
+      {% else %}
+      <h1 class="govuk-heading-l">
+      When else in {{data['support-date-month'] | numberMonth}} did you have support?</h1>
+      {% endif %}
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="hours-of-day-date-day">
+                        Tell us about a day in {{data['support-date-month'] | numberMonth}}
+                        that you received support
+                      </label>
+                      <div id="hours-of-day-hint" class="govuk-hint">
+                          For example, 21
+                      </div>
+                      <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-2" id="hours-of-day-date-day" name="hours-of-day-date-day" type="text" spellcheck="false" inputmode="numeric">
+                        <div class="govuk-input__suffix" aria-hidden="true">
+                          {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}}</div>
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="hours-of-day-worked">
+                        Tell us how many hours of support you received on this day
+                      </label>
+                      <div id="hours-of-day-worked-hint" class="govuk-hint">
+                           Including half hours, for example 3.5 hours
+                      </div>
+                      <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-4" id="hours-of-day-worked" name="hours-of-day-worked" type="text" spellcheck="false" inputmode="numeric">
+                        <div class="govuk-input__suffix" aria-hidden="true">hours</div>
+                      </div>
+                    </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

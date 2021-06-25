@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="check-your-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="counter-signatory-email">
+
+                </label>
+
+
+                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l"
+                                                       for="counter-signatory-email">
+                    Tell us the email address of who we need to contact to confirm you received support
+                </label>
+                </h1>
+                <p class="govuk-body">If you’re employed by an organisation, tell us the email address of who we can contact at your work. If you’re self-employed tell us the email address of the agency or person who provided support to you.</p>
+                <p class="govuk-hint" id="email-hint">We’ll use this to contact them about your support</p>
+                <input class="govuk-input" id="counter-signatory-email" name="counter-signatory-email" type="email" spellcheck="false" aria-describedby="email-hint"
+                       autocomplete="email">
+            </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

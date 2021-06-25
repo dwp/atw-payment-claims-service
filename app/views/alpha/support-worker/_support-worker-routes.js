@@ -1,6 +1,6 @@
 module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/support-worker/start-a-claim', function (req, res) {
-    
+
     res.render(`./${folderForViews}/support-worker/start-a-claim`)
   })
 
@@ -15,26 +15,26 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
-  // post - Submit for hours
-  router.post('/support-worker/hours-for-day-add', function (req, res) {
-    let allHours = req.session.data.hours // This is the running list of hours
-
-    const submittedDay = req.session.data['hours-of-day-date-day'] // User submitted day
-    const submittedHours = req.session.data['hours-of-day-worked'] // User submitted hours worked
-
-    // Stop null pointer
-    if (allHours == null) {
-      allHours = []
-    }
-
-    allHours.push({
-      day: submittedDay,
-      hours: submittedHours
-    })
-
-    req.session.data.hours = allHours
-    res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
-  })
+  // // post - Submit for hours
+  // router.post('/support-worker/hours-for-day-summary', function (req, res) {
+  //   let allHours = req.session.data.hours // This is the running list of hours
+  //
+  //   const submittedDay = req.session.data['support[0][day]' || 'support[{{loop.index0}}][day]'] // User submitted day
+  //   const submittedHours = req.session.data['support[0][support_hours]' || 'support[{{loop.index0}}][support_hours]'] // User submitted hours worked
+  //
+  //   // Stop null pointer
+  //   if (allHours == null) {
+  //     allHours = []
+  //   }
+  //
+  //   allHours.push({
+  //     day: submittedDay,
+  //     hours: submittedHours
+  //   })
+  //
+  //   req.session.data.hours = allHours
+  //   res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
+  // })
 
   // post - Add more hours
   router.post('/support-worker/hours-for-day-more', function (req, res) {
@@ -62,6 +62,46 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
     } else if (aids === 'No') {
       res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
+    }
+  })
+
+  // post - Add more support hours
+  router.post('/support-worker/hours-for-day-summary', function (req, res) {
+    console.log(req.session.data.support)
+
+    if (req.session.data.support === undefined || req.session.data.support.length == 0) {
+      res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
+    } else {
+      res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
+    }
+  })
+
+  router.post('/support-worker/before-you-continue', function (req, res) {
+    res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+  })
+
+  router.post('/support-worker/hours-for-day', function (req, res) {
+    console.log(req.session.data.support)
+    if (req.session.data.remove !== undefined) {
+      console.log('Remove')
+      req.session.data.remove = undefined
+      req.session.data.support.splice(req.session.data.remove, 1)
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+    } else {
+      if (req.session.data.action === 'add') {
+        console.log('Add')
+        console.log(req.session.data)
+        req.session.data.support = [...req.session.data.support, {
+          support_hours: '',
+          day: '',
+          month: '',
+          year: ''
+        }]
+        res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+      } else {
+        console.log('Continue')
+        res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
+      }
     }
   })
 
@@ -133,7 +173,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/support-worker/employer-contribution`)
     } else {
-      res.redirect(`/${urlPrefix}/support-worker/banking-details`)
+      res.redirect(`/${urlPrefix}/support-worker/providing-evidence`)
     }
   })
 
@@ -146,7 +186,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       res.redirect(`/${urlPrefix}/support-worker/receipt-upload`)
     } else {
-      res.redirect(`/${urlPrefix}/support-worker/counter-signatory-name`)
+      res.redirect(`/${urlPrefix}/support-worker/banking-details`)
     }
   })
 }

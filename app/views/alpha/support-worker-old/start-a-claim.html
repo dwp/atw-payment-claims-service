@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Start a claim</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Start a claim</h1>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <form action="support-for-workplace" method="post">
+            <p>To claim online you’ll need a digital copy of a receipt or invoice. If you have a paper receipt or invoice,
+              you’ll need to take a photo or scan it to upload. </p>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+        </form>
+        <h2 class="govuk-heading-m">What happens after you claim</h2>
+
+        <p>After completing your claim, it will be sent to the named contact you give us. We’ll ask them to review and confirm your claim. You’ll be notified of their decision via your chosen contact method.
+          If they confirm your claim, it will be sent to Access to Work for processing.</p>
+        <p>If your named contact disagrees with your claim, we’ll get in touch with what to do next.</p>
+        <p>Once your claim has been processed, your payment will be sent. You’ll be able to see updates to your claim and to your Access to Work grant in your account home.</p>
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+        <p class="govuk-body govuk-!-font-weight-bold">Grant amount allocated</p>
+        <p class="govuk-body">£7200</p>
+        <p class="govuk-body govuk-!-font-weight-bold">Remaining grant allowance</p>
+        <p class="govuk-body">£6500</p>
+    </div>
+</div>
+{% endblock %}

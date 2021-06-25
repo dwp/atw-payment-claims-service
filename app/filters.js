@@ -46,6 +46,11 @@ filters.sortBy = function(arr,prop) {
   arr.sort(sorter);
   return arr;
 }
+filters.sortByDate = function(arr,prefix) {
+  const sorter = (a, b) => new Date (a[prefix+'year'],a[prefix+'month'],a[prefix+'day']) - new Date (b[prefix+'year'],b[prefix+'month'],b[prefix+'day'])
+  arr.sort(sorter);
+  return arr;
+}
 // env.addFilter('sortBy', function (arr, prop) {
 //     const isNum = val => val == +val;
 //     const sorter = (a, b) => isNum(a[prop]) && isNum(b[prop]) ? +a[prop] - b[prop] : a[prop] < b[prop];

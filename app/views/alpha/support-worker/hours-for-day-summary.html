@@ -4,45 +4,53 @@
 Access to Work Claiming Portal
 {% endblock %}
 
-
-{% block content %}
+{% set supportLength %}
+{{ data.support | length }}
+{% endset %}
 
 {% set hourTotal = 0 %}
-{% for day in data['hours'] %}
-{% set hourTotal = hourTotal | float + day.hours | float %}
+{% for day in data.support %}
+{% set hourTotal = hourTotal | float + day.support_hours | float %}
 {% else %}
 {% set hourTotal = 0 | float %}
 {% endfor %}
 
+{% block content %}
+
+
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post" action="hours-for-day-more">
+      <form method="post" action="#">
 
         <div class="govuk-form-group">
 
-          {% if data['hours'].length === 0 %}
-          <h1 class="govuk-heading-l">You haven't told us about any hours of support for
-          {{data['support-date-month'] | numberMonth}}</h1>
-          {% else %}
-          <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support for
-          {{data['support-date-month'] | numberMonth}}</h1>
-          {% endif %}
+
+          <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} days you received support {{supportLength}}</h1>
+
 
 
 
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
-                {% for day in data['hours'] | sortBy('day') %}
+                {% for item in data['support'] | sortByDate('') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{day.day}} {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}} - {{day.hours}} hours
+        {{item.day}} {{item.month| numberMonth}} {{item.year}} - <br>{{item.support_hours}} Hours
+         <br> {{item.providor}}
       </span>
-                    <span class="hmrc-add-to-a-list__remove">
-        <a id="{{day.day}}" class="govuk-link--no-visited-state" href="remove-day-hours?removeId={{loop.index0}}">
+      <span class="hmrc-add-to-a-list__change">
+       <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day">
+         <span aria-hidden="true">Change</span>
+         <span class="govuk-visually-hidden">Change {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
+       </a>
+     </span>
+      <!-- <span class="hmrc-add-to-a-list__remove">
+        <a id="{{item.day}}-remove" class="govuk-link--no-visited-state" href="remove-support?removeId={{loop.index0}}">
           <span aria-hidden="true">Remove</span>
-          <span class="govuk-visually-hidden">Remove {{day.day}}</span>
+          <span class="govuk-visually-hidden">Remove {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
         </a>
-      </span>
+      </span> -->
                 </li>
                 {% else %}
                 <div class="govuk-inset-text">
@@ -54,37 +62,6 @@ Access to Work Claiming Portal
             </ul>
         </div>
 
-
-
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="add-another-day-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-                      {% if hourTotal=="0" %}
-                      Do you need to tell us about support you received in {{data['support-date-month'] | numberMonth}}?
-                      {% else %}
-                      Do you need to tell us about more support in {{data['support-date-month'] | numberMonth}}?
-                      {% endif %}
-
-                    </legend>
-                    <div class="govuk-radios govuk-radios--inline">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-another-day-yes" name="add-another-day" type="radio"
-                                   value="Yes">
-                            <label class="govuk-label govuk-radios__label" for="add-another-day-yes">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="add-another-day-no" name="add-another-day" type="radio"
-                                   value="No">
-                            <label class="govuk-label govuk-radios__label" for="add-another-day-no">
-                                No
-                            </label>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </div>
 
             <button class="govuk-button" data-module="govuk-button">
                 Continue

@@ -3,13 +3,9 @@
 
 {% block content %}
 
-{% set supportLength %}
-{{ data.support | length }}
-{% endset %}
-
 {% set hourTotal = 0 %}
-{% for day in data.support %}
-{% set hourTotal = hourTotal | float + day.support_hours | float %}
+{% for day in data['hours'] %}
+{% set hourTotal = hourTotal | float + day.hours | float %}
 {% else %}
 {% set hourTotal = 0 | float %}
 {% endfor %}
@@ -24,18 +20,55 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Type of claim
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {%if (data['support-for-workplace']=="Yes") %} Support worker {% endif %}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="support-for-workplace">
+                        Change
+                        <span class="govuk-visually-hidden"> Type of claim</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    What month are you claiming for?
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+
+                    {{data['support-date-month'] | numberMonth}}
+                    - {{data["support-date-year"]}}
+
+
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="claiming-for-month">
+                        Change
+                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Hours of support received
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {% for item in data['support'] | sortBy('day') %}
-                  {{item.day}} {{item.month| numberMonth}} {{item.year}} - </br>{{item.support_hours}} Hours
-                   {% if item.providor %}</br> {{item.providor}} {% endif %}</br></br>
-                   {% endfor %}
-
-
+                    {% for day in data['hours'] %}
+                    {{day.day}} {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}} - {{day.hours}} hours</br>
+                    {% endfor %}
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -52,8 +85,8 @@
                     Total support received
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{hourTotal}} hours <br>
-                    {{supportLength}} {% if supportLength === 1 %} day {% else %} days {% endif %}
+                    {{ hourTotal }} hours <br>
+                    {{ data['hours'] | length }} {% if data['hours'].length === 1 %} day {% else %} days {% endif %}
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -100,27 +133,6 @@
                 {% endif %}
             </div>
             {% endif %}
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Copy of evidence
-                </dt>
-
-                <dd class="govuk-summary-list__value">
-                    {% for file in data['uploads'] %}
-
-                     {{file['file']}} </br>
-                    {% endfor %}
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="upload-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> Supporting evidence</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
         </dl>
 
 {% if print != true %}
@@ -200,8 +212,49 @@
         </dl>
 {% endif %}
 
+        <h2 class="govuk-heading-m">Supporting claim evidence</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+<!--            <div class="govuk-summary-list__row">-->
+<!--                <dt class="govuk-summary-list__key">-->
+<!--                    Are you able to upload receipts or invoices digitally?-->
+<!--                </dt>-->
+<!--                <dd class="govuk-summary-list__value">-->
+<!--                    {{data["digital-upload"]}}-->
+<!--                </dd>-->
+<!--                <dd class="govuk-summary-list__actions govuk-!-display-none-print">-->
+<!--                    <a href="upload-receipt">-->
+<!--                        Change-->
+<!--                        <span class="govuk-visually-hidden"> Are you able to upload receipts or invoices digitally?</span>-->
+<!--                    </a>-->
+<!--                </dd>-->
+<!--            </div>-->
 
 
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Copy of evidence
+                </dt>
+
+                <dd class="govuk-summary-list__value">
+                    {% for file in data['uploads'] %}
+
+                     {{file['file']}} </br>
+                    {% endfor %}
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="upload-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Supporting evidence</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+
+        </dl>
 
 
         {% if data["citizens-urn"] %}
