@@ -30,7 +30,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
     } else {
-      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
+      res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
     }
   })
 
@@ -102,7 +102,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       res.redirect(`/${urlPrefix}/travel-to-work/receipt-upload`)
     } else if (anotherReceipt === 'No') {
-      res.redirect(`/${urlPrefix}/travel-to-work/counter-signatory-name`)
+      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
     }
   })
 
@@ -193,7 +193,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
     } else if (addAnotherDay === 'No' && (req.session.data.journeys === undefined||req.session.data.journeys.length == 0)){
-      res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
+      res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-confirmation`)
     }
@@ -238,13 +238,44 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
-  router.post('/travel-to-work/banking-details-answers', function (req, res) {
-    const answer = req.session.data['transport-option']
 
-    if (answer === 'taxi') {
-      res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
-    } else if (answer === 'lift') {
-      res.redirect(`/${urlPrefix}/travel-to-work/counter-signatory-name`)
+
+  // new journey stuff
+
+
+  router.post('/travel-to-work/taxi-journeys-for-day', function (req, res) {
+    console.log(req.session.data.support)
+    if (req.session.data.remove !== undefined) {
+      console.log('Remove')
+      req.session.data.remove = undefined
+      req.session.data.support.splice(req.session.data.remove, 1)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+    } else {
+      if (req.session.data.action === 'add') {
+        console.log('Add')
+        console.log(req.session.data)
+        req.session.data.support = [...req.session.data.support, {
+          support_hours: '',
+          day: '',
+          month: '',
+          year: ''
+        }]
+        res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+      } else {
+        console.log('Continue')
+        res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
+      }
+    }
+  })
+
+  // post - Add more support hours
+  router.post('/travel-to-work/taxi-journeys-for-day-summary', function (req, res) {
+    console.log(req.session.data.support)
+
+    if (req.session.data.travel === undefined || req.session.data.travel.length == 0) {
+      res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
+    } else {
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     }
   })
 }

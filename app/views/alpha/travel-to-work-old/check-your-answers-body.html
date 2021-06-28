@@ -2,15 +2,11 @@
 
 
 {% block content %}
-{% set travelLength %}
-{{ data.travel | length }}
-{% endset %}
-
-{% set taxiTotal = 0 %}
-{% for day in data.travel %}
-{% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
+{% set journeyTotal = 0 %}
+{% for day in data['journeys'] %}
+{% set journeyTotal = journeyTotal | float + day.journeys | float %}
 {% else %}
-{% set taxiTotal = 0 | float %}
+{% set journeyTotal = 0 | float %}
 {% endfor %}
 
 {% set mileageTotal = 0 %}
@@ -31,7 +27,39 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Type of claim
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {%if (data['travel-to-work']=="Yes") %} Travel to Work {% endif %}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="travel-to-work">
+                        Change
+                        <span class="govuk-visually-hidden"> Type of claim</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
 
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Month travel costs claimed for
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data['travel-to-work-date-month'] | numberMonth}} - {{data["travel-to-work-date-year"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="claiming-for-month">
+                        Change
+                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -100,10 +128,9 @@
                     Number of Journeys taken
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {% for item in data['travel'] | sortByDate('') %}
-                    {{item.day}} {{item.month| numberMonth}} {{item.year}} - <br>{{item.travel_journeys}} Journeys
-                     </br> </br>
-                     {% endfor %}
+                    {% for day in data['journeys'] %}
+                    {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} {{data['travel-to-work-date-year']}} - {{ day.journeys }} {% if data['journeys'].length === 1 %} journey {% else %} journeys {% endif %}</br>
+                    {% endfor %}
 
                 </dd>
                 {% if print != true %}
@@ -122,8 +149,8 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
 
-                  {{taxiTotal}} journeys <br>
-                  {{travelLength}} {% if data['journeys'].length === 1 %} day {% else %} days {% endif %}
+                  {{journeyTotal}} journeys <br>
+                  {{data['journeys'] | length}} {% if data['journeys'].length === 1 %} day {% else %} days {% endif %}
 
                 </dd>
                 {% if print != true %}
@@ -169,30 +196,6 @@
                     <a href="employer-contribution.html">
                         Change
                         <span class="govuk-visually-hidden"> How much of the £{{data["equipment-cost"]}} has someone else agreed to contribute?</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
-            {% endif %}
-
-            {%if (data["transport-option"]=="taxi") %}
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Copy of receipt or invoice
-                </dt>
-
-                <dd class="govuk-summary-list__value">
-                    {% for file in data['uploads'] %}
-
-                    {{file['file']}} </br>
-                    {% endfor %}
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="upload-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> Supporting evidence</span>
                     </a>
                 </dd>
                 {% endif %}
@@ -276,7 +279,38 @@
             {% endif %}
         </dl>
         {% endif %}
+        {%if (data["transport-option"]=="taxi") %}
+        <h2 class="govuk-heading-m">Supporting claim documents</h2>
 
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Copy of receipt or invoice
+                </dt>
+
+                <dd class="govuk-summary-list__value">
+                    {% for file in data['uploads'] %}
+
+                    {{file['file']}} </br>
+                    {% endfor %}
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="upload-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Supporting evidence</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+
+        </dl>
+        {% endif %}
 
         {% if data["citizens-urn"] %}
         {% else %}

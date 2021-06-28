@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="taxi-cost-answer" method="post" class="form">  
+
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-taxi">
+                    How much did your taxi {% if data['journeys'].length === 1 %} journey {% else %} journeys {% endif %} cost in {{data['travel-to-work-date-month'] | numberMonth}} in total?
+                </label>
+                </h1>
+                <p>This includes VAT</p>
+
+                <div class="govuk-input__wrapper">
+                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                    <input class="govuk-input govuk-input--width-5" id="cost-of-taxi" name="cost-of-taxi"
+                           type="text" spellcheck="false">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

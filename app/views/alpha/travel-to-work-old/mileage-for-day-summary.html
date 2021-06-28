@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+{% set mileageTotal = 0 %}
+{% for day in data['mileages'] %}
+{% set mileageTotal = mileageTotal | float + day.mileage | float %}
+{% else %}
+{% set mileageTotal = 0 | float %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-form-group">
+
+          {% if data['mileages'].length === 0 %}
+          <h1 class="govuk-heading-l">You haven't told us about any times you have travelled in
+          {{data['travel-to-work-date-month'] | numberMonth}}</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us about {{mileageTotal}} miles in
+          {{data['travel-to-work-date-month'] | numberMonth}}</h1>
+          {% endif %}
+
+            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+
+                {% for day in data['mileages']  | sortBy('day')%}
+                <li class="hmrc-add-to-a-list__contents">
+      <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+        {{day.day}} {{data['travel-to-work-date-month'] | numberMonth}} {{data['travel-to-work-date-year']}} - {{day.mileage}} miles
+      </span>
+                    <span class="hmrc-add-to-a-list__change">
+        <a class="govuk-link--no-visited-state" href="remove-day-mileage?removeId={{loop.index0}}">
+          <span aria-hidden="true">Remove</span>
+          <span class="govuk-visually-hidden">Remove a journey from the list</span>
+        </a>
+      </span>
+                </li>
+
+            {% else %}
+            <div class="govuk-inset-text">
+              Tell us about a time you travelled in {{data['travel-to-work-date-month'] | numberMonth}} to continue.
+            </div>
+            {% endfor %}
+
+            </ul>
+        </div>
+
+        <form method="post" action="mileage-for-day-more">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="add-more-mileage-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+
+                      {% if mileageTotal=="0" %}
+                      Do you need to tell us when you travelled in {{data['travel-to-work-date-month'] | numberMonth}}?
+                      {% else %}
+                      Do you need to tell us another time you travelled in {{data['travel-to-work-date-month'] | numberMonth}}?
+                      {% endif %}
+
+                    </legend>
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="add-more-mileage-yes" name="add-more-mileage"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="add-more-mileage-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="add-more-mileage-no" name="add-more-mileage"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="add-more-mileage-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
