@@ -4,79 +4,211 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+{% set milageLength %}
+{{ data.milage | length }}
+{% endset %}
+
+{% set taxiTotal = 0 %}
+{% for day in data.milage %}
+{% set taxiTotal = taxiTotal | float + day.milage_total | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
 
 {% block content %}
-
-
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        <form id="form" method="post" action="#">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about the days you travelled</h1>
 
 
-      {% if (data['journeys'].length === 0) or (data['journeys'].length === undefined) %}
-      <h1 class="govuk-heading-l">
-      When was the first day you travelled in {{data['travel-to-work-date-month'] | numberMonth}}?</h1>
-      {% else %}
-      <h1 class="govuk-heading-l">
-      When else in {{data['travel-to-work-date-month'] | numberMonth}} did you travel?</h1>
-      {% endif %}
+            <div data-module="moj-add-another">
+                <!-- START HERE -->
+                <fieldset class="govuk-fieldset moj-add-another__item">
 
-        <form action="mileage-for-day-add" method="post" class="form">
+                  <div class="govuk-form-group">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                          Date
+                      </legend>
 
+                      <div id="date-of-birth-hint" class="govuk-hint">
+                          For example, 21 05 2021
+                      </div>
 
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" role="group" aria-describedby="mileage-of-day-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend">
-                        <h2 class="govuk-fieldset__heading">
-                          Tell us about a day in {{data['travel-to-work-date-month'] | numberMonth}}
-                          that you travelled
-                        </h2>
-                    </legend>
+                      <div class="govuk-date-input__item">
+                          <div class="govuk-date-input" id="date-of-milage">
 
-                    <div id="mileage-of-day-hint" class="govuk-hint">
-                        For example, 21
-                    </div>
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="milage[0][day]">
+                                  Day
+                                </label>
 
-
-                    <div class="govuk-date-input" id="mileage-of-day-date">
-                        <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-
-                                <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-2" id="mileage-of-day-date-day"  name="mileage-of-day-date-day" type="text" spellcheck="false" inputmode="numeric">
-                                  <div class="govuk-input__suffix" aria-hidden="true">
-                                    {{data['travel-to-work-date-month'] | numberMonth}} {{data['travel-to-work-date-year']}}
-                                  </div>
-                                </div>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.milage[0].day}}" id="milage[0][day]" name="milage[0][day]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="milage[%index%][day]" data-id="milage[%index%][day]">
+                              </div>
                             </div>
+
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="milage[0][month]">
+                                  Month
+                                </label>
+
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.milage[0].month}}" id="milage[0][month]" name="milage[0][month]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="milage[%index%][month]" data-id="milage[%index%][month]">
+                            </div>
+                            </div>
+
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="milage[0][year]">
+                                  Year
+                                </label>
+
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" value = "{{data.milage[0].year}}" id="milage[0][year]" name="milage[0][year]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="milage[%index%][year]" data-id="milage[%index%][year]">
+                            </div>
+                            </div>
+
+                          </div>
+                      </div> <!-- govuk-date-input__item -->
+                  </div> <!-- govuk-form-group -->
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="milage[0][milage_total]">
+                            Total miles on this day
+                        </label>
+
+                        <div id="milage-name-hint" class="govuk-hint">
+                              For example, 15
                         </div>
+
+                        <div class="govuk-input__wrapper">
+                        <input class="govuk-input govuk-input--width-4"
+                               value = "{{data.milage[0].milage_total}}"
+                               id="milage[0][milage_total]"
+                               name="milage[0][milage_total]" type="text"
+                               data-name="milage[%index%][milage_total]"
+                               data-id="milage[%index%][milage_total]">
+                              <div class="govuk-input__suffix">Miles</div>
+                              </div>
+                    </div> <!-- govuk-form-group -->
+
+
+                    {% if milageLength > 1 %}
+                    <div class="moj-button-action">
+                    <button class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
+                            value="0">
+                        Remove
+                    </button>
                     </div>
+                    {% endif %}
                 </fieldset>
-            </div>
-            <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" role="group" aria-describedby="mileage-of-day-hint">
-                  <legend class="govuk-fieldset__legend govuk-fieldset__legend">
-                      <h2 class="govuk-fieldset__heading">
-                        Tell us how many miles you travelled on this day
-                      </h2>
-                  </legend>
-                <div id="mileage-of-day-distance-hint" class="govuk-hint">
-                    For example, 15
+                <!-- ENDS HERE -->
+                {% if milageLength > 1 %}
+                {% for item in data.milage %}
+                {% if not loop.first %}
+                <!-- START HERE -->
+                <fieldset class="govuk-fieldset moj-add-another__item">
+
+                  <div class="govuk-form-group">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                          Date
+                      </legend>
+
+                      <div id="date-of-birth-hint" class="govuk-hint">
+                          For example, 21 05 2021
+                      </div>
+                      <div class="govuk-date-input__item">
+                          <div class="govuk-date-input" id="date-milage-purchased">
+
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="milage[{{loop.index0}}][day]">
+                                  Day
+                                </label>
+
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="milage[{{loop.index0}}][day]" name="milage[{{loop.index0}}][day]" type="text"  inputmode="numeric" data-name="milage[%index%][day]" data-id="milage[%index%][day]"
+                                value="{{item.day}}">
+                              </div>
+                            </div>
+
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="milage[{{loop.index0}}][month]">
+                                  Month
+                                </label>
+
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="milage[{{loop.index0}}][month]" name="milage[{{loop.index0}}][month]" type="text"  inputmode="numeric" data-name="milage[%index%][month]"
+                                data-id="milage[%index%][month]" value="{{item.month}}">
+                            </div>
+                            </div>
+
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="milage[{{loop.index0}}][year]">
+                                  Year
+                                </label>
+
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="milage[{{loop.index0}}][year]" name="milage[{{loop.index0}}][year]" type="text"  inputmode="numeric"
+                                data-name="milage[%index%][year]" data-id="milage[%index%][year]" value="{{item.year}}">
+                            </div>
+                            </div>
+
+                          </div>
+                      </div> <!-- govuk-date-input__item -->
+                  </div> <!-- govuk-form-group -->
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
+                               for="milage[{{loop.index0}}][milage_total]">
+                            Total miles on this day
+                        </label>
+
+                        <div id="milage-name-hint" class="govuk-hint">
+                              for example, 15
+                        </div>
+
+                        <div class="govuk-input__wrapper">
+                        <input class="govuk-input govuk-input--width-4" id="milage[{{loop.index0}}][milage_total]"
+                               name="milage[{{loop.index0}}][milage_total]" type="text"
+                               value="{{item.milage_total}}" data-name="milage[%index%][milage_total]"
+                               data-id="milage[%index%][milage_total]">
+                               <div class="govuk-input__suffix">Miles</div>
+                               </div>
+                    </div> <!-- govuk-form-group -->
+
+
+                    <button  class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
+                            value="{{loop.index0}}">
+                        Remove
+                    </button>
+
+                </fieldset>
+                <!-- ENDS HERE -->
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+
+                <div class="moj-button-action">
+                    <button
+                            class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
+                            data-module="govuk-button"
+                            name="action"
+                            value="add">
+                        Add another journey
+                    </button>
                 </div>
 
-
-                       <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-4" id="mileage-of-day-distance"  name="mileage-of-day-distance" type="text" spellcheck="false" inputmode="numeric">
-                         <div class="govuk-input__suffix" aria-hidden="true">
-                           Miles</div>
-                       </div>
-            </div>
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
-
+                <div class="moj-button-action">
+                    <button class="govuk-button" data-module="govuk-button"
+                            name="action"
+                            value="continue">
+                        Continue
+                    </button>
+                </div>
+            </div> <!-- data module -->
         </form>
-
     </div>
-</div>
-
-
+    {# /govuk-grid-column-two-thirds #}
+</div>{# /govuk-grid-row #}
 {% endblock %}

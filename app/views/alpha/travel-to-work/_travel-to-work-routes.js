@@ -240,7 +240,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
 
 
-  // new journey stuff
+  // new journey stuff - taxis
 
 
   router.post('/travel-to-work/taxi-journeys-for-day', function (req, res) {
@@ -268,7 +268,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
-  // post - Add more support hours
+  // post - for next screen
   router.post('/travel-to-work/taxi-journeys-for-day-summary', function (req, res) {
     console.log(req.session.data.support)
 
@@ -276,6 +276,44 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
+    }
+  })
+
+
+// new journey stuff - milage
+  router.post('/travel-to-work/mileage-for-day', function (req, res) {
+    console.log(req.session.data.support)
+    if (req.session.data.remove !== undefined) {
+      console.log('Remove')
+      req.session.data.remove = undefined
+      req.session.data.support.splice(req.session.data.remove, 1)
+      res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
+    } else {
+      if (req.session.data.action === 'add') {
+        console.log('Add')
+        console.log(req.session.data)
+        req.session.data.support = [...req.session.data.support, {
+          support_hours: '',
+          day: '',
+          month: '',
+          year: ''
+        }]
+        res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
+      } else {
+        console.log('Continue')
+        res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
+      }
+    }
+  })
+
+  // post - Add more support hours
+  router.post('/travel-to-work/mileage-for-day-summary', function (req, res) {
+    console.log(req.session.data.support)
+
+    if (req.session.data.milage === undefined || req.session.data.milage.length == 0) {
+      res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
+    } else {
+      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
     }
   })
 }

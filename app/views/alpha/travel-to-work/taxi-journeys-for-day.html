@@ -8,11 +8,11 @@ Access to Work Claiming Portal
 {{ data.travel | length }}
 {% endset %}
 
-{% set hourTotal = 0 %}
+{% set taxiTotal = 0 %}
 {% for day in data.travel %}
-{% set hourTotal = hourTotal | float + item.travel_journeys | float %}
+{% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
 {% else %}
-{% set hourTotal = 0 | float %}
+{% set taxiTotal = 0 | float %}
 {% endfor %}
 
 {% block content %}
@@ -160,11 +160,11 @@ Access to Work Claiming Portal
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                for="travel[{{loop.index0}}][travel_journeys]">
-                            Hours of travel received
+                            Number of journeys taken on this day
                         </label>
 
                         <div id="travel-name-hint" class="govuk-hint">
-                              Including half hours, for example 3.5 hours
+                              For example, 2
                         </div>
 
                         <div class="govuk-input__wrapper">
@@ -195,7 +195,7 @@ Access to Work Claiming Portal
                             data-module="govuk-button"
                             name="action"
                             value="add">
-                        Add more travel or adaptations
+                        Add another journey
                     </button>
                 </div>
 
