@@ -1,83 +1,144 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-GOV.UK Prototype Kit test
+Access to Work Claiming Portal
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
 {% block content %}
-
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">
-            The GOV.UK Prototype Kit
-            <span class="govuk-caption-xl">{{releaseVersion}}</span>
+        <h1 class="govuk-heading-l">
+            Access to Work payment support prototype
+            <span class="govuk-caption-l">{{releaseVersion}}</span>
         </h1>{{releaseVersion | log }}
 
-        <h2 class="govuk-heading-xl">This page is not part of the service. It is just to easily direct people to places within the prototype.</h2>
+        <h2 class="govuk-body govuk-!-font-weight-bold">This page is not part of the service. It is just to easily direct people to places within the prototype.</h2>
 
-        <h2 class="govuk-heading-m">Alpha journeys</h2>
+        <h2 class="govuk-heading-m">Current Alpha journeys</h2>
+        <p> Most up to date journeys in the prototype </p>
 
-        <ul class="govuk-list govuk-list--bullet">
-            <li>
-                <a class="govuk-link" href="alpha/portal.html">Portal</a>
-            </li>
+        <span class="govuk-caption-m">29/06/2021</span>
 
-            <li>
-                <a class="govuk-link" href="alpha/employer-countersign/before-you-continue.html">Employer Countersign</a>
-            </li>
+          <form action="alpha/start-journey" method="post" class="form">
+            <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                travel to work
+            </button>
+          </form>
+
+          <span class="govuk-caption-m">05/07/2021</span>
+
+          <form action="alpha/start-journey" method="post" class="form">
+            <input type="hidden" id="journey-type" name="journey-type" value="supportworker">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Support worker
+            </button>
+          </form>
+
+          <span class="govuk-caption-m">15/06/2021</span>
+          <form action="alpha/start-journey" method="post" class="form">
+            <input type="hidden" id="journey-type" name="journey-type" value="specialaidsandequipment">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Equipment and adaptations
+            </button>
+          </form>
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
-        </ul>
+          <h2 class="govuk-heading-m">Employer counter signature journey</h2>
+          <p>In order to accurately view and test this journey you first need to complete a support worker or travel to work journey and return here after.</p>
 
-        <form action="alpha/start-journey" method="post" class="form">
-          <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
-          <button type="submit" class="govuk-button" data-module="govuk-button">
-              travel to work v2
-          </button>
-        </form>
+          <form action="alpha/employer-countersign/before-you-continue" method="post" class="form">
+            <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Employer Countersign
+            </button>
+          </form>
 
-        <form action="alpha/start-journey" method="post" class="form">
-          <input type="hidden" id="journey-type" name="journey-type" value="traveltoworkold">
-          <button type="submit" class="govuk-button" data-module="govuk-button">
-              travel to work old
-          </button>
-        </form>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
-      <form action="alpha/start-journey" method="post" class="form">
-        <input type="hidden" id="journey-type" name="journey-type" value="supportworker">
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-            Support worker v2
-        </button>
-      </form>
+            <h2 class="govuk-heading-m">Dynamic trust hub login/ register</h2>
+            <p>Built by another team but part of our journey</p>
 
-      <form action="alpha/start-journey" method="post" class="form">
-        <input type="hidden" id="journey-type" name="journey-type" value="supportworkerold">
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-            Support worker old
-        </button>
-      </form>
+            <p id="travel-to-work-hint" class="govuk-body">Codes for authentication steps</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Register email authentication: <b>283194</b></li>
+              <li>Register mobile authentication: <b>969862</b></li>
+              <li>Sign in mobile authentication: <b>471350</b></li>
+              <li>Reset password email authentication: <b>373868</b></li>
+              <li>Reset password mobile authentication: <b>221645</b></li>
+            </ul>
 
-      <form action="alpha/start-journey" method="post" class="form">
-        <input type="hidden" id="journey-type" name="journey-type" value="specialaidsandequipment">
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-            Equipment and adaptations v2
-        </button>
+            <p id="travel-to-work-hint" class="govuk-body">Current username and password, if incorrect most up to date info is <a target="_blank"
+                    href="check-your-answers-print">here (opens in a new tab)</a>.</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Username: <b>dth</b></li>
+              <li>Password: <b>htd</b></li>
+            </ul>
 
-    </form>
+            <form action="https://dth-prototype.herokuapp.com/auth/v8/register/start-dev-ready?service-name=Access%20To%20Work%20Payment%20Support" method="post" class="form">
+              <input type="hidden" id="journey-type" name="journey-type" value="authentication">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                  Dynamic trust hub
+              </button>
+            </form>
 
-    <form action="alpha/start-journey" method="post" class="form">
-      <input type="hidden" id="journey-type" name="journey-type" value="specialaidsandequipmentvi">
-      <button type="submit" class="govuk-button" data-module="govuk-button">
-          equipment and adaptations old
-      </button>
-    </form>
+            <p id="travel-to-work-hint" class="govuk-body">Emails needed to access specific journeys</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>supportworker@email.com</li>
+              <li>travel@email.com</li>
+              <li>equipment@email.com</li>
+            </ul>
 
-    <form action="https://dth-prototype.herokuapp.com/auth/v8/register/start-dev-ready?service-name=Access%20To%20Work%20Payment%20Support" method="post" class="form">
-      <input type="hidden" id="journey-type" name="journey-type" value="authentication">
-      <button type="submit" class="govuk-button" data-module="govuk-button">
-          DTH Login journey
-      </button>
-    </form>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+            <h2 class="govuk-heading-m">Previous iterations Alpha journeys</h2>
+            <p> Older journeys that were changed as a result of user testing</p>
+
+            <form action="alpha/start-journey" method="post" class="form">
+              <input type="hidden" id="journey-type" name="journey-type" value="traveltoworkold">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                  travel to work v1
+              </button>
+            </form>
+
+            <form action="alpha/start-journey" method="post" class="form">
+              <input type="hidden" id="journey-type" name="journey-type" value="supportworkerold">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                  Support worker v1
+              </button>
+            </form>
+
+            <form action="alpha/start-journey" method="post" class="form">
+              <input type="hidden" id="journey-type" name="journey-type" value="specialaidsandequipmentvi">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                  equipment and adaptations v1
+              </button>
+            </form>
+
+            <form action="alpha/portal" method="post" class="form">
+                <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                  Portal
+                </button>
+            </form>
+
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+            <h2 class="govuk-heading-m">Pre populate journeys with answers</h2>
+            <p> (currently in progress) journey to pre populate a journey with answers, will come in handy for testing counter signature journeys</p>
 
     <form action="alpha/populate-answers" method="post" class="form">
 
@@ -97,7 +158,7 @@ GOV.UK Prototype Kit test
 </button>
   </form>
 
-
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
         <h2 class="govuk-heading-m">Examples and documentation</h2>
