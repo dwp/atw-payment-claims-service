@@ -186,7 +186,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       res.redirect(`/${urlPrefix}/support-worker/receipt-upload`)
     } else {
-      res.redirect(`/${urlPrefix}/support-worker/banking-details`)
+      res.redirect(`/${urlPrefix}/support-worker/guidance-payee-details`)
     }
   })
 }

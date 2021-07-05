@@ -85,16 +85,33 @@
             {%if (data['employer-contributing']=="Yes") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Total of [data] has been agreed to be paid by the employer
+                    Employer contribution
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    data['employer-contributing']
+                    £20
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="employer-contribution.html">
                         Change
-                        <span class="govuk-visually-hidden"> How much of the £{{data["equipment-cost"]}} has someone else agreed to contribute?</span>
+                        <span class="govuk-visually-hidden"> Employer contribution</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total amount paid back
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £80
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="employer-contribution.html">
+                        Change
+                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
                     </a>
                 </dd>
                 {% endif %}
@@ -123,14 +140,69 @@
             </div>
         </dl>
 
-{% if print != true %}
-        <h2 class="govuk-heading-m">Bank or building society account details</h2>
-        <p>bank details of the person or company who needs to be paid back.</p>
+        {% if print != true %}
+        <h2 class="govuk-heading-m">New payee details</h2>
+        <p>New details of the person or company who needs to be paid back.</p>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["new-payee-full-name"]}}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-name">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+          {%if (data["payee-email"]) %}
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["payee-email"]}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-address">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["new-payee-address-line-1"]}}<br>
+                  {{data["new-payee-address-line-2"]}}<br>
+                  {{data["new-payee-address-town"]}}<br>
+                  {{data["new-payee-address-county"]}}<br>
+                  {{data["new-payee-address-postcode"]}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-address">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Name
+                    Name on the account
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{data["name-on-the-account"]}}
@@ -159,7 +231,7 @@
                         <span class="govuk-visually-hidden"> Bank or building society account details</span>
                     </a>
                 </dd>
-                {% endif %}
+              {% endif %}
             </div>
 
             <div class="govuk-summary-list__row">
@@ -198,7 +270,7 @@
             </div>
             {% endif %}
         </dl>
-{% endif %}
+        {% endif %}
 
 
 

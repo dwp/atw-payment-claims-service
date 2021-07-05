@@ -26,9 +26,13 @@ Access to Work Claiming Portal
         <div class="govuk-form-group">
 
 
-          <h1 class="govuk-heading-l">You’ve told us about {{mileageTotal}} miles you have travelled across {{milageLength}} days</h1>
 
 
+          {% if mileageTotal === 1 %}
+          <h1 class="govuk-heading-l">You’ve told us the journey you’re claiming for were a total of {{mileageTotal}} miles</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us the journeys you’re claiming for were a total of {{mileageTotal}} miles</h1>
+          {% endif %}
 
 
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">

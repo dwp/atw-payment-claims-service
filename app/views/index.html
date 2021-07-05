@@ -39,7 +39,7 @@ GOV.UK Prototype Kit test
         <form action="alpha/start-journey" method="post" class="form">
           <input type="hidden" id="journey-type" name="journey-type" value="traveltoworkold">
           <button type="submit" class="govuk-button" data-module="govuk-button">
-              travel to work
+              travel to work old
           </button>
         </form>
 
@@ -69,6 +69,13 @@ GOV.UK Prototype Kit test
       <input type="hidden" id="journey-type" name="journey-type" value="specialaidsandequipmentvi">
       <button type="submit" class="govuk-button" data-module="govuk-button">
           equipment and adaptations old
+      </button>
+    </form>
+
+    <form action="https://dth-prototype.herokuapp.com/auth/v8/register/start-dev-ready?service-name=Access%20To%20Work%20Payment%20Support" method="post" class="form">
+      <input type="hidden" id="journey-type" name="journey-type" value="authentication">
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+          DTH Login journey
       </button>
     </form>
 

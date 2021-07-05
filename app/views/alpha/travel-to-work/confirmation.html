@@ -4,6 +4,16 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -12,22 +22,22 @@ Access to Work Claiming Portal
           <div class="govuk-panel govuk-panel--confirmation">
               <h1 class="govuk-panel__title">Claim submission complete</h1>
               <div class="govuk-panel__body">
-                  Your claim reference number<br><strong>TTW125421</strong>
+                  Your claim reference number is<br><strong>TTW125421</strong>
               </div>
           </div>
 
 
             <h2 class="govuk-heading-m">What happens next</h2>
 
-            <p>Your claim has been submitted. Your named contact will be notified that you’ve submitted a claim and they’ll be asked to review and confirm.
-              You’ll be notified of their decision via your chosen contact method. If they confirm your claim, it will then be sent to Access to Work for processing.</p>
+            <p>Your claim has been submitted. We’ll contact your workplace contact to let them know that you’ve submitted a claim. They’ll need to review and confirm your claim. We’ll let you know whether they approve your claim using the contact method you chose.
+              If your claim is approved, we’ll process your claim and pay the money into the bank account you chose.</p>
 
-            <p>If your named contact disagrees with your claim, we’ll get in touch with what to do next.</p>
+            <p>If your workplace contact disagrees with your claim, we’ll contact you to let you know what to do next.</p>
 
-            <p>Once your claim has been processed and approved, your payment will be sent. You’ll be able to see updates to your claim and to your Access to Work grant in your account home. </p>
+            <p>You’ll be able to see updates about your Access to Work grant and the progress of your claims in your account homepage.</p>
 
             <p>You can also <a target="_blank"
-                    href="check-your-answers-print">view
+                    href="check-your-answers-print">save and print
                 a copy of your claims submission (opens in a new tab)</a>.</p>
 
 

@@ -102,7 +102,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       res.redirect(`/${urlPrefix}/travel-to-work/receipt-upload`)
     } else if (anotherReceipt === 'No') {
-      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
+      res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
     }
   })
 
@@ -232,7 +232,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-to-work/mileage-confirmation-answers', function (req, res) {
     const confirm = req.session.data['mileage-confirmation']
     if (confirm === 'Yes') {
-      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
+      res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
     }
@@ -310,10 +310,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-to-work/mileage-for-day-summary', function (req, res) {
     console.log(req.session.data.support)
 
-    if (req.session.data.milage === undefined || req.session.data.milage.length == 0) {
-      res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
+    if (req.session.data.support === undefined || req.session.data.support.length == 112) {
+      res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
     } else {
-      res.redirect(`/${urlPrefix}/travel-to-work/banking-details`)
+      res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
+    }
+  })
+
+
+
+  // employer contribution answer
+
+  router.post('/travel-to-work/employer-contribution-answer', function (req, res) {
+    const transport = req.session.data['transport-option']
+
+    if (transport === 'taxi') {
+      res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
+    } else if (transport === 'lift') {
+      res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
     }
   })
 }

@@ -28,7 +28,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       {% if print != true %}
-      <h1 class="govuk-heading-xl govuk-!-display-none-print">Check your answers before sending your application</h1>
+      <h1 class="govuk-heading-xl govuk-!-display-none-print">Check your answers</h1>
       {% endif %}
 
         <h2 class="govuk-heading-m">Claim information</h2>
@@ -42,7 +42,7 @@
                     Type of travel
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {%if (data["transport-option"]=="taxi") %} Taxi {% elif data["transport-option"]=="lift" %} Lift {% endif %}
+                    {%if (data["transport-option"]=="taxi") %} Taxi {% elif data["transport-option"]=="lift" %} Passenger in vehicle {% endif %}
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -161,24 +161,79 @@
 
             {% endif %}
 
-            {%if (data['employer-contributing']=="Yes") %}
+            {%if (data['employer-contributing']=="Yes") and (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Total of [data] has been agreed to be paid by the employer
+                    Employer contribution
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{data["employer-contributing"]}}
+                    £20
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="employer-contribution.html">
                         Change
-                        <span class="govuk-visually-hidden"> How much of the £{{data["equipment-cost"]}} has someone else agreed to contribute?</span>
+                        <span class="govuk-visually-hidden"> Employer contribution</span>
                     </a>
                 </dd>
                 {% endif %}
             </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total amount paid back
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £80
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="employer-contribution.html">
+                        Change
+                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            {% elseif (data['employer-contributing']=="Yes") and (data["transport-option"]=="lift") %}
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Employer contribution
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £22.40
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="employer-contribution.html">
+                        Change
+                        <span class="govuk-visually-hidden"> Employer contribution</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total amount paid back
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £50.40
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="employer-contribution.html">
+                        Change
+                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
             {% endif %}
+
 
             {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
@@ -206,13 +261,72 @@
         </dl>
 
         {% if print != true %}
-        <h2 class="govuk-heading-m">Bank or building society account details</h2>
-        <p>bank details of the person or company who needs to be paid back.</p>
+        <h2 class="govuk-heading-m">New payee details</h2>
+        <p>New details of the person or company who needs to be paid back.</p>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["new-payee-full-name"]}}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-name">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+
+          {%if (data["payee-email"]) %}
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["payee-email"]}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-address">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+          {% endif %}
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["new-payee-address-line-1"]}}<br>
+                  {{data["new-payee-address-line-2"]}}<br>
+                  {{data["new-payee-address-town"]}}<br>
+                  {{data["new-payee-address-county"]}}<br>
+                  {{data["new-payee-address-postcode"]}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-address">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+
+
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Name
+                    Name on the account
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{data["name-on-the-account"]}}
@@ -285,7 +399,7 @@
 
         {% if data["citizens-urn"] %}
         {% else %}
-        <h2 class="govuk-heading-m">Named contact details</h2>
+        <h2 class="govuk-heading-m">Workplace contact details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">

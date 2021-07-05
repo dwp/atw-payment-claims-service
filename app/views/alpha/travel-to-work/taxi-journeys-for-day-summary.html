@@ -26,9 +26,11 @@ Access to Work Claiming Portal
         <div class="govuk-form-group">
 
 
-          <h1 class="govuk-heading-l">You’ve told us about {{taxiTotal}} journeys you have taken across {{travelLength}} days</h1>
-
-
+          {% if taxiTotal === 1 %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal}} journey</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal}} journeys</h1>
+          {% endif %}
 
 
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
