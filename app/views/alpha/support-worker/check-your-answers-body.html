@@ -18,7 +18,7 @@
     <div class="govuk-grid-column-two-thirds">
 
         {% if print != true %}
-        <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+        <h1 class="govuk-heading-xl">Check your answers</h1>
         {% endif %}
         <h2 class="govuk-heading-m">Claim information</h2>
 
@@ -186,7 +186,7 @@
               </dt>
               <dd class="govuk-summary-list__value">
                   {{data["new-payee-address-line-1"]}}<br>
-                  {{data["new-payee-address-line-2"]}}<br>
+                  {% if data["new-payee-address-line-2"] %}{{data["new-payee-address-line-2"]}}<br>{% endif %}
                   {{data["new-payee-address-town"]}}<br>
                   {{data["new-payee-address-county"]}}<br>
                   {{data["new-payee-address-postcode"]}}

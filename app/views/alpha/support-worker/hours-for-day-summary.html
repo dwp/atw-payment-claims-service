@@ -25,9 +25,11 @@ Access to Work Claiming Portal
 
         <div class="govuk-form-group">
 
-
-          <h1 class="govuk-heading-l">You’ve told us about {{hourTotal}} hours of support you received across {{supportLength}} days</h1>
-
+          {% if hourTotal === 1 %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal}} hour of support</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal}} hour of support</h1>
+          {% endif %}
 
 
 
@@ -41,7 +43,7 @@ Access to Work Claiming Portal
       </span>
       <span class="hmrc-add-to-a-list__change">
        <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day">
-         <span aria-hidden="true">Change</span>
+         <span aria-hidden="true">Change support</span>
          <span class="govuk-visually-hidden">Change {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
        </a>
      </span>

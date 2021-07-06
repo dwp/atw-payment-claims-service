@@ -18,7 +18,7 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about the support you received</h1>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about the days you had support at work?</h1>
 
 
             <div data-module="moj-add-another">
@@ -73,7 +73,7 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="support[0][support_hours]">
-                            Hours of support received
+                            Total hours of support on this day
                         </label>
 
                         <div id="support-name-hint" class="govuk-hint">
@@ -87,7 +87,7 @@ Access to Work Claiming Portal
                                name="support[0][support_hours]" type="text"
                                data-name="support[%index%][support_hours]"
                                data-id="support[%index%][support_hours]">
-                              <div class="govuk-input__suffix">hours</div>
+                              <div class="govuk-input__suffix">hour(s)</div>
                               </div>
                     </div> <!-- govuk-form-group -->
 
@@ -97,7 +97,7 @@ Access to Work Claiming Portal
                         </label>
 
 
-                               <input class="govuk-input govuk-input--width-20"
+                               <input class="govuk-input"
                                       value = "{{data.support[0].providor}}"
                                       id="support[0][providor]"
                                       name="support[0][providor]" type="text"
@@ -175,7 +175,7 @@ Access to Work Claiming Portal
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                for="support[{{loop.index0}}][support_hours]">
-                            Hours of support received
+                            Total hours of support on this day
                         </label>
 
                         <div id="support-name-hint" class="govuk-hint">
@@ -187,7 +187,7 @@ Access to Work Claiming Portal
                                name="support[{{loop.index0}}][support_hours]" type="text"
                                value="{{item.support_hours}}" data-name="support[%index%][support_hours]"
                                data-id="support[%index%][support_hours]">
-                               <div class="govuk-input__suffix">hours</div>
+                               <div class="govuk-input__suffix">hour(s)</div>
                                </div>
                     </div> <!-- govuk-form-group -->
 
@@ -198,7 +198,7 @@ Access to Work Claiming Portal
                         </label>
 
 
-                        <input class="govuk-input govuk-input--width-20" id="support[{{loop.index0}}][providor]"
+                        <input class="govuk-input" id="support[{{loop.index0}}][providor]"
                                name="support[{{loop.index0}}][providor]" type="text"
                                value="{{item.providor}}" data-name="support[%index%][providor]"
                                data-id="support[%index%][providor]">
