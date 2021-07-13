@@ -28,7 +28,7 @@ Access to Work Claiming Portal
           {% if hourTotal === 1 %}
           <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal}} hour of support</h1>
           {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal}} hour of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal}} hours of support</h1>
           {% endif %}
 
 
@@ -38,12 +38,12 @@ Access to Work Claiming Portal
                 {% for item in data['support'] | sortByDate('') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{item.day}} {{item.month| numberMonth}} {{item.year}} - <br>{{item.support_hours}} Hours
+        {{item.day}} {{item.month| numberMonth}} {{item.year}} - <br>{{item.support_hours}} hours
          <br> {{item.providor}}
       </span>
       <span class="hmrc-add-to-a-list__change">
        <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day">
-         <span aria-hidden="true">Change support</span>
+         <span aria-hidden="true">Change</span>
          <span class="govuk-visually-hidden">Change {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
        </a>
      </span>

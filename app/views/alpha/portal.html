@@ -86,11 +86,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <div class="card" id="test-card-1">
                     <div class="card-body active" @if(url)>
                         <h2 class="heading-small card-heading">
-                            <a class="card-link" href="@url">
-                                Submitted claims
+                            <a class="card-link" href="./portal-screens/claims-history">
+                                Claims history
                             </a>
                         </h2>
-                        <p class="govuk-body">View submitted claims and their status.</p>
+                        <p class="govuk-body">View any previously submitted or saved claims.</p>
                     </div>
 
                     <!-- <div class="card-action">
@@ -103,7 +103,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   <div class="card" id="test-card-2">
                       <div class="card-body active" @if(url)>
                           <h2 class="heading-small card-heading">
-                              <a class="card-link" href="personal-information">
+                              <a class="card-link" href="./portal-screens/personal-information">
                                   Personal information
                               </a>
                           </h2>
@@ -128,15 +128,33 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             </h2>
                             <p class="govuk-body">Find out how to claim by post if you cannot submit a claim online.</p>
                         </div>
-
-                        <!-- <div class="card-action">
-                          <p class="govuk-body">
-                            some content
-                          </p>
-                        </div> -->
                     </div>
                   </div>
 
+                  <div class="govuk-grid-column-one-third">
+                      <div class="card" id="test-card-3">
+                          <div class="card-body active" @if(url)>
+                              <h2 class="heading-small card-heading">
+                                  <a class="card-link" href="@url">
+                                      Grant allowance information
+                                  </a>
+                              </h2>
+                              <p class="govuk-body">View information about the grant you have been awarded, as well as your original grant approval letter.</p>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="govuk-grid-column-one-third">
+                        <div class="card" id="test-card-3">
+                            <div class="card-body active" @if(url)>
+                                <h2 class="heading-small card-heading">
+                                    <a class="card-link" href="@url">
+                                        Contact Access to Work
+                                    </a>
+                                </h2>
+                                <p class="govuk-body">View information on how to get in contact with the Access to Work team to discuss queries.</p>
+                            </div>
+                        </div>
+                      </div>
 
           </div>
     </div>

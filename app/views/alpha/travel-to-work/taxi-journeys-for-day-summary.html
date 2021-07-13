@@ -38,7 +38,7 @@ Access to Work Claiming Portal
                 {% for item in data['travel'] | sortByDate('') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{item.day}} {{item.month| numberMonth}} {{item.year}} - <br>{{item.travel_journeys}} Journeys
+        {{item.day}} {{item.month| numberMonth}} {{item.year}} - <br>{{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
          <br>
       </span>
       <span class="hmrc-add-to-a-list__change">

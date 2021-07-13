@@ -181,7 +181,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Total amount paid back
+                    Total amount we can pay towards this claim
                 </dt>
                 <dd class="govuk-summary-list__value">
                     £80
@@ -190,7 +190,7 @@
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="employer-contribution.html">
                         Change
-                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
+                        <span class="govuk-visually-hidden"> Total amount we can pay towards this claim by Access to Work</span>
                     </a>
                 </dd>
                 {% endif %}
@@ -217,7 +217,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Total amount paid back
+                    Total amount we can pay towards this claim
                 </dt>
                 <dd class="govuk-summary-list__value">
                     £50.40
@@ -226,7 +226,7 @@
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="employer-contribution.html">
                         Change
-                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
+                        <span class="govuk-visually-hidden"> Total amount we can pay towards this claim by Access to Work</span>
                     </a>
                 </dd>
                 {% endif %}
@@ -238,7 +238,11 @@
             {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Copy of receipt or invoice
+                  {% if data['uploads'].length === 1 %}
+                    Receipt or invoice uploaded
+                    {% else %}
+                    Receipts or invoices uploaded
+                    {% endif %}
                 </dt>
 
                 <dd class="govuk-summary-list__value">
@@ -326,7 +330,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Name on the account
+                    Name on bank account
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{data["name-on-the-account"]}}
