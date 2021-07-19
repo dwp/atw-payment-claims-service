@@ -1,0 +1,178 @@
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if print != true %}
+      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+      {% endif %}
+      <h2 class="govuk-heading-m">Claim information</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Claim reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+                EA12657283
+            </dd>
+            {% if print != true %}
+            <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                <a href="special-aids-and-equipment">
+                    Change
+                    <span class="govuk-visually-hidden"> Claim reference number</span>
+                </a>
+            </dd>
+            {% endif %}
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Claim submission date
+            </dt>
+            <dd class="govuk-summary-list__value">
+                01/02/2021
+            </dd>
+            {% if print != true %}
+            <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                <a href="special-aids-and-equipment">
+                    Change
+                    <span class="govuk-visually-hidden"> Claim reference number</span>
+                </a>
+            </dd>
+            {% endif %}
+        </div>
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Type of claim
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  Equipment and adaptations
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="special-aids-and-equipment">
+                      Change
+                      <span class="govuk-visually-hidden"> Type of claim</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Equipment and adaptation description
+              </dt>
+              <dd class="govuk-summary-list__value">
+                01 Febuary 2021 - <br>
+                Karma Ergo 115 wheelchair <br><br>
+                02 April 2021 - <br>
+                Sliding Doors to my van <br>
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="hours-for-day-summary">
+                      Change
+                      <span class="govuk-visually-hidden"> Hours of support received</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Cost of equipment
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £6850
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="equipment-cost">
+                        Change
+                        <span class="govuk-visually-hidden"> Cost of equipment</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Supporting claim evidence
+                </dt>
+
+                <dd class="govuk-summary-list__value">
+
+                    <a href="@">Screen Shot 2021-02-17 at 15.33.15.png</a>
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="upload-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Supporting evidence</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+        </dl>
+
+
+                <h2 class="govuk-heading-m">Payee details</h2>
+                <p>details provided during claim submission for who needs to be paid back</p>
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            John Doe
+
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="banking-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Payee email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            john.doe@deafactioncharity.com
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="banking-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                </dl>
+
+
+        {% if print != true %}
+        <form action="declaration" method="post" novalidate>
+
+            <input type="hidden" name="answers-checked" value="true">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

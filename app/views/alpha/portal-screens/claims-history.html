@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="claims-history.html">Claims History</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Claims history
+                        </h1>
+                    </legend>
+
+
+                    <p>Find information on claims you’ve sent us in the past, as well as any claims you’re currently working on but have not sent. This includes what stage your claim is at, for example, if it’s been approved. You can <a href="claims-history-timeline">find out what stages a claim goes through</a> after you’ve sent it.</p>
+
+                    <p>When you send a new claim, you’ll be able see it here. It can take up to 5 working days for a new claim to appear in your claim history.</p>
+                </fieldset>
+            </div>
+
+
+
+            <h2 class="govuk-heading-m">Claim sent</h2>
+            <p>Claims you’ve sent that we’re still processing.<p>
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+              <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                      03 July 2021
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                      Travel for work
+                  </dd>
+                  {% if print != true %}
+                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                      <a href="e-a-check-your-answers-print">
+                          View
+                          <span class="govuk-visually-hidden"> Equipment and adaptations claim - 01/02/2021</span>
+                      </a>
+                  </dd>
+                  {% endif %}
+              </div>
+
+              </dl>
+
+                  <h2 class="govuk-heading-m">Payment sent</h2>
+                  <p>Your claim has been approved and a payment sent to the company or person who needs to be paid.<p>
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            01 Febuary 2021
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Equipment and adaptations
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="e-a-check-your-answers-print">
+                                View
+                                <span class="govuk-visually-hidden"> Equipment and adaptations claim - 01/02/2021</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            06 March 2021
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Travel for work
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="ttw-check-your-answers-print">
+                                View
+                                <span class="govuk-visually-hidden"> Travel for work - 06/03/2021</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            04 April 2021
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Travel for work
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="ttw-check-your-answers-print">
+                                View
+                                <span class="govuk-visually-hidden"> Travel for work - 06/03/2021</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    </dl>
+
+
+
+
+
+                    <h2 class="govuk-heading-m">Saved claims</h2>
+                    <p>Claims that have not been sent yet.<p>
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                      <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                              06 June 2021
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              Travel for work
+                          </dd>
+                          {% if print != true %}
+                          <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                              <a href="e-a-check-your-answers-print">
+                                  View
+                                  <span class="govuk-visually-hidden"> Equipment and adaptations claim - 01/02/2021</span>
+                              </a>
+                          </dd>
+                          {% endif %}
+                      </div>
+
+                      </dl>
+
+
+                </div>
+            </div>
+
+
+{% endblock %}
