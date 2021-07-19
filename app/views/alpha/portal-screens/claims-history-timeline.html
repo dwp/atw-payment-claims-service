@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="claims-history.html">Claims History</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="claims-history-timeline.html">Timeline</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+        <form action="../portal" method="post" class="form">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Claims timeline
+                        </h1>
+                    </legend>
+                    <p id="claims-history-hint" class="govuk-body">Find out what stages a claim goes through before it can be approved.</p>
+                </fieldset>
+            </div>
+
+        <ol class="hmrc-timeline">
+          <li class="hmrc-timeline__event">
+          <h2 class="hmrc-timeline__event-title">Claim received</h2>
+          <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
+          <div class="hmrc-timeline__event-content">
+          <p class="govuk-body">We have got your claim request.</p>
+          </div>
+          </li>
+          <li class="hmrc-timeline__event">
+          <h2 class="hmrc-timeline__event-title">Claim approved by your workplace contact</h2>
+          <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
+          <div class="hmrc-timeline__event-content">
+          <p class="govuk-body">Your claim request has been approved by your workplace contact. An Access to Work Payment Officer can now process your claim.</p>
+          </div>
+          </li>
+          <li class="hmrc-timeline__event">
+          <h2 class="hmrc-timeline__event-title">Checking processed</h2>
+          <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
+          <div class="hmrc-timeline__event-content">
+          <p class="govuk-body">Your claim request has been processed and approved by an Access to Work Payment Officer.</p>
+          </div>
+          </li>
+          <li class="hmrc-timeline__event">
+          <h2 class="hmrc-timeline__event-title">Claim paid</h2>
+          <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-15">15 July 2020</time> -->
+          <div class="hmrc-timeline__event-content">
+          <p class="govuk-body">We have sent a payment to the company or person who needs to be paid. The payment should arrive in their account within 5 working days.</p>
+          </div>
+          </li>
+
+        </ol>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Return to account home
+        </button>
+    </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

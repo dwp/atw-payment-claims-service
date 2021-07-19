@@ -6,7 +6,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       {% if print != true %}
-      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+      <h1 class="govuk-heading-xl">Check your answers</h1>
       {% endif %}
       <h2 class="govuk-heading-m">Claim information</h2>
 
@@ -57,13 +57,48 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="equipment-cost">
+                    <a href="equipement-cost">
                         Change
                         <span class="govuk-visually-hidden"> Cost of equipment</span>
                     </a>
                 </dd>
                 {% endif %}
             </div>
+            {%if (data['employer-contributing']=="Yes") %}
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Employer contribution
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £20
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="employer-contribution.html">
+                        Change
+                        <span class="govuk-visually-hidden"> Employer contribution</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total amount we can pay towards this claim
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £80
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="employer-contribution.html">
+                        Change
+                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            {% endif %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Supporting claim evidence
@@ -89,80 +124,135 @@
         </dl>
 
         {% if print != true %}
-                <h2 class="govuk-heading-m">Bank or building society account details</h2>
-                <p>bank details of the person or company who needs to be paid back.</p>
+        <h2 class="govuk-heading-m">New payee details</h2>
+        <p>New details of the person or company who needs to be paid back.</p>
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Name
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{data["name-on-the-account"]}}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["new-payee-full-name"]}}
 
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            <a href="banking-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
-                            </a>
-                        </dd>
-                        {% endif %}
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Sort code
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{data["sort-code"]}}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            <a href="banking-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
-                            </a>
-                        </dd>
-                        {% endif %}
-                    </div>
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-name">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+          {%if (data["payee-email"]) %}
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["payee-email"]}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-address">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New payee address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["new-payee-address-line-1"]}}<br>
+                  {% if data["new-payee-address-line-2"] %}{{data["new-payee-address-line-2"]}}<br>{% endif %}
+                  {{data["new-payee-address-town"]}}<br>
+                  {{data["new-payee-address-county"]}}<br>
+                  {{data["new-payee-address-postcode"]}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-address">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name on bank account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["name-on-the-account"]}}
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Account Number
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{data["account-number"]}}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            <a href="banking-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
-                            </a>
-                        </dd>
-                        {% endif %}
-                    </div>
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["sort-code"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+              {% endif %}
+            </div>
 
-                    {%if (data['roll-number']) %}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Building society roll number
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{data["roll-number"]}}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            <a href="banking-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
-                            </a>
-                        </dd>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                </dl>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Account Number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["account-number"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            {%if (data['roll-number']) %}
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Building society roll number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["roll-number"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            {% endif %}
+        </dl>
         {% endif %}
 
         {% if print != true %}

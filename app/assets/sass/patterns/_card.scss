@@ -51,7 +51,7 @@ html[data-useragent*='MSIE 10.0'] .flex-container {
   .card-body {
     border-bottom: 1px solid $panel-colour;
     padding: 12px;
-
+    min-height: 140px;
     *:last-child {
       margin-bottom: 0;
     }

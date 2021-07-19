@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="new-payee-confirmation" method="post" class="form">
+
+            <h1 class="govuk-heading-xl">Declaration</h1>
+
+            <p>By sending these company or person details, you are agreeing that:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>the information you have given is correct</li>
+                <li>Access to Work may check and validate these details with employers, suppliers or providers </li>
+
+            </ul>
+
+            
+
+
+
+
+
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    By submitting this claim you are confirming that, to the best of your knowledge, the details you are
+                    providing are correct.
+                </strong>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                I agree – add new payee
+            </button>
+
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

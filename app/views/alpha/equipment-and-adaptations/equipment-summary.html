@@ -19,9 +19,12 @@ Access to Work Claiming Portal
         <div class="govuk-form-group">
 
 
-          <h1 class="govuk-heading-l">You’ve told us about {{equipmentLength}} pieces of equipment or adaptations</h1>
 
-
+            {% if equipmentLength === 1 %}
+            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{equipmentLength}} piece of equipment or adaptation</h1>
+            {% else %}
+            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{equipmentLength}} pieces of equipment or adaptations</h1>
+            {% endif %}
 
 
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">

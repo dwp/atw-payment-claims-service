@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="claims-history.html">Claims History</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="ttw-check-your-answers-print.html">Travel for work claim submission</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Travel for work claim submission</h1>
+
+<p>These are the details of the claim you submitted. You can also save and print a copy of your claim submission</p>
+
+<input type="button" class="govuk-button govuk-!-display-none-print" data-module="govuk-button" value="Print this page" onClick="window.print()">
+
+
+  </div>
+  </div>
+{% include "alpha/portal-screens/ttw-check-your-answers-body.html" %}
+
+
+
+{% endblock %}

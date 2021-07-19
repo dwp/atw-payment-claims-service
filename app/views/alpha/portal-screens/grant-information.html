@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-information.html">Information about your grant</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">Information about your grant</h1>
+
+        <p>We’ll provide support to help make it easier for you to do your job. This support can be used whilst you work as a Finance Analyst at Deaf Action. </p>
+
+
+
+
+
+        <h2 class="govuk-heading-s">What support you’ll get</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Type of grant
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Travel to Work support
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Travel type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Taxis to & from work for 10 journeys per week
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Cost of support
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £45.00 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Agreed citizen contribution
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £7.50 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount we can pay towards this claim
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £37.50 per journey
+            </dd>
+          </div>
+        </dl>
+
+        <p>The total cost of this support is <b>£11635.71</b>. Access to Work will contribute a maximum of <b>£9,696.43</b>.</p>
+
+        <p>You should have already received a copy of your grant approval letter by post. You can also <a href="@">view
+            a copy of your grant approval letter</a> in your account.</p>
+
+        <p>Your support starts from <b>05 March 2021</b> until <b>05 March 2024</b> if your needs do not change.
+
+
+
+        <form action="../portal" method="post" class="form">
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Return to account home
+          </button>
+
+        </form>
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}

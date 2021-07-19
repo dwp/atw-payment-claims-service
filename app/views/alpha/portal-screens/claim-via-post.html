@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="claim-via-post.html">Send your claim by post</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-xl">Send your claim by post</h1>
+
+        <p>It’s quickest to send your <a href="../travel-to-work/start-a-claim">Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        <p>You’ll need to: </p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>fill in the paper claim form that was sent with your Access to Work award letter</li>
+            <li>include any receipts or invoices we ask for in the claims form</li>
+        </ul>
+
+        <p> You can <a href="@">download a claim form</a> and print it off if you need one.</p>
+
+        <h3 class="govuk-heading-s">You should post your claim to Access to Work:</h3>
+
+        <p class="govuk-body">
+            Access to Work Service Centre<br>
+            Harrow Jobcentre<br>
+            Mail Handling Site A<br>
+            Wolverhampton<br>
+            WV98 1JE
+        </p>
+
+        <p>You’ll receive a text message or email to let you know when we’ve got your claim form. </p>
+
+
+
+        <form action="../portal" method="post" class="form">
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Return to account home
+          </button>
+
+        </form>
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}

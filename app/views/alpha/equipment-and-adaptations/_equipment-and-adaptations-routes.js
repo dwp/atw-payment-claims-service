@@ -220,7 +220,17 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/receipt-upload`)
     } else {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/banking-details`)
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/guidance-payee-details`)
+    }
+  })
+
+  router.post('/equipment-and-adaptations/cost-answer', function (req, res) {
+    const cost = req.session.data['equipment-cost']
+
+    if (cost === '100') {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/employer-contribution`)
+    } else {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/providing-evidence`)
     }
   })
 }
