@@ -47,6 +47,67 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
   </div>
 {% include "alpha/portal-screens/e-a-check-your-answers-body.html" %}
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+<h2 class="govuk-heading-m">Claim declaration</h2>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Citizen declaration
+        </dt>
+        <dd class="govuk-summary-list__value">
+            Yes
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Citizen declaration</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Claim reference number
+        </dt>
+        <dd class="govuk-summary-list__value">
+            SAE125421
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Claim reference number</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Claim submission date
+        </dt>
+        <dd class="govuk-summary-list__value">
+            06 March - 2021
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Claim submission date</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+</dl>
+
+</div>
+</div>
+
+
 
 
 {% endblock %}
