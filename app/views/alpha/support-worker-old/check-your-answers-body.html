@@ -3,6 +3,8 @@
 
 {% block content %}
 
+
+
 {% set hourTotal = 0 %}
 {% for day in data['hours'] %}
 {% set hourTotal = hourTotal | float + day.hours | float %}
@@ -66,7 +68,7 @@
                     Hours of support received
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {% for day in data['hours'] %}
+                    {% for day in data['hours'] | sortByDate('support-date-') %}
                     {{day.day}} {{data['support-date-month'] | numberMonth}} {{data['support-date-year']}} - {{day.hours}} hours</br>
                     {% endfor %}
                 </dd>

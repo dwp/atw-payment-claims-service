@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+{% set serviceName = "" %}
+
+{% block beforeContent %}
+
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Benefits</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Benefits and financial support if you're disabled or have a health condition</a>
+        </li>
+
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Get support in work if you have a disability or health condition (Access to Work)</h1>
+        <div class="govuk-body-s">Contents</div>
+        <ul class="govuk-list govuk-body-s">
+          <li>
+            – <a class="govuk-link" href="#">Overveiw</a>
+          </li>
+          <li>
+            – <a class="govuk-link" href="#">Eligibility</a>
+          </li>
+          <li>
+            – <a class="govuk-link" href="#">What you'll get</a>
+          </li>
+          <li>
+            – <a class="govuk-link" href="#">Apply</a>
+          </li>
+          <li>
+            – <a class="govuk-link" href="#">After you've applied</a>
+          </li>
+          <li>
+            – <a class="govuk-link" href="#"></a>Claiming from your grant
+          </li>
+          <li>
+            – <a class="govuk-link" href="#">Renew</a>
+          </li>
+          <li>
+            – <a class="govuk-link" href="#">Report a change of circumstances</a>
+          </li>
+        </ul>
+
+    </div>
+
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Claiming from your grant</h2>
+
+      <p>If you’re awarded an Access to Work grant, you can use the money to buy the support you need. You or your employer might need to pay for your support first,
+        then claim the money back from your Access to Work grant. You can make a claim online or by post.</p>
+
+        <p>If you need the form in other formats, such as braille, large print or audio CD, call the Access to Work helpline.</p>
+
+
+
+
+
+          <a href="https://dth-prototype.herokuapp.com/auth/v8/register/start-dev-ready?service-name=Access%20To%20Work%20Payment%20Support" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+            Make a claim online
+            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+            </svg></a>
+
+
+
+        <h2 class=govuk-heading-m>Make a claim by post</h2>
+
+        <p>The quickest way to make a claim is online. If you cannot claim online, you can send Access to Works claims by post.</p>
+
+        <p class="govuk-body">You’ll need to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>log in to your Access to Work account to download a claim form </li>
+          <li>print off and fill in the claim form </li>
+          <li>include any receipts or invoices we ask for in the claim form</li>
+        </ul>
+
+        <p>You can call the Access to Work helpline and ask for a claim form to be sent to you if you cannot print it off.</p>
+
+
+                <h3 class="govuk-body govuk-!-font-weight-bold">You should post your claim to Access to Work:</h3>
+
+                <p class="govuk-body">
+                    Access to Work Service Centre<br>
+                    Harrow Jobcentre<br>
+                    Mail Handling Site A<br>
+                    Wolverhampton<br>
+                    WV98 1JE
+                </p>
+
+                <p>You’ll receive a text message or email to let you know when we’ve got your claim form. </p>
+
+  </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      <h3 class="govuk-body govuk-!-font-weight-bold">Related content</h3>
+
+      <ul class="govuk-list govuk-list--spaced govuk-body-s">
+        <li>
+          <a class="govuk-link" href="#">Easy read: get support in work if you have a disability or health condition (Access to Work)</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Reasonable adjustments for workers with disabilities or health conditions</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Definition of disability under the Equality Act 2010</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Disability rights</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#">Looking for work if you're disabled</a>
+        </li>
+
+      </ul>
+
+      
+
+
+    </div>
+
+</div>
+{% endblock %}
