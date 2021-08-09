@@ -51,12 +51,12 @@ filters.sortByDate = function(arr,prefix) {
   arr.sort(sorter);
   return arr;
 }
-// env.addFilter('sortBy', function (arr, prop) {
-//     const isNum = val => val == +val;
-//     const sorter = (a, b) => isNum(a[prop]) && isNum(b[prop]) ? +a[prop] - b[prop] : a[prop] < b[prop];
-//     arr.sort(sorter);
-//     return arr;
-// });
+env.addFilter('sortBy', function (arr, prop) {
+    const isNum = val => val == +val;
+    const sorter = (a, b) => isNum(a[prop]) && isNum(b[prop]) ? +a[prop] - b[prop] : a[prop] < b[prop];
+    arr.sort(sorter);
+    return arr;
+});
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

@@ -7,25 +7,25 @@ Access to Work Claiming Portal
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="transport-option-answers" method="post" class="form">
+        <form action="claiming-for-month" method="post" class="form">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="transport-option-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                       <span class="govuk-caption-l">Section 1 of 5</span>
                         <h1 class="govuk-fieldset__heading">
-                            Did you travel by Taxi?
+                            How did you travel for work?
                         </h1>
                     </legend>
 
+                    <p>You only need to tell us about the journeys you’re claiming for.</p>
 
-
-                    <div class="govuk-radios--inline">
+                    <div class="govuk-radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="transport-option-yes" name="transport-option"
                                    type="radio"
                                    value="taxi">
                             <label class="govuk-label govuk-radios__label" for="transport-option-yes">
-                                Yes
+                                Taxi
                             </label>
                         </div>
                         <div class="govuk-radios__item">
@@ -33,7 +33,7 @@ Access to Work Claiming Portal
                                    type="radio"
                                    value="lift">
                             <label class="govuk-label govuk-radios__label" for="transport-option-no">
-                                No
+                                A lift from a friend, colleague, or family member
                             </label>
                         </div>
                     </div>

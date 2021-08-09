@@ -4,6 +4,27 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="travel-to-work.html">Travel for work</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -17,13 +38,8 @@ Access to Work Claiming Portal
                     </legend>
 
 
-                    <p id="travel-to-work-hint" class="govuk-body">Your grant award letter will tell you what travel costs you can claim for. It’s usually things like:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>travel to and from your workplace</li>
-                      <li>travel to different work locations </li>
+                    <p id="travel-to-work-hint" class="govuk-body">Your grant award letter will tell you what travel costs you can claim for.</p>
 
-                    </ul>
-                    
 
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">

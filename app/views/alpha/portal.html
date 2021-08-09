@@ -48,15 +48,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   <div class="card-body active" @if(url)>
                       <h2 class="heading-small card-heading">
                         {%if (data['journey-type'] == "specialaidsandequipment") %}
-                          <a class="card-link" href="./equipment-and-adaptations/start-a-claim">
+                          <a class="card-link" href="./equipment-and-adaptations/special-aids-and-equipment">
                               Start a claim
                           </a>
                         {% elseif (data['journey-type'] == "supportworker") %}
-                          <a class="card-link" href="./support-worker/start-a-claim">
+                          <a class="card-link" href="./support-worker/support-for-workplace">
                               Start a claim
                           </a>
                         {% elseif (data['journey-type'] == "traveltowork") %}
-                          <a class="card-link" href="./travel-to-work/start-a-claim">
+                          <a class="card-link" href="./travel-to-work/travel-to-work">
                               Start a claim
                           </a>
                           {% elseif (data['journey-type'] == "traveltoworkold") %}

@@ -7,7 +7,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const aids = req.session.data['travel-to-work']
 
     if (aids === 'Yes') {
-      res.redirect(`/${urlPrefix}/travel-to-work/before-you-continue`)
+      res.redirect(`/${urlPrefix}/travel-to-work/grant-information`)
     } else if (aids === 'No') {
       res.redirect(`/${urlPrefix}/travel-to-work/contact-dwp`)
     }
@@ -23,12 +23,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  router.post('/travel-to-work/transport-option-answers-repeat', function (req, res) {
+    const aids = req.session.data['transport-option']
+
+    if (aids === 'taxi') {
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-repeat`)
+    } else if (aids === 'lift') {
+      res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
+    }
+  })
+
 
   router.post('/travel-to-work/taxi-cost-answer', function (req, res) {
     const cost = req.session.data['cost-of-taxi']
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
+    } else if (cost === '1500'){
+      res.redirect(`/${urlPrefix}/travel-to-work/too-much-claimed`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
     }
@@ -268,14 +280,42 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  router.post('/travel-to-work/taxi-journeys-for-day-repeat', function (req, res) {
+    console.log(req.session.data.support)
+    if (req.session.data.remove !== undefined) {
+      console.log('Remove')
+      req.session.data.remove = undefined
+      req.session.data.support.splice(req.session.data.remove, 1)
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-repeat`)
+    } else {
+      if (req.session.data.action === 'add') {
+        console.log('Add')
+        console.log(req.session.data)
+        req.session.data.support = [...req.session.data.support, {
+          support_hours: '',
+          day: '',
+          month: '',
+          year: ''
+        }]
+        res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+      } else {
+        console.log('Continue')
+        res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
+      }
+    }
+  })
+
   // post - for next screen
   router.post('/travel-to-work/taxi-journeys-for-day-summary', function (req, res) {
     console.log(req.session.data.support)
+    const addmonth = req.session.data['new-month']
 
     if (req.session.data.travel === undefined || req.session.data.travel.length == 0) {
       res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
-    } else {
+    } else if (addmonth === 'no') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
+    } else if (addmonth === 'yes') {
+      res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month-repeat`)
     }
   })
 
@@ -306,14 +346,40 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  router.post('/travel-to-work/mileage-for-day-repeat', function (req, res) {
+    console.log(req.session.data.support)
+    if (req.session.data.remove !== undefined) {
+      console.log('Remove')
+      req.session.data.remove = undefined
+      req.session.data.support.splice(req.session.data.remove, 1)
+      res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
+    } else {
+      if (req.session.data.action === 'add') {
+        console.log('Add')
+        console.log(req.session.data)
+        req.session.data.support = [...req.session.data.support, {
+          support_hours: '',
+          day: '',
+          month: '',
+          year: ''
+        }]
+        res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
+      } else {
+        console.log('Continue')
+        res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
+      }
+    }
+  })
+
   // post - Add more support hours
   router.post('/travel-to-work/mileage-for-day-summary', function (req, res) {
-    console.log(req.session.data.support)
+    const addmonth = req.session.data['new-month']
 
-    if (req.session.data.support === undefined || req.session.data.support.length == 112) {
-      res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
-    } else {
-      res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
+
+     if (addmonth === "yes") {
+      res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month-repeat`)
+    } else if (addmonth === "no") {
+        res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
     }
   })
 

@@ -4,6 +4,33 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="travel-to-work.html">Travel for work</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-Information.html">Information about your grant</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="before-you-continue.html">What you’ll need to send your claim</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
 
 {% block content %}
 
@@ -12,24 +39,26 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
 
-        <span class="govuk-caption-l">Before you continue</span>
-        <h1 class="govuk-heading-l">What you’ll need to submit a claim</h1>
+
+        <h1 class="govuk-heading-l">What you’ll need to send your claim</h1>
 
 
-        <h1 class="govuk-body">You’ll need to know:</h1>
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-            <li>the date(s) that you travelled for work
+        <h1 class="govuk-body">You’ll need to tell us the:</h1>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>the dates that you travelled for work
             </li>
-            <li>the details of the person who needs to be paid back – you’ll also need to give us their bank details if we’ve not paid this person before
+            <li>name and email address of a workplace contact who we can ask to confirm each journey you’re claiming for
             </li>
-            <li>the name and email address of a workplace contact who we can contact to confirm each journey you’re claiming for</li>
+            <li>details of the person or company who needs to be paid back, including bank details if we’ve not paid them before</li>
         </ul>
+
+        <p>This can include anyone who paid for your travel, such as yourself, a family or friend, your employer or a transport company.</p>
 
         <h2 class="govuk-heading-m">If you’re claiming for travel by taxi</h2>
 
 
         <h3 class="govuk-body">You’ll also need to:</h3>
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <ul class="govuk-list govuk-list--bullet">
             <li>tell us how many journeys you made each day
             </li>
             <li>tell us the total cost of your work travel for the month you are claiming for
@@ -38,28 +67,33 @@ Access to Work Claiming Portal
             </li>
         </ul>
 
-        <p>You can either send us 1 receipt or invoice that contains all of the journeys you’re claiming for, or separate receipts and invoices for each single journey. You’ll need a digital copy of your receipts or invoices to submit a claim online.
-          You should scan or take a photo of any paper receipts or invoices ready to upload them if you have any.</p>
+        <h3 class="govuk-body">You can either send us:</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>a receipt or invoice that contains all the journeys you’re claiming for
+            </li>
+            <li>separate receipts and invoices for each single journey
+            </li>
+        </ul>
 
 
-        <h2 class="govuk-heading-m">If you did not travel by taxi</h2>
+        <h2 class="govuk-heading-m">If you’re claiming for lifts from a friend, colleague or family member</h2>
 
-        <p>You’ll also need to tell us the total mileage travelled on each date.</p>
-
-
-
+        <p>You’ll need to tell us the total mileage travelled on each date.</p>
 
 
         <form action="transport-option" method="post" class="form">
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
+                Start a claim
             </button>
 
         </form>
 
     </div>
 </div>
+
+
 
 
 {% endblock %}
