@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <span class="govuk-caption-l">Section 3 of 5</span>
+        <h1 class="govuk-heading-l">Your payee’s details</h1>
+
+
+
+        <p class="govuk-body">You’ll need to tell us your payee’s details since this is your first claim.
+          You’ll only need to tell us this payee’s details once as we’ll store this information for any additional claims you make.</p>
+
+          <p>If you want to change this payee’s details, or use a different payee instead, you can do this in the personal information section on the portal.</p>
+
+
+        <form action="new-payee-name" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

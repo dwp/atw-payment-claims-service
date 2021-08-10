@@ -71,6 +71,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             <a class="card-link" href="./support-worker-old/start-a-claim">
                                 Start a claim
                             </a>
+                            {% elseif (data['journey-type'] == "supportworkeroldv2") %}
+                              <a class="card-link" href="./support-worker-old-two/start-a-claim">
+                                  Start a claim
+                              </a>
                         {% else %}
                         <a class="card-link" href="#">
                             Start a claim

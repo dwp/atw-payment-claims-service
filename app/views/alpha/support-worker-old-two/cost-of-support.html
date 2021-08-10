@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="cost-of-support-answer" method="post" class="form">
+
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-support">
+                        How much did your support cost in total?
+                    </label>
+                    </h1>
+                    <p>You’ll find the total cost for support you got on the receipt or invoice. If you had support on multiple days and have separate receipts or invoices for each,
+                      you’ll need to add up the cost of support on each day to get the total. </p>
+
+                    <div class="govuk-input__wrapper">
+                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                        <input class="govuk-input govuk-input--width-5" id="cost-of-support" name="cost-of-support"
+                               type="text" spellcheck="false">
+                    </div>
+                </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

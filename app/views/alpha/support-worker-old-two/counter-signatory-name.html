@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="check-your-answers" method="post" class="form">
+            <div class="govuk-form-group">
+              <span class="govuk-caption-l">Section 4 of 5</span>
+                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l"for="counter-signatory-details">
+                    Tell us the details someone who can confirm your support worker costs
+                </label>
+                </h1>
+                <p class="govuk-body">If you’re employed by an organisation, this needs to be someone like your line manager or HR manager. If you’re self-employed, tell us the name of the agency or person who provided support to you.</p>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="counter-signatory-full-name">
+                    Full name
+                  </label>
+                <input class="govuk-input" id="counter-signatory-full-name" name="counter-signatory-full-name" type="text" spellcheck="false" aria-describedby="fullname-hint"
+                       autocomplete="name"></div>
+
+                       <div class="govuk-form-group">
+                         <label class="govuk-label" for="counter-signatory-email">
+                           Email
+                         </label>
+                       <p class="govuk-hint" id="email-hint">We’ll use this to contact them about your support</p>
+                       <input class="govuk-input" id="counter-signatory-email" name="counter-signatory-email" type="email" spellcheck="false" aria-describedby="email-hint"
+                              autocomplete="email"></div>
+
+            </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

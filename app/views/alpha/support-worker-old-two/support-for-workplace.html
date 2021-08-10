@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="support-for-workplace-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="support-for-workplace-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Are you claiming for support worker costs?
+                        </h1>
+                    </legend>
+
+                    <p id="support-worker-hint" class="govuk-body">Your grant award letter will tell you what support worker costs you can claim for. It’s usually things like:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>a BSL interpreter</li>
+                      <li>a person to support with admin tasks</li>
+
+                    </ul>
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="support-for-workplace-yes" name="support-for-workplace"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="support-for-workplace-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="support-for-workplace-no" name="support-for-workplace"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="support-for-workplace-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

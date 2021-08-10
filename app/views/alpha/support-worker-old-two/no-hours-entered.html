@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="../portal" method="post" class="form">
+
+        <h1 class="govuk-heading-l">You’ve told us you don’t want to add any support hours for {{data['support-date-month'] | numberMonth}}.</h1>
+        <p class="govuk-body">
+            You’ll return to your Account home.
+        </p>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+        </button>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}
