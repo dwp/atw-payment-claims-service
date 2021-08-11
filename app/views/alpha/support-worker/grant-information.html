@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="support-for-workplace.html">Support for work</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-Information.html">Information about your grant</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<form action="before-you-continue" method="post" class="form">
+
+        <h1 class="govuk-heading-l">About your support worker grant</h1>
+
+        <p>Before you start your claim, this is everything you need to know about your travel for work grant.</p>
+
+
+        <p>Your support starts from <b>05 March 2021</b> until <b>05 March 2024</b> if your needs do not change.</p>
+
+          <h2 class="govuk-heading-m">Support you can get</h2>
+
+
+                <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Support type
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Carer for 125 hours per month
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Total grant awarded
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £7,200
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Amount of grant left
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £6,500
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Cost of support
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £45.00 per hour
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Agreed employer contribution
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £7.50 per hour
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Total amount we can pay towards your support worker
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £37.50 per hour
+                    </dd>
+                  </div>
+
+
+
+                </dl>
+
+
+
+
+
+
+
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

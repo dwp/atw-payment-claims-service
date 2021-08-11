@@ -14,6 +14,18 @@
 {% set hourTotal = 0 | float %}
 {% endfor %}
 
+{% set repeatsupportLength %}
+{{ data.repeatsupport | length }}
+{% endset %}
+
+{% set repeathourTotal = 0 %}
+{% for day in data.repeatsupport %}
+{% set repeathourTotal = repeathourTotal | float + day.repeatsupport_hours | float %}
+{% else %}
+{% set repeathourTotal = 0 | float %}
+{% endfor %}
+
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -31,9 +43,15 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
-                  {{item.day}} {{item.month| numberMonth}} {{item.year}} - </br>{{item.support_hours}} Hours
+                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} </br>{{item.support_hours}} Hours
                    {% if item.providor %}</br> {{item.providor}} {% endif %}</br></br>
                    {% endfor %}
+                   {% if data['repeatsupport-month'] %}
+                   {% for item in data['repeatsupport'] | sortBy('day') %}
+                   {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}} <br>{{item.repeatsupport_hours}} hours
+                    <br> {{item.providor}} </br> </br>
+                    {% endfor %}
+                    {% endif %}
 
 
                 </dd>
@@ -52,8 +70,8 @@
                     Total support received
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{hourTotal}} hours <br>
-                    {{supportLength}} {% if supportLength === 1 %} day {% else %} days {% endif %}
+                    {{hourTotal + repeathourTotal}} hours <br>
+
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">

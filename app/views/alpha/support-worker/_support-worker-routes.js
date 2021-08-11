@@ -9,7 +9,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const aids = req.session.data['support-for-workplace']
 
     if (aids === 'Yes') {
-      res.redirect(`/${urlPrefix}/support-worker/before-you-continue`)
+      res.redirect(`/${urlPrefix}/support-worker/grant-information`)
     } else if (aids === 'No') {
       res.redirect(`/${urlPrefix}/support-worker/contact-dwp`)
     }
@@ -68,16 +68,31 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // post - Add more support hours
   router.post('/support-worker/hours-for-day-summary', function (req, res) {
     console.log(req.session.data.support)
+    const month = req.session.data['new-month']
 
     if (req.session.data.support === undefined || req.session.data.support.length == 0) {
       res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
+    } else if (month === 'yes') {
+      res.redirect(`/${urlPrefix}/support-worker/claiming-for-month-repeat`)
     } else {
       res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
     }
   })
 
-  router.post('/support-worker/before-you-continue', function (req, res) {
+  router.post('/support-worker/grant-information-answer', function (req, res) {
+    res.redirect(`/${urlPrefix}/support-worker/before-you-continue`)
+  })
+
+  router.post('/support-worker/before-you-continue-answer', function (req, res) {
+    res.redirect(`/${urlPrefix}/support-worker/claiming-for-month`)
+  })
+
+  router.post('/support-worker/month-claim-answer', function (req, res) {
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+  })
+
+  router.post('/support-worker/month-claim-answer-repeat', function (req, res) {
+    res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
   })
 
   router.post('/support-worker/hours-for-day', function (req, res) {
@@ -98,6 +113,31 @@ module.exports = function (folderForViews, urlPrefix, router) {
           year: ''
         }]
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+      } else {
+        console.log('Continue')
+        res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
+      }
+    }
+  })
+
+  router.post('/support-worker/hours-for-day-repeat', function (req, res) {
+    console.log(req.session.data.support)
+    if (req.session.data.remove !== undefined) {
+      console.log('Remove')
+      req.session.data.remove = undefined
+      req.session.data.support.splice(req.session.data.remove, 1)
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
+    } else {
+      if (req.session.data.action === 'add') {
+        console.log('Add')
+        console.log(req.session.data)
+        req.session.data.support = [...req.session.data.support, {
+          support_hours: '',
+          day: '',
+          month: '',
+          year: ''
+        }]
+        res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
       } else {
         console.log('Continue')
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
