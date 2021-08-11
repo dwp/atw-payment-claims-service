@@ -137,10 +137,12 @@
                     {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>{{item.travel_journeys}} Journeys
                      </br> </br>
                      {% endfor %}
+                     {%if (data["travel-to-work-date-month-repeat"]) %}
                      {% for item in data['repeattravel'] | sortBy('day') %}
                      {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
                      </br> </br>
                      {% endfor %}
+                     {% endif %}
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
