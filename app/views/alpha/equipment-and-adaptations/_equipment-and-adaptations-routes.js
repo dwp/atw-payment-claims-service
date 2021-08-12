@@ -34,35 +34,35 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const aids = req.session.data['aids-and-equipment']
 
     if (aids === 'Yes') {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/before-you-continue`)
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/grant-information`)
     } else if (aids === 'No') {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/contact-dwp`)
     }
   })
 
-  // post - who purchased the equipment
-  router.post('/equipment-and-adaptations/purchase-answer', function (req, res) {
-    const purchase = req.session.data['purchase-equipment']
-
-    if (purchase === 'Me') {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/cost-sharing`)
-    } else if (purchase === 'My-employer') {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/cost-sharing`)
-    } else if (purchase === 'Someone-else') {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/someone-else`)
-    }
-  })
-
-  // post - additional equipement purchased?
-  router.post('/equipment-and-adaptations/additional-equipment-answer', function (req, res) {
-    const equipment = req.session.data['additional-equipment']
-
-    if (equipment === 'No') {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/information-about-the-purchaser`)
-    } else if (equipment === 'Yes') {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/test-2`)
-    }
-  })
+  // // post - who purchased the equipment
+  // router.post('/equipment-and-adaptations/purchase-answer', function (req, res) {
+  //   const purchase = req.session.data['purchase-equipment']
+  //
+  //   if (purchase === 'Me') {
+  //     res.redirect(`/${urlPrefix}/equipment-and-adaptations/cost-sharing`)
+  //   } else if (purchase === 'My-employer') {
+  //     res.redirect(`/${urlPrefix}/equipment-and-adaptations/cost-sharing`)
+  //   } else if (purchase === 'Someone-else') {
+  //     res.redirect(`/${urlPrefix}/equipment-and-adaptations/someone-else`)
+  //   }
+  // })
+  //
+  // // post - additional equipement purchased?
+  // router.post('/equipment-and-adaptations/additional-equipment-answer', function (req, res) {
+  //   const equipment = req.session.data['additional-equipment']
+  //
+  //   if (equipment === 'No') {
+  //     res.redirect(`/${urlPrefix}/equipment-and-adaptations/information-about-the-purchaser`)
+  //   } else if (equipment === 'Yes') {
+  //     res.redirect(`/${urlPrefix}/equipment-and-adaptations/test-2`)
+  //   }
+  // })
 
   // post - Digital upload
   router.post('/equipment-and-adaptations/digital-upload-answer', function (req, res) {
@@ -99,7 +99,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
-  router.post('/equipment-and-adaptations/before-you-continue', function (req, res) {
+  router.post('/equipment-and-adaptations/before-you-continue-answer', function (req, res) {
     res.redirect(`/${urlPrefix}/equipment-and-adaptations/description`)
   })
 
@@ -229,6 +229,8 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/employer-contribution`)
+    } else if (cost === '2500') {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/too-much-claimed`)
     } else {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/providing-evidence`)
     }

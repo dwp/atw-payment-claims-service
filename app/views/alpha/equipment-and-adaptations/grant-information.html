@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="special-aids-and-equipment.html">Equipment and adaptations</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-Information.html">Information about your grant</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<form action="before-you-continue" method="post" class="form">
+
+        <h1 class="govuk-heading-l">About your equipment or adaptations grant</h1>
+
+        <p>Before you start your claim, this is everything you need to know about your equipment or adaptations grant.</p>
+
+
+        <p>You must claim for equipment and adaptations within 9 months of the purchase date. </p>
+
+
+
+
+                <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Equipment or adaptation type
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Audéo P-RT - Receiver-in-Canal Hearing aid </br>
+                      HK-MAC Large print Bluetooth mini keyboard </br>
+                      Dolphin SuperNova magnifier and speech software </br>
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Total grant awarded
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £2665.98
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Amount of grant left
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £2089.98
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Cost of equipment or adaptation
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £2089.98 - Hearing aid </br>
+                      £102.00 - Keyboard </br>
+                      £474.00 - Magnifier and speech software </br>
+
+
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Agreed employer contribution
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £266.59
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Total amount we can pay towards your equipment or adaptation
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      £2399.39
+                    </dd>
+                  </div>
+
+
+
+                </dl>
+
+
+
+
+
+
+
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -11,13 +11,25 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
         <form action="cost-answer" method="post" class="form">
             <div class="govuk-form-group">
+              {% if equipmentLength === 1 %}
                 <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-cost">
                     How much did your equipment or adaptation cost in total?
                 </label>
+
                 <div id="equipment-name-body" class="govuk-body">
-                     This includes VAT and delivery fees.
+                     You’ll find the total cost for each piece of equipment or adaptation on the receipt or invoice. You should include any delivery fees in the total cost.
                 </div>
                 </h1>
+                {% else %}
+                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-cost">
+                    How much did your equipment or adaptations cost in total?
+                </label>
+                <div id="equipment-name-body" class="govuk-body">
+                You’ll find the total cost for each piece of equipment or adaptation on the receipt or invoice. You’ll need to add up the cost of all equipment or adaptations to get the total. You should include any delivery fees in the total cost.
+                </div>
+                </h1>
+                {% endif %}
+
                 <div class="govuk-input__wrapper">
                     <div class="govuk-input__prefix" aria-hidden="true">£</div>
                     <input class="govuk-input govuk-input--width-5" id="equipment-cost" name="equipment-cost"
