@@ -168,11 +168,50 @@
                   New payee address
               </dt>
               <dd class="govuk-summary-list__value">
+                {% if data ["new-payee-address-line-1"] %}
                   {{data["new-payee-address-line-1"]}}<br>
                   {% if data["new-payee-address-line-2"] %}{{data["new-payee-address-line-2"]}}<br>{% endif %}
                   {{data["new-payee-address-town"]}}<br>
                   {{data["new-payee-address-county"]}}<br>
                   {{data["new-payee-address-postcode"]}}
+                  {% endif %}
+
+                  {% if data["new-payee-address-select"] == "123" %}
+                  123 Hudsen House<br>
+                  Cresent Lane<br>
+                  Leeds<br>
+                  West Yorkshire<br>
+                  {{data["new-payee-postcode"]}}
+
+                  {% elif data["new-payee-address-select"] == "124" %}
+                  124 Hudsen House<br>
+                  Cresent Lane<br>
+                  Leeds<br>
+                  West Yorkshire<br>
+                  {{data["new-payee-postcode"]}}
+
+                  {% elif data["new-payee-address-select"] == "125" %}
+                  125 Hudsen House<br>
+                  Cresent Lane<br>
+                  Leeds<br>
+                  West Yorkshire<br>
+                  {{data["new-payee-postcode"]}}
+
+                  {% elif data["new-payee-address-select"] == "126" %}
+                  126 Hudsen House<br>
+                  Cresent Lane<br>
+                  Leeds<br>
+                  West Yorkshire<br>
+                  {{data["new-payee-postcode"]}}
+
+                  {% elif data["new-payee-address-select"] == "127" %}
+                  127 Hudsen House<br>
+                  Cresent Lane<br>
+                  Leeds<br>
+                  West Yorkshire<br>
+                  {{data["new-payee-postcode"]}}
+
+                  {% endif %}
               </dd>
               {% if print != true %}
               <dd class="govuk-summary-list__actions govuk-!-display-none-print">
