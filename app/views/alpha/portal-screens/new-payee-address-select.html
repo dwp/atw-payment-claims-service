@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="banking-details" method="post" class="form">
+
+
+
+            <fieldset class="govuk-fieldset">
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+<h1 class="govuk-fieldset__heading">
+  What’s {{data["new-payee-full-name"]}}’s address?
+</h1>
+</legend>
+
+<div class="govuk-heading-s"> 5 addresses found for {{data["new-payee-postcode"]}} </div>
+
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Select an address
+  </label>
+  <select class="govuk-select govuk-select--width-10" id="new-payee-address-select" name="new-payee-address-select">
+    <option value="selected" selected>5 addresses found</option>
+    <option value="line">----</option>
+    <option value="123" >123 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-payee-postcode"]}}</option>
+    <option value="124">124 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-payee-postcode"]}}</option>
+    <option value="125">125 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-payee-postcode"]}}</option>
+    <option value="126">126 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-payee-postcode"]}}</option>
+    <option value="127">127 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-payee-postcode"]}}</option>
+
+  </select>
+</div>
+
+</fieldset>
+
+<p><a href="new-payee-address-manual">I can't find {{data["new-payee-full-name"]}}'s address in the list</a></p>
+
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
