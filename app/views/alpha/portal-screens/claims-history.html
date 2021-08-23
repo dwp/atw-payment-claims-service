@@ -44,12 +44,55 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </fieldset>
             </div>
 
+            {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] !== "true")%}
+
+            <h2 class="govuk-heading-m">Claim needs ammendment <span id="notifications" class="moj-notification-badge">1</span> </h2>
+            <p>Your workplace contact has reviewed the claim you previously submitted and has some amendments that are needed before they can declare it is correct.<p>
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+              <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                      23 August 2021
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                      Travel for work
+                  </dd>
+                  {% if print != true %}
+                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                      <a href="employees-claim-incorrect">
+                          Edit
+                          <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
+                      </a>
+                  </dd>
+                  {% endif %}
+              </div>
+
+              </dl>
+
+              {% endif %}
 
 
             <h2 class="govuk-heading-m">Claim received</h2>
-            <p>Claims you’ve sent to us.<p>
+            <p>Claims you’ve sent and are waiting for approval from your workplace contact.<p>
             <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+              <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                      23 August 2021
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                      Travel for work
+                  </dd>
+                  {% if print != true %}
+                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                      <a href="ttw-check-your-answers-print">
+                          View
+                          <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
+                      </a>
+                  </dd>
+                  {% endif %}
+              </div>
+              {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] == "true")%}
               <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                       03 July 2021
@@ -66,8 +109,12 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   </dd>
                   {% endif %}
               </div>
+              {% endif %}
+
 
               </dl>
+
+
 
                   <h2 class="govuk-heading-m">Claim paid</h2>
                   <p>Your claim has been approved and a payment sent to the company or person who needs to be paid.<p>

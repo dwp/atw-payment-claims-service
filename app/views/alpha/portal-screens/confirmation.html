@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="../portal" method="post" class="form">
+          <div class="govuk-panel govuk-panel--confirmation">
+              <h1 class="govuk-panel__title">Claim sent</h1>
+              <div class="govuk-panel__body">
+                  Your claim reference number is<br><strong>TTW125421</strong>
+              </div>
+          </div>
+
+          <p>You should give us this claim reference number if you contact us about your claim.</p>
+
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+
+            <p>Your amended claim has been sent. We’ll contact your workplace contact to let them know that you’ve made the changes to the initial claim.
+              They’ll need to review and approve your claim before we can process it. </p>
+
+            <p>We’ll let you know whether they approve your claim using the contact method you chose.
+              If your claim is approved, we’ll process your claim and pay the money into the bank account you chose.</p>
+
+              <p>If your workplace contact does not approve your claim, we’ll contact you to let you know what to do next.</p>
+
+            <p>You’ll be able to see updates about your Access to Work grant and the progress of your claim in your account.</p>
+
+            <p>You can also <a target="_blank"
+                    href="check-your-answers-print">save and print
+                a copy of your claims submission (opens in a new tab)</a>.</p>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Return to account home
+            </button>
+        </form>
+
+    </div>
+</div>
+
+
+<p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
+    think of this service?</a> (takes 30 seconds)</p>
+{% endblock %}

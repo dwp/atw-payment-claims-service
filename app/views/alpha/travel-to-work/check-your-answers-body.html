@@ -68,10 +68,12 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+
                     <a href="transport-option-answers">
                         Change
                         <span class="govuk-visually-hidden"> what month are you claiming for?</span>
                     </a>
+
                 </dd>
                 {% endif %}
             </div>
@@ -98,10 +100,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/mileage-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+                    </a>
+                    {% else %}
                     <a href="mileage-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> miles for travel to work received</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -116,10 +125,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/mileage-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+                    </a>
+                    {% else %}
                     <a href="mileage-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> miles for travel to work received</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -146,10 +162,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/taxi-journeys-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total number of journeys</span>
+                    </a>
+                    {% else %}
                     <a href="taxi-journeys-for-day-summary">
                         Change
-                        <span class="govuk-visually-hidden"> Number of journeys taken</span>
+                        <span class="govuk-visually-hidden"> Total number of journeys</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -166,10 +189,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/taxi-journeys-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total number of journeys</span>
+                    </a>
+                    {% else %}
                     <a href="taxi-journeys-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> Total number of journeys</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -184,10 +214,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/hours-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total number of journeys</span>
+                    </a>
+                    {% else %}
                     <a href="hours-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> cost for travel to work received</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -287,10 +324,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/upload-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total number of journeys</span>
+                    </a>
+                    {% else %}
                     <a href="upload-summary">
                         Change
                         <span class="govuk-visually-hidden"> Supporting evidence</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -517,6 +561,21 @@
         {% endif %}
 
         {% if print != true %}
+
+        {%if (data['journey-type'] == "traveltowork-ammendment") %}
+
+        <form action="citizen-new-declaration" method="post" novalidate>
+
+            <input type="hidden" name="answers-checked" value="true">
+
+            <button type="submit" class="govuk-button govuk-!-display-none-print" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+        {% else %}
+
         <form action="declaration" method="post" novalidate>
 
             <input type="hidden" name="answers-checked" value="true">
@@ -526,6 +585,7 @@
             </button>
 
         </form>
+        {% endif %}
         {% endif %}
 
     </div>

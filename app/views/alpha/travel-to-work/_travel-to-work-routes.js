@@ -36,13 +36,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/travel-to-work/taxi-cost-answer', function (req, res) {
     const cost = req.session.data['cost-of-taxi']
+    const journeytype = req.session.data['journey-type']
+    const alreadyupload = req.session.data['new-payee-full-name']
+
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
     } else if (cost === '1500'){
       res.redirect(`/${urlPrefix}/travel-to-work/too-much-claimed`)
+    } else if (journeytype === 'traveltowork-ammendment' || alreadyupload){
+      res.redirect(`/${urlPrefix}/travel-to-work/upload-summary`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
+    }
+  })
+
+  router.post('/travel-to-work/change-cost-answer', function (req, res) {
+    const change = req.session.data['change-cost']
+
+    if (change === 'yes') {
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
+    } else if (change === 'no'){
+      res.redirect(`/${urlPrefix}/travel-to-work/upload-summary`)
     }
   })
 
@@ -108,13 +123,18 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // post - Add more receipts
   router.post('/travel-to-work/receipt-upload-more', function (req, res) {
     const anotherReceipt = req.session.data['add-another-receipt']
+    const journeytype = req.session.data['journey-type']
+
+
     if (anotherReceipt === 'Yes') {
       // Reset to stop pre-population of previous visit to page
       req.session.data['file-upload'] = null
 
       res.redirect(`/${urlPrefix}/travel-to-work/receipt-upload`)
-    } else if (anotherReceipt === 'No') {
+    } else if (anotherReceipt === 'No' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
+    } else if (anotherReceipt === 'No' && journeytype === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     }
   })
 
@@ -198,6 +218,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // post - Add more hours
   router.post('/travel-to-work/taxi-journeys-for-day-more', function (req, res) {
     const addAnotherDay = req.session.data['add-more-taxi-journeys']
+
     if (addAnotherDay === 'Yes') {
       // Reset to stop pre-population of previous visit to page
       req.session.data['taxi-journeys-for-day-date-day'] = null
@@ -309,11 +330,14 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-to-work/taxi-journeys-for-day-summary', function (req, res) {
     console.log(req.session.data.support)
     const addmonth = req.session.data['new-month']
+    const journeytype = req.session.data['journey-type']
 
     if (req.session.data.travel === undefined || req.session.data.travel.length == 0) {
       res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
-    } else if (addmonth === 'no') {
+    } else if (addmonth === 'no' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
+    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/travel-to-work/change-cost`)
     } else if (addmonth === 'yes') {
       res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month-repeat`)
     }

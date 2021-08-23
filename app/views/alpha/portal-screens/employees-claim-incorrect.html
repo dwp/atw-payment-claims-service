@@ -11,12 +11,12 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="incorrect-what-happens-next" method="post" class="form">
-        <h1 class="govuk-heading-l">Send the claim back to your employee to make updates</h1>
+      <form action="check-your-answers" method="post" class="form">
+        <h1 class="govuk-heading-l">Workplace contact response</h1>
 
 
 
-        <p>The claim and the reason you disagreed with the claim will be sent back to your employee for them to make updates. Once they have updated their claim it will be sent back to you for review again.</p>
+        <p>Your workplace contact has reviewed the claim and decided that it needs to be ammended before they can confirm it is correct. Please make the ammendments listed below and resubmit your claim.</p>
 
           <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
@@ -45,13 +45,8 @@ Access to Work Claiming Portal
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <p class="govuk-body">
-                      {%if (data["journey-type"]=="specialaidsandequipment") %}
-                      Equipment and adaptations
-                      {% elseif (data["journey-type"]=="supportworker") %}
-                      Support worker
-                      {% elseif (data["journey-type"]=="traveltowork") %}
                       Travel to Work
-                      {% endif %}</p>
+                      </p>
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -60,7 +55,7 @@ Access to Work Claiming Portal
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <p class="govuk-body">
-                      {{data['claim-incorrect']}}</p>
+                      One of the days you have claimed travel for work was a Saturday and you don't work on saturdays.</p>
                   </dd>
                 </div>
               </dl>
@@ -69,7 +64,7 @@ Access to Work Claiming Portal
 
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
-                I agree – send claim back
+                Continue
             </button>
 
         </form>

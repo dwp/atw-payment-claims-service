@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="confirmation" method="post" class="form">
+
+            <h1 class="govuk-heading-l">Declaration</h1>
+
+            <p>By sending this claim, you agree that the information you've given is complete and correct. You are also agreeing that you have made the correct and accurate changes detailed by your workplace contact.
+              If you deliberately give wrong or incomplete information, or do not report any changes, you may:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>be prosecuted</li>
+                <li>need to pay a financial penalty</li>
+                <li>need to pay back any money you're overpaid if you're asked to</li>
+            </ul>
+
+
+
+            <input type="hidden" name="citizen-delared" value="true">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                I agree – send my claim
+            </button>
+
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
