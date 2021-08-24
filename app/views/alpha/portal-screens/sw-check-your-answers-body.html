@@ -1,0 +1,207 @@
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {% if print != true %}
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+        {% endif %}
+        <h2 class="govuk-heading-m">Claim information</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Type of claim
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  Support worker
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="special-aids-and-equipment">
+                      Change
+                      <span class="govuk-visually-hidden"> Type of claim</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Hours of support received
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  01 Febuary 2021 -
+                  7.5 Hours <br><br>
+
+                  02 Febuary 2021 -
+                  7.5 Hours <br><br>
+
+                  03 Febuary 2021 -
+                  6 Hours  <br><br>
+
+                  04 Febuary 2021 -
+                  5 Hours  <br><br>
+
+                  05 Febuary 2021 -
+                  7.5 Hours  <br><br>
+
+                  08 Febuary 2021 -
+                  5 Hours  <br><br>
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="hours-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Hours of support received</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total support received
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    38.5 hours <br>
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="hours-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total claimed</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total cost of the support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £1160
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="cost-sharing">
+                        Change
+                        <span class="govuk-visually-hidden"> Are you sharing the cost of your equipment or adaptation?</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {% if data['uploads'].length === 1 %}
+                    Receipt or invoice uploaded
+                    {% else %}
+                    Receipts or invoices uploaded
+                    {% endif %}
+                </dt>
+
+                <dd class="govuk-summary-list__value">
+                    <a href="@">Screen Shot 2021-02-17 at 15.33.15.png</a> </br>
+                    <a href="@">Screen Shot 2021-03-18 at 12.22.02.png</a>
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="upload-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Supporting evidence</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+        </dl>
+
+        <h2 class="govuk-heading-m">Payee details</h2>
+        <p>details provided during claim submission for who needs to be paid back</p>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    John Doe
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Payee email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    john.doe@deafactioncharity.com
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="banking-details">
+                        Change
+                        <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+        </dl>
+
+        <h2 class="govuk-heading-m">Counter signatory details</h2>
+        <p>This is the person or organisation who we'll contact to confirm you received the support you are claiming for.</p>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    Martin Bloom
+
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Email
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    martin.bloom@deafactioncharity.com
+
+                </dd>
+            </div>
+        </dl>
+
+
+{% if print != true %}
+<form action="declaration" method="post" novalidate>
+
+    <input type="hidden" name="answers-checked" value="true">
+
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+    </button>
+
+</form>
+{% endif %}
+
+</div>
+</div>
+{% endblock %}

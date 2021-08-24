@@ -69,13 +69,16 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/support-worker/hours-for-day-summary', function (req, res) {
     console.log(req.session.data.support)
     const month = req.session.data['new-month']
+    const journeytype = req.session.data['journey-type']
 
     if (req.session.data.support === undefined || req.session.data.support.length == 0) {
       res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
     } else if (month === 'yes') {
       res.redirect(`/${urlPrefix}/support-worker/claiming-for-month-repeat`)
-    } else {
+    } else if (month === 'no' && journeytype === 'supportworker'){
       res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
+    } else if (month === 'no' && journeytype === 'traveltowork-ammendment'){
+      res.redirect(`/${urlPrefix}/support-worker/change-cost`)
     }
   })
 
@@ -209,24 +212,53 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // post - Confirm work hours
   router.post('/support-worker/cost-of-support-answer', function (req, res) {
     const cost = req.session.data['cost-of-support']
+    const journeytype = req.session.data['journey-type']
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/support-worker/employer-contribution`)
-    } else {
+    } else if (journeytype === 'supportworker'){
       res.redirect(`/${urlPrefix}/support-worker/providing-evidence`)
+    } else if (journeytype === 'traveltowork-ammendment'){
+      res.redirect(`/${urlPrefix}/support-worker/upload-summary`)
+    }
+  })
+
+  router.post('/support-worker/change-cost-answer', function (req, res) {
+    const change = req.session.data['change-cost']
+
+    if (change === 'yes') {
+      res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
+    } else if (change === 'no'){
+      res.redirect(`/${urlPrefix}/travel-to-work/upload-summary`)
     }
   })
 
   // post - Add more receipts
   router.post('/support-worker/receipt-upload-more', function (req, res) {
     const anotherReceipt = req.session.data['add-another-receipt']
+    const journeytype = req.session.data['journey-type']
+
     if (anotherReceipt === 'Yes') {
       // Reset to stop pre-population of previous visit to page
       req.session.data['file-upload'] = null
 
       res.redirect(`/${urlPrefix}/support-worker/receipt-upload`)
-    } else {
+    } else if (journeytype === 'supportworker') {
       res.redirect(`/${urlPrefix}/support-worker/guidance-payee-details`)
+    } else if (journeytype === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     }
   })
+
+  // workplace conact answer
+
+  router.post('/support-worker/contact-answers', function (req, res) {
+    const journeytype = req.session.data['journey-type']
+
+    if (journeytype === 'supportworker') {
+    res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+  } else if (journeytype === 'traveltowork-ammendment') {
+    res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+  }
+})
 }

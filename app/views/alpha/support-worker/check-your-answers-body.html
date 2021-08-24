@@ -29,9 +29,15 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        {% if print != true %}
-        <h1 class="govuk-heading-xl">Check your answers</h1>
-        {% endif %}
+      {%if (data['journey-type'] == "traveltowork-ammendment") %}
+      {% if print != true %}
+      <h1 class="govuk-heading-xl govuk-!-display-none-print">Amend your claim answers</h1>
+      {% endif %}
+      {% else %}
+      {% if print != true %}
+      <h1 class="govuk-heading-xl govuk-!-display-none-print">Check your answers</h1>
+      {% endif %}
+      {% endif %}
         <h2 class="govuk-heading-m">Claim information</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -57,10 +63,18 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="hours-for-day-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> Hours of support received</span>
-                    </a>
+
+                    {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                      <a href="../support-worker/hours-for-day-summary">
+                          Change
+                          <span class="govuk-visually-hidden"> Hours of support received</span>
+                      </a>
+                      {% else %}
+                      <a href="hours-for-day-summary">
+                          Change
+                          <span class="govuk-visually-hidden"> Hours of support received</span>
+                      </a>
+                      {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -75,10 +89,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../support-worker/hours-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Hours of support received</span>
+                    </a>
+                    {% else %}
                     <a href="hours-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> Total claimed</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -92,10 +113,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="cost-sharing">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../support-worker/cost-of-support">
+                        Change
+                        <span class="govuk-visually-hidden"> Hours of support received</span>
+                    </a>
+                    {% else %}
+                    <a href="cost-of-support">
                         Change
                         <span class="govuk-visually-hidden"> Are you sharing the cost of your equipment or adaptation?</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -338,8 +366,7 @@
 
 
 
-        {% if data["citizens-urn"] %}
-        {% else %}
+
         <h2 class="govuk-heading-m">Counter signatory details</h2>
         <p>This is the person or organisation who we'll contact to confirm you received the support you are claiming for.</p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -353,10 +380,17 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../support-worker/counter-signatory-name">
+                        Change
+                        <span class="govuk-visually-hidden"> name of counter signatory</span>
+                    </a>
+                    {% else %}
                     <a href="counter-signatory-name">
                         Change
                         <span class="govuk-visually-hidden"> name of counter signatory</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
@@ -370,26 +404,47 @@
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../support-worker/counter-signatory-name">
+                        Change
+                        <span class="govuk-visually-hidden"> name of counter signatory</span>
+                    </a>
+                    {% else %}
                     <a href="counter-signatory-name">
                         Change
                         <span class="govuk-visually-hidden"> email of counter signatory</span>
                     </a>
+                    {% endif %}
                 </dd>
                 {% endif %}
             </div>
         </dl>
-        {% endif %}
+
 
         {% if print != true %}
+        {%if (data['journey-type'] == "traveltowork-ammendment") %}
+
+        <form action="citizen-new-declaration" method="post" novalidate>
+
+            <input type="hidden" name="answers-checked-sw" value="true">
+
+            <button type="submit" class="govuk-button govuk-!-display-none-print" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+        {% else %}
         <form action="declaration" method="post" novalidate>
 
-            <input type="hidden" name="answers-checked" value="true">
+            <input type="hidden" name="answers-checked-sw" value="true">
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
             </button>
 
         </form>
+        {% endif %}
         {% endif %}
     </div>
 </div>

@@ -413,11 +413,29 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/travel-to-work/employer-contribution-answer', function (req, res) {
     const transport = req.session.data['transport-option']
+    const journeytype = req.session.data['journey-type']
 
-    if (transport === 'taxi') {
+    if (transport === 'taxi' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
-    } else if (transport === 'lift') {
+    } else if (transport === 'taxi' && journeytype === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (transport === 'lift' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
+    } else if (transport === 'lift' && journeytype === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     }
   })
+
+  // workplace conact answer
+
+  router.post('/travel-to-work/workplace-contact-answer', function (req, res) {
+    const journeytype = req.session.data['journey-type']
+
+    if (journeytype === 'traveltowork') {
+    res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+  } else if (journeytype === 'traveltowork-ammendment') {
+    res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+  }
+})
+
 }

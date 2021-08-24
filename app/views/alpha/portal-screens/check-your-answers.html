@@ -9,6 +9,9 @@ Check your answers
 
 {% set print = false %}
 
-
+{% if (data["answers-checked-sw"]) %}
+{% include "alpha/support-worker/check-your-answers-body.html" %}
+{% else %}
 {% include "alpha/travel-to-work/check-your-answers-body.html" %}
+{% endif %}
 {% endblock %}

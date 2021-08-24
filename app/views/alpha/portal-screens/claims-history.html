@@ -55,7 +55,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       23 August 2021
                   </dt>
                   <dd class="govuk-summary-list__value">
+                    {% if (data["answers-checked-sw"]) %}
+                    Support worker
+                    {% else %}
                       Travel for work
+                      {% endif %}
                   </dd>
                   {% if print != true %}
                   <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -81,14 +85,25 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       23 August 2021
                   </dt>
                   <dd class="govuk-summary-list__value">
+                    {% if (data["answers-checked-sw"]) %}
+                    Support worker
+                    {% else %}
                       Travel for work
+                      {% endif %}
                   </dd>
                   {% if print != true %}
                   <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    {% if (data["answers-checked-sw"]) %}
+                      <a href="sw-check-your-answers-print">
+                          View
+                          <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
+                      </a>
+                      {% else %}
                       <a href="ttw-check-your-answers-print">
                           View
                           <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
                       </a>
+                      {% endif %}
                   </dd>
                   {% endif %}
               </div>
@@ -98,14 +113,25 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       03 July 2021
                   </dt>
                   <dd class="govuk-summary-list__value">
+                    {% if (data["answers-checked-sw"]) %}
+                    Support worker
+                    {% else %}
                       Travel for work
+                      {% endif %}
                   </dd>
                   {% if print != true %}
                   <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    {% if (data["answers-checked-sw"]) %}
+                      <a href="sw-check-your-answers-print">
+                          View
+                          <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
+                      </a>
+                      {% else %}
                       <a href="ttw-check-your-answers-print">
                           View
                           <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
                       </a>
+                      {% endif %}
                   </dd>
                   {% endif %}
               </div>
@@ -142,14 +168,25 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             06 March 2021
                         </dt>
                         <dd class="govuk-summary-list__value">
+                          {% if (data["answers-checked-sw"]) %}
+                          Support worker
+                          {% else %}
                             Travel for work
+                            {% endif %}
                         </dd>
                         {% if print != true %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                          {% if (data["answers-checked-sw"]) %}
+                            <a href="sw-check-your-answers-print">
+                                View
+                                <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
+                            </a>
+                            {% else %}
                             <a href="ttw-check-your-answers-print">
                                 View
-                                <span class="govuk-visually-hidden"> Travel for work - 06/03/2021</span>
+                                <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
                             </a>
+                            {% endif %}
                         </dd>
                         {% endif %}
                     </div>
@@ -158,14 +195,25 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             04 April 2021
                         </dt>
                         <dd class="govuk-summary-list__value">
+                          {% if (data["answers-checked-sw"]) %}
+                          Support worker
+                          {% else %}
                             Travel for work
+                            {% endif %}
                         </dd>
                         {% if print != true %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                          {% if (data["answers-checked-sw"]) %}
+                            <a href="sw-check-your-answers-print">
+                                View
+                                <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
+                            </a>
+                            {% else %}
                             <a href="ttw-check-your-answers-print">
                                 View
-                                <span class="govuk-visually-hidden"> Travel for work - 06/03/2021</span>
+                                <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
                             </a>
+                            {% endif %}
                         </dd>
                         {% endif %}
                     </div>
@@ -185,7 +233,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                               06 June 2021
                           </dt>
                           <dd class="govuk-summary-list__value">
-                              Travel for work
+                              Equipment and adaptations
                           </dd>
                           {% if print != true %}
                           <dd class="govuk-summary-list__actions govuk-!-display-none-print">

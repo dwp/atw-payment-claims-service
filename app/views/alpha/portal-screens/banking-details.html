@@ -11,7 +11,11 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+        {%if (data['journey-type'] == "traveltowork-ammendment") %}
+        <form action="check-your-answers" method="post" class="form">
+        {% else %}
         <form action="new-payee-check-your-answers" method="post" class="form">
+        {% endif %}
 
             <h1 class="govuk-heading-l">What’s {{data["new-payee-full-name"]}}’s bank details?</h1>
 

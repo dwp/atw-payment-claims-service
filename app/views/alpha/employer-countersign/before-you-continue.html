@@ -20,7 +20,7 @@ Access to Work Claiming Portal
 
         <p>Your employee has completed an Access to Work claim, before payment is made, you must review and confirm their claim. </p>
 
-        {% if (data["journey-type"]=="supportworker") %}
+        {% if (data["answers-checked-sw"]) %}
 
         <h3 class="govuk-body">You will need:</h3>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
@@ -31,7 +31,7 @@ Access to Work Claiming Portal
             <li>to review their claim and check the invoices or receipts they uploaded
             </li>
         </ul>
-            {% elseif (data["journey-type"]=="traveltowork") %}
+            {% else %}
 
             <h3 class="govuk-body">You will need:</h3>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">

@@ -48,11 +48,9 @@ Access to Work Claiming Portal
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <p class="govuk-body">
-                      {%if (data["journey-type"]=="specialaidsandequipment") %}
-                      Equipment and adaptations
-                      {% elseif (data["journey-type"]=="supportworker") %}
+                      {% if (data["answers-checked-sw"]) %}
                       Support worker
-                      {% elseif (data["journey-type"]=="traveltowork") %}
+                      {% else %}
                       Travel to Work
                       {% endif %}</p>
                   </dd>

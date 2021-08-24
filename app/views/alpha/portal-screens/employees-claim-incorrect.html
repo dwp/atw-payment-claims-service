@@ -36,7 +36,13 @@ Access to Work Claiming Portal
                     Unique Reference Number
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    <p class="govuk-body">SW112200483</p>
+                    <p class="govuk-body">
+                      {% if (data["answers-checked-sw"]) %}
+                      SW112200483
+                      {% else %}
+                      TTW112200483
+                      {% endif %}
+                    </p>
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -45,7 +51,11 @@ Access to Work Claiming Portal
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <p class="govuk-body">
-                      Travel to Work
+                      {% if (data["answers-checked-sw"]) %}
+                      Support worker
+                      {% else %}
+                      Travel to work
+                      {% endif %}
                       </p>
                   </dd>
                 </div>
@@ -55,7 +65,12 @@ Access to Work Claiming Portal
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <p class="govuk-body">
-                      One of the days you have claimed travel for work was a Saturday and you don't work on saturdays.</p>
+                      {% if (data["answers-checked-sw"]) %}
+                      One of the days you have claimed you had support for was a saturday and you don't work on saturdays.
+                      {% else %}
+                      One of the days you have claimed travel for work was a Saturday and you don't work on saturdays.
+                      {% endif %}</p>
+
                   </dd>
                 </div>
               </dl>

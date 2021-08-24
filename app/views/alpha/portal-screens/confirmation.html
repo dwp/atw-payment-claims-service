@@ -22,7 +22,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           <div class="govuk-panel govuk-panel--confirmation">
               <h1 class="govuk-panel__title">Claim sent</h1>
               <div class="govuk-panel__body">
+                {% if data ['answers-checked-sw'] %}
+                  Your claim reference number is<br><strong>SW125421</strong>
+                  {% else %}
                   Your claim reference number is<br><strong>TTW125421</strong>
+                  {% endif %}
               </div>
           </div>
 
