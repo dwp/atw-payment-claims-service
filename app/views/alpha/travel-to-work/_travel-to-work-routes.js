@@ -438,4 +438,14 @@ module.exports = function (folderForViews, urlPrefix, router) {
   }
 })
 
+router.post('/travel-to-work/employment-status-answer', function (req, res) {
+  const status = req.session.data['employment-status']
+
+  if (status === 'Employed') {
+  res.redirect(`/${urlPrefix}/travel-to-work/counter-signatory-name`)
+} else if (status === 'Self-employed') {
+  res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+}
+})
+
 }
