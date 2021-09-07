@@ -31,7 +31,8 @@
 
       {%if (data['journey-type'] == "traveltowork-ammendment") %}
       {% if print != true %}
-      <h1 class="govuk-heading-xl govuk-!-display-none-print">Amend your claim answers</h1>
+      <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim </h1>
+      <p>This is the information you gave us in your claim. You should make the changes requested by your workplace contact and then send us your claim again.</p>
       {% endif %}
       {% else %}
       {% if print != true %}
@@ -191,8 +192,8 @@
         </dl>
 
         {% if print != true %}
-        <h2 class="govuk-heading-m">New payee details</h2>
-        <p>New details of the person or company who needs to be paid back.</p>
+        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
@@ -367,7 +368,7 @@
 
 
 
-        <h2 class="govuk-heading-m">Counter signatory details</h2>
+        <h2 class="govuk-heading-m">Details of the person who can confirm your support costs</h2>
         <p>This is the person or organisation who we'll contact to confirm you received the support you are claiming for.</p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">

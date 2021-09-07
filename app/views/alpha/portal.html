@@ -40,8 +40,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
           {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] !== "true")%}
           <div class="govuk-inset-text">
-            You have <b>1</b> claim that has not been accepted by your workplace contact. View your claim to make ammendments in <a href="./portal-screens/claims-history"> claims history
+            You have <b>1</b> claim that has not been approved by your workplace contact. They have requested that you make some changes to your claim before they can approve it. You can <a href="./portal-screens/claims-history"> make changes to your claim in claims history.</a>
           </div>
+
+
+
           {% endif %}
 
         </div>
@@ -146,7 +149,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                                     Send your claim by post
                                 </a>
                             </h2>
-                            <p class="govuk-body">Find out how to send a claim by post if you cannot submit a claim online.</p>
+                            <p class="govuk-body">Find out how to send a claim by post if you cannot send a claim online.</p>
                         </div>
                     </div>
                   </div>

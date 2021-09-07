@@ -216,6 +216,8 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/support-worker/employer-contribution`)
+    } else if (cost === '1500') {
+      res.redirect(`/${urlPrefix}/support-worker/too-much-claimed`)
     } else if (journeytype === 'supportworker'){
       res.redirect(`/${urlPrefix}/support-worker/providing-evidence`)
     } else if (journeytype === 'traveltowork-ammendment'){
