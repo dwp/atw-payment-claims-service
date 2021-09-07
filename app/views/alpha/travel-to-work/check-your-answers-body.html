@@ -530,7 +530,33 @@
         {% if data["employment-status"] =='Employed'%}
 
         <h2 class="govuk-heading-m">Workplace contact details</h2>
+
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Employment status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["employment-status"]}}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                  <a href="../travel-to-work/employement-status">
+                      Change
+                      <span class="govuk-visually-hidden"> what is your employment status?</span>
+                  </a>
+                  {% else %}
+                  <a href="employement-status">
+                      Change
+                      <span class="govuk-visually-hidden"> what is your employment status?</span>
+                  </a>
+                  {% endif %}
+              </dd>
+              {% endif %}
+          </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Name
@@ -580,7 +606,39 @@
                 {% endif %}
             </div>
         </dl>
-        {% endif %}
+        {% else %}
+
+        <h2 class="govuk-heading-m">Type of employment</h2>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Employment status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["employment-status"]}}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                  <a href="../travel-to-work/employement-status">
+                      Change
+                      <span class="govuk-visually-hidden"> what is your employment status?</span>
+                  </a>
+                  {% else %}
+                  <a href="employement-status">
+                      Change
+                      <span class="govuk-visually-hidden"> what is your employment status?</span>
+                  </a>
+                  {% endif %}
+              </dd>
+              {% endif %}
+          </div>
+          </dl>
+          {% endif %}
+
 
         {% if print != true %}
 
