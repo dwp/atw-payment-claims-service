@@ -4,11 +4,21 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
 {% block content %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="../portal" method="post" class="form">
+
             <div class="govuk-panel govuk-panel--confirmation">
                 <h1 class="govuk-panel__title">Claim review complete</h1>
                 <div class="govuk-panel__body">
@@ -16,29 +26,27 @@ Access to Work Claiming Portal
                 </div>
             </div>
 
+            {% if (data["answers-checked-sw"]) %}
+            <p>You should give us this claim reference number if you contact us about your claim. You can <a target="_blank"
+                    href="../support-worker/check-your-answers-print">save and print
+                a copy of your claims submission (opens in a new tab)</a>.</p>
+            {% else %}
+            <p>You should give us this claim reference number if you contact us about your claim. You can <a target="_blank"
+                    href="../travel-to-work/check-your-answers-print">save and print
+                a copy of your claims submission (opens in a new tab)</a>.</p>
+              {% endif %}
 
             <h2 class="govuk-heading-m">What happens next</h2>
 
-            <p>Your employee’s claim has now been sent to Access to Work and they have been notified. Access to Work will now process the claim, if they need more information, they will contact your employee.</p>
+            <p>Your employee’s claim has been approved. We’ll process the claim and pay the money into the chosen bank account.</p>
 
-            <p>Once the claim is processed and approved payment will be sent. You will be able to see updates to your employees claim in your Access to Work portal area.</p>
-
-
-            {% if (data["journey-type"]=="supportworker") %}
-            <p>You can also <a target="_blank"
-                    href="../support-worker/check-your-answers-print">view
-                a copy of your claims submission (opens in a new tab)</a>.</p>
-                {% elseif (data["journey-type"]=="traveltowork") %}
-                <p>You can also <a target="_blank"
-                        href="../travel-to-work/check-your-answers-print">view
-                    a copy of your claims submission (opens in a new tab)</a>.</p>
-                {% endif %}
+            <p>Your employee will be able to see the progress of their Access to Work claim in their account.</p>
 
 
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Finish
-            </button>
-        </form>
+
+
+            <p> <a href="../../index">Sign out</a></p>
+
 
     </div>
 </div>

@@ -23,7 +23,11 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Support worker claims submission</h1>
 
-<p>These are the details of the claim you submitted. You can also save and print a copy of your claim submission.</p>
+        {% if data['employer-declaration'] =="true" %}
+        <p>These are the details of the claim you countersigned on behalf of Joe Bloggs. You can also save and print a copy of your claim submission.</p>
+        {% else %}
+        <p>These are the details of the claim you submitted. You can also save and print a copy of your claim submission.</p>
+        {% endif %}
 
 <input type="button" class="govuk-button govuk-!-display-none-print" data-module="govuk-button" value="Print this page" onClick="window.print()">
 
@@ -53,6 +57,25 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
         </dd>
         {% endif %}
     </div>
+    {% if data['employer-declaration'] =="true" %}
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Workplace contact declaration
+        </dt>
+        <dd class="govuk-summary-list__value">
+            Yes
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Citizen declaration</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+    {% endif %}
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
             Claim reference number

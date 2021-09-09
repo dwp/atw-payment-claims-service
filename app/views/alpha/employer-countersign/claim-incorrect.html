@@ -17,17 +17,19 @@ Access to Work Claiming Portal
             <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
             <div class="govuk-form-group">
               <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="with-hint">
-                  Tell us why you disagree with the claim
+                  Tell us why you cannot approve this claim
                 </label>
               </h1>
-              {% if (data["journey-type"]=="supportworker") %}
+              {% if (data["answers-checked-sw"]) %}
               <div id="claim-incorrect-hint" class="govuk-body">
-                  For example, there’s too many days of support recorded or not enough support hours
+                  For example, your employee could be claiming for too many or too few days of support.
               </div>
-              {% elseif (data["journey-type"]=="traveltowork") %}
+              <p>You need to make sure you provide enough detail so that your employee understands what the problem is and what needs to be updated. </p>
+              {% else %}
               <div id="job-description-hint" class="govuk-body">
-                  For example, there is a travel to work date missing or too many journeys for the month
+                  For example, your employee could be claiming for too many or too few days of travel, or they might not have been in work for one of the days they are claiming for
               </div>
+              <p>You need to make sure you provide enough detail so that your employee understands what the problem is and what needs to be updated. </p>
               {% endif %}
               <textarea class="govuk-textarea govuk-js-character-count" id="claim-incorrect" name="claim-incorrect" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
             </div>

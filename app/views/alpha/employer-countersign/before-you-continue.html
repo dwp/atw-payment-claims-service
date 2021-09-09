@@ -15,37 +15,34 @@ Access to Work Claiming Portal
 
 
 
-        <span class="govuk-caption-xl">Before you continue</span>
-        <h1 class="govuk-heading-xl">What you will need to review and confirm a claim </h1>
+        <span class="govuk-caption-l">Before you continue</span>
+        <h1 class="govuk-heading-l">What you’ll need to review a claim </h1>
 
-        <p>Your employee has completed an Access to Work claim, before payment is made, you must review and confirm their claim. </p>
+        <p>Your employee has made a claim from their Access to Work grant. You need review their claim before we can make a payment.</p>
 
         {% if (data["answers-checked-sw"]) %}
 
-        <h3 class="govuk-body">You will need:</h3>
+        <h3 class="govuk-body">You’ll need to:</h3>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-            <li>to know their claim reference number, this will have been sent to you in an email
+
+            <li>confirm the dates your employee received support
             </li>
-            <li>to know the dates your employee received support and for how long
-            </li>
-            <li>to review their claim and check the invoices or receipts they uploaded
+            <li>confirm how long your employee received support for on each date
             </li>
         </ul>
             {% else %}
 
             <h3 class="govuk-body">You will need:</h3>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-                <li>to know their claim reference number, this will have been sent to you in an email
+
+                <li>confirm that your employee was in work on the days they have claimed travel for
                 </li>
-                <li>to know the dates your employee travelled to work
-                </li>
-                <li>to review their claim and check the invoices or receipts if they travelled by taxi
-                </li>
+                
             </ul>
             {% endif %}
 
 
-        <form action="do-you-know-claim-number" method="post" class="form">
+        <form action="company-name" method="post" class="form">
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue

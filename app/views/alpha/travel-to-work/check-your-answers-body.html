@@ -92,7 +92,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Number of journeys taken
+                    Days of journeys taken
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['milage'] | sortBy('day') %}
@@ -154,7 +154,7 @@
             {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Number of journeys taken
+                    Days of journeys taken
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for item in data['travel'] | sortBy('day') %}
@@ -212,6 +212,8 @@
                 {% endif %}
             </div>
 
+            {% if data['one-time-code'] %}
+            {% else %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Total cost of the taxi journeys
@@ -276,22 +278,7 @@
 
             {% elseif data["transport-option"]=="lift" %}
 
-            <!-- <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Employer contribution
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £82.40
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="employer-contribution.html">
-                        Change
-                        <span class="govuk-visually-hidden"> Employer contribution</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div> -->
+
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -311,8 +298,11 @@
             </div>
 
             {% endif %}
+            {% endif %}
+            <!-- // end of the if statement to stop showing information in counter signature journery -->
 
-
+            {% if data['one-time-code'] %}
+            {% else %}
             {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -347,7 +337,10 @@
                 {% endif %}
             </div>
             {% endif %}
+            {% endif %}
         </dl>
+
+
 
         {% if print != true %}
         <h2 class="govuk-heading-m">New payee details</h2>
@@ -533,6 +526,8 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+          {% if data['one-time-code'] %}
+          {% else %}
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   Employment status
@@ -557,6 +552,7 @@
               </dd>
               {% endif %}
           </div>
+          {% endif %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Name

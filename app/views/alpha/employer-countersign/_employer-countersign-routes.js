@@ -25,7 +25,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const correctclaim = req.session.data['correct-claim']
 
     if (correctclaim === 'Yes') {
-      res.redirect(`/${urlPrefix}/employer-countersign/company-name`)
+      res.redirect(`/${urlPrefix}/employer-countersign/before-you-continue`)
     } else if (correctclaim === 'No') {
       res.redirect(`/${urlPrefix}/employer-countersign/view-wrong-claim`)
     }

@@ -46,7 +46,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Hours of support received
+                    Days support was received
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
@@ -105,6 +105,8 @@
                 {% endif %}
             </div>
 
+            {% if data['one-time-code'] %}
+            {% else %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Total cost of the support
@@ -128,6 +130,7 @@
                 </dd>
                 {% endif %}
             </div>
+
 
             {%if (data['employer-contributing']=="Yes") %}
             <div class="govuk-summary-list__row">
@@ -164,6 +167,10 @@
                 {% endif %}
             </div>
             {% endif %}
+            {% endif %}
+
+            {% if data['one-time-code'] %}
+            {% else %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   {% if data['uploads'].length === 1 %}
@@ -189,6 +196,7 @@
                 </dd>
                 {% endif %}
             </div>
+            {% endif %}
         </dl>
 
         {% if print != true %}
@@ -367,7 +375,8 @@
 
 
 
-
+        {% if data['one-time-code'] %}
+        {% else %}
         <h2 class="govuk-heading-m">Details of the person who can confirm your support costs</h2>
         <p>This is the person or organisation who we'll contact to confirm you received the support you are claiming for.</p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -420,7 +429,7 @@
                 {% endif %}
             </div>
         </dl>
-
+        {% endif %}
 
         {% if print != true %}
         {%if (data['journey-type'] == "traveltowork-ammendment") %}

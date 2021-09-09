@@ -4,7 +4,16 @@
 Access to Work Claiming Portal
 {% endblock %}
 
-
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
 {% block content %}
 
 
@@ -15,20 +24,20 @@ Access to Work Claiming Portal
 
 
 
-        <span class="govuk-caption-xl">Incorrect claim</span>
+
         <h1 class="govuk-heading-xl">What happens next</h1>
 
 
 
-        <p>Your employee’s claim has now been sent back to them to review why you disagreed with their claim. Once they have made changes, the claim will be sent back to you for review.</p>
-        <p>Once you have reviewed and confirmed the updated claim it will be sent to Access to Work for processing.</p>
-        <p>Once the claim is processed and approved payment will be sent. You will be able to see updates to your employee's claim in your Access to Work portal area.<p>
+        <p>Your employee’s claim has been sent back to them. Your employee can review why you did not approve their claim and make changes to their claim. Once updated, we’ll send their claim back to you for review.</p>
+        <p>You’ll need to review their claim again. If you approve the updated claim, we’ll process the claim and pay the money into the chosen bank account.</p>
+
 
 
         <form action="../../index" method="post" class="form">
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
-                finish and log out
+                Finish and sign out
             </button>
 
         </form>

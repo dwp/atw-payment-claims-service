@@ -11,13 +11,23 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-xl">Joe Bloggs Support Worker claim</h1>
-        <p>You must check the information submitted by your employee. Once you have reviewed their claim you can agree or disagree.</p>
+{% if (data["answers-checked-sw"]) %}
+        <h1 class="govuk-heading-l">Joe Bloggs Support Worker claim</h1>
+
+        <p>You need to check the days Joe Bloggs is claiming support for and the amount of hours they are claiming for on each day.</p>
+
+        <p>We’ll then ask you to approve your employee’s claim or tell us why you disagree with their claim.</p>
+        {% else %}
+        <h1 class="govuk-heading-l">Joe Bloggs Travel for work claim</h1>
+
+        <p>You must check the days Joe Bloggs is claiming travel to work for and confirm whether they were in work on that day. Once you have reviewed their claim you can agree or disagree.</p>
+
+        {% endif %}
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
         <h2 class="govuk-heading-m">Employee information</h2>
-        <p>Details relating to Joe Bloggs.</p>
+
 
                   <dl class="govuk-summary-list">
                   <div class="govuk-summary-list__row">
@@ -28,37 +38,22 @@ Access to Work Claiming Portal
                       Joe Bloggs
                     </dd>
                   </div>
-                  <!-- <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Date of birth
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      5 January 1978
-                    </dd>
-                  </div> -->
-                  <!-- <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      Contact information
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      72 Guild Street<br>London<br>SE23 6FH
-                    </dd>
-                  </div> -->
+
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Contact details
+                      Claim reference number
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      <p class="govuk-body">07700 900457</p>
-                      <p class="govuk-body">joe.bloggs@your-workplace.com</p>
+                      <p class="govuk-body">{{data['citizens-urn']}}</p>
+
                     </dd>
                   </div>
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      Unique Reference Number
+                      Citizen declaration
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      <p class="govuk-body">{{data['citizens-urn']}}</p>
+                      <p class="govuk-body">Yes</p>
 
                     </dd>
                   </div>
@@ -79,29 +74,7 @@ Access to Work Claiming Portal
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-two-thirds">
 
-                      <h2 class="govuk-heading-m">Named contact details</h2>
-                      <dl class="govuk-summary-list ">
-                          <div class="govuk-summary-list__row">
-                              <dt class="govuk-summary-list__key">
-                                  Name
-                              </dt>
-                              <dd class="govuk-summary-list__value">
-                                  {{data["counter-signatory-full-name"]}}
 
-                              </dd>
-
-                          </div>
-                          <div class="govuk-summary-list__row">
-                              <dt class="govuk-summary-list__key">
-                                  Email
-                              </dt>
-                              <dd class="govuk-summary-list__value">
-                                  {{data["counter-signatory-email"]}}
-
-                              </dd>
-                          </div>
-                      </dl>
-                      <br>
 
 
 
@@ -113,7 +86,7 @@ Access to Work Claiming Portal
                   <fieldset class="govuk-fieldset" aria-describedby="employer-agree-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                       <h1 class="govuk-fieldset__heading">
-                        Do you agree with claim information?
+                        Do you agree with this claim information?
                       </h1>
                     </legend>
 

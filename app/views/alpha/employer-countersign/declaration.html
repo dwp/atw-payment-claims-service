@@ -14,36 +14,34 @@ Access to Work Claiming Portal
 
             <h1 class="govuk-heading-xl">Declaration</h1>
 
-            {% if (data["journey-type"]=="supportworker") %}
-            <p>By confirming your employee’s claim, you agree that:</p>
+            {% if (data["answers-checked-sw"]) %}
+            <p>By sending this claim, you agree that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-                <li>your employee received support on the days they are claiming for </li>
-                <li>they are claiming for support that was received in the last 9 months</li>
-                <li>Access to Work can contact you if they require more information to process the claim</li>
+                <li>your employee received support on the days they’re claiming for</li>
+                <li>your employee is only claiming for support that was received in the last 9 months</li>
+                <li>Access to Work can contact you if they require more information to process your employee’s claim</li>
             </ul>
-            {% elseif (data["journey-type"]=="traveltowork") %}
-            <p>By confirming your employee’s claim, you agree that:</p>
+            {% else %}
+            <p>By sending this claim, you agree that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-                <li>your employee travelled to work on the days they are claiming for</li>
-                <li>they are claiming for journeys that were taken in the last 9 months</li>
-                <li>Access to Work can contact you if they require more information to process the claim</li>
+                <li>your employee travelled to work on the days they’re claiming for </li>
+                <li>your employee is only claiming for journeys made in the last 9 months </li>
+                <li>Access to Work can contact you if they require more information to process your employee’s claim</li>
             </ul>
             {% endif %}
 
-            <div class="govuk-inset-text">
-
-                    By submitting this claim you are confirming that, to the best of your knowledge, the details you are
-                    providing are correct.
-
-            </div>
 
 
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                I agree - sent the claim
-            </button>
 
 
-        </form>
+                <input type="hidden" name="employer-declaration" value="true">
+
+                <button type="submit" class="govuk-button govuk-!-display-none-print" data-module="govuk-button">
+                    I agree - sent this claim
+                </button>
+
+            </form>
+
     </div>
 </div>
 

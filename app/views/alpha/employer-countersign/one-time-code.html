@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="employees-claim" method="post" class="form">
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="20">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="one-time-code">
+                        We have sent you an email with your security code
+                    </label>
+                    </h1>
+                    <p>It should take one minute to arrive.<p>
+
+                      <label class="govuk-label" for="event-name">
+                       Security code
+                     </label>
+                    <input class="govuk-input govuk-input--width-10" id="one-time-code" name="one-time-code" type="text"
+                           aria-describedby="one-time-code-hint">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+            <p><a href="no-code-received">I did not get an email</a></p>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
