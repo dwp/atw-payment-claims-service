@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="one-time-code" method="post" class="form">
+        <h1 class="govuk-heading-l">You will need to enter a security code so we can confirm you are who you say you are</h1>
+        <p class="govuk-body">
+            If you have not yet received a code then you can <a href="#">request a new code is sent out</a>.</p>
+        
+
+        <p class="govuk-body">
+            Note that it may take a few minutes for the security code to arrive in your email inbox. Remember to check your spam folder.
+        </p>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+        </button>
+
+    </form>
+    </div>
+</div>
+
+
+{% endblock %}
