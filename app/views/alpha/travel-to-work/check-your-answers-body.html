@@ -92,7 +92,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days of journeys taken
+                    Days journeys were made
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['milage'] | sortBy('day') %}
@@ -154,7 +154,7 @@
             {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days of journeys taken
+                    Days journeys were made
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% for item in data['travel'] | sortBy('day') %}
@@ -216,7 +216,7 @@
             {% else %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Total cost of the taxi journeys
+                  Total cost of journeys
                 </dt>
                 <dd class="govuk-summary-list__value">
                   £{{data["cost-of-taxi"]}}
@@ -519,6 +519,8 @@
         </dl>
         {% endif %}
 
+        {% if data['one-time-code'] %}
+        {% else %}
 
         {% if data["employment-status"] =='Employed'%}
 
@@ -526,8 +528,7 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-          {% if data['one-time-code'] %}
-          {% else %}
+
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   Employment status
@@ -552,7 +553,8 @@
               </dd>
               {% endif %}
           </div>
-          {% endif %}
+
+
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Name
@@ -632,8 +634,11 @@
               </dd>
               {% endif %}
           </div>
+
           </dl>
           {% endif %}
+          {% endif %}
+
 
 
         {% if print != true %}

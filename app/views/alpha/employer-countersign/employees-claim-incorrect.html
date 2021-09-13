@@ -11,7 +11,7 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="incorrect-what-happens-next" method="post" class="form">
+      <form action="confirmation" method="post" class="form">
         <h1 class="govuk-heading-l">Send this claim back to your employee so they can correct their claim</h1>
 
 
@@ -35,10 +35,10 @@ Access to Work Claiming Portal
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                    Unique Reference Number
+                    Claim reference number
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    <p class="govuk-body">SW112200483</p>
+                    <p class="govuk-body">{{data['citizens-urn']}}</p>
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -47,18 +47,16 @@ Access to Work Claiming Portal
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <p class="govuk-body">
-                      {%if (data["journey-type"]=="specialaidsandequipment") %}
-                      Equipment and adaptations
-                      {% elseif (data["journey-type"]=="supportworker") %}
+                      {% if (data["answers-checked-sw"]) %}
                       Support worker
-                      {% elseif (data["journey-type"]=="traveltowork") %}
-                      Travel to Work
+                      {% else %}
+                      Travel for work
                       {% endif %}</p>
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                    Reason claim is incorrect
+                    Reason you cannot approve this claim
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <p class="govuk-body">
@@ -68,7 +66,7 @@ Access to Work Claiming Portal
               </dl>
 
 
-
+            <input type="hidden" name="claim-incorrect" value="true">
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 I agree – send claim back
