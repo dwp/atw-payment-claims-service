@@ -22,9 +22,22 @@ Access to Work Claiming Portal
 </h1>
 </legend>
 
-<div class="govuk-heading-s"> 5 addresses found for {{data["new-payee-postcode"]}} </div>
+{% if data ["new-payee-postcode"] =='LS11 2AA' %}
+
+<div class="govuk-body"> <b>0 addresses found for {{data["new-payee-postcode"]}}</b> <a href="new-payee-address">Change</a> </div>
 
 
+
+
+<div class="govuk-inset-text">
+  No addresses found for LS11 2AA
+</div>
+
+<p><a href="new-payee-address-manual">I can't find {{data["new-payee-full-name"]}}'s address</a></p>
+
+{% else %}
+
+<div class="govuk-body"> <b>5 addresses found for {{data["new-payee-postcode"]}}</b> <a href="new-payee-address">Change</a> </div>
 
 <div class="govuk-form-group">
   <label class="govuk-label" for="sort">
@@ -42,11 +55,14 @@ Access to Work Claiming Portal
   </select>
 </div>
 
-</fieldset>
+
+
 
 <p><a href="new-payee-address-manual">I can't find {{data["new-payee-full-name"]}}'s address in the list</a></p>
 
+{% endif %}
 
+</fieldset>
 
 
 
