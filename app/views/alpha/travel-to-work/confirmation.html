@@ -18,7 +18,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="../portal" method="post" class="form">
+
           <div class="govuk-panel govuk-panel--confirmation">
               <h1 class="govuk-panel__title">Claim sent</h1>
               <div class="govuk-panel__body">
@@ -26,7 +26,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               </div>
           </div>
 
-          <p>You should give us this claim reference number if you contact us about your claim.</p>
+          <p>You should give us this claim reference number if you contact us about your claim. You can also <a target="_blank"
+                  href="check-your-answers-print">save and print
+              a copy of your claims submission (opens in a new tab)</a>.</p>
 
 
             <h2 class="govuk-heading-m">What happens next</h2>
@@ -41,20 +43,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
             <p>You’ll be able to see updates about your Access to Work grant and the progress of your claim in your account.</p>
 
-            <p>You can also <a target="_blank"
-                    href="check-your-answers-print">save and print
-                a copy of your claims submission (opens in a new tab)</a>.</p>
+            <p><a href="../portal">Return to account home</a></p>
 
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Return to account home
-            </button>
-        </form>
 
     </div>
 </div>
 
 
-<p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
-    think of this service?</a> (takes 30 seconds)</p>
+<p><a target="_blank" href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
+    think of this service?</a> (opens in a new tab)</p>
 {% endblock %}

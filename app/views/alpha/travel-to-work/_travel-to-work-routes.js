@@ -42,8 +42,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
-    } else if (cost === '1500'){
-      res.redirect(`/${urlPrefix}/travel-to-work/too-much-claimed`)
     } else if (journeytype === 'traveltowork-ammendment' || alreadyupload){
       res.redirect(`/${urlPrefix}/travel-to-work/upload-summary`)
     } else {

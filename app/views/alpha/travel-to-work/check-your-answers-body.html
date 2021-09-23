@@ -343,13 +343,13 @@
 
 
         {% if print != true %}
-        <h2 class="govuk-heading-m">New payee details</h2>
-        <p>New details of the person or company who needs to be paid back.</p>
+        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  New payee name
+                  Name
               </dt>
               <dd class="govuk-summary-list__value">
                   {{data["new-payee-full-name"]}}
@@ -368,7 +368,7 @@
           {%if (data["payee-email"]) %}
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  New payee email address
+                  Email address
               </dt>
               <dd class="govuk-summary-list__value">
                   {{data["payee-email"]}}
@@ -386,7 +386,7 @@
 
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  New payee address
+                  Address
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data ["new-payee-address-line-1"] %}
