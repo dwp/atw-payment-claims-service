@@ -11,7 +11,11 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% if data ["contact-confirmed"] %}
+        <form action="check-your-answers" method="post" class="form">
+      {% else %}
         <form action="banking-details" method="post" class="form">
+          {% endif %}
 
 
 

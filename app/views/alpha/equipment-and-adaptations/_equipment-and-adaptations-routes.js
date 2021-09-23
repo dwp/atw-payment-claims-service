@@ -91,9 +91,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // post - Add more hours
   router.post('/equipment-and-adaptations/equipment-summary', function (req, res) {
     console.log(req.session.data.equipment)
+    const checked = req.session.data['contact-confirmed']
 
     if (req.session.data.equipment === undefined || req.session.data.equipment.length == 0) {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/no-hours-entered`)
+    } else if (checked) {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/check-your-answers`)
     } else {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/equipement-cost`)
     }
@@ -214,11 +217,15 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // post - Add more receipts
   router.post('/equipment-and-adaptations/receipt-upload-more', function (req, res) {
     const anotherReceipt = req.session.data['add-another-receipt']
+    const checked = req.session.data['contact-confirmed']
+
     if (anotherReceipt === 'Yes') {
       // Reset to stop pre-population of previous visit to page
       req.session.data['file-upload'] = null
 
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/receipt-upload`)
+    } else if (checked) {
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/check-your-answers`)
     } else {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/guidance-payee-details`)
     }
@@ -226,11 +233,14 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/equipment-and-adaptations/cost-answer', function (req, res) {
     const cost = req.session.data['equipment-cost']
+    const checked = req.session.data['contact-confirmed']
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/employer-contribution`)
     } else if (cost === '2500') {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/too-much-claimed`)
+    } else if (checked){
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/check-your-answers`)
     } else {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/providing-evidence`)
     }

@@ -11,7 +11,11 @@ Access to Work Claiming Portal
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% if data ["contact-confirmed"] %}
+        <form action="check-your-answers" method="post" class="form">
+      {% else %}
         <form action="new-payee-address" method="post" class="form">
+          {% endif %}
 
             <h1 class="govuk-heading-l">Tell us about the person or company who needs paying back</h1>
 

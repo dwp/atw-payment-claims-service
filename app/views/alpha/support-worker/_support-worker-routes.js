@@ -70,15 +70,18 @@ module.exports = function (folderForViews, urlPrefix, router) {
     console.log(req.session.data.support)
     const month = req.session.data['new-month']
     const journeytype = req.session.data['journey-type']
+    const checked = req.session.data['contact-confirmed']
 
     if (req.session.data.support === undefined || req.session.data.support.length == 0) {
       res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
     } else if (month === 'yes') {
       res.redirect(`/${urlPrefix}/support-worker/claiming-for-month-repeat`)
-    } else if (month === 'no' && journeytype === 'supportworker'){
-      res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
-    } else if (month === 'no' && journeytype === 'traveltowork-ammendment'){
+    } else if (month === 'no' && journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/support-worker/change-cost`)
+    } else if (month === 'no' && checked) {
+      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+    } else if (month === 'no' && journeytype === 'supportworker') {
+      res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
     }
   })
 
@@ -213,13 +216,16 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/support-worker/cost-of-support-answer', function (req, res) {
     const cost = req.session.data['cost-of-support']
     const journeytype = req.session.data['journey-type']
+    const checked = req.session.data['contact-confirmed']
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/support-worker/employer-contribution`)
-    } else if (journeytype === 'supportworker'){
-      res.redirect(`/${urlPrefix}/support-worker/providing-evidence`)
     } else if (journeytype === 'traveltowork-ammendment'){
       res.redirect(`/${urlPrefix}/support-worker/upload-summary`)
+    } else if (journeytype === 'supportworker' && checked){
+      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+    } else if (journeytype === 'supportworker'){
+      res.redirect(`/${urlPrefix}/support-worker/providing-evidence`)
     }
   })
 
@@ -237,16 +243,19 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/support-worker/receipt-upload-more', function (req, res) {
     const anotherReceipt = req.session.data['add-another-receipt']
     const journeytype = req.session.data['journey-type']
+    const checked = req.session.data['contact-confirmed']
 
     if (anotherReceipt === 'Yes') {
       // Reset to stop pre-population of previous visit to page
       req.session.data['file-upload'] = null
 
       res.redirect(`/${urlPrefix}/support-worker/receipt-upload`)
-    } else if (journeytype === 'supportworker') {
-      res.redirect(`/${urlPrefix}/support-worker/guidance-payee-details`)
     } else if (journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (journeytype === 'supportworker' && checked) {
+      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+    } else if (journeytype === 'supportworker') {
+      res.redirect(`/${urlPrefix}/support-worker/guidance-payee-details`)
     }
   })
 

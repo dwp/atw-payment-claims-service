@@ -225,12 +225,12 @@
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                   {%if (data['journey-type'] == "traveltowork-ammendment") %}
-                    <a href="../travel-to-work/hours-for-day-summary">
+                    <a href="../travel-to-work/taxi-cost">
                         Change
                         <span class="govuk-visually-hidden"> Total number of journeys</span>
                     </a>
                     {% else %}
-                    <a href="hours-for-day-summary">
+                    <a href="taxi-cost">
                         Change
                         <span class="govuk-visually-hidden"> cost for travel to work received</span>
                     </a>
@@ -341,6 +341,50 @@
         </dl>
 
 
+        {%if (data['journey-type'] == "traveltowork-ammendment") %}
+        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["new-payee-full-name"]}}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-name">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+
+          {%if (data["payee-email"]) %}
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{data["payee-email"]}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="new-payee-name">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+          {% endif %}
+          </dl>
+
+          {% else %}
 
         {% if print != true %}
         <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
@@ -517,6 +561,7 @@
             </div>
             {% endif %}
         </dl>
+        {% endif %}
         {% endif %}
 
         {% if data['one-time-code'] %}
