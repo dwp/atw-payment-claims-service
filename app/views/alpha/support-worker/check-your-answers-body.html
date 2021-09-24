@@ -43,23 +43,42 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Month of support received
+              </dt>
+              <dd class="govuk-summary-list__value">
+
+                {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                  <a href="../support-worker/claiming-for-month">
+                      Change
+                      <span class="govuk-visually-hidden"> month of support received</span>
+                  </a>
+                  {% else %}
+                  <a href="claiming-for-month">
+                      Change
+                      <span class="govuk-visually-hidden"> month of support received</span>
+                  </a>
+                  {% endif %}
+              </dd>
+              {% endif %}
+          </div>
+
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days support was received
+                    Days support was received in {{data["support-month"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
                   {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} </br>{{item.support_hours}} Hours
                    {% if item.providor %}</br> {{item.providor}} {% endif %}</br></br>
                    {% endfor %}
-                   {% if data['repeatsupport-month'] %}
-                   {% for item in data['repeatsupport'] | sortBy('day') %}
-                   {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}} <br>{{item.repeatsupport_hours}} hours
-                    <br> {{item.providor}} </br> </br>
-                    {% endfor %}
-                    {% endif %}
-
 
                 </dd>
                 {% if print != true %}
@@ -79,6 +98,71 @@
                 </dd>
                 {% endif %}
             </div>
+
+            {% if data['repeatsupport-month'] %}
+
+
+
+              <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                      Month of support received
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+
+                    {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}}
+
+                  </dd>
+                  {% if print != true %}
+                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                      <a href="../support-worker/claiming-for-month-repeat">
+                          Change
+                          <span class="govuk-visually-hidden"> month of support received</span>
+                      </a>
+                      {% else %}
+                      <a href="claiming-for-month-repeat">
+                          Change
+                          <span class="govuk-visually-hidden"> month of support received</span>
+                      </a>
+                      {% endif %}
+                  </dd>
+                  {% endif %}
+              </div>
+
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Days support was received in {{data["repeatsupport-month"] | numberMonth}}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+
+                       {% for item in data['repeatsupport'] | sortBy('day') %}
+                       {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}} <br>{{item.repeatsupport_hours}} hours
+                        <br> {{item.providor}} </br> </br>
+                        {% endfor %}
+
+
+
+                    </dd>
+                    {% if print != true %}
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+
+                        {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                          <a href="../support-worker/hours-for-day-summary">
+                              Change
+                              <span class="govuk-visually-hidden"> Hours of support received</span>
+                          </a>
+                          {% else %}
+                          <a href="hours-for-day-summary">
+                              Change
+                              <span class="govuk-visually-hidden"> Hours of support received</span>
+                          </a>
+                          {% endif %}
+                    </dd>
+                    {% endif %}
+                </div>
+
+                {% endif %}
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -419,8 +503,7 @@
 
 
 
-        {% if data['one-time-code'] %}
-        {% else %}
+
         <h2 class="govuk-heading-m">Details of the person who can confirm your support costs</h2>
         <p>This is the person or organisation who we'll contact to confirm you received the support you are claiming for.</p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -473,7 +556,7 @@
                 {% endif %}
             </div>
         </dl>
-        {% endif %}
+        
 
         {% if print != true %}
         {%if (data['journey-type'] == "traveltowork-ammendment") %}
