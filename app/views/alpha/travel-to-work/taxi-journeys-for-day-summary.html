@@ -26,25 +26,44 @@ Access to Work Claiming Portal
 {% set repeattaxiTotal = 0 | float %}
 {% endfor %}
 
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_cost | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_cost | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
 {% block content %}
 
 
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      
+
       <form method="post" action="#">
 
 
 
         <div class="govuk-form-group">
 
-
+          {% if data['transport-option'] == "taxi"%}
           {% if taxiTotal === 1 %}
           <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journey</h1>
           {% else %}
           <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journeys</h1>
           {% endif %}
+
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journey</h1>
+          {% endif %}
+
 
           <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
 
@@ -53,8 +72,13 @@ Access to Work Claiming Portal
                 {% for item in data['travel'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+        {% if data['transport-option'] == "taxi"%}
         {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>{{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
          <br>
+         {% else %}
+         {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>From {{item.travel_from}} <br>To {{item.travel_to}}<br>£{{item.travel_cost}}
+          <br>
+          {% endif %}
       </span>
       <span class="hmrc-add-to-a-list__change">
        <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day">
@@ -85,8 +109,13 @@ Access to Work Claiming Portal
                 {% for item in data['repeattravel'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+        {% if data['transport-option'] == "taxi"%}
         {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
          <br>
+         {% else %}
+         {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>From {{item.repeattravel_from}} <br>To {{item.repeattravel_to}}<br>£{{item.repeattravel_cost}}
+          <br>
+          {% endif %}
       </span>
       <span class="hmrc-add-to-a-list__change">
        <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-repeat">
@@ -112,7 +141,11 @@ Access to Work Claiming Portal
   <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        Do you want to claim taxi costs for any journeys made in a different month?
+        {% if data['transport-option'] == "taxi"%}
+        Do you want to claim taxi costs for any journeys to and from work made in a different month?
+        {% else %}
+        Do you want to claim taxi costs during work for any journeys made in a different month?
+        {% endif %}
       </h1>
     </legend>
     <div class="govuk-radios govuk-radios--inline">

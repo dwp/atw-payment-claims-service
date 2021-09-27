@@ -13,7 +13,7 @@ Access to Work Claiming Portal
         <form action="transport-option-answers-repeat" method="post" class="form">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" role="group" aria-describedby="month-of-travel-to-work-hint">
-                  {% if data['transport-option'] == "taxi" %}
+                  {% if (data['transport-option'] == "taxi") or (data['transport-option'] == "taxi-during-work")%}
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
                             What other month are you claiming taxi costs for?

@@ -33,6 +33,8 @@
               {% endif %}
           </div>
 
+{%if (data['equipment-cost']=="100") %}
+{% else %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Cost of equipment
@@ -49,41 +51,8 @@
                 </dd>
                 {% endif %}
             </div>
-            {%if (data['employer-contributing']=="Yes") %}
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Employer contribution
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £20
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="employer-contribution.html">
-                        Change
-                        <span class="govuk-visually-hidden"> Employer contribution</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
+{% endif %}
 
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Total amount we can pay towards this claim
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £80
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="employer-contribution.html">
-                        Change
-                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
-            {% endif %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Supporting claim evidence
@@ -107,6 +76,55 @@
             </div>
 
         </dl>
+
+
+{%if (data['equipment-cost']=="100") %}
+
+<h2 class="govuk-heading-m">Equipment and adaptations cost</h2>
+
+  <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Cost of equipment
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £{{data["equipment-cost"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="equipement-cost">
+                        Change
+                        <span class="govuk-visually-hidden"> Cost of equipment</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            </dl>
+<p>The amount we will pay back is slightly less than the total cost of the equipment or adaptions because we’ve deducted the amounts your employer agreed to pay.</p>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Employer contribution
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  £20
+              </dd>
+
+          </div>
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Total amount we can pay towards this claim
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  £80
+              </dd>
+
+          </div>
+
+        </dl>
+          {% endif %}
 
         {% if print != true %}
         <h2 class="govuk-heading-m">New payee details</h2>
@@ -159,9 +177,9 @@
                   {{data["new-payee-address-town"]}}<br>
                   {{data["new-payee-address-county"]}}<br>
                   {{data["new-payee-address-postcode"]}}
-                  {% endif %}
+                  
 
-                  {% if data["new-payee-address-select"] == "123" %}
+                  {% elif data["new-payee-address-select"] == "123" %}
                   123 Hudsen House<br>
                   Cresent Lane<br>
                   Leeds<br>

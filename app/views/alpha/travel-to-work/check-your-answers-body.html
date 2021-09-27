@@ -46,6 +46,20 @@
 {% set repeatmileageTotal = 0 | float %}
 {% endfor %}
 
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_cost | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_cost | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {%if (data['journey-type'] == "traveltowork-ammendment") %}
@@ -72,7 +86,7 @@
                     Type of travel
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {%if (data["transport-option"]=="taxi") %} Taxi {% elif data["transport-option"]=="lift" %}Lift from a friend, colleague or relative{% endif %}
+                    {%if (data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")%} Taxi {% elif (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work")%}Lift from a friend, colleague or relative{% endif %}
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -88,7 +102,7 @@
 
 
 
-            {%if (data["transport-option"]=="lift") %}
+            {%if (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work") %}
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -151,7 +165,7 @@
 
             <!-- // taxi number of journeys -->
 
-            {%if (data["transport-option"]=="taxi") %}
+          {%if (data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")%}
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -184,10 +198,17 @@
                     Days journeys were made in {{data["travel-to-work-date-month"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
+                  {% if data['transport-option'] == "taxi"%}
                     {% for item in data['travel'] | sortBy('day') %}
                     {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>{{item.travel_journeys}} Journeys
                      </br> </br>
                      {% endfor %}
+                     {% else %}
+                     {% for item in data['travel'] | sortBy('day') %}
+                     {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>From {{item.travel_from}} <br>To {{item.travel_to}}<br>£{{item.travel_cost}}
+                      <br> <br>
+                      {% endfor %}
+                     {% endif %}
 
                 </dd>
                 {% if print != true %}
@@ -239,11 +260,17 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
 
-
+                  {% if data['transport-option'] == "taxi"%}
                      {% for item in data['repeattravel'] | sortBy('day') %}
                      {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
-                     </br> </br>
+                     </br> <br>
                      {% endfor %}
+                    {% else %}
+                    {% for item in data['repeattravel'] | sortBy('day') %}
+                    {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>From {{item.repeattravel_from}} <br>To {{item.repeattravel_to}}<br>£{{item.repeattravel_cost}}
+                     <br> <br>
+                     {% endfor %}
+                    {% endif %}
 
                 </dd>
                 {% if print != true %}
@@ -270,7 +297,7 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
 
-                  {{taxiTotal + repeattaxiTotal}} journeys <br>
+                  {{travelLength|int + repeattravelLength|int}} journeys <br>
                   <!-- {{travelLength + repeattravelLength}} {% if data['journeys'].length === 1 %} day {% else %} days {% endif %} -->
 
                 </dd>
@@ -298,7 +325,11 @@
                   Total cost of journeys
                 </dt>
                 <dd class="govuk-summary-list__value">
+                  {% if data['transport-option'] == "taxi"%}
                   £{{data["cost-of-taxi"]}}
+                  {% else %}
+                  £{{taxiTotal + repeattaxiTotal}}
+                  {% endif %}
 
                 </dd>
                 {% if print != true %}
@@ -320,7 +351,7 @@
 
             {% endif %}
 
-            {%if (data['employer-contributing']=="Yes") and (data["transport-option"]=="taxi") %}
+            {%if (data['employer-contributing']=="Yes") and ((data["transport-option"]=="taxi") or  (data["transport-option"]=="taxi-during-work")) %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Employer contribution
@@ -759,7 +790,7 @@
           </div>
 
           </dl>
-          
+
           {% endif %}
 
 

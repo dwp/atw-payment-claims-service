@@ -15,6 +15,13 @@ Access to Work Claiming Portal
 {% set taxiTotal = 0 | float %}
 {% endfor %}
 
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_cost | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -32,7 +39,7 @@ Access to Work Claiming Portal
 
                       </label>
 
-                      <div id="date-of-birth-hint" class="govuk-hint">
+                      <div id="date-of-travel" class="govuk-hint">
                           For example, 3
                       </div>
 
@@ -43,6 +50,7 @@ Access to Work Claiming Portal
                                 </div>
                     </div> <!-- govuk-form-group -->
 
+                    {% if data['transport-option'] !== "taxi-during-work"%}
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_journeys]">
@@ -58,7 +66,57 @@ Access to Work Claiming Portal
                                data-id="travel[%index%][travel_journeys]">
                               <div class="govuk-input__suffix">journey(s)</div>
                               </div>
-                    </div> <!-- govuk-form-group -->
+                    </div>
+                    {% endif %}
+
+                      {% if data['transport-option'] == "taxi-during-work"%}
+                    <div class="govuk-form-group">
+                    <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_from]">
+                        Journey start point (optional)
+                      </label>
+                      <div id="travel[0][travel_from]" class="govuk-hint">You can use this as a reference, for example home office</div>
+                      <input class="govuk-input"
+                             value = "{{data.travel[0].travel_from}}"
+                             id="travel[0][travel_from]"
+                             name="travel[0][travel_from]" type="text"
+                             data-name="travel[%index%][travel_from]"
+                             data-id="travel[%index%][travel_from]">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_to]">
+                        Journey destination (optional)
+                      </label>
+                      <div id="travel[0][travel_to]" class="govuk-hint">You can use this as a reference, for example client site</div>
+                      <input class="govuk-input"
+                             value = "{{data.travel[0].travel_to}}"
+                             id="travel[0][travel_to]"
+                             name="travel[0][travel_to]" type="text"
+                             data-name="travel[%index%][travel_to]"
+                             data-id="travel[%index%][travel_to]">
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_cost]">
+                            Total cost of this journey in pounds
+                        </label>
+
+                        <div id="cost-of-journey" class="govuk-hint">
+                            For example, £8.20
+                        </div>
+
+                        <div class="govuk-input__wrapper">
+                          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                        <input class="govuk-input govuk-input--width-5"
+                               value = "{{data.travel[0].travel_cost}}"
+                               id="travel[0][travel_cost]"
+                               name="travel[0][travel_cost]" type="text"
+                               data-name="travel[%index%][travel_cost]"
+                               data-id="travel[%index%][travel_cost]">
+
+                              </div>
+                    </div>
+                    {% endif %}<!-- govuk-form-group -->
 
 
                     {% if travelLength > 1 %}
@@ -92,7 +150,7 @@ Access to Work Claiming Portal
                       <div class="govuk-input__suffix">{{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</div>
                     </div>
                   </div>
-
+                  {% if data['transport-option'] !== "taxi-during-work"%}
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                for="travel[{{loop.index0}}][travel_journeys]">
@@ -108,7 +166,56 @@ Access to Work Claiming Portal
                                data-id="travel[%index%][travel_journeys]">
                                <div class="govuk-input__suffix">journey(s)</div>
                                </div>
-                    </div> <!-- govuk-form-group -->
+                    </div>
+                    {% endif %}
+
+                    {% if data['transport-option'] == "taxi-during-work"%}
+                    <div class="govuk-form-group">
+                    <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[{{loop.index0}}][travel_from]">
+                        Journey start point (optional)
+                      </label>
+                      <div id="travel[0][travel_from]" class="govuk-hint">You can use this as a reference, for example home office</div>
+                      <input class="govuk-input" id="travel[{{loop.index0}}][travel_from]"
+                             name="travel[{{loop.index0}}][travel_from]" type="text"
+                             value="{{item.travel_from}}" data-name="travel[%index%][travel_from]"
+                             data-id="travel[%index%][travel_from]">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[{{loop.index0}}][travel_to]">
+                        Journey destination (optional)
+                      </label>
+                      <div id="travel[0][travel_to]" class="govuk-hint">You can use this as a reference, for example client site</div>
+                      <input class="govuk-input" id="travel[{{loop.index0}}][travel_to]"
+                             name="travel[{{loop.index0}}][travel_to]" type="text"
+                             value="{{item.travel_to}}" data-name="travel[%index%][travel_to]"
+                             data-id="travel[%index%][travel_to]">
+                      </div>
+
+
+                             <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[{{loop.index0}}][travel_cost]">
+                            Total cost of this journey in pounds
+                        </label>
+
+                        <div id="cost-of-journey" class="govuk-hint">
+                            For example, £8.20
+                        </div>
+                      
+
+
+                        <div class="govuk-form-group">
+                        <div class="govuk-input__wrapper">
+                          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                          <input class="govuk-input govuk-input--width-5" id="travel[{{loop.index0}}][travel_cost]"
+                                 name="travel[{{loop.index0}}][travel_cost]" type="text"
+                                 value="{{item.travel_cost}}" data-name="travel[%index%][travel_cost]"
+                                 data-id="travel[%index%][travel_cost]">
+
+                              </div>
+                              </div>
+
+                    {% endif %}<!-- govuk-form-group -->
 
 
                     <button  class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
@@ -129,7 +236,11 @@ Access to Work Claiming Portal
                             data-module="govuk-button"
                             name="action"
                             value="add">
+                            {% if data['transport-option'] == "taxi-during-work"%}
+                        Add another journey
+                        {% else %}
                         Add another day
+                        {% endif %}
                     </button>
                 </div>
 

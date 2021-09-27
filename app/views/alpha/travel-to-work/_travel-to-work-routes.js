@@ -16,9 +16,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-to-work/transport-option-answers', function (req, res) {
     const aids = req.session.data['transport-option']
 
-    if (aids === 'taxi') {
+    if (aids === 'taxi' || aids === 'taxi-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
-    } else if (aids === 'lift') {
+    } else if (aids === 'lift' || aids === 'lift-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
     }
   })
@@ -26,9 +26,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-to-work/transport-option-answers-repeat', function (req, res) {
     const aids = req.session.data['transport-option']
 
-    if (aids === 'taxi') {
+    if (aids === 'taxi' || aids === 'taxi-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-repeat`)
-    } else if (aids === 'lift') {
+    } else if (aids === 'lift' || aids === 'lift-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
     }
   })
@@ -336,12 +336,15 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const addmonth = req.session.data['new-month']
     const journeytype = req.session.data['journey-type']
     const checked = req.session.data['contact-confirmed']
+    const aids = req.session.data['transport-option']
 
 
     if (req.session.data.travel === undefined || req.session.data.travel.length == 0) {
       res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
-    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment') {
+    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi') {
       res.redirect(`/${urlPrefix}/travel-to-work/change-cost`)
+    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi-during-work') {
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     } else if (checked && addmonth === 'no') {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (addmonth === 'no' && journeytype === 'traveltowork') {
