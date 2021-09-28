@@ -49,7 +49,8 @@ Access to Work Claiming Portal
                 {% for item in data['milage'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>{{item.milage_total}} Miles
+
+        {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}{% if data['transport-option'] == "lift-during-work"%}<br>From {{item.milage_from}} <br>To {{item.milage_to}}{% endif %} <br>{{item.milage_total}} Miles
          <br>
       </span>
       <span class="hmrc-add-to-a-list__change">
@@ -84,11 +85,11 @@ Access to Work Claiming Portal
                 {% for item in data['repeatmilage'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
                 <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-                  {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeatmilage_total}} Miles
+                  {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}{% if data['transport-option'] == "lift-during-work"%}<br>From {{item.repeatmilage_from}} <br>To {{item.repeatmilage_to}}{% endif %} <br>{{item.repeatmilage_total}} Miles
                    <br>
                 </span>
                 <span class="hmrc-add-to-a-list__change">
-                 <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-repeat">
+                 <a id="{{item.day}}-change" class="govuk-link" href="mileage-for-day-repeat">
                    <span aria-hidden="true">Change</span>
                    <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
                  </a>
@@ -111,7 +112,11 @@ Access to Work Claiming Portal
   <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
+        {% if data['transport-option'] == "lift"%}
         Do you want to claim mileage costs for any other months?
+        {% else %}
+        Do you want to claim mileage costs during work hours for any other months?
+        {% endif %}
       </h1>
     </legend>
     <div class="govuk-radios govuk-radios--inline">

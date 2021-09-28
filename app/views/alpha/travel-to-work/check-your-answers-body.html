@@ -106,19 +106,44 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
+                    Month of travel
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+                  {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/claiming-for-month">
+                        Change
+                        <span class="govuk-visually-hidden"> month of travel</span>
+                    </a>
+                    {% else %}
+                    <a href="claiming-for-month">
+                        Change
+                        <span class="govuk-visually-hidden"> month of travel</span>
+                    </a>
+                    {% endif %}
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
                     Days journeys were made
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['milage'] | sortBy('day') %}
-                  {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>{{item.milage_total}} Miles<br><br>
+                  {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} {% if data['transport-option'] == "lift-during-work"%}<br>From {{item.milage_from}} <br>To {{item.milage_to}}{% endif %} <br>{{item.milage_total}} Miles<br><br>
                   {% endfor %}
 
-                   {% if data['travel-to-work-date-month-repeat'] %}
-                     {% for item in data['repeatmilage'] | sortBy('day') %}
-                   {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeatmilage_total}} Miles<br><br>
-                   {% endfor %}
 
-                    {% endif %}
+
+
+
+
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -137,12 +162,45 @@
                 {% endif %}
             </div>
 
+            {%if (data["travel-to-work-date-month-repeat"]) %}
+
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Total miles travelled
+                    Month of travel
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {{mileageTotal + repeatmileageTotal}} miles <br>
+
+                  {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/claiming-for-month">
+                        Change
+                        <span class="govuk-visually-hidden"> month of travel</span>
+                    </a>
+                    {% else %}
+                    <a href="claiming-for-month">
+                        Change
+                        <span class="govuk-visually-hidden"> month of travel</span>
+                    </a>
+                    {% endif %}
+                </dd>
+                {% endif %}
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Days journeys were made
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+
+                     {% for item in data['repeatmilage'] | sortBy('day') %}
+                   {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} {% if data['transport-option'] == "lift-during-work"%}<br>From {{item.repeatmilage_from}} <br>To {{item.repeatmilage_to}}{% endif %} <br>{{item.repeatmilage_total}} Miles<br><br>
+                   {% endfor %}
+
 
                 </dd>
                 {% if print != true %}
@@ -156,6 +214,33 @@
                     <a href="mileage-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> miles for travel to work received</span>
+                    </a>
+                    {% endif %}
+                </dd>
+                {% endif %}
+            </div>
+
+            {% endif %}
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total miles travelled
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{mileageTotal + repeatmileageTotal}} miles <br>
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                    <a href="../travel-to-work/mileage-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total miles travelled</span>
+                    </a>
+                    {% else %}
+                    <a href="mileage-for-day-summary">
+                        Change
+                        <span class="govuk-visually-hidden"> Total miles travelled</span>
                     </a>
                     {% endif %}
                 </dd>
@@ -351,7 +436,7 @@
 
             {% endif %}
 
-            {%if (data['employer-contributing']=="Yes") and ((data["transport-option"]=="taxi") or  (data["transport-option"]=="taxi-during-work")) %}
+            {%if (data['employer-contributing']=="Yes") and ((data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")) %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Employer contribution
@@ -385,10 +470,10 @@
                 </dd>
                 {% endif %}
             </div>
+            {% endif %}
+            {% endif %}
 
-            {% elseif data["transport-option"]=="lift" %}
-
-
+            {%if (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work") %}
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -407,7 +492,6 @@
                 {% endif %}
             </div>
 
-            {% endif %}
             {% endif %}
             <!-- // end of the if statement to stop showing information in counter signature journery -->
 

@@ -71,9 +71,9 @@ Access to Work Claiming Portal
                     {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][repeattravel_from]">
-                        Journey start point (optional)
+                        Journey from (optional)
                       </label>
-                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">You can use this as a reference, for example home office</div>
+                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, your home office</div>
                       <input class="govuk-input"
                              value = "{{data.repeattravel[0].repeattravel_from}}"
                              id="repeattravel[0][repeattravel_from]"
@@ -84,9 +84,9 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][repeattravel_to]">
-                        Journey destination (optional)
+                        Journey to (optional)
                       </label>
-                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">You can use this as a reference, for example client site</div>
+                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, a client site</div>
                       <input class="govuk-input"
                              value = "{{data.repeattravel[0].repeattravel_to}}"
                              id="repeattravel[0][repeattravel_to]"
@@ -177,9 +177,9 @@ Access to Work Claiming Portal
                     {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][repeattravel_from]">
-                        Journey start point (optional)
+                        Journey from (optional)
                       </label>
-                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">You can use this as a reference, for example home office</div>
+                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, your home office</div>
                       <input class="govuk-input" id="repeattravel[{{loop.index0}}][repeattravel_from]"
                              name="repeattravel[{{loop.index0}}][repeattravel_from]" type="text"
                              value="{{item.repeattravel_from}}" data-name="repeattravel[%index%][repeattravel_from]"
@@ -188,9 +188,9 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][repeattravel_to]">
-                        Journey destination (optional)
+                        Journey to (optional)
                       </label>
-                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">You can use this as a reference, for example client site</div>
+                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, a client site</div>
                       <input class="govuk-input" id="repeattravel[{{loop.index0}}][repeattravel_to]"
                              name="repeattravel[{{loop.index0}}][repeattravel_to]" type="text"
                              value="{{item.repeattravel_to}}" data-name="repeattravel[%index%][repeattravel_to]"

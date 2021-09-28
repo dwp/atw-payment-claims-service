@@ -45,6 +45,35 @@ Access to Work Claiming Portal
                                 </div>
                     </div> <!-- govuk-form-group -->
                       <!-- // New stuff end -->
+                      {% if data['transport-option'] == "lift-during-work"%}
+
+                      <div class="govuk-form-group">
+                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[0][repeatmilage_from]">
+                          Journey from (optional)
+                        </label>
+                        <div id="repeatmilage[0][repeatmilage_from]" class="govuk-hint">For example, your home office</div>
+                        <input class="govuk-input"
+                               value = "{{data.repeatmilage[0].repeatmilage_from}}"
+                               id="repeatmilage[0][repeatmilage_from]"
+                               name="repeatmilage[0][repeatmilage_from]" type="text"
+                               data-name="repeatmilage[%index%][repeatmilage_from]"
+                               data-id="repeatmilage[%index%][repeatmilage_from]">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[0][repeatmilage_to]">
+                          Journey to (optional)
+                        </label>
+                        <div id="repeatmilage[0][repeatmilage_to]" class="govuk-hint">For example, a client site</div>
+                        <input class="govuk-input"
+                               value = "{{data.repeatmilage[0].repeatmilage_to}}"
+                               id="repeatmilage[0][repeatmilage_to]"
+                               name="repeatmilage[0][repeatmilage_to]" type="text"
+                               data-name="repeatmilage[%index%][repeatmilage_to]"
+                               data-id="repeatmilage[%index%][repeatmilage_to]">
+                      </div>
+
+                      {% endif %}
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[0][repeatmilage_total]">
@@ -101,6 +130,31 @@ Access to Work Claiming Portal
                     </div>
                   </div>
 
+                  {% if data['transport-option'] == "lift-during-work"%}
+                  <div class="govuk-form-group">
+                  <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[{{loop.index0}}][repeatmilage_from]">
+                      Journey from (optional)
+                    </label>
+                    <div id="repeatmilage[0][repeatmilage_from]" class="govuk-hint">For example, your home office</div>
+                    <input class="govuk-input" id="repeatmilage[{{loop.index0}}][repeatmilage_from]"
+                           name="repeatmilage[{{loop.index0}}][repeatmilage_from]" type="text"
+                           value="{{item.repeatmilage_from}}" data-name="repeatmilage[%index%][repeatmilage_from]"
+                           data-id="repeatmilage[%index%][repeatmilage_from]">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[{{loop.index0}}][repeatmilage_to]">
+                      Journey to (optional)
+                    </label>
+                    <div id="repeatmilage[0][repeatmilage_to]" class="govuk-hint">For example, a client site</div>
+                    <input class="govuk-input" id="repeatmilage[{{loop.index0}}][repeatmilage_to]"
+                           name="repeatmilage[{{loop.index0}}][repeatmilage_to]" type="text"
+                           value="{{item.repeatmilage_to}}" data-name="repeatmilage[%index%][repeatmilage_to]"
+                           data-id="repeatmilage[%index%][repeatmilage_to]">
+                    </div>
+
+                    {% endif %}
+
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                for="repeatmilage[{{loop.index0}}][repeatmilage_total]">
@@ -139,7 +193,11 @@ Access to Work Claiming Portal
                             data-module="govuk-button"
                             name="action"
                             value="add">
+                            {% if data['transport-option'] == "lift" %}
                         Add another day of travel
+                        {% else %}
+                        Add another journey during work hours
+                        {% endif %}
                     </button>
                 </div>
 
