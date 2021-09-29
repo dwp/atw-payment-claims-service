@@ -46,16 +46,16 @@
 {% set repeatmileageTotal = 0 | float %}
 {% endfor %}
 
-{% set taxiTotal = 0 %}
+{% set taxiinworkTotal = 0 %}
 {% for day in data.travel %}
-{% set taxiTotal = taxiTotal | float + day.travel_cost | float %}
+{% set taxiinworkTotal = taxiinworkTotal | float + day.travel_cost | float %}
 {% else %}
 {% set taxiTotal = 0 | float %}
 {% endfor %}
 
-{% set repeattaxiTotal = 0 %}
+{% set repeattaxiinworkTotal = 0 %}
 {% for day in data.repeattravel %}
-{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_cost | float %}
+{% set repeattaxiinworkTotal = repeattaxiinworkTotal | float + day.repeattravel_cost | float %}
 {% else %}
 {% set repeattaxiTotal = 0 | float %}
 {% endfor %}
@@ -381,8 +381,11 @@
                   Total number of journeys
                 </dt>
                 <dd class="govuk-summary-list__value">
-
+                  {%if data["transport-option"]=="taxi-during-work" %}
                   {{travelLength|int + repeattravelLength|int}} journeys <br>
+                  {% else %}
+                  {{taxiTotal + repeattaxiTotal}} journeys
+                  {% endif %}
                   <!-- {{travelLength + repeattravelLength}} {% if data['journeys'].length === 1 %} day {% else %} days {% endif %} -->
 
                 </dd>
