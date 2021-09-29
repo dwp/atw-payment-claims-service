@@ -428,17 +428,29 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const journeytype = req.session.data['journey-type']
     const checked = req.session.data['contact-confirmed']
 
-    if (transport === 'taxi' || transport === 'taxi-during-work' && journeytype === 'traveltowork-ammendment') {
+    if (transport === 'taxi' && journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
-    } else if (transport === 'taxi' || transport === 'taxi-during-work' && checked) {
+    } else if (transport === 'taxi-during-work' && journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (transport === 'taxi' || transport === 'taxi-during-work' && journeytype === 'traveltowork') {
+    } else if (transport === 'taxi' && checked) {
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+    } else if (transport === 'taxi-during-work' && checked) {
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+    } else if (transport === 'taxi' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
-    } else if (transport === 'lift' || transport === 'lift-during-work' && journeytype === 'traveltowork-ammendment') {
+    } else if (transport === 'taxi-during-work' && journeytype === 'traveltowork') {
+      res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
+    } else if (transport === 'lift' && journeytype === 'traveltowork-ammendment') {
         res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
-    } else if (transport === 'lift' || transport === 'lift-during-work' && checked) {
+    } else if (transport === 'lift-during-work' && journeytype === 'traveltowork-ammendment') {
+          res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (transport === 'lift' && checked) {
           res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (transport === 'lift' || transport === 'lift-during-work' && journeytype === 'traveltowork') {
+    } else if (transport === 'lift-during-work' && checked) {
+              res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+    } else if (transport === 'lift' && journeytype === 'traveltowork') {
+      res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
+    } else if (transport === 'lift-during-work' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/guidance-payee-details`)
     }
   })
