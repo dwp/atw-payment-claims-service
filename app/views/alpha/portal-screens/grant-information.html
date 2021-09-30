@@ -38,7 +38,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
 
-        <h2 class="govuk-heading-s">What support you’ll get</h2>
+        <h2 class="govuk-heading-m">What support you’ll get</h2>
+        {% if data['journey-type'] == "multipleawards" %}
+        <h3 class="govuk-heading-s"> Grant award element 1 </h3>
+        {% endif %}
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -82,7 +85,70 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           </div>
         </dl>
 
-        <p>The total cost of this support is <b>£11635.71</b>. Access to Work will contribute a maximum of <b>£9,696.43</b>.</p>
+        <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will contribute a maximum of <b>£9,696.43</b>.</p>
+
+        {% if data['journey-type'] == "multipleawards" %}
+        <h3 class="govuk-heading-s"> Grant award element 2</h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Equipment or adaptation type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Audéo P-RT - Receiver-in-Canal Hearing aid </br>
+              HK-MAC Large print Bluetooth mini keyboard </br>
+              Dolphin SuperNova magnifier and speech software </br>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total grant awarded
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2665.98
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of grant left
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2089.98
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Cost of equipment or adaptation
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2089.98 - Hearing aid </br>
+              £102.00 - Keyboard </br>
+              £474.00 - Magnifier and speech software </br>
+
+
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Agreed employer contribution
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £266.59
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount we can pay towards your equipment or adaptation
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2399.39
+            </dd>
+          </div>
+
+        </dl>
+
+        {% endif %}
 
         <p>You should have already received a copy of your grant approval letter by post. You can also <a href="@">view
             a copy of your grant approval letter</a> in your account.</p>

@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Multiple award elements</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="multiple-awards-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="travel-to-work-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Which grant award type do you want to claim for?
+                        </h1>
+                    </legend>
+
+
+                    <p id="multiple-award-elements-hint" class="govuk-body">Your grant award letter will tell you what award elements you can claim for.</p>
+
+
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="traveltowork" name="journey-type"
+                                   type="radio"
+                                   value="traveltowork">
+                            <label class="govuk-label govuk-radios__label" for="traveltowork">
+                                Travel for work
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="specialaidsandequipment" name="journey-type"
+                                   type="radio"
+                                   value="specialaidsandequipment">
+                            <label class="govuk-label govuk-radios__label" for="specialaidsandequipment">
+                                Equipment and adaptations
+                            </label>
+                        </div>
+                        <div class="govuk-radios__divider">or</div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="wrong-award" name="journey-type"
+                                   type="radio"
+                                   value="wrong-award">
+                            <label class="govuk-label govuk-radios__label" for="wrong-award">
+                                Something else
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
