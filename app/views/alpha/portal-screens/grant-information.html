@@ -40,9 +40,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <h2 class="govuk-heading-m">What support you’ll get</h2>
         {% if data['journey-type'] == "multipleawards" %}
-        <h3 class="govuk-heading-s"> Grant award element 1 </h3>
+        <h3 class="govuk-heading-s"> Travel for work grant </h3>
         {% endif %}
         <dl class="govuk-summary-list">
+          {% if data['journey-type'] !== "multipleawards" %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Type of grant
@@ -51,6 +53,8 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               Travel to Work support
             </dd>
           </div>
+
+          {% endif %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Travel type
@@ -88,12 +92,12 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will contribute a maximum of <b>£9,696.43</b>.</p>
 
         {% if data['journey-type'] == "multipleawards" %}
-        <h3 class="govuk-heading-s"> Grant award element 2</h3>
+        <h3 class="govuk-heading-s">Equipment and adaptation grant</h3>
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Equipment or adaptation type
+              Equipment and adaptation type
             </dt>
             <dd class="govuk-summary-list__value">
               Audéo P-RT - Receiver-in-Canal Hearing aid </br>
