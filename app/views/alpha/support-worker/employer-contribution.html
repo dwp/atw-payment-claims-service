@@ -19,7 +19,11 @@ Access to Work Claiming Portal
           This amount is slightly less than the total cost of the support because we’ve deducted the amounts your employer agreed to pay.
         </p>
 
+        {% if data ["contact-confirmed"] %}
+          <form action="check-your-answers" method="post" class="form">
+        {% else %}
         <form action="providing-evidence" method="post" class="form">
+          {% endif %}
 
             <input type="hidden" value="Yes" id="employer-contributing" name="employer-contributing">
 

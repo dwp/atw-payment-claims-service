@@ -189,7 +189,7 @@
                 {% endif %}
             </div>
 
-            {% if data['one-time-code'] %}
+            {% if (data['one-time-code']) or (data['cost-of-support']=="100") %}
             {% else %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -214,43 +214,6 @@
                 </dd>
                 {% endif %}
             </div>
-
-
-            {%if (data['employer-contributing']=="Yes") %}
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Employer contribution
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £20
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="employer-contribution.html">
-                        Change
-                        <span class="govuk-visually-hidden"> Employer contribution</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Total amount we can pay towards this claim
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £80
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="employer-contribution.html">
-                        Change
-                        <span class="govuk-visually-hidden"> Total amount paid back by Access to Work</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
-            {% endif %}
             {% endif %}
 
             {% if data['one-time-code'] %}
@@ -282,6 +245,58 @@
             </div>
             {% endif %}
         </dl>
+
+        {%if (data['cost-of-support']=="100") %}
+
+        <h2 class="govuk-heading-m">Support worker cost</h2>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Total cost of the support
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  £{{data['cost-of-support']}}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                {%if (data['journey-type'] == "traveltowork-ammendment") %}
+                  <a href="../support-worker/cost-of-support">
+                      Change
+                      <span class="govuk-visually-hidden"> total cost of support received</span>
+                  </a>
+                  {% else %}
+                  <a href="cost-of-support">
+                      Change
+                      <span class="govuk-visually-hidden"> total cost of support received</span>
+                  </a>
+                  {% endif %}
+              </dd>
+              {% endif %}
+          </div>
+          </dl>
+
+          <p>The amount we will pay back is slightly less than the total cost of the support because we’ve deducted the amounts your employer agreed to pay.</p>
+
+        <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Employer contribution
+            </dt>
+            <dd class="govuk-summary-list__value">
+                £20
+            </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Total amount we can pay towards this claim
+            </dt>
+            <dd class="govuk-summary-list__value">
+                £80
+            </dd>
+        </div>
+        </dl>
+        {% endif %}
 
         {%if (data['journey-type'] == "traveltowork-ammendment") %}
         <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
@@ -556,7 +571,7 @@
                 {% endif %}
             </div>
         </dl>
-        
+
 
         {% if print != true %}
         {%if (data['journey-type'] == "traveltowork-ammendment") %}
