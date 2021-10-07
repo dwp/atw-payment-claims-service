@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">About the person or company who needs paying back</h1>
+
+
+
+        <p class="govuk-body">You’ll need to tell us about the person or company who needs paying back. This can include anyone who paid for your travel,
+          such as yourself, a family or friend, your employer or a transport company. We’ll store this information for any additional claims you make.</p>
+
+          <p>If you want to change these details, or pay a different person or company instead, you can do this in the personal information section on your account.</p>
+
+
+        <form action="new-payee-name" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

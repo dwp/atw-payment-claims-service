@@ -32,14 +32,22 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <h1 class="govuk-heading-xl">Send your claim by post</h1>
 
-        <p>It’s quickest to send your <a href="../travel-to-work/start-a-claim">Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        {%if data['journey-type'] == "specialaidsandequipment" %}
+        <p>It’s quickest to <a href="../equipment-and-adaptations/special-aids-and-equipment">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        {% elseif data['journey-type'] == "supportworker" %}
+        <p>It’s quickest to <a href="../support-worker/support-for-workplace">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        {% elseif (data['journey-type'] == "traveltowork") %}
+          <p>It’s quickest to <a href="../travel-to-work/travel-to-work">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        {% elseif (data['journey-type'] == "multipleawards") %}
+          <p>It’s quickest to <a href="../multiple-award-elements/start-a-claim">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        {% endif %}
         <p>You’ll need to: </p>
         <ul class="govuk-list govuk-list--bullet">
             <li>fill in the paper claim form that was sent with your Access to Work award letter</li>
             <li>include any receipts or invoices we ask for in the claims form</li>
         </ul>
 
-        <p> You can <a href="@">download a claim form</a> and print it off if you need one.</p>
+        <p>You can contact Access to Work to get a paper claim form if you need one.</p>
 
         <h3 class="govuk-heading-s">You should post your claim to Access to Work:</h3>
 

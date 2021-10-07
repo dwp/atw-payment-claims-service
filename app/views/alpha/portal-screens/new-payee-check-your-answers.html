@@ -12,13 +12,13 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
 
 
-      <h1 class="govuk-heading-l">New payee details</h1>
-      <p>New details of the person or company who needs to be paid back.</p>
+      <h1 class="govuk-heading-l">Details of new person or company being paid</h1>
+
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-                New payee name
+                Name
             </dt>
             <dd class="govuk-summary-list__value">
                 {{data["new-payee-full-name"]}}
@@ -35,7 +35,7 @@ Access to Work Claiming Portal
         {%if (data["payee-email"]) %}
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-                New payee email address
+                Email address
             </dt>
             <dd class="govuk-summary-list__value">
                 {{data["payee-email"]}}
@@ -52,7 +52,7 @@ Access to Work Claiming Portal
         {% endif %}
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-                New payee address
+                Address
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data ["new-payee-address-line-1"] %}

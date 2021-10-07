@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">You’ve signed out</h1>
+
+
+
+        <p>You’ll need to <a href="https://dth-prototype.herokuapp.com/auth/dev-ready/sign-in">sign back in</a> if you want to send any more claims or check the progress of any claims you’ve already sent.</p>
+
+
+
+
+    </div>
+</div>
+{% endblock %}

@@ -48,182 +48,190 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
             <h2 class="govuk-heading-m">Claim needs updating <span id="notifications" class="moj-notification-badge">1</span> </h2>
             <p>Your workplace contact has reviewed your claim. You need to make some changes before they can approve your claim.<p>
-            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-              <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                      23 August 2021
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    {% if (data["answers-checked-sw"]) %}
-                    Support worker
-                    {% else %}
-                      Travel for work
-                      {% endif %}
-                  </dd>
-                  {% if print != true %}
-                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                      <a href="employees-claim-incorrect">
-                          Edit
-                          <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
-                      </a>
-                  </dd>
-                  {% endif %}
-              </div>
+              <table class="govuk-table">
 
-              </dl>
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Date of payment</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
+                  </tr
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">03 July 2021</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric"><a class="govuk-!-display-none-print" href="employees-claim-incorrect">
+                        Edit
+                        <span class="govuk-visually-hidden">Edit claim</span>
+                    </a>
+                  </td>
+                  </tr>
+                </tbody>
+              </table>
+
 
               {% endif %}
 
+{%if (data['journey-type'] == "specialaidsandequipment") %}
 
-            <h2 class="govuk-heading-m">Claim received</h2>
-            <p>Claims you’ve sent and are waiting for approval from your workplace contact.<p>
-            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <h2 class="govuk-heading-m">Claim sent</h2>
+        <p>Your claim request has been sent to us.</p>
 
-              <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                      23 August 2021
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    {% if (data["answers-checked-sw"]) %}
+          <table class="govuk-table">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Date of payment</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
+              </tr
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">01 Febuary 2021</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">Equipment and adaptations</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric"><a class="govuk-!-display-none-print" href="e-a-check-your-answers-print">
+                    View
+                    <span class="govuk-visually-hidden">Edit claim</span>
+                </a></td>
+              </tr>
+            </tbody>
+          </table>
+
+{% else %}
+            {%if (data['journey-type'] == "supportworker") %}
+            <h2 class="govuk-heading-m">Claim sent to person who can confirm your support costs</h2>
+            <p>Your claim has been sent to person who can confirm your support costs.</p>
+            {% else %}
+            <h2 class="govuk-heading-m">Claim sent to workplace contact</h2>
+            <p>Your claim has been sent to your workplace contact to confirm.</p>
+            {% endif %}
+
+            <table class="govuk-table">
+
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Date of payment</th>
+                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
+                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
+                </tr
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">23 August 2021</th>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric"><a class="govuk-!-display-none-print" href="employees-claim-incorrect-pre">
+                      Edit
+                      <span class="govuk-visually-hidden">Edit claim</span>
+                  </a>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <br><br>
+
+              <h2 class="govuk-heading-m">Claim confirmed by your workplace contact</h2>
+              <p>Your claim request has been confirmed by your workplace contact. An Access to Work Payment Officer can now process your claim.</p>
+
+
+              <table class="govuk-table">
+
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Date of payment</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
+                  </tr
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">23 August 2021</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">
+                      {% if (data["answers-checked-sw"]) %}
+                          <a href="sw-check-your-answers-print">
+                              View
+                              <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
+                          </a>
+                          {% else %}
+                          <a href="ttw-check-your-answers-print">
+                              View
+                              <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
+                          </a>
+                          {% endif %}
+                  </td>
+                  </tr>
+                  {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] == "true")%}
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">03 July 2021</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">
+                      {% if (data["answers-checked-sw"]) %}
+                          <a href="sw-check-your-answers-print">
+                              View
+                              <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
+                          </a>
+                          {% else %}
+                          <a href="ttw-check-your-answers-print">
+                              View
+                              <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
+                          </a>
+                          {% endif %}
+                  </td>
+                  </tr>
+                  {% endif %}
+                </tbody>
+              </table>
+
+                      <br><br>
+
+
+  {% endif %}
+
+              <h2 class="govuk-heading-m">Claim paid</h2>
+              <p>Your claim has been approved and a payment sent to the company or person who needs to be paid.<p>
+              <table class="govuk-table">
+
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Date of payment</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">Amount paid </th>
+                  </tr
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">01 Febuary 2021</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">Equipment and adaptations</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£951</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">06 March 2021</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}
                     Support worker
                     {% else %}
                       Travel for work
-                      {% endif %}
-                  </dd>
-                  {% if print != true %}
-                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    {% if (data["answers-checked-sw"]) %}
-                      <a href="sw-check-your-answers-print">
-                          View
-                          <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
-                      </a>
+                      {% endif %}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£556</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">04 April 2021</th>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">  {% if (data["answers-checked-sw"]) %}
+                      Support worker
                       {% else %}
-                      <a href="ttw-check-your-answers-print">
-                          View
-                          <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
-                      </a>
-                      {% endif %}
-                  </dd>
-                  {% endif %}
-              </div>
-              {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] == "true")%}
-              <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                      03 July 2021
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    {% if (data["answers-checked-sw"]) %}
-                    Support worker
-                    {% else %}
-                      Travel for work
-                      {% endif %}
-                  </dd>
-                  {% if print != true %}
-                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    {% if (data["answers-checked-sw"]) %}
-                      <a href="sw-check-your-answers-print">
-                          View
-                          <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
-                      </a>
-                      {% else %}
-                      <a href="ttw-check-your-answers-print">
-                          View
-                          <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
-                      </a>
-                      {% endif %}
-                  </dd>
-                  {% endif %}
-              </div>
-              {% endif %}
+                        Travel for work
+                        {% endif %}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">£125</td>
+                  </tr>
+                </tbody>
+              </table>
 
 
-              </dl>
-
-
-
-                  <h2 class="govuk-heading-m">Claim paid</h2>
-                  <p>Your claim has been approved and a payment sent to the company or person who needs to be paid.<p>
-                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            01 Febuary 2021
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            Equipment and adaptations
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            <a href="e-a-check-your-answers-print">
-                                View
-                                <span class="govuk-visually-hidden"> Equipment and adaptations claim - 01/02/2021</span>
-                            </a>
-                        </dd>
-                        {% endif %}
-                    </div>
-
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            06 March 2021
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                          {% if (data["answers-checked-sw"]) %}
-                          Support worker
-                          {% else %}
-                            Travel for work
-                            {% endif %}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                          {% if (data["answers-checked-sw"]) %}
-                            <a href="sw-check-your-answers-print">
-                                View
-                                <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
-                            </a>
-                            {% else %}
-                            <a href="ttw-check-your-answers-print">
-                                View
-                                <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
-                            </a>
-                            {% endif %}
-                        </dd>
-                        {% endif %}
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            04 April 2021
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                          {% if (data["answers-checked-sw"]) %}
-                          Support worker
-                          {% else %}
-                            Travel for work
-                            {% endif %}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                          {% if (data["answers-checked-sw"]) %}
-                            <a href="sw-check-your-answers-print">
-                                View
-                                <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
-                            </a>
-                            {% else %}
-                            <a href="ttw-check-your-answers-print">
-                                View
-                                <span class="govuk-visually-hidden"> Travel to work claim - 01/02/2021</span>
-                            </a>
-                            {% endif %}
-                        </dd>
-                        {% endif %}
-                    </div>
-
-                    </dl>
-
-
-
-
-
+<!--
                     <h2 class="govuk-heading-m">Saved claims</h2>
                     <p>Claims that have not been sent yet.<p>
                     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -245,8 +253,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                           {% endif %}
                       </div>
 
-                      </dl>
-
+                      </dl> -->
 
                 </div>
             </div>

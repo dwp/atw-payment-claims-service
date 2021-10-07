@@ -100,46 +100,20 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                         </a>
                     </dd>
                 </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Home address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {% if data['new-address-line-1'] %}
-                        {{data["new-address-line-1"]}}<br>
-                        {% if data["new-address-line-2"] %}{{data["new-address-line-2"]}}<br>{% endif %}
-                        {{data["new-address-town"]}}<br>
-                        {{data["new-address-county"]}}<br>
-                        {{data["new-address-postcode"]}}
-                        {% else %}
-                        123 Brooks Street<br>
-                        Otley<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        LS12 1RP
-                        {% endif %}
-                    </dd>
-                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                        <a href="new-address">
-                            Change
-                            <span class="govuk-visually-hidden"> personal address</span>
-                        </a>
-                    </dd>
-                </div>
                 </dl>
 
 
 
 
-              <h2 class="govuk-heading-m">Payee details</h2>
+              <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
 
-                <p id="claims-history-hint" class="govuk-body">The latest payment details we have for the company or person that needs to be paid back. You’ll need to add new payment details if we need to pay another company or person.</p>
+                <p id="claims-history-hint" class="govuk-body">You’ll need to add new payment details if we need to pay another company or person.</p>
 
                 <table class="govuk-table">
                 <thead class="govuk-table__head">
                   <tr class="govuk-table__row">
-                    <th scope="col" class="govuk-table__header">Payee name</th>
-                    <th scope="col" class="govuk-table__header">Payee email</th>
+                    <th scope="col" class="govuk-table__header">Name</th>
+                    <th scope="col" class="govuk-table__header">Email</th>
                   </tr>
                 </thead>
                 <tbody class="govuk-table__body">
@@ -168,7 +142,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
 
-              <form action="new-payee-name" method="post" class="form">
+              <form action="guidance-payee-details" method="post" class="form">
               <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
                 Add a new payee
               </button>

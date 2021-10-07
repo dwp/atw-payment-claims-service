@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">You’ve updated your email address</h1>
+        <p class="govuk-body">
+          You will still need to use your original email address to log in to your account and manage your claims.
+        </p>
+        
+
+        <form action="personal-information" method="post" class="form">
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Return to personal details
+          </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

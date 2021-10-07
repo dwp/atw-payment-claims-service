@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="check-your-answers" method="post" class="form">
+        <h1 class="govuk-heading-l">Changes you need to make to your claim </h1>
+
+
+
+        <p>You can make changes to your claim at any time prior to your workplace contact confirming your claim. You’ll need to agree to the declaration again every time you make changes to your claim.</p>
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}
