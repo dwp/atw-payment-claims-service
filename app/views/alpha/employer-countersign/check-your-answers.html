@@ -35,22 +35,6 @@ Access to Work Claiming Portal
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Your job title
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    {{data["job-description"]}}
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="job-description">
-                        Change
-                        <span class="govuk-visually-hidden"> Type of claim</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
-            <!-- <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
                     Organisation address
                 </dt>
                 <dd class="govuk-summary-list__value">
@@ -102,13 +86,30 @@ Access to Work Claiming Portal
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="company-address">
+                        Change
+                        <span class="govuk-visually-hidden"> Type of claim</span>
+                    </a>
+                </dd>
+                {% endif %}
+        </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Your job title
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["job-description"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="job-description">
                         Change
                         <span class="govuk-visually-hidden"> Type of claim</span>
                     </a>
                 </dd>
-                {% endif %} -->
-            <!-- </div> -->
+                {% endif %}
+            </div>
+
             </dl>
 
 

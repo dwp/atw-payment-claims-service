@@ -10,8 +10,11 @@ Access to Work Claiming Portal
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="job-description" method="post" class="form">
-
+      {% if data ['job-description'] %}
+        <form action="check-your-answers" method="post" class="form">
+      {% else %}
+        <form action="company-address" method="post" class="form">
+      {% endif %}
             <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <div class="govuk-form-group">
                     <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="comapany-name">
