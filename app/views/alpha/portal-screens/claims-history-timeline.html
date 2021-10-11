@@ -81,12 +81,26 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
   <p class="govuk-body">Your claim has been sent to person who can confirm your support costs.</p>
   </div>
   </li>
+  <li class="hmrc-timeline__event">
+  <h2 class="hmrc-timeline__event-title">Claim confirmed by person who can confirm your support costs</h2>
+  <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
+  <div class="hmrc-timeline__event-content">
+  <p class="govuk-body">Your claim request has been confirmed by the person who can confirm your support costs. An Access to Work Payment Officer can now process your claim.</p>
+  </div>
+  </li>
   {% else %}
   <li class="hmrc-timeline__event">
   <h2 class="hmrc-timeline__event-title">Claim sent to workplace contact</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
   <div class="hmrc-timeline__event-content">
   <p class="govuk-body">Your claim has been sent to your workplace contact to confirm.</p>
+  </div>
+  </li>
+  <li class="hmrc-timeline__event">
+  <h2 class="hmrc-timeline__event-title">Claim confirmed by your workplace contact</h2>
+  <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
+  <div class="hmrc-timeline__event-content">
+  <p class="govuk-body">Your claim request has been confirmed by your workplace contact. An Access to Work Payment Officer can now process your claim.</p>
   </div>
   </li>
   {% endif %}
