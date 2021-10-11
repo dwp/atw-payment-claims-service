@@ -71,10 +71,10 @@ Access to Work Claiming Portal
                     {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][repeattravel_from]">
-                        Journey from (optional)
+                        Postcode of place where journey started
                       </label>
-                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, your home office</div>
-                      <input class="govuk-input"
+                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10"
                              value = "{{data.repeattravel[0].repeattravel_from}}"
                              id="repeattravel[0][repeattravel_from]"
                              name="repeattravel[0][repeattravel_from]" type="text"
@@ -84,10 +84,10 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][repeattravel_to]">
-                        Journey to (optional)
+                      Postcode of place where journey ended
                       </label>
-                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, a client site</div>
-                      <input class="govuk-input"
+                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10"
                              value = "{{data.repeattravel[0].repeattravel_to}}"
                              id="repeattravel[0][repeattravel_to]"
                              name="repeattravel[0][repeattravel_to]" type="text"
@@ -177,10 +177,10 @@ Access to Work Claiming Portal
                     {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][repeattravel_from]">
-                        Journey from (optional)
+                        Postcode of place where journey started
                       </label>
-                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, your home office</div>
-                      <input class="govuk-input" id="repeattravel[{{loop.index0}}][repeattravel_from]"
+                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10" id="repeattravel[{{loop.index0}}][repeattravel_from]"
                              name="repeattravel[{{loop.index0}}][repeattravel_from]" type="text"
                              value="{{item.repeattravel_from}}" data-name="repeattravel[%index%][repeattravel_from]"
                              data-id="repeattravel[%index%][repeattravel_from]">
@@ -188,10 +188,10 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][repeattravel_to]">
-                        Journey to (optional)
+                        Postcode of place where journey ended
                       </label>
-                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, a client site</div>
-                      <input class="govuk-input" id="repeattravel[{{loop.index0}}][repeattravel_to]"
+                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10" id="repeattravel[{{loop.index0}}][repeattravel_to]"
                              name="repeattravel[{{loop.index0}}][repeattravel_to]" type="text"
                              value="{{item.repeattravel_to}}" data-name="repeattravel[%index%][repeattravel_to]"
                              data-id="repeattravel[%index%][repeattravel_to]">

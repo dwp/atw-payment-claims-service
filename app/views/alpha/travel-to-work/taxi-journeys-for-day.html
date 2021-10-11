@@ -72,7 +72,7 @@ Access to Work Claiming Portal
                       {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_from]">
-                        Postcode from
+                        Postcode of place where journey started
                       </label>
                       <div id="travel[0][travel_from]" class="govuk-hint">For example, WA4 1AB</div>
                       <input class="govuk-input govuk-input--width-10"
@@ -85,7 +85,7 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_to]">
-                        Postcode to
+                        Postcode of place where journey ended
                       </label>
                       <div id="travel[0][travel_to]" class="govuk-hint">For example, WA4 1AB</div>
                       <input class="govuk-input govuk-input--width-10"
@@ -172,10 +172,10 @@ Access to Work Claiming Portal
                     {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[{{loop.index0}}][travel_from]">
-                        Journey from (optional)
+                        Postcode of place where journey started
                       </label>
-                      <div id="travel[0][travel_from]" class="govuk-hint">For example, your home office</div>
-                      <input class="govuk-input" id="travel[{{loop.index0}}][travel_from]"
+                      <div id="travel[0][travel_from]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10" id="travel[{{loop.index0}}][travel_from]"
                              name="travel[{{loop.index0}}][travel_from]" type="text"
                              value="{{item.travel_from}}" data-name="travel[%index%][travel_from]"
                              data-id="travel[%index%][travel_from]">
@@ -183,10 +183,10 @@ Access to Work Claiming Portal
 
                     <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[{{loop.index0}}][travel_to]">
-                        Journey to (optional)
+                        Postcode of place where journey ended
                       </label>
-                      <div id="travel[0][travel_to]" class="govuk-hint">For example, a client site</div>
-                      <input class="govuk-input" id="travel[{{loop.index0}}][travel_to]"
+                      <div id="travel[0][travel_to]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10" id="travel[{{loop.index0}}][travel_to]"
                              name="travel[{{loop.index0}}][travel_to]" type="text"
                              value="{{item.travel_to}}" data-name="travel[%index%][travel_to]"
                              data-id="travel[%index%][travel_to]">

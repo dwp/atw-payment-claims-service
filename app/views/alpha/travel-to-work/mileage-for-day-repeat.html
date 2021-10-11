@@ -49,10 +49,10 @@ Access to Work Claiming Portal
 
                       <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[0][repeatmilage_from]">
-                          Journey from (optional)
+                          Postcode of place where journey started
                         </label>
-                        <div id="repeatmilage[0][repeatmilage_from]" class="govuk-hint">For example, your home office</div>
-                        <input class="govuk-input"
+                        <div id="repeatmilage[0][repeatmilage_from]" class="govuk-hint">For example, WA4 1AB</div>
+                        <input class="govuk-input govuk-input--width-10"
                                value = "{{data.repeatmilage[0].repeatmilage_from}}"
                                id="repeatmilage[0][repeatmilage_from]"
                                name="repeatmilage[0][repeatmilage_from]" type="text"
@@ -62,10 +62,10 @@ Access to Work Claiming Portal
 
                       <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[0][repeatmilage_to]">
-                          Journey to (optional)
+                        Postcode of place where journey ended
                         </label>
-                        <div id="repeatmilage[0][repeatmilage_to]" class="govuk-hint">For example, a client site</div>
-                        <input class="govuk-input"
+                        <div id="repeatmilage[0][repeatmilage_to]" class="govuk-hint">For example, WA4 1AB</div>
+                        <input class="govuk-input govuk-input--width-10"
                                value = "{{data.repeatmilage[0].repeatmilage_to}}"
                                id="repeatmilage[0][repeatmilage_to]"
                                name="repeatmilage[0][repeatmilage_to]" type="text"
@@ -133,10 +133,10 @@ Access to Work Claiming Portal
                   {% if data['transport-option'] == "lift-during-work"%}
                   <div class="govuk-form-group">
                   <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[{{loop.index0}}][repeatmilage_from]">
-                      Journey from (optional)
+                      Postcode of place where journey started
                     </label>
-                    <div id="repeatmilage[0][repeatmilage_from]" class="govuk-hint">For example, your home office</div>
-                    <input class="govuk-input" id="repeatmilage[{{loop.index0}}][repeatmilage_from]"
+                    <div id="repeatmilage[0][repeatmilage_from]" class="govuk-hint">For example, WA4 1AB</div>
+                    <input class="govuk-input govuk-input--width-10" id="repeatmilage[{{loop.index0}}][repeatmilage_from]"
                            name="repeatmilage[{{loop.index0}}][repeatmilage_from]" type="text"
                            value="{{item.repeatmilage_from}}" data-name="repeatmilage[%index%][repeatmilage_from]"
                            data-id="repeatmilage[%index%][repeatmilage_from]">
@@ -144,10 +144,10 @@ Access to Work Claiming Portal
 
                   <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[{{loop.index0}}][repeatmilage_to]">
-                      Journey to (optional)
+                      Postcode of place where journey ended
                     </label>
-                    <div id="repeatmilage[0][repeatmilage_to]" class="govuk-hint">For example, a client site</div>
-                    <input class="govuk-input" id="repeatmilage[{{loop.index0}}][repeatmilage_to]"
+                    <div id="repeatmilage[0][repeatmilage_to]" class="govuk-hint">For example, WA4 1AB</div>
+                    <input class="govuk-input govuk-input--width-10" id="repeatmilage[{{loop.index0}}][repeatmilage_to]"
                            name="repeatmilage[{{loop.index0}}][repeatmilage_to]" type="text"
                            value="{{item.repeatmilage_to}}" data-name="repeatmilage[%index%][repeatmilage_to]"
                            data-id="repeatmilage[%index%][repeatmilage_to]">

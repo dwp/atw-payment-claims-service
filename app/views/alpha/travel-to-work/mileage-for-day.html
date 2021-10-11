@@ -50,10 +50,10 @@ Access to Work Claiming Portal
 
                       <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="milage[0][milage_from]">
-                          Journey from (optional)
+                          Postcode of place where journey started
                         </label>
-                        <div id="milage[0][milage_from]" class="govuk-hint">For example, your home office</div>
-                        <input class="govuk-input"
+                        <div id="milage[0][milage_from]" class="govuk-hint">For example, WA4 1AB</div>
+                        <input class="govuk-input govuk-input--width-10"
                                value = "{{data.milage[0].milage_from}}"
                                id="milage[0][milage_from]"
                                name="milage[0][milage_from]" type="text"
@@ -63,10 +63,10 @@ Access to Work Claiming Portal
 
                       <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="milage[0][milage_to]">
-                          Journey to (optional)
+                          Postcode of place where journey ended
                         </label>
-                        <div id="milage[0][milage_to]" class="govuk-hint">For example, a client site</div>
-                        <input class="govuk-input"
+                        <div id="milage[0][milage_to]" class="govuk-hint">For example, WA4 1AB</div>
+                        <input class="govuk-input govuk-input--width-10"
                                value = "{{data.milage[0].milage_to}}"
                                id="milage[0][milage_to]"
                                name="milage[0][milage_to]" type="text"
@@ -137,10 +137,10 @@ Access to Work Claiming Portal
 
                   <div class="govuk-form-group">
                   <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="milage[{{loop.index0}}][milage_from]">
-                      Journey from (optional)
+                      Postcode of place where journey started
                     </label>
-                    <div id="milage[0][milage_from]" class="govuk-hint">For example, your home office</div>
-                    <input class="govuk-input" id="milage[{{loop.index0}}][milage_from]"
+                    <div id="milage[0][milage_from]" class="govuk-hint">For example, WA4 1AB</div>
+                    <input class="govuk-input govuk-input--width-10" id="milage[{{loop.index0}}][milage_from]"
                            name="milage[{{loop.index0}}][milage_from]" type="text"
                            value="{{item.milage_from}}" data-name="milage[%index%][milage_from]"
                            data-id="milage[%index%][milage_from]">
@@ -148,10 +148,10 @@ Access to Work Claiming Portal
 
                   <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[{{loop.index0}}][milage_to]">
-                      Journey to (optional)
+                      Postcode of place where journey ended
                     </label>
-                    <div id="milage[0][milage_to]" class="govuk-hint">For example, a client site</div>
-                    <input class="govuk-input" id="travel[{{loop.index0}}][milage_to]"
+                    <div id="milage[0][milage_to]" class="govuk-hint">For example, WA4 1AB</div>
+                    <input class="govuk-input govuk-input--width-10" id="travel[{{loop.index0}}][milage_to]"
                            name="milage[{{loop.index0}}][milage_to]" type="text"
                            value="{{item.milage_to}}" data-name="milage[%index%][milage_to]"
                            data-id="milage[%index%][milage_to]">
