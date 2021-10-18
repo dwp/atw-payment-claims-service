@@ -15,30 +15,20 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/travel-to-work/transport-option-answers', function (req, res) {
     const aids = req.session.data['transport-option']
-      const claiming = req.session.data['way-of-claiming']
 
     if (aids === 'taxi' || aids === 'taxi-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
-    } else if (aids === 'lift'  && claiming === 'mileage') {
-      res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
-    } else if (aids === 'lift' && claiming === 'journeys') {
-      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
-    } else if (aids === 'lift-during-work') {
+    } else if (aids === 'lift' || aids === 'lift-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
     }
   })
 
   router.post('/travel-to-work/transport-option-answers-repeat', function (req, res) {
     const aids = req.session.data['transport-option']
-    const claiming = req.session.data['way-of-claiming']
 
     if (aids === 'taxi' || aids === 'taxi-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-repeat`)
-    } else if (aids === 'lift' && claiming === 'mileage') {
-      res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
-    } else if (aids === 'lift' && claiming === 'journeys') {
-      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-repeat`)
-    } else if (aids === 'lift-during-work') {
+    } else if (aids === 'lift' || aids === 'lift-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
     }
   })
@@ -347,9 +337,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const journeytype = req.session.data['journey-type']
     const checked = req.session.data['contact-confirmed']
     const aids = req.session.data['transport-option']
-    const lift = req.session.data['way-of-claiming']
-
-
 
 
     if (req.session.data.travel === undefined || req.session.data.travel.length == 0) {
@@ -360,8 +347,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     } else if (checked && addmonth === 'no') {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (addmonth === 'no' && journeytype === 'traveltowork' && lift === 'journeys') {
-      res.redirect(`/${urlPrefix}/travel-to-work/mileage-amount-paid`)
     } else if (addmonth === 'no' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     } else if (addmonth === 'yes') {
@@ -430,7 +415,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
      if (addmonth === "yes") {
       res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month-repeat`)
     } else if (addmonth === "no") {
-        res.redirect(`/${urlPrefix}/travel-to-work/mileage-amount-paid`)
+        res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
     }
   })
 
@@ -491,19 +476,5 @@ router.post('/travel-to-work/employment-status-answer', function (req, res) {
   res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
 }
 })
-
-router.post('/travel-to-work/transport-option-answer-preview', function (req, res) {
-  const transport = req.session.data['transport-option']
-
-  if (transport === 'taxi') {
-  res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month`)
-} else if (transport === 'lift') {
-  res.redirect(`/${urlPrefix}/travel-to-work/mileage-or-journey`)
-}
-})
-
-
-
-
 
 }

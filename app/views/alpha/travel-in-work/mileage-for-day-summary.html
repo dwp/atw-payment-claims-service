@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% set milageLength %}
+{{ data.milage | length }}
+{% endset %}
+
+{% set mileageTotal = 0 %}
+{% for day in data.milage %}
+{% set mileageTotal = mileageTotal | float + day.milage_total | float %}
+{% else %}
+{% set mileageTotal = 0 | float %}
+{% endfor %}
+
+{% set repeatmilageLength %}
+{{ data.repeatmilage | length }}
+{% endset %}
+
+{% set repeatmileageTotal = 0 %}
+{% for day in data.repeatmilage %}
+{% set repeatmileageTotal = repeatmileageTotal | float + day.repeatmilage_total | float %}
+{% else %}
+{% set repeatmileageTotal = 0 | float %}
+{% endfor %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="#">
+
+        <div class="govuk-form-group">
+          {% if mileageTotal === 1 %}
+          <h1 class="govuk-heading-l">You’ve told us the journey you’re claiming for were a total of {{mileageTotal + repeatmileageTotal}} miles</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us the journeys you’re claiming for were a total of {{mileageTotal + repeatmileageTotal}} miles</h1>
+          {% endif %}
+
+
+
+          <h2 class="govuk-heading-s">Miles travelled in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
+            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+
+                {% for item in data['milage'] | sortBy('day') %}
+                <li class="hmrc-add-to-a-list__contents">
+      <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+
+        {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}{% if data['transport-option'] == "lift-during-work"%}<br>From {{item.milage_from}} <br>To {{item.milage_to}}{% endif %} <br>{{item.milage_total}} Miles
+         <br>
+      </span>
+      <span class="hmrc-add-to-a-list__change">
+       <a id="{{item.day}}-change" class="govuk-link" href="mileage-for-day">
+         <span aria-hidden="true">Change</span>
+         <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
+       </a>
+     </span>
+      <!-- <span class="hmrc-add-to-a-list__remove">
+        <a id="{{item.day}}-remove" class="govuk-link--no-visited-state" href="remove-support?removeId={{loop.index0}}">
+          <span aria-hidden="true">Remove</span>
+          <span class="govuk-visually-hidden">Remove {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
+        </a>
+      </span> -->
+                </li>
+                {% else %}
+                <div class="govuk-inset-text">
+                  Tell us about the support you received to continue.
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% if data['travel-to-work-date-month-repeat'] %}
+
+        <div class="govuk-form-group">
+
+          <h2 class="govuk-heading-s">Miles travelled in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
+
+            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+
+                {% for item in data['repeatmilage'] | sortBy('day') %}
+                <li class="hmrc-add-to-a-list__contents">
+                <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+                  {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}{% if data['transport-option'] == "lift-during-work"%}<br>From {{item.repeatmilage_from}} <br>To {{item.repeatmilage_to}}{% endif %} <br>{{item.repeatmilage_total}} Miles
+                   <br>
+                </span>
+                <span class="hmrc-add-to-a-list__change">
+                 <a id="{{item.day}}-change" class="govuk-link" href="mileage-for-day-repeat">
+                   <span aria-hidden="true">Change</span>
+                   <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
+                 </a>
+               </span>
+
+                          </li>
+                          {% else %}
+                          <div class="govuk-inset-text">
+                            Tell us about the support you received to continue.
+                          </div>
+                          {% endfor %}
+
+
+                      </ul>
+                  </div>
+
+        {% endif %}
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        {% if data['transport-option'] == "lift"%}
+        Do you want to claim mileage costs for any other months?
+        {% else %}
+        Do you want to claim mileage costs during work hours for any other months?
+        {% endif %}
+      </h1>
+    </legend>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="new-month" name="new-month" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="new-month">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="new-month-2" name="new-month" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="new-month-2">
+          No
+        </label>
+      </div>
+    </div>
+
+
+    </fieldset>
+
+    </div>
+
+
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
