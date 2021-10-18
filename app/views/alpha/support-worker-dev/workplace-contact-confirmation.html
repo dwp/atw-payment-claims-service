@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="contact-answers" method="post" class="form">
+
+
+
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-taxi">
+              You’ve told us these are your workplace contact’s details
+              </<label>
+            </h1>
+
+              <div class="govuk-form-group">
+                    <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{data["counter-signatory-full-name"]}}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="counter-signatory-name">
+                          Change<span class="govuk-visually-hidden"> name</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Email address
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{data["counter-signatory-email"]}}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="counter-signatory-name">
+                          Change<span class="govuk-visually-hidden"> Email address</span>
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+                  </div>
+
+                  <p>By clicking continue, you’re confirming that:</p>
+                  <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                      <li>the details you’ve provided are correct</li>
+                      <li>you’re happy for us to ask your workplace contact to confirm you received the hours of support you’re claiming for</li>
+                  </ul>
+
+            <input type="hidden" name="contact-confirmed" value="true">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                I accept – continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
