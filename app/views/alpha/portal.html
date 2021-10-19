@@ -78,6 +78,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                           <a class="card-link" href="./travel-to-work/travel-to-work">
                               Send a claim online
                           </a>
+                          {% elseif (data['journey-type'] == "travelinwork") %}
+                            <a class="card-link" href="./travel-in-work/travel-to-work">
+                                Send a claim online
+                            </a>
                           {% elseif (data['journey-type'] == "traveltoworkold") %}
                             <a class="card-link" href="./travel-to-work-old/start-a-claim">
                                 Send a claim online
