@@ -303,7 +303,7 @@
         </dl>
         {% endif %}
 
-    {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+    {%if ((data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration'])) and (data['existing-payee'] == "new") %}
         <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
 
 
@@ -319,12 +319,12 @@
               {% if print != true %}
               <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                <a href="../support-worker/new-payee-name">
+                <a href="../support-worker/existing-payee-details">
                     Change
                     <span class="govuk-visually-hidden"> Payee name</span>
                 </a>
                 {% else %}
-                  <a href="new-payee-name">
+                  <a href="existing-payee-details">
                       Change
                       <span class="govuk-visually-hidden"> Payee name</span>
                   </a>
@@ -343,12 +343,12 @@
               {% if print != true %}
               <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                <a href="../support-worker/new-payee-name">
+                <a href="../support-worker/existing-payee-details">
                     Change
                     <span class="govuk-visually-hidden"> Payee email</span>
                 </a>
                 {% else %}
-                  <a href="new-payee-name">
+                  <a href="existing-payee-details">
                       Change
                       <span class="govuk-visually-hidden"> Payee email</span>
                   </a>
@@ -359,12 +359,111 @@
           {% endif %}
           </dl>
 
-        {% else %}
+        {% elseif ((data['existing-payee'] == "one") or (data['existing-payee'] == "two") or (data['existing-payee'] == "three")) %}
+
+        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if (data['existing-payee'] == "one") %}
+                  John Doe
+                {% elseif (data['existing-payee'] == "two") %}
+                Jane Green
+                {% elseif (data['existing-payee'] == "three") %}
+                Sanjid Kelly
+                {% elseif (data['existing-payee'] == "New") %}
+                New person or company being paid
+                {% endif %}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                <a href="../support-worker/existing-payee-details">
+                    Change
+                    <span class="govuk-visually-hidden"> Payee name</span>
+                </a>
+                {% else %}
+                  <a href="existing-payee-details">
+                      Change
+                      <span class="govuk-visually-hidden"> Payee name</span>
+                  </a>
+                  {% endif %}
+              </dd>
+              {% endif %}
+          </div>
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if (data['existing-payee'] == "one") %}
+                john.doe@deafactioncharity.com
+                {% elseif (data['existing-payee'] == "two") %}
+                jane.green@bsl-interpreters.com
+                {% elseif (data['existing-payee'] == "three") %}
+                jane.green@bsl-interpreters.com
+
+                {% endif %}
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                <a href="../support-worker/existing-payee-details">
+                    Change
+                    <span class="govuk-visually-hidden"> Payee email</span>
+                </a>
+                {% else %}
+                  <a href="existing-payee-details">
+                      Change
+                      <span class="govuk-visually-hidden"> Payee email</span>
+                  </a>
+                  {% endif %}
+              </dd>
+              {% endif %}
+          </div>
+
+          </dl>
+
+
+        {% elseif (data['existing-payee'] == "New") %}
+
         {% if print != true %}
         <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  New details of person or company who needs to be paid back
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if (data['existing-payee'] == "one") %}
+                  John Doe
+                {% elseif (data['existing-payee'] == "two") %}
+                Jane Green
+                {% elseif (data['existing-payee'] == "three") %}
+                Sanjid Kelly
+                {% elseif (data['existing-payee'] == "New") %}
+                New person or company being paid back
+                {% endif %}
+
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="existing-payee-details">
+                      Change
+                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   Name

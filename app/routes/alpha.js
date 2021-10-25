@@ -13,6 +13,7 @@ require(`../views/${folderWithinViews}/support-worker-dev/_support-worker-routes
 require(`../views/${folderWithinViews}/support-worker-old/_support-worker-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/support-worker-old-two/_support-worker-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/travel-to-work/_travel-to-work-routes`)(folderWithinViews, urlPrefix, router)
+require(`../views/${folderWithinViews}/travel-to-work-dev/_travel-to-work-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/travel-in-work/_travel-in-work-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/travel-to-work-old/_travel-to-work-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/multiple-award-elements/_multiple-award-routes`)(folderWithinViews, urlPrefix, router)

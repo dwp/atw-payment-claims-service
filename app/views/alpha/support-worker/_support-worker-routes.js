@@ -255,7 +255,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (journeytype === 'supportworker' && checked) {
       res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
     } else if (journeytype === 'supportworker') {
-      res.redirect(`/${urlPrefix}/support-worker/guidance-payee-details`)
+      res.redirect(`/${urlPrefix}/support-worker/existing-payee-details`)
     }
   })
 
@@ -270,4 +270,18 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
   }
 })
+
+router.post('/support-worker/existing-payee-answers', function (req, res) {
+  const payee = req.session.data['existing-payee']
+  const checked = req.session.data['contact-confirmed']
+
+  if (payee === 'New') {
+  res.redirect(`/${urlPrefix}/support-worker/guidance-payee-details`)
+} else if (checked){
+  res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+} else {
+  res.redirect(`/${urlPrefix}/support-worker/counter-signatory-name`)
+}
+})
+
 }

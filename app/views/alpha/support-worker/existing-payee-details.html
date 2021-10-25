@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="existing-payee-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="support-for-workplace-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <span class="govuk-caption-l">Section 3 of 5</span>
+                        <h1 class="govuk-fieldset__heading">
+                            Tell us the person or company who needs paying back.
+                        </h1>
+                    </legend>
+
+                      <p>You’ll need to add new payment details if we need to pay another company or person.</p>
+
+
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-one" name="existing-payee"
+                                   type="radio"
+                                   value="one">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-one">
+                                John Doe
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              john.doe@deafactioncharity.com
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-two" name="existing-payee"
+                                   type="radio"
+                                   value="two">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-two">
+                                Jane Green
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              jane.green@bsl-interpreters.com
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-three" name="existing-payee"
+                                   type="radio"
+                                   value="three">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-three">
+                                Sanjid Kelly
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              sanjid.kelly@deafactioncharity.com
+                            </div>
+                        </div>
+                        <div class="govuk-radios__divider">or</div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-new" name="existing-payee"
+                                   type="radio"
+                                   value="New">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-new">
+                                Add new details a new person or company to be paid
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              You’ll need to know the details of the person or company who needs paying, including bank details if we’ve not paid them before
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

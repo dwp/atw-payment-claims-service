@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+              <h1 class="govuk-panel__title">Claim sent</h1>
+              <div class="govuk-panel__body">
+                  Your claim reference number is<br><strong>TW125421</strong>
+              </div>
+          </div>
+
+            {% if data ['employment-status'] =="Employed" %}
+            <p>We’ve sent this claim reference number to the person responsible for confirming your claim.
+            They’ll need to enter this reference number to access your claim. Once they confirm the claim is correct, we’ll process your claim.</p>
+
+            <p>If you need to contact us after your workplace contact has confirmed your claim, you should give us your claim reference number. It will help us identify your claim quicker.</p>
+
+
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+
+            <p>Your claim has been sent. We’ll contact your workplace contact to let them know that you’ve made a claim. They’ll need to review and confirm your claim before we can process it.</p>
+
+            <p>We’ll let you know whether they confirm your claim using the contact method you chose. If your claim is confirmed, we’ll process your claim.</p>
+
+              <p>If your workplace contact does not approve your claim, we’ll contact you to let you know what to do next.</p>
+
+            <p>You’ll be able to see updates about your Access to Work grant and the progress of your claim in your account.</p>
+
+            {% else %}
+
+            <p>You should give us this claim reference number if you contact us about your claim. </p>
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+
+            <p>Your claim has been sent. If your claim is approved, we’ll process your claim and pay the money into the bank account you chose.</p>
+
+            <p>If your claim is not approved, we’ll contact you to let you know what to do next. </p>
+
+            <p>You’ll be able to see updates about your Access to Work grant and the progress of your claim in your account.</p>
+
+            {% endif %}
+
+
+            <p><a href="../portal">Return to account home</a></p>
+
+
+    </div>
+</div>
+
+
+<p><a target="_blank" href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
+    think of this service?</a> (opens in a new tab)</p>
+{% endblock %}

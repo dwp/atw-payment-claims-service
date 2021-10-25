@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_cost | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_cost | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="change-cost-answer" method="post" class="form">
+          {% if data['transport-option'] == "taxi"%}
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="transport-option-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                          Do you want to change the total cost of the journeys you’re claiming for?
+                        </h1>
+                    </legend>
+
+
+
+                    <p>The current total cost you’re claiming for is £{{data["cost-of-taxi"]}}</p>
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="change-cost-yes" name="change-cost"
+                                   type="radio"
+                                   value="yes">
+                            <label class="govuk-label govuk-radios__label" for="change-cost-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="change-cost-no" name="change-cost"
+                                   type="radio"
+                                   value="no">
+                            <label class="govuk-label govuk-radios__label" for="change-cost-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            {% else %}
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="transport-option-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                          The total cost of you're claiming for is £{{taxiTotal + repeattaxiTotal}}
+                        </h1>
+                    </legend>
+
+
+
+              
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="change-cost-yes" name="change-cost"
+                                   type="radio"
+                                   value="yes">
+                            <label class="govuk-label govuk-radios__label" for="change-cost-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="change-cost-no" name="change-cost"
+                                   type="radio"
+                                   value="no">
+                            <label class="govuk-label govuk-radios__label" for="change-cost-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            {% endif %}
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
