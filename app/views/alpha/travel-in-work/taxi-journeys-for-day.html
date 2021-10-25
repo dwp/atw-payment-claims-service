@@ -50,7 +50,7 @@ Access to Work Claiming Portal
                                 </div>
                     </div> <!-- govuk-form-group -->
 
-                    {% if data['transport-option'] !== "taxi-during-work"%}
+                    {% if (data['journey-type'] == "traveltowork") %}
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_journeys]">
@@ -150,7 +150,7 @@ Access to Work Claiming Portal
                       <div class="govuk-input__suffix">{{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</div>
                     </div>
                   </div>
-                  {% if data['transport-option'] !== "taxi-during-work"%}
+                  {% if (data['journey-type'] == "traveltowork") %}
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                for="travel[{{loop.index0}}][travel_journeys]">

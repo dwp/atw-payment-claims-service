@@ -44,7 +44,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </fieldset>
             </div>
 
+            <br><br>
+
             {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] !== "true")%}
+
+
 
             <h2 class="govuk-heading-m">Claim needs updating <span id="notifications" class="moj-notification-badge">1</span> </h2>
             <p>Your workplace contact has reviewed your claim. You need to make some changes before they can approve your claim.<p>

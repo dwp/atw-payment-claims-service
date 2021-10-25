@@ -446,8 +446,7 @@
                 {% endif %}
             </div>
 
-            {% if (data['one-time-code']) or (data['cost-of-taxi']=="100") or (data['way-of-claiming'])%}
-            {% else %}
+
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -478,10 +477,9 @@
                 {% endif %}
             </div>
 
-            {% endif %}
 
-            {% if data['one-time-code'] %}
-            {% else %}
+
+
             {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -516,78 +514,28 @@
                 {% endif %}
             </div>
             {% endif %}
-            {% endif %}
+
         </dl>
 
             {%if (data['cost-of-taxi']=="100") %}
 
-            {%if (data['employer-contributing']=="Yes") and ((data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")) %}
+            {%if data['employer-contributing']=="Yes" %}
 
-            <h2 class="govuk-heading-m">Taxi for work cost</h2>
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    Total cost of journeys
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    {% if data['transport-option'] == "taxi"%}
-                    £{{data["cost-of-taxi"]}}
-                    {% else %}
-                    £{{taxiTotal + repeattaxiTotal}}
-                    {% endif %}
-
-                  </dd>
-                  {% if print != true %}
-                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                      <a href="../travel-to-work/taxi-cost">
-                          Change
-                          <span class="govuk-visually-hidden"> Total number of journeys</span>
-                      </a>
-                      {% else %}
-                      <a href="taxi-cost">
-                          Change
-                          <span class="govuk-visually-hidden"> cost for travel to work received</span>
-                      </a>
-                      {% endif %}
-                  </dd>
-                  {% endif %}
-              </div>
-              </dl>
+            <h2 class="govuk-heading-m">Total amount Access to Work will contribute towards your journeys</h2>
           <p>The amount we will pay back will be slightly less than the total cost of the journeys because we will deduct the amounts you or your employer have agreed to pay.</p>
 
-          <dl class="govuk-summary-list">
 
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Employer contribution
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £20
-                </dd>
-
-            </div>
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Total amount we can pay towards this claim
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £80
-                </dd>
-
-            </div>
 
             {% endif %}
             {% endif %}
 
             {% endif %}
 
-            </dl>
+
 
             {%if (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work") %}
 
-            <h2 class="govuk-heading-m">A lift from a friend, colleague or family member cost</h2>
+            <h2 class="govuk-heading-m">Total amount Access to Work will contribute towards your travel</h2>
               <p>The total amount you will be paid back will be calculated based on your agreed mileage rate per mile quoted to you in your Access to Work grant approval letter, minus any agreed personal or employer contributions.</p>
             <!-- <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">

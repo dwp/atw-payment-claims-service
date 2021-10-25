@@ -17,19 +17,19 @@ Access to Work Claiming Portal
             <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="300">
             <div class="govuk-form-group">
               <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="with-hint">
-                  Tell us why you cannot approve this claim
+                  Tell us why you cannot confirm this claim
                 </label>
               </h1>
               {% if (data["answers-checked-sw"]) %}
               <div id="claim-incorrect-hint" class="govuk-body">
-                  For example, your employee could be claiming for too many or too few days of support.
+                  For example, Joe Bloggs could be claiming for too many or too few days of support.
               </div>
-              <p>You need to make sure you provide enough detail so that your employee understands what the problem is and what needs to be updated. </p>
+              <p>You need to make sure you provide enough detail so that Joe Bloggs understands what the problem is and what needs to be updated.</p>
               {% else %}
               <div id="job-description-hint" class="govuk-body">
-                  For example, your employee could be claiming for too many or too few days of travel, or they might not have been in work for one of the days they are claiming for.
+                  For example, Joe Bloggs could be claiming for too many or too few days of travel, or they might not have been in work for one of the days they are claiming for.
               </div>
-              <p>You need to make sure you provide enough detail so that your employee understands what the problem is and what needs to be updated. </p>
+              <p>You need to make sure you provide enough detail so that Joe Bloggs understands what the problem is and what needs to be updated.</p>
               {% endif %}
               <textarea class="govuk-textarea govuk-js-character-count" id="claim-incorrect" name="claim-incorrect" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
             </div>

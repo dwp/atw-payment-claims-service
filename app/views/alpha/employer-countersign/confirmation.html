@@ -22,16 +22,16 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             {% if data['claim-incorrect'] =='true' %}
 
             <div class="govuk-panel govuk-panel--confirmation">
-                <h1 class="govuk-panel__title">Claim returned to employee</h1>
+                <h1 class="govuk-panel__title">Claim returned to Joe Bloggs</h1>
                 <div class="govuk-panel__body">
-                    Your employee's claim reference number<br><br><strong>{{data['citizens-urn']}}</strong>
+                    Joe Bloggs's claim reference number<br><br><strong>{{data['citizens-urn']}}</strong>
                 </div>
             </div>
 
             {% else %}
 
             <div class="govuk-panel govuk-panel--confirmation">
-                <h1 class="govuk-panel__title">Claim approved</h1>
+                <h1 class="govuk-panel__title">Claim confirmed</h1>
                 <div class="govuk-panel__body">
                     Your employee's claim reference number<br><br><strong>{{data['citizens-urn']}}</strong>
                 </div>
@@ -40,25 +40,31 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             {% endif %}
 
             {% if (data["answers-checked-sw"]) %}
-            <p>You should give us this claim reference number if you contact us about your claim. You can <a target="_blank"
-                    href="../support-worker/check-your-answers-print">save and print a copy of the claim you approved (opens in a new tab)</a>.</p>
+            <p>You should give us this claim reference number if you contact us about this claim.</p>
             {% else %}
-            <p>You should give us this claim reference number if you contact us about your claim. You can <a target="_blank"
-                    href="../travel-to-work/check-your-answers-print">save and print a copy of the claim you approved (opens in a new tab)</a>.</p>
+            <p>You should give us this claim reference number if you contact us about your claim.</p>
               {% endif %}
 
             <h2 class="govuk-heading-m">What happens next</h2>
 
             {% if data['claim-incorrect'] =='true' %}
-            <p>Your employee’s claim has been sent back to them. Your employee can review why you did not approve their claim and make changes to their claim. Once updated, we’ll send their claim back to you for review.</p>
-            <p>You’ll need to review their claim again. If you approve the updated claim, we’ll process the claim and pay the money into the chosen bank account.</p>
+
+
+            <p>Joe Bloggs’s claim has been sent back to them. They will need to review why you could not approve their claim and make some changes.</p>
+
+
+            <p>You’ll need to review their updated claim. If you confirm the claim is correct, we’ll process the claim. If approved, we'll pay the money in to the chosen bank account.</p>
+
+
             {% else %}
 
-            <p>Your employee’s claim has been approved. We’ll process the claim and pay the money into the chosen bank account.</p>
-
-            <p>Your employee will be able to see the progress of their Access to Work claim in their account.</p>
+            <p>We’ll process the claim. If approved, we'll pay the money in to the chosen bank account.</p>
 
             {% endif %}
+
+
+            <p>Joe Bloggs will be able to see the progress of their Access to Work claim in their account.</p>
+
 
 
 
