@@ -448,91 +448,93 @@
 
 
 
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Total cost of journeys
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {% if data['transport-option'] == "taxi"%}
-                  £{{data["cost-of-taxi"]}}
-                  {% else %}
-                  £{{taxiTotal + repeattaxiTotal}}
-                  {% endif %}
 
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/taxi-cost">
-                        Change
-                        <span class="govuk-visually-hidden"> Total number of journeys</span>
-                    </a>
-                    {% else %}
-                    <a href="taxi-cost">
-                        Change
-                        <span class="govuk-visually-hidden"> cost for travel to work received</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                              Total cost of journeys
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {% if data['transport-option'] == "taxi"%}
+                              £{{data["cost-of-taxi"]}}
+                              {% else %}
+                              £{{taxiTotal + repeattaxiTotal}}
+                              {% endif %}
 
-
-
-
-            {%if (data["transport-option"]=="taxi") %}
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  {% if data['uploads'].length === 1 %}
-                    Receipt or invoice uploaded
-                    {% else %}
-                    Receipts or invoices uploaded
-                    {% endif %}
-                </dt>
-
-                <dd class="govuk-summary-list__value">
-                    {% for file in data['uploads'] %}
-
-                  <a href="@"> {{file['file']}} </a></br>
-                    {% endfor %}
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/upload-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> Total number of journeys</span>
-                    </a>
-                    {% else %}
-                    <a href="upload-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> Supporting evidence</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-            {% endif %}
-            {% endif %}
-
-              </dl>
+                            </dd>
+                            {% if print != true %}
+                            <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                              {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
+                                <a href="../travel-to-work/taxi-cost">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Total number of journeys</span>
+                                </a>
+                                {% else %}
+                                <a href="taxi-cost">
+                                    Change
+                                    <span class="govuk-visually-hidden"> cost for travel to work received</span>
+                                </a>
+                                {% endif %}
+                            </dd>
+                            {% endif %}
+                        </div>
 
 
 
-            {%if (data['cost-of-taxi']=="100") %}
 
-            {%if data['employer-contributing']=="Yes" %}
+                        {%if (data["transport-option"]=="taxi") %}
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                              {% if data['uploads'].length === 1 %}
+                                Receipt or invoice uploaded
+                                {% else %}
+                                Receipts or invoices uploaded
+                                {% endif %}
+                            </dt>
 
-            <h2 class="govuk-heading-m">Total amount Access to Work will contribute towards your journeys</h2>
-          <p>The amount we will pay back will be slightly less than the total cost of the journeys because we will deduct the amounts you or your employer have agreed to pay.</p>
+                            <dd class="govuk-summary-list__value">
+                                {% for file in data['uploads'] %}
+
+                              <a href="@"> {{file['file']}} </a></br>
+                                {% endfor %}
+
+                            </dd>
+                            {% if print != true %}
+                            <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                              {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
+                                <a href="../travel-to-work/upload-summary">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Total number of journeys</span>
+                                </a>
+                                {% else %}
+                                <a href="upload-summary">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Supporting evidence</span>
+                                </a>
+                                {% endif %}
+                            </dd>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% endif %}
+
+                          </dl>
 
 
 
-            {% endif %}
-            {% endif %}
+                        {%if (data['cost-of-taxi']=="100") %}
 
-            {% endif %}
+                        {%if data['employer-contributing']=="Yes" %}
+
+                        <h2 class="govuk-heading-m">Total amount Access to Work will contribute towards your journeys</h2>
+                      <p>The amount we will pay back will be slightly less than the total cost of the journeys because we will deduct the amounts you or your employer have agreed to pay.</p>
+
+
+
+
+                        {% endif %}
+
+                        {% endif %}
+
 
 
 
