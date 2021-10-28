@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+
+
+        <h1 class="govuk-heading-xl">What happens next</h1>
+
+
+
+        <p>Your employee’s claim has been sent back to them. Your employee can review why you did not approve their claim and make changes to their claim. Once updated, we’ll send their claim back to you for review.</p>
+        <p>You’ll need to review their claim again. If you approve the updated claim, we’ll process the claim and pay the money into the chosen bank account.</p>
+
+
+
+        <form action="../../index" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Sign out
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

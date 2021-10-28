@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="transport-option-answers-repeat" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="month-of-travel-to-work-hint">
+                  {% if (data['transport-option'] == "taxi") or (data['transport-option'] == "taxi-during-work")%}
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            What other month are you claiming taxi costs for?
+                        </h1>
+                    </legend>
+
+                    <p>We’ll ask you to tell us about all the taxi journeys you’d like to claim for in this month. You can add any other months you want to claim taxi costs for later.</p>
+                    {% else %}
+
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            What other month are you claiming mileage costs for?
+                        </h1>
+                    </legend>
+
+                    <p>We’ll ask you to tell us about all the lifts from a friend, colleague or family member that you’d like to claim mileage for in this month. You can add any other months you want to claim mileage costs for later.</p>
+
+                    {% endif %}
+                    <div id="month-of-travel-to-work-hint" class="govuk-hint">
+                        For example, 04 2021
+                    </div>
+
+
+                    <div class="govuk-date-input" id="travel-to-work-date">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="travel-to-work-date-month-repeat">
+                                    Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                                       id="travel-to-work-date-month-repeat" name="travel-to-work-date-month-repeat" type="text" pattern="[0-9]*"
+                                       inputmode="numeric"></div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="travel-to-work-date-year-repeat">
+                                    Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                                       id="travel-to-work-date-year-repeat" name="travel-to-work-date-year-repeat" type="text" pattern="[0-9]*"
+                                       inputmode="numeric"></div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

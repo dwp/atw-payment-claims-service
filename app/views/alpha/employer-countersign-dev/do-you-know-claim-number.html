@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="claim-number-answer" method="post" class="form">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="counter-signatory-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Do you know the claim reference number?
+                        </h1>
+                    </legend>
+
+                    <div id="support-for-workplace-hint" class="govuk-body">
+                        You can find this in the email you received asking you to review and confirm a claim, or on the claim confirmation email received by your employee.
+                    </div>
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="do-you-know-claim-number-yes" name="do-you-know-claim-number"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="do-you-know-claim-number-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="do-you-know-claim-number-no" name="do-you-know-claim-number"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="do-you-know-claim-number-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

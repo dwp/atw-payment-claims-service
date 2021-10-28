@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="employees-claim" method="post" class="form">
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="20">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="one-time-code">
+                        Tell us the 6-digit security number we sent to your email
+                    </label>
+                    </h1>
+
+                    {% if data['no-code-received'] =='true' %}
+                    <p>We’ve sent you another email with a security number. It should only take a few minutes to arrive.</p>
+                    {% else %}
+                    <p>We’ve sent you an email with a 6-digit security number. It should only take a few minutes to arrive.<p>
+                    {% endif %}
+
+                      <label class="govuk-hint" for="event-name">
+                       For example, 123456
+                     </label>
+                    <input class="govuk-input govuk-input--width-10" id="one-time-code" name="one-time-code" type="text"
+                           aria-describedby="one-time-code-hint">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+            <p><a href="no-code-received">I did not get an email</a></p>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

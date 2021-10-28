@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+{% if (data["answers-checked-sw"]) %}
+        <h1 class="govuk-heading-l">Joe Bloggs Support Worker claim</h1>
+
+        <p>You need to check the days Joe Bloggs is claiming support for and the amount of hours they are claiming for on each day.</p>
+
+        <p>We’ll then ask you to confirm Joe Bloggs' claim or tell us why you cannot confirm with their claim.</p>
+        {% else %}
+        <h1 class="govuk-heading-l">Joe Bloggs Travel for work claim</h1>
+
+        <p>You need to check the days Joe Bloggs is claiming travel to work costs. We’ll also ask you to confirm whether your employee was in work on the days they’re claiming for.</p>
+
+        <p>We’ll then ask you to approve their claim, or tell us why you disagree with their claim.</p>
+
+        {% endif %}
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+        <h2 class="govuk-heading-m">Employee information</h2>
+
+
+                  <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Employee name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Joe Bloggs
+                    </dd>
+                  </div>
+
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Claim reference number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <p class="govuk-body">{{data['citizens-urn']}}</p>
+
+                    </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Declaration agreed
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <p class="govuk-body">Yes</p>
+
+                    </dd>
+                  </div>
+                </dl>
+                </div>
+                </div>
+
+
+
+
+                {% if (data["answers-checked-sw"]) %}
+                {% include "alpha/support-worker/check-your-answers-body.html" %}
+                {% else %}
+                {% include "alpha/travel-to-work/check-your-answers-body.html" %}
+                {% endif %}
+
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+
+
+
+
+        <form action="employer-countersign-answer" method="post" class="form">
+                  <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" aria-describedby="employer-agree-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">
+                        Do you agree with this claim information and confirm it is correct?
+                      </h1>
+                    </legend>
+
+                    <div class="govuk-radios govuk-radios--inline">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="employer-agree" name="employer-agree" type="radio" value="Yes">
+                        <label class="govuk-label govuk-radios__label" for="employer-agree">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="employer-agree-2" name="employer-agree" type="radio" value="No">
+                        <label class="govuk-label govuk-radios__label" for="employer-agree-2">
+                          No
+                        </label>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

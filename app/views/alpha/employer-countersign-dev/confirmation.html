@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+            {% if data['claim-incorrect'] =='true' %}
+
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">Claim returned to Joe Bloggs</h1>
+                <div class="govuk-panel__body">
+                    Joe Bloggs's claim reference number<br><br><strong>{{data['citizens-urn']}}</strong>
+                </div>
+            </div>
+
+            {% else %}
+
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">Claim confirmed</h1>
+                <div class="govuk-panel__body">
+                    Your employee's claim reference number<br><br><strong>{{data['citizens-urn']}}</strong>
+                </div>
+            </div>
+
+            {% endif %}
+
+            {% if (data["answers-checked-sw"]) %}
+            <p>You should give us this claim reference number if you contact us about this claim.</p>
+            {% else %}
+            <p>You should give us this claim reference number if you contact us about your claim.</p>
+              {% endif %}
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+
+            {% if data['claim-incorrect'] =='true' %}
+
+
+            <p>Joe Bloggs’s claim has been sent back to them. They will need to review why you could not approve their claim and make some changes.</p>
+
+
+            <p>You’ll need to review their updated claim. If you confirm the claim is correct, we’ll process the claim. If approved, we'll pay the money in to the chosen bank account.</p>
+
+
+            {% else %}
+
+            <p>We’ll process the claim. If approved, we'll pay the money in to the chosen bank account.</p>
+
+            {% endif %}
+
+
+            <p>Joe Bloggs will be able to see the progress of their Access to Work claim in their account.</p>
+
+
+
+
+            <p> <a href="../../index">Sign out</a></p>
+
+
+    </div>
+</div>
+
+
+<p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
+    think of this service?</a> (takes 30 seconds)</p>
+{% endblock %}

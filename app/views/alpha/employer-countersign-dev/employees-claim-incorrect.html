@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="confirmation" method="post" class="form">
+        <h1 class="govuk-heading-l">Send this claim back to Joe Bloggs so they can correct their claim</h1>
+
+
+
+        <p>We’ll let Joe Bloggs know that their claim has not been confirmed and tell them the reason their claim has not been confirmed.</p>
+
+        <p>Joe Bloggs can update their claim and send it back to us. This updated claim will be sent back to you so you can review it again.</p>
+
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+                <h3 class="govuk-heading-m">Claim details </h3>
+                <dl class="govuk-summary-list govuk-summary-list--no-border">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Date of claim
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    02 June - 2021
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Claim reference number
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">{{data['citizens-urn']}}</p>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Type of claim
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">
+                      {% if (data["answers-checked-sw"]) %}
+                      Support worker
+                      {% else %}
+                      Travel for work
+                      {% endif %}</p>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Reason you cannot confirm this claim
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">
+                      {{data['claim-incorrect']}}</p>
+                  </dd>
+                </div>
+              </dl>
+
+
+            <input type="hidden" name="claim-incorrect" value="true">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                I agree – send claim back
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}
