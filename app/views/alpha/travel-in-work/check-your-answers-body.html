@@ -91,7 +91,7 @@
                     Type of travel
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {%if (data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")%} Taxi {% elif (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work")%}Lift from a friend, colleague or relative{% endif %}
+                    {%if (data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")%} Taxi {% endif %}
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -111,153 +111,7 @@
             </div>
 
 
-
-            {%if (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work") %}
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Month of travel
-                </dt>
-                <dd class="govuk-summary-list__value">
-
-                  {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/claiming-for-month">
-                        Change
-                        <span class="govuk-visually-hidden"> month of travel</span>
-                    </a>
-                    {% else %}
-                    <a href="claiming-for-month">
-                        Change
-                        <span class="govuk-visually-hidden"> month of travel</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Days journeys were made
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {% for item in data['milage'] | sortBy('day') %}
-                  {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} {% if data['transport-option'] == "lift-during-work"%}<br>From {{item.milage_from}} <br>To {{item.milage_to}}{% endif %} <br>{{item.milage_total}} Miles<br><br>
-                  {% endfor %}
-
-
-
-
-
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/mileage-for-day-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
-                    </a>
-                    {% else %}
-                    <a href="mileage-for-day-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> miles for travel to work received</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-
-            {%if (data["travel-to-work-date-month-repeat"]) %}
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Month of travel
-                </dt>
-                <dd class="govuk-summary-list__value">
-
-                  {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/claiming-for-month">
-                        Change
-                        <span class="govuk-visually-hidden"> month of travel</span>
-                    </a>
-                    {% else %}
-                    <a href="claiming-for-month">
-                        Change
-                        <span class="govuk-visually-hidden"> month of travel</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Days journeys were made
-                </dt>
-                <dd class="govuk-summary-list__value">
-
-
-                     {% for item in data['repeatmilage'] | sortBy('day') %}
-                   {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} {% if data['transport-option'] == "lift-during-work"%}<br>From {{item.repeatmilage_from}} <br>To {{item.repeatmilage_to}}{% endif %} <br>{{item.repeatmilage_total}} Miles<br><br>
-                   {% endfor %}
-
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/mileage-for-day-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
-                    </a>
-                    {% else %}
-                    <a href="mileage-for-day-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> miles for travel to work received</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-
-            {% endif %}
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Total miles travelled
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {{mileageTotal + repeatmileageTotal}} miles <br>
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/mileage-for-day-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> Total miles travelled</span>
-                    </a>
-                    {% else %}
-                    <a href="mileage-for-day-summary">
-                        Change
-                        <span class="govuk-visually-hidden"> Total miles travelled</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-            {% endif %}
-
+<!--
             <!-- // taxi number of journeys -->
 
           {%if (data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")%}
@@ -293,17 +147,12 @@
                     Days journeys were made in {{data["travel-to-work-date-month"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {% if data['transport-option'] == "taxi"%}
-                    {% for item in data['travel'] | sortBy('day') %}
-                    {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>{{item.travel_journeys}} Journeys
-                     </br> </br>
-                     {% endfor %}
-                     {% else %}
+
                      {% for item in data['travel'] | sortBy('day') %}
                      {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>From {{item.travel_from}} <br>To {{item.travel_to}}<br>£{{item.travel_cost}}
                       <br> <br>
                       {% endfor %}
-                     {% endif %}
+
 
                 </dd>
                 {% if print != true %}
@@ -355,17 +204,12 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
 
-                  {% if data['transport-option'] == "taxi"%}
-                     {% for item in data['repeattravel'] | sortBy('day') %}
-                     {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
-                     </br> <br>
-                     {% endfor %}
-                    {% else %}
+
                     {% for item in data['repeattravel'] | sortBy('day') %}
                     {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>From {{item.repeattravel_from}} <br>To {{item.repeattravel_to}}<br>£{{item.repeattravel_cost}}
                      <br> <br>
                      {% endfor %}
-                    {% endif %}
+
 
                 </dd>
                 {% if print != true %}
@@ -391,12 +235,10 @@
                   Total number of journeys
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {%if data["transport-option"]=="taxi-during-work" %}
-                  {{travelLength|int + repeattravelLength|int}} journeys <br>
-                  {% else %}
-                  {{taxiTotal + repeattaxiTotal}} journeys
-                  {% endif %}
-                  <!-- {{travelLength + repeattravelLength}} {% if data['journeys'].length === 1 %} day {% else %} days {% endif %} -->
+
+                {{travelLength|int + repeattravelLength|int}} journeys
+
+
 
                 </dd>
                 {% if print != true %}
@@ -424,22 +266,18 @@
                   Total cost of journeys
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {% if data['transport-option'] == "taxi"%}
-                  £{{data["cost-of-taxi"]}}
-                  {% else %}
-                  £{{taxiTotal + repeattaxiTotal}}
-                  {% endif %}
+                  £{{taxiinworkTotal + repeattaxiinworkTotal}}
 
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                   {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/taxi-cost">
+                    <a href="../travel-to-work/taxi-journeys-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> Total number of journeys</span>
                     </a>
                     {% else %}
-                    <a href="taxi-cost">
+                    <a href="taxi-journeys-for-day-summary">
                         Change
                         <span class="govuk-visually-hidden"> cost for travel to work received</span>
                     </a>
@@ -489,87 +327,11 @@
             {% endif %}
         </dl>
 
-            {%if (data['cost-of-taxi']=="100") %}
-
-            {%if (data['employer-contributing']=="Yes") and ((data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")) %}
-
-            <h2 class="govuk-heading-m">Taxi for work cost</h2>
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    Total cost of journeys
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    {% if data['transport-option'] == "taxi"%}
-                    £{{data["cost-of-taxi"]}}
-                    {% else %}
-                    £{{taxiTotal + repeattaxiTotal}}
-                    {% endif %}
-
-                  </dd>
-                  {% if print != true %}
-                  <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                      <a href="../travel-to-work/taxi-cost">
-                          Change
-                          <span class="govuk-visually-hidden"> Total number of journeys</span>
-                      </a>
-                      {% else %}
-                      <a href="taxi-cost">
-                          Change
-                          <span class="govuk-visually-hidden"> cost for travel to work received</span>
-                      </a>
-                      {% endif %}
-                  </dd>
-                  {% endif %}
-              </div>
-              </dl>
-          <p>The amount we will pay back is slightly less than the total cost of the journeys because we’ve deducted the amounts your employer agreed to pay.</p>
-
-            <dl class="govuk-summary-list">
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Employer contribution
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £20
-                </dd>
-
-            </div>
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Total amount we can pay towards this claim
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £80
-                </dd>
-
-            </div>
-
-            {% endif %}
+              {% if taxiinworkTotal + repeattaxiinworkTotal === 100 %}
+              <h2 class="govuk-heading-m">Total amount Access to Work will contribute towards your journeys</h2>
+            <p>The amount we will pay back will be slightly less than the total cost of the journeys because we will deduct the amounts you or your employer have agreed to pay.</p>
             {% endif %}
 
-            {% endif %}
-
-            </dl>
-
-            {%if (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work") %}
-
-            <h2 class="govuk-heading-m">A lift from a friend, colleague or family member cost</h2>
-            <p>This is <b>45p for every mile</b> you’re claiming for. We’ve deducted the amount your employer agreed to pay.</p>
-            <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Total amount we can pay towards this claim
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £110.40
-                </dd>
-
-            </div>
-            </dl>
 
 
             {% endif %}

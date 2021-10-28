@@ -46,39 +46,7 @@ Access to Work Claiming Portal
     <div class="govuk-grid-column-two-thirds">
         <form action="taxi-cost-answer" method="post" class="form">
 
-          {% if data['transport-option'] == "taxi" %}
-            <div class="govuk-form-group">
-              {% if taxiTotal === 1 %}
-              <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-taxi">
-                How much did the taxi journey you’re claiming for cost in total?
-                </<label>
-              </h1>
-              {% else %}
-              <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-taxi">
-                How much did the taxi journeys you’re claiming for cost in total?
-                </<label>
-              </h1>
-              {% endif %}
 
-
-                <p>You’ll find the total cost of each journey on the taxi receipt or invoice. You’ll need to add up the cost of each journey to get the total.</p>
-
-                <div class="govuk-input__wrapper">
-                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                    <input class="govuk-input govuk-input--width-5" id="cost-of-taxi" name="cost-of-taxi"
-                           type="text" spellcheck="false">
-                </div>
-            </div>
-
-          {% elif taxiinworkTotal + repeattaxiinworkTotal === 100 %}
-
-            <h1 class="govuk-heading-l">The total amount you’ll be paid for the journeys you’re claiming for will be £80</h1>
-
-            <p class="govuk-body">This is the total amount we’ll pay you for the journeys you’ve told us about.
-              This amount is slightly less than the total cost of the journeys because we’ve deducted the amount your employer agreed to pay.
-            </p>
-
-              {% else %}
 
           <div class="govuk-form-group">
 
@@ -88,11 +56,15 @@ Access to Work Claiming Portal
             </h1>
 
               <p>This is the total cost of all the taxi journeys during work hours that you’ve told us you want to claim for.</p>
+              {% if taxiinworkTotal + repeattaxiinworkTotal === 100 %}
+              <p>The amount we will pay back will be slightly less than the total cost of the journeys because we will deduct the amounts you or your employer have agreed to pay.</p>
+              {% endif %}
+
 
           </div>
 
 
-          {% endif %}
+
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue

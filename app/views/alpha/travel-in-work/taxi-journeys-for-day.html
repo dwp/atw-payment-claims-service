@@ -50,26 +50,10 @@ Access to Work Claiming Portal
                                 </div>
                     </div> <!-- govuk-form-group -->
 
-                    {% if (data['journey-type'] == "traveltowork") %}
 
-                    <div class="govuk-form-group">
-                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_journeys]">
-                            Total journeys on this day
-                        </label>
 
-                        <div class="govuk-input__wrapper">
-                        <input class="govuk-input govuk-input--width-2"
-                               value = "{{data.travel[0].travel_journeys}}"
-                               id="travel[0][travel_journeys]"
-                               name="travel[0][travel_journeys]" type="text"
-                               data-name="travel[%index%][travel_journeys]"
-                               data-id="travel[%index%][travel_journeys]">
-                              <div class="govuk-input__suffix">journey(s)</div>
-                              </div>
-                    </div>
-                    {% endif %}
 
-                      {% if data['transport-option'] == "taxi-during-work"%}
+
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][travel_from]">
                         Postcode of place where journey started
@@ -116,7 +100,7 @@ Access to Work Claiming Portal
 
                               </div>
                     </div>
-                    {% endif %}<!-- govuk-form-group -->
+
 
 
                     {% if travelLength > 1 %}
@@ -150,26 +134,9 @@ Access to Work Claiming Portal
                       <div class="govuk-input__suffix">{{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</div>
                     </div>
                   </div>
-                  {% if (data['journey-type'] == "traveltowork") %}
-                    <div class="govuk-form-group">
-                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
-                               for="travel[{{loop.index0}}][travel_journeys]">
-                            Total journeys on this day
-                        </label>
 
 
 
-                        <div class="govuk-input__wrapper">
-                        <input class="govuk-input govuk-input--width-2" id="travel[{{loop.index0}}][travel_journeys]"
-                               name="travel[{{loop.index0}}][travel_journeys]" type="text"
-                               value="{{item.travel_journeys}}" data-name="travel[%index%][travel_journeys]"
-                               data-id="travel[%index%][travel_journeys]">
-                               <div class="govuk-input__suffix">journey(s)</div>
-                               </div>
-                    </div>
-                    {% endif %}
-
-                    {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
                     <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[{{loop.index0}}][travel_from]">
                         Postcode of place where journey started
@@ -215,7 +182,7 @@ Access to Work Claiming Portal
                               </div>
                               </div>
 
-                    {% endif %}<!-- govuk-form-group -->
+              
 
 
                     <button  class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"

@@ -53,15 +53,11 @@ Access to Work Claiming Portal
 
         <div class="govuk-form-group">
 
-          {% if data['transport-option'] == "taxi"%}
-          {% if taxiTotal === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journey</h1>
-          {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journeys</h1>
-          {% endif %}
 
-          {% else %}
+          {% if travelLength === 1 %}
           <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journey</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journeys</h1>
           {% endif %}
 
 
@@ -73,7 +69,7 @@ Access to Work Claiming Portal
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
         {% if data['transport-option'] == "taxi"%}
-        {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>{{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
+        {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>From {{item.travel_from}}<br> To {{item.travel_to}}<br> £{{item.travel_cost}}
          <br>
          {% else %}
          {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} <br>From {{item.travel_from}} <br>To {{item.travel_to}}<br>£{{item.travel_cost}}
@@ -109,13 +105,11 @@ Access to Work Claiming Portal
                 {% for item in data['repeattravel'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {% if data['transport-option'] == "taxi"%}
-        {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
-         <br>
-         {% else %}
+
+      
          {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>From {{item.repeattravel_from}} <br>To {{item.repeattravel_to}}<br>£{{item.repeattravel_cost}}
           <br>
-          {% endif %}
+
       </span>
       <span class="hmrc-add-to-a-list__change">
        <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-repeat">
