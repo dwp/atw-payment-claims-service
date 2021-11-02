@@ -6,6 +6,7 @@ const urlPrefix = 'alpha'
 
 require(`../views/${folderWithinViews}/_portal-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/equipment-and-adaptations/_equipment-and-adaptations-routes`)(folderWithinViews, urlPrefix, router)
+require(`../views/${folderWithinViews}/equipment-and-adaptations-dev/_equipment-and-adaptations-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/equipment-and-adaptations-vi/_equipment-and-adaptations-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/employer-countersign/_employer-countersign-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/employer-countersign-dev/_employer-countersign-routes`)(folderWithinViews, urlPrefix, router)

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Access to Work Claiming Portal
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="test-answer" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Are you starting a new claim from scratch?
+                        </h1>
+                    </legend>
+                    <p>A new claim is a claim that has never been done before. A repeat claim is something you have
+                        claimed for in
+                        the past, for example a taxi ride.</p>
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="test-1" name="test-1" type="radio" value="New">
+                            <label class="govuk-label govuk-radios__label" for="test-1">
+                                New
+                            </label>
+
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="test-2" name="test" type="radio" value="Repeat">
+                            <label class="govuk-label govuk-radios__label" for="test-2">
+                                Repeat
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
