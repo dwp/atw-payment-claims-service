@@ -33,8 +33,7 @@
               {% endif %}
           </div>
 
-{%if (data['equipment-cost']=="100") %}
-{% else %}
+
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Cost of equipment
@@ -51,11 +50,11 @@
                 </dd>
                 {% endif %}
             </div>
-{% endif %}
+
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Supporting claim evidence
+                    Copy of evidence
                 </dt>
 
                 <dd class="govuk-summary-list__value">
@@ -82,48 +81,10 @@
 
 <h2 class="govuk-heading-m">Equipment and adaptations cost</h2>
 
-  <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Cost of equipment
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £{{data["equipment-cost"]}}
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="equipement-cost">
-                        Change
-                        <span class="govuk-visually-hidden"> Cost of equipment</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
-            </dl>
-<p>The amount we will pay back is slightly less than the total cost of the equipment or adaptions because we’ve deducted the amounts your employer agreed to pay.</p>
 
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                  Employer contribution
-              </dt>
-              <dd class="govuk-summary-list__value">
-                  £20
-              </dd>
+<p>The total amount we will pay back for the equipment or adaptations you’re claiming for will be slightly less than the total cost of the of the equipment and adaptations because we will deduct the amounts you or your employer have agreed to pay.</p>
 
-          </div>
 
-          <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                  Total amount we can pay towards this claim
-              </dt>
-              <dd class="govuk-summary-list__value">
-                  £80
-              </dd>
-
-          </div>
-
-        </dl>
           {% endif %}
 
         {% if print != true %}
@@ -133,7 +94,7 @@
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  New payee name
+                  Name
               </dt>
               <dd class="govuk-summary-list__value">
                   {{data["new-payee-full-name"]}}
@@ -151,7 +112,7 @@
           {%if (data["payee-email"]) %}
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  New payee email address
+                  Email address
               </dt>
               <dd class="govuk-summary-list__value">
                   {{data["payee-email"]}}
@@ -168,7 +129,7 @@
           {% endif %}
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  New payee address
+                  Address
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data ["new-payee-address-line-1"] %}
@@ -177,7 +138,7 @@
                   {{data["new-payee-address-town"]}}<br>
                   {{data["new-payee-address-county"]}}<br>
                   {{data["new-payee-address-postcode"]}}
-                  
+
 
                   {% elif data["new-payee-address-select"] == "123" %}
                   123 Hudsen House<br>
@@ -296,6 +257,9 @@
             {% endif %}
         </dl>
         {% endif %}
+
+        <p>You can also <a target="_blank"
+                href="check-your-answers-print">save and print a copy of your answers (opens in a new tab)</a>.</p>
 
         {% if print != true %}
         <form action="declaration" method="post" novalidate>
