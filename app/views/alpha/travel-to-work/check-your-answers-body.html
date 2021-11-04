@@ -447,18 +447,15 @@
             </div>
 
 
-
+            {% if data['transport-option'] == "taxi"%}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Total cost of journeys
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {% if data['transport-option'] == "taxi"%}
-                  £{{data["cost-of-taxi"]}}
-                  {% else %}
-                  £{{taxiTotal + repeattaxiTotal}}
-                  {% endif %}
 
+                  £{{data["cost-of-taxi"]}}
+                
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -476,7 +473,7 @@
                 </dd>
                 {% endif %}
             </div>
-
+            {% endif %}
 
 
 

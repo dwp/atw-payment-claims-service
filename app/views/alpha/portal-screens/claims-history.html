@@ -44,14 +44,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </fieldset>
             </div>
 
-            <br><br>
 
             {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] !== "true")%}
 
 
 
             <h2 class="govuk-heading-m">Claim needs updating <span id="notifications" class="moj-notification-badge">1</span> </h2>
-            <p>Your workplace contact has reviewed your claim. You need to make some changes before they can approve your claim.<p>
+            <div class="govuk-inset-text">
+            Your workplace contact has reviewed your claim. You need to make some changes before they can approve your claim.
+            </div>
 
               <table class="govuk-table">
 
@@ -59,7 +60,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   <tr class="govuk-table__row">
                     <th scope="col" class="govuk-table__header">Date of payment</th>
                     <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
-                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
+                    <th scope="col" class="govuk-table__header govuk-table__header--numeric">Make changes to your claim</th>
                   </tr
                 </thead>
                 <tbody class="govuk-table__body">
@@ -74,6 +75,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   </tr>
                 </tbody>
               </table>
+              <br>
 
 
               {% endif %}
@@ -98,7 +100,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <td class="govuk-table__cell govuk-table__cell--numeric">Equipment and adaptations</td>
                 <td class="govuk-table__cell govuk-table__cell--numeric"><a class="govuk-!-display-none-print" href="e-a-check-your-answers-print">
                     View
-                    <span class="govuk-visually-hidden">Edit claim</span>
+                    <span class="govuk-visually-hidden">view claim</span>
                 </a></td>
               </tr>
             </tbody>
@@ -107,10 +109,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 {% else %}
             {%if (data['journey-type'] == "supportworker") %}
             <h2 class="govuk-heading-m">Claim sent to person who can confirm your support costs</h2>
-            <p>Your claim has been sent to person who can confirm your support costs.</p>
+            <p>Your claim has been sent to person who can confirm your support costs. You can still amend your claim prior to the person who can confirm your support reviewing the claim.</p>
             {% else %}
             <h2 class="govuk-heading-m">Claim sent to workplace contact</h2>
-            <p>Your claim has been sent to your workplace contact to confirm.</p>
+            <p>Your claim has been sent to your workplace contact to confirm. You can still amend your claim prior to your workplace contact reviewing the claim.</p>
             {% endif %}
 
             <table class="govuk-table">
@@ -119,7 +121,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <tr class="govuk-table__row">
                   <th scope="col" class="govuk-table__header">Date of payment</th>
                   <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
-                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
+                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">Make changes to your claim</th>
                 </tr
               </thead>
               <tbody class="govuk-table__body">

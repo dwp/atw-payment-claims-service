@@ -449,34 +449,33 @@
 
 
 
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">
-                              Total cost of journeys
-                            </dt>
-                            <dd class="govuk-summary-list__value">
-                              {% if data['transport-option'] == "taxi"%}
-                              £{{data["cost-of-taxi"]}}
-                              {% else %}
-                              £{{taxiTotal + repeattaxiTotal}}
-                              {% endif %}
+            {% if data['transport-option'] == "taxi"%}
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total cost of journeys
+                </dt>
+                <dd class="govuk-summary-list__value">
 
-                            </dd>
-                            {% if print != true %}
-                            <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                              {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                                <a href="../travel-to-work/taxi-cost">
-                                    Change
-                                    <span class="govuk-visually-hidden"> Total number of journeys</span>
-                                </a>
-                                {% else %}
-                                <a href="taxi-cost">
-                                    Change
-                                    <span class="govuk-visually-hidden"> cost for travel to work received</span>
-                                </a>
-                                {% endif %}
-                            </dd>
-                            {% endif %}
-                        </div>
+                  £{{data["cost-of-taxi"]}}
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
+                    <a href="../travel-to-work/taxi-cost">
+                        Change
+                        <span class="govuk-visually-hidden"> Total number of journeys</span>
+                    </a>
+                    {% else %}
+                    <a href="taxi-cost">
+                        Change
+                        <span class="govuk-visually-hidden"> cost for travel to work received</span>
+                    </a>
+                    {% endif %}
+                </dd>
+                {% endif %}
+            </div>
+            {% endif %}
 
 
 

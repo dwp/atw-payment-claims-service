@@ -66,6 +66,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (useremail === 'travel@email.com') {
     req.session.data['journey-type'] = "traveltowork"
     res.redirect(`/${urlPrefix}/portal`)
+    } else if (useremail === 'travelinwork@email.com') {
+    req.session.data['journey-type'] = "travelinwork"
+    res.redirect(`/${urlPrefix}/portal`)
     } else {
       res.redirect(`/index`)
     }
