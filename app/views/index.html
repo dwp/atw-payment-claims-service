@@ -188,16 +188,37 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
               <h2 class="govuk-heading-m">Gov uk mockup</h2>
 
-              <p>links to start of DTH journey</p>
+              <p>when built the time out warning will appear as a pop up in service. See <a target="_blank"
+                      href="https://design-system.dwp.gov.uk/patterns/manage-a-session-timeout/examples/signedin"> here (opens in a new tab)</a> for example.</p>
 
-              <form action="alpha/portal-screens/govuk-mockup" method="post" class="form">
-                <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
+              <form action="alpha/portal-screens/time-out-warning" method="post" class="form">
+
                 <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Gov UK screen
+                    Time out warning message
+                </button>
+              </form>
+
+              <form action="alpha/portal-screens/time-out" method="post" class="form">
+
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Time out if still unresponsive
                 </button>
               </form>
 
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+            <h2 class="govuk-heading-m">Gov uk mockup</h2>
+
+            <p>links to start of DTH journey</p>
+
+            <form action="alpha/portal-screens/govuk-mockup" method="post" class="form">
+              <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                  Gov UK screen
+              </button>
+            </form>
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
             <h2 class="govuk-heading-m">Previous iterations Alpha journeys</h2>
             <p> Older journeys that were changed as a result of user testing</p>

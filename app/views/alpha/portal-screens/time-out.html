@@ -4,21 +4,23 @@
 Access to Work Claiming Portal
 {% endblock %}
 
+{% set print = true %}
+
 {% block beforeContent %}
 {{ govukPhaseBanner({
 tag: {
 text: "alpha"
 },
+classes: "govuk-!-display-none-print",
 html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
 
 
-{% endblock %}
 
+{% endblock %}
 
 {% block content %}
 
-{% set print = true %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -28,7 +30,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         <p>You’ll need to log back in to access your account. We do this to keep your information secure.</p>
 
 
-        <form action="../index" method="post" class="form">
+        <form action="../../index" method="post" class="form">
 
           <button type="submit" class="govuk-button" data-module="govuk-button">
               Log in
@@ -40,4 +42,6 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
     </div>
 </div>
+
+
 {% endblock %}

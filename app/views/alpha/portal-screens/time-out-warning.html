@@ -12,26 +12,23 @@ text: "alpha"
 html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
 
-
 {% endblock %}
-
 
 {% block content %}
 
-{% set print = true %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
 
-        <h1 class="govuk-heading-l">We’ve logged you out of your account</h1>
+        <h1 class="govuk-heading-l">Your claim will time out soon</h1>
 
-        <p>You’ll need to log back in to access your account. We do this to keep your information secure.</p>
+        <p>We will log you out of your account and you’ll lose the claim you’re working on if you do not respond in <b>30 minutes</b>. We do this to keep your information secure. </p>
 
 
-        <form action="../index" method="post" class="form">
+        <form action="../../index" method="post" class="form">
 
           <button type="submit" class="govuk-button" data-module="govuk-button">
-              Log in
+              Continue with claim
           </button>
 
         </form>
@@ -40,4 +37,6 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
     </div>
 </div>
+
+
 {% endblock %}
