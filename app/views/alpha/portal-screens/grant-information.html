@@ -39,78 +39,42 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
         <h2 class="govuk-heading-m">What support you’ll get</h2>
-        {% if data['journey-type'] == "multipleawards" %}
-        <h3 class="govuk-heading-s"> Travel for work grant </h3>
-        {% endif %}
-        <dl class="govuk-summary-list">
-          {% if data['journey-type'] !== "multipleawards" %}
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Type of grant
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Travel to Work support
-            </dd>
-          </div>
-
-          {% endif %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Travel type
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Taxis to & from work for 10 journeys per week
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £45.00 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Agreed employer contribution
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £7.50 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount we can pay towards this claim
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £37.50 per journey
-            </dd>
-          </div>
-        </dl>
-
-        <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
-
-        {% if data['journey-type'] == "multipleawards" %}
-        <h3 class="govuk-heading-s">Equipment and adaptation grant</h3>
+        {%if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "specialaidsandequipmentdev") %}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Equipment and adaptation type
+              Agreed support and cost
             </dt>
             <dd class="govuk-summary-list__value">
-              Audéo P-RT - Receiver-in-Canal Hearing aid </br>
-              HK-MAC Large print Bluetooth mini keyboard </br>
-              Dolphin SuperNova magnifier and speech software </br>
+              £2089.98 - Hearing aid <br>
+              £102.00 - Keyboard <br>
+              £474.00 - Magnifier and speech software <br>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Total grant awarded
+              Total cost of support
             </dt>
             <dd class="govuk-summary-list__value">
               £2665.98
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount you or your employer have agreed to contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £266.59
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount Access to Work will contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2399.39
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -121,21 +85,245 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               £2089.98
             </dd>
           </div>
+        </dl>
+
+        {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") %}
+
+        <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Cost of equipment or adaptation
+              Support type
             </dt>
             <dd class="govuk-summary-list__value">
-              £2089.98 - Hearing aid </br>
-              £102.00 - Keyboard </br>
-              £474.00 - Magnifier and speech software </br>
-
-
+              Support worker for 125 hours per month
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Agreed employer contribution
+              Agreed support and cost
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £45.00 per hour
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total cost of support
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £7,200
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount you or your employer have agreed to contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £7.50 per hour
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount Access to Work will contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £37.50 per hour
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of grant left
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £6,500
+            </dd>
+          </div>
+
+        </dl>
+
+        {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") %}
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Travel type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Taxis to and from work for 10 journeys per week
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Agreed support and cost
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £45.00 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total cost of support
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £7,200
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount you or your employer have agreed to contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £7.50 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount Access to Work will contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £37.50 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of grant left
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £6,500
+            </dd>
+          </div>
+
+        </dl>
+
+        {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdev") %}
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Travel type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Taxis during work hours for 4 journeys per week
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total cost of support
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £4,800
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount you or your employer have agreed to contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              25p per mile
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount Access to Work will contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £4500
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of grant left
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £3,650
+            </dd>
+          </div>
+
+        </dl>
+
+
+        {% elseif (data['journey-type'] == "multipleawards") %}
+
+        <h3 class="govuk-heading-s"> Travel for work grant </h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Travel type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Taxis to and from work for 10 journeys per week
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Agreed support and cost
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £45.00 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total cost of support
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £7,200
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount you or your employer have agreed to contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £7.50 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount Access to Work will contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £37.50 per journey
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of grant left
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £6,500
+            </dd>
+          </div>
+
+        </dl>
+
+        <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
+
+        <h3 class="govuk-heading-s">Equipment and adaptation grant</h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Agreed support and cost
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2089.98 - Hearing aid <br>
+              £102.00 - Keyboard <br>
+              £474.00 - Magnifier and speech software <br>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total cost of support
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2665.98
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount you or your employer have agreed to contribute
             </dt>
             <dd class="govuk-summary-list__value">
               £266.59
@@ -143,19 +331,30 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Total amount we can pay towards your equipment or adaptation
+              Total amount Access to Work will contribute
             </dt>
             <dd class="govuk-summary-list__value">
               £2399.39
             </dd>
           </div>
-
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of grant left
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £2089.98
+            </dd>
+          </div>
         </dl>
 
         {% endif %}
 
-        <p>You should have already received a copy of your grant approval letter by post. You can also <a href="@">view
-            a copy of your grant approval letter</a> in your account.</p>
+         {% if (data['journey-type'] !== "multipleawards") %}
+        <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
+        {% endif %}
+
+
+        <p>You should have already received a copy of your grant approval letter by post.</p>
 
         <p>Your support starts from <b>05 March 2021</b> until <b>05 March 2024</b> if your needs do not change.</p>
 
