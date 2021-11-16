@@ -7,11 +7,223 @@ Check your answers
 
 {% block content %}
 
-{% set print = false %}
+{%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true')%}
 
 {% if (data["answers-checked-sw"]) %}
 {% include "alpha/support-worker/check-your-answers-body.html" %}
 {% else %}
 {% include "alpha/travel-to-work/check-your-answers-body.html" %}
 {% endif %}
+
+{% elseif data ['journey-type'] == "traveltowork" %}
+
+{% set print = true %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-l govuk-!-display-none-print">About your claim </h1>
+<p>This is the information you gave us in your claim. You can change the counter signature information here if you need to.</p>
+
+
+{% if data["employment-status"] =='Employed'%}
+
+<h2 class="govuk-heading-m">Workplace contact details</h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+  <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+          Employment status
+      </dt>
+      <dd class="govuk-summary-list__value">
+          {{data["employment-status"]}}
+
+      </dd>
+
+      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+
+          <a href="../travel-to-work/employement-status">
+              Change
+              <span class="govuk-visually-hidden"> what is your employment status?</span>
+          </a>
+
+      </dd>
+
+  </div>
+
+
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Name
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{data["counter-signatory-full-name"]}}
+
+        </dd>
+
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+
+            <a href="../travel-to-work/counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+            </a>
+
+        </dd>
+
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Email
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{data["counter-signatory-email"]}}
+
+        </dd>
+
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+
+          <a href="../travel-to-work/counter-signatory-name">
+              Change
+              <span class="govuk-visually-hidden"> what month are you claiming for?</span>
+          </a>
+
+          </dd>
+
+    </div>
+</dl>
+
+{% else %}
+
+<h2 class="govuk-heading-m">Type of employment</h2>
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+  <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+          Employment status
+      </dt>
+      <dd class="govuk-summary-list__value">
+          {{data["employment-status"]}}
+
+      </dd>
+
+      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
+          <a href="../travel-to-work/employement-status">
+              Change
+              <span class="govuk-visually-hidden"> what is your employment status?</span>
+          </a>
+          {% else %}
+          <a href="employement-status">
+              Change
+              <span class="govuk-visually-hidden"> what is your employment status?</span>
+          </a>
+          {% endif %}
+      </dd>
+  </div>
+  </dl>
+  {% endif %}
+
+</div>
+</div>
+
+
+
+{% include "alpha/travel-to-work/check-your-answers-body.html" %}
+
+
+<form action="citizen-new-declaration" method="post" novalidate>
+
+    <!-- <input type="hidden" name="answers-checked-sw" value="true"> -->
+
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+    </button>
+
+</form>
+
+{% elseif (data["answers-checked-sw"]) %}
+
+{% set print = true %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<h2 class="govuk-heading-m">Details of the person or company who can confirm the support costs</h2>
+<p>This is the person or company who we’ll contact to confirm your employee received the support they’re claiming for.</p>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Name
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{data["counter-signatory-full-name"]}}
+
+        </dd>
+
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+            <a href="../support-worker/counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> name of counter signatory</span>
+            </a>
+            {% else %}
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> name of counter signatory</span>
+            </a>
+            {% endif %}
+        </dd>
+
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Email
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{data["counter-signatory-email"]}}
+
+        </dd>
+
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+            <a href="../support-worker/counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> name of counter signatory</span>
+            </a>
+            {% else %}
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> email of counter signatory</span>
+            </a>
+            {% endif %}
+        </dd>
+
+        </div>
+    </dl>
+
+      </div>
+      </div>
+
+      {% include "alpha/support-worker/check-your-answers-body.html" %}
+
+      <form action="citizen-new-declaration" method="post" novalidate>
+
+          <!-- <input type="hidden" name="answers-checked-sw" value="true"> -->
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+          </button>
+
+      </form>
+
+
+      {% endif %}
+
+
+
+
+
 {% endblock %}

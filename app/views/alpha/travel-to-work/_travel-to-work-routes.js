@@ -474,19 +474,23 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/travel-to-work/workplace-contact-answer', function (req, res) {
     const journeytype = req.session.data['journey-type']
+    const checked = req.session.data['ttw-declaration']
 
-    if (journeytype === 'traveltowork') {
+    if (journeytype === 'traveltowork-ammendment' || checked === 'true') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+  } else if (journeytype === 'traveltowork') {
     res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-  } else if (journeytype === 'traveltowork-ammendment') {
-    res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
   }
 })
 
 router.post('/travel-to-work/employment-status-answer', function (req, res) {
   const status = req.session.data['employment-status']
+  const checked = req.session.data['ttw-declaration']
 
   if (status === 'Employed') {
   res.redirect(`/${urlPrefix}/travel-to-work/counter-signatory-name`)
+} else if (status === 'Self-employed' && checked === 'true') {
+  res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
 } else if (status === 'Self-employed') {
   res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
 }

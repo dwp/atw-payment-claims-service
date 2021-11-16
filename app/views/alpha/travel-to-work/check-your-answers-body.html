@@ -455,7 +455,7 @@
                 <dd class="govuk-summary-list__value">
 
                   £{{data["cost-of-taxi"]}}
-                
+
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -794,7 +794,7 @@
         {% endif %}
 
 
-
+        {% if print != true %}
         {% if data["employment-status"] =='Employed'%}
 
         <h2 class="govuk-heading-m">Workplace contact details</h2>
@@ -810,7 +810,7 @@
                   {{data["employment-status"]}}
 
               </dd>
-              {% if print != true %}
+
               <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
                   <a href="../travel-to-work/employement-status">
@@ -824,7 +824,7 @@
                   </a>
                   {% endif %}
               </dd>
-              {% endif %}
+            
           </div>
 
 
@@ -836,7 +836,7 @@
                     {{data["counter-signatory-full-name"]}}
 
                 </dd>
-                {% if print != true %}
+
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                   {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
                     <a href="../travel-to-work/counter-signatory-name">
@@ -850,7 +850,7 @@
                     </a>
                     {% endif %}
                 </dd>
-                {% endif %}
+
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -860,7 +860,7 @@
                     {{data["counter-signatory-email"]}}
 
                 </dd>
-                {% if print != true %}
+
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
                   <a href="../travel-to-work/counter-signatory-name">
@@ -874,9 +874,10 @@
                   </a>
                   {% endif %}
                   </dd>
-                {% endif %}
+
             </div>
         </dl>
+
         {% else %}
 
         <h2 class="govuk-heading-m">Type of employment</h2>
@@ -891,7 +892,7 @@
                   {{data["employment-status"]}}
 
               </dd>
-              {% if print != true %}
+
               <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
                   <a href="../travel-to-work/employement-status">
@@ -905,10 +906,9 @@
                   </a>
                   {% endif %}
               </dd>
-              {% endif %}
           </div>
-
           </dl>
+          {% endif %}
 
           {% endif %}
 

@@ -263,9 +263,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/support-worker/contact-answers', function (req, res) {
     const journeytype = req.session.data['journey-type']
+    const checked = req.session.data['sw-declaration']
 
-    if (journeytype === 'supportworker') {
-    res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+    if (journeytype === 'supportworker' && checked === 'true') {
+    res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+  } else if (journeytype === 'supportworker') {
+      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
   } else if (journeytype === 'traveltowork-ammendment') {
     res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
   }

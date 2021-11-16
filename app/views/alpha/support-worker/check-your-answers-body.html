@@ -34,7 +34,8 @@
       <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim </h1>
       <p>This is the information you gave us in your claim. You should make the changes requested by your workplace contact and then send us your claim again.</p>
       {% endif %}
-      {% elif data['sw-declaration'] %}
+      {% endif %}
+      {% if data['sw-declaration'] %}
       {% if print != true %}
       <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim </h1>
       <p>This is the information you gave us in your claim. You should make any changes and then send us your claim again.</p>
@@ -636,7 +637,7 @@
 
 
 
-
+        {% if print != true %}
         <h2 class="govuk-heading-m">Details of the person or company who can confirm the support costs</h2>
         <p>This is the person or company who we’ll contact to confirm your employee received the support they’re claiming for.</p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -648,7 +649,7 @@
                     {{data["counter-signatory-full-name"]}}
 
                 </dd>
-                {% if print != true %}
+
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
                     <a href="../support-worker/counter-signatory-name">
@@ -662,7 +663,7 @@
                     </a>
                     {% endif %}
                 </dd>
-                {% endif %}
+
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -672,7 +673,7 @@
                     {{data["counter-signatory-email"]}}
 
                 </dd>
-                {% if print != true %}
+
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
                     <a href="../support-worker/counter-signatory-name">
@@ -686,10 +687,10 @@
                     </a>
                     {% endif %}
                 </dd>
-                {% endif %}
+
             </div>
         </dl>
-
+        {% endif %}
 
         {% if print != true %}
         {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}

@@ -38,7 +38,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <span class="govuk-caption-xl">Account home</span>
                 <h1 class="govuk-heading-xl">Joe Bloggs</h1>
 
-          {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] !== "true")%}
+          {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !== "true") %}
           <div class="govuk-inset-text">
             You have <b>1</b> claim that has not been approved by your workplace contact. They have requested that you make some changes to your claim before they can approve it. You can <a href="./portal-screens/claims-history"> make changes to your claim in claims history.</a>
           </div>

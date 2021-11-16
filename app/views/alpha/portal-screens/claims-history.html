@@ -45,7 +45,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             </div>
 
 
-            {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] !== "true")%}
+            {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !== "true") %}
 
 
 
@@ -66,11 +66,20 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">03 July 2021</th>
+
                     <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric"><a class="govuk-!-display-none-print" href="employees-claim-incorrect">
+                    <td class="govuk-table__cell govuk-table__cell--numeric">
+                    {% if data['claim-incorrect'] =='true' %}
+                    <a class="govuk-!-display-none-print" href="employees-claim-incorrect">
                         Edit
                         <span class="govuk-visually-hidden">Edit claim</span>
                     </a>
+                    {% else %}
+                    <a class="govuk-!-display-none-print" href="check-your-answers">
+                        Edit
+                        <span class="govuk-visually-hidden">Edit claim</span>
+                    </a>
+                    {% endif %}
                   </td>
                   </tr>
                 </tbody>
@@ -128,10 +137,18 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">23 August 2021</th>
                   <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric"><a class="govuk-!-display-none-print" href="employees-claim-incorrect-pre">
-                      Edit
-                      <span class="govuk-visually-hidden">Edit claim</span>
-                  </a>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    {% if data['claim-incorrect'] =='true' %}
+                    <a class="govuk-!-display-none-print" href="employees-claim-incorrect">
+                        Edit
+                        <span class="govuk-visually-hidden">Edit claim</span>
+                    </a>
+                    {% else %}
+                    <a class="govuk-!-display-none-print" href="check-your-answers">
+                        Edit
+                        <span class="govuk-visually-hidden">Edit claim</span>
+                    </a>
+                    {% endif %}
                 </td>
                 </tr>
               </tbody>
