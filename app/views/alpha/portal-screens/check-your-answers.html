@@ -7,15 +7,17 @@ Check your answers
 
 {% block content %}
 
-{%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true')%}
+{%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true') and (data["answers-checked-sw"]) %}
 
-{% if (data["answers-checked-sw"]) %}
+
 {% include "alpha/support-worker/check-your-answers-body.html" %}
-{% else %}
-{% include "alpha/travel-to-work/check-your-answers-body.html" %}
-{% endif %}
 
-{% elseif data ['journey-type'] == "traveltowork" %}
+{% elseif (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true') and (data["ttw-declaration"]) %}
+
+{% include "alpha/travel-to-work/check-your-answers-body.html" %}
+
+
+{% elseif data["ttw-declaration"] %}
 
 {% set print = true %}
 
@@ -23,7 +25,7 @@ Check your answers
     <div class="govuk-grid-column-two-thirds">
 
 <h1 class="govuk-heading-l govuk-!-display-none-print">About your claim </h1>
-<p>This is the information you gave us in your claim. You can change the counter signature information here if you need to.</p>
+<p>This is the information you gave us in your claim. You can change a workplace contact at any time before the claim is confirmed.</p>
 
 
 {% if data["employment-status"] =='Employed'%}
@@ -134,7 +136,7 @@ Check your answers
 {% include "alpha/travel-to-work/check-your-answers-body.html" %}
 
 
-<form action="citizen-new-declaration" method="post" novalidate>
+<form action="citizen-new-declaration-pre-confirm" method="post" novalidate>
 
     <!-- <input type="hidden" name="answers-checked-sw" value="true"> -->
 
@@ -152,7 +154,7 @@ Check your answers
     <div class="govuk-grid-column-two-thirds">
 
 <h2 class="govuk-heading-m">Details of the person or company who can confirm the support costs</h2>
-<p>This is the person or company who we’ll contact to confirm your employee received the support they’re claiming for.</p>
+<p>This is the information you gave us in your claim. You can change the person or company who we’ll contact to confirm you received the support at any time before the claim is confirmed.</p>
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -209,7 +211,7 @@ Check your answers
 
       {% include "alpha/support-worker/check-your-answers-body.html" %}
 
-      <form action="citizen-new-declaration" method="post" novalidate>
+      <form action="citizen-new-declaration-pre-confirm" method="post" novalidate>
 
           <!-- <input type="hidden" name="answers-checked-sw" value="true"> -->
 

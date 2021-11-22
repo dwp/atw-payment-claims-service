@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Access to Work Claiming Portal
+Claim money back from Access to Work
 {% endblock %}
 
 {% block beforeContent %}
@@ -38,20 +38,20 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     </legend>
 
 
-                    <p>Find information on claims you’ve sent us in the past, as well as any claims you’re currently working on but have not sent. This includes what stage your claim is at, for example, if it’s been approved. You can <a href="claims-history-timeline">find out what stages a claim goes through</a> after you’ve sent it.</p>
+                    <p>Information on claims you’ve sent us. This includes what stage a claim is at, for example, if it’s been approved. You can <a href="claims-history-timeline">find out what stages a claim goes through</a> after you’ve sent it.</p>
 
-                    <p>When you send a new claim, you’ll be able see it here. It can take up to 5 working days for a new claim to appear in your claim history.</p>
+                    <p>When you send a new claim, you’ll be able see it here. It can take up to 5 working days for a new claim to appear in your claims history.</p>
                 </fieldset>
             </div>
 
 
-            {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !== "true") %}
+            {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
 
 
 
             <h2 class="govuk-heading-m">Claim needs updating <span id="notifications" class="moj-notification-badge">1</span> </h2>
             <div class="govuk-inset-text">
-            Your workplace contact has reviewed your claim. You need to make some changes before they can approve your claim.
+            Your workplace contact has reviewed your claim. You need to make some changes before they can confirm your claim.
             </div>
 
               <table class="govuk-table">
@@ -89,9 +89,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
               {% endif %}
 
-{%if (data['journey-type'] == "specialaidsandequipment") %}
+              {%if (data['journey-type'] == "specialaidsandequipment") or ((data['journey-type'] == "traveltowork") and (data['employment-status'] == "Self-employed")) %}
 
-        <h2 class="govuk-heading-m">Claim sent</h2>
+        <h2 class="govuk-heading-m">Claims sent</h2>
         <p>Your claim request has been sent to us.</p>
 
           <table class="govuk-table">
@@ -106,31 +106,47 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">01 Febuary 2021</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">Equipment and adaptations</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric"><a class="govuk-!-display-none-print" href="e-a-check-your-answers-print">
+
+                <td class="govuk-table__cell govuk-table__cell--numeric">{%if data['journey-type'] == "specialaidsandequipment" %}Equipment and adaptations {% else %} Travel to work {% endif %}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  {%if data['journey-type'] == "specialaidsandequipment" %}
+                  <a class="govuk-!-display-none-print" href="e-a-check-your-answers-print">
                     View
                     <span class="govuk-visually-hidden">view claim</span>
-                </a></td>
+                </a>
+                {% else %}
+                <a class="govuk-!-display-none-print" href="ttw-check-your-answers-print">
+                  View
+                  <span class="govuk-visually-hidden">view claim</span>
+              </a>
+              {% endif %}
+              </td>
               </tr>
             </tbody>
           </table>
 
 {% else %}
             {%if (data['journey-type'] == "supportworker") %}
-            <h2 class="govuk-heading-m">Claim sent to person who can confirm your support costs</h2>
-            <p>Your claim has been sent to person who can confirm your support costs. You can still amend your claim prior to the person who can confirm your support reviewing the claim.</p>
+            <h2 class="govuk-heading-m">Claims sent to person who can confirm your support costs</h2>
+            <div class="govuk-inset-text">
+            Claims that have been sent to a person who can confirm your support costs. You can change person who can confirm your support costs at any time before the claim is confirmed.
+            </div>
+
             {% else %}
-            <h2 class="govuk-heading-m">Claim sent to workplace contact</h2>
-            <p>Your claim has been sent to your workplace contact to confirm. You can still amend your claim prior to your workplace contact reviewing the claim.</p>
+            <h2 class="govuk-heading-m">Claims sent to workplace contact</h2>
+            <div class="govuk-inset-text">
+            Claims sent to your workplace contact to confirm. You can change a workplace contact at any time before the claim is confirmed.
+            </div>
+
             {% endif %}
 
             <table class="govuk-table">
 
               <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
-                  <th scope="col" class="govuk-table__header">Date of payment</th>
+                  <th scope="col" class="govuk-table__header">Date claim sent</th>
                   <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
-                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">Make changes to your claim</th>
+                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">Change workplace contact</th>
                 </tr
               </thead>
               <tbody class="govuk-table__body">
@@ -140,13 +156,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   <td class="govuk-table__cell govuk-table__cell--numeric">
                     {% if data['claim-incorrect'] =='true' %}
                     <a class="govuk-!-display-none-print" href="employees-claim-incorrect">
-                        Edit
-                        <span class="govuk-visually-hidden">Edit claim</span>
+                        Change contact
+                        <span class="govuk-visually-hidden">Change contact</span>
                     </a>
                     {% else %}
                     <a class="govuk-!-display-none-print" href="check-your-answers">
-                        Edit
-                        <span class="govuk-visually-hidden">Edit claim</span>
+                        Change contact
+                        <span class="govuk-visually-hidden">Change contact</span>
                     </a>
                     {% endif %}
                 </td>
@@ -156,16 +172,19 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
             <br><br>
-
-              <h2 class="govuk-heading-m">Claim confirmed by your workplace contact</h2>
-              <p>Your claim request has been confirmed by your workplace contact. An Access to Work Payment Officer can now process your claim.</p>
+            {% if (data["answers-checked-sw"]) %}
+            <h2 class="govuk-heading-m">Claims confirmed by the person who can confirm your support costs</h2>
+            {% else %}
+            <h2 class="govuk-heading-m">Claims confirmed by your workplace contact</h2>
+            {% endif %}
+              <p>An Access to Work Payment Officer can now process these claims.</p>
 
 
               <table class="govuk-table">
 
                 <thead class="govuk-table__head">
                   <tr class="govuk-table__row">
-                    <th scope="col" class="govuk-table__header">Date of payment</th>
+                    <th scope="col" class="govuk-table__header">Date confirmed</th>
                     <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
                     <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
                   </tr
@@ -215,8 +234,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
   {% endif %}
 
-              <h2 class="govuk-heading-m">Claim paid</h2>
-              <p>Your claim has been approved and a payment sent to the company or person who needs to be paid.<p>
+              <h2 class="govuk-heading-m">Claims paid</h2>
+              <p>Claims approved and payment sent to the company or person who needs to be paid.<p>
+
+
               <table class="govuk-table">
 
                 <thead class="govuk-table__head">

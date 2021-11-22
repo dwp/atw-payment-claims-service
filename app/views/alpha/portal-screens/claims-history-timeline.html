@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Access to Work Claiming Portal
+Claim money back from Access to Work
 {% endblock %}
 
 {% block beforeContent %}
@@ -75,48 +75,49 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 <ol class="hmrc-timeline">
   {%if (data['journey-type'] == "supportworker") %}
   <li class="hmrc-timeline__event">
-  <h2 class="hmrc-timeline__event-title">Claim sent to person who can confirm your support costs</h2>
+  <h2 class="hmrc-timeline__event-title">Claims sent to person who can confirm your support costs</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
   <div class="hmrc-timeline__event-content">
-  <p class="govuk-body">Your claim has been sent to person who can confirm your support costs.</p>
+  <p class="govuk-body">Claims has been sent to person who can confirm your support costs. You can change person who can confirm your support costs at any time before the claim is confirmed.</p>
   </div>
   </li>
   <li class="hmrc-timeline__event">
-  <h2 class="hmrc-timeline__event-title">Claim confirmed by person who can confirm your support costs</h2>
+  <h2 class="hmrc-timeline__event-title">Claims confirmed by person who can confirm your support costs</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
   <div class="hmrc-timeline__event-content">
-  <p class="govuk-body">Your claim request has been confirmed by the person who can confirm your support costs. An Access to Work Payment Officer can now process your claim.</p>
+  <p class="govuk-body">An Access to Work Payment Officer can now process these claims.</p>
   </div>
   </li>
   {% else %}
   <li class="hmrc-timeline__event">
-  <h2 class="hmrc-timeline__event-title">Claim sent to workplace contact</h2>
+  <h2 class="hmrc-timeline__event-title">Claims sent to workplace contact</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
   <div class="hmrc-timeline__event-content">
-  <p class="govuk-body">Your claim has been sent to your workplace contact to confirm.</p>
+  <p class="govuk-body">Claims sent to your workplace contact to confirm. You can change a workplace contact at any time before the claim is confirmed.</p>
   </div>
   </li>
   <li class="hmrc-timeline__event">
-  <h2 class="hmrc-timeline__event-title">Claim confirmed by your workplace contact</h2>
+  <h2 class="hmrc-timeline__event-title">Claims confirmed by your workplace contact</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
   <div class="hmrc-timeline__event-content">
-  <p class="govuk-body">Your claim request has been confirmed by your workplace contact. An Access to Work Payment Officer can now process your claim.</p>
+  <p class="govuk-body">An Access to Work Payment Officer can now process these claims.</p>
   </div>
   </li>
   {% endif %}
 
-  <li class="hmrc-timeline__event">
+  <!-- <li class="hmrc-timeline__event">
   <h2 class="hmrc-timeline__event-title">Claim processed</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
-  <div class="hmrc-timeline__event-content">
+  <!-- <div class="hmrc-timeline__event-content">
   <p class="govuk-body">Your claim request has been processed. Your claim will be approved or rejected by an Access to Work payment officer.</p>
   </div>
-  </li>
+  </li> --> 
+
   <li class="hmrc-timeline__event">
   <h2 class="hmrc-timeline__event-title">Claim paid</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-15">15 July 2020</time> -->
   <div class="hmrc-timeline__event-content">
-  <p class="govuk-body">We’ve sent a payment to the company or person who needs to be paid. The payment should arrive in their account within 5 working days.</p>
+  <p class="govuk-body">Claims approved and payment sent to the company or person who needs to be paid.</p>
   </div>
   </li>
 

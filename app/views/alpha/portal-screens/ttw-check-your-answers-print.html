@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Access to Work Claiming Portal
+Claim money back from Access to Work
 {% endblock %}
 
 {% block beforeContent %}
@@ -68,6 +68,7 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
         </dd>
         {% endif %}
     </div>
+    {% if data['employment-status'] == "Employed" %}
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
             Workplace contact declaration
@@ -85,12 +86,13 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
         </dd>
         {% endif %}
     </div>
+    {% endif %}
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
             Claim reference number
         </dt>
         <dd class="govuk-summary-list__value">
-            SAE125421
+            TTW125421
 
         </dd>
         {% if print != true %}

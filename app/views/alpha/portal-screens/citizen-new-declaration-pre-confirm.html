@@ -8,19 +8,20 @@ Claim money back from Access to Work
 {% block content %}
 
 
+
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form action="confirmation" method="post" class="form">
-          {%if (data["transport-option"]=="lift") %}
-        <span class="govuk-caption-l">Section 4 of 4</span>
-          {% else %}
-        <span class="govuk-caption-l">Section 5 of 5</span>
-          {% endif %}
+
             <h1 class="govuk-heading-l">Declaration</h1>
 
             <p>By sending this claim, I confirm that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                 <li>the information I’ve given is complete and correct</li>
+                {%if data['journey-type'] == "traveltowork-ammendment" %}
+                <li>I have made the relevent changes requested by my workplace contact</li>
+                {% endif %}
                 <li>this is the only claim I’ve made for these costs</li>
                 <li>I'm only claiming money back for agreed support</li>
                 <li>I will let DWP know if my circumstances change whilst I’m getting Access to work</li>
@@ -41,7 +42,7 @@ Claim money back from Access to Work
 
 
 
-            <input type="hidden" name="ttw-declaration" value="true">
+                    <input type="hidden" name="citizen-delared-pre" value="true">
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 I agree – send my claim
             </button>
@@ -50,6 +51,5 @@ Claim money back from Access to Work
         </form>
     </div>
 </div>
-
 
 {% endblock %}

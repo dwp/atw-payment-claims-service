@@ -2,7 +2,7 @@
 
 {% block pageTitle %}
 
-Access to Work Claiming Portal
+Claim money back from Access to Work
 
 {% endblock %}
 
@@ -38,9 +38,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <span class="govuk-caption-xl">Account home</span>
                 <h1 class="govuk-heading-xl">Joe Bloggs</h1>
 
-          {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !== "true") %}
+          {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
           <div class="govuk-inset-text">
-            You have <b>1</b> claim that has not been approved by your workplace contact. They have requested that you make some changes to your claim before they can approve it. You can <a href="./portal-screens/claims-history"> make changes to your claim in claims history.</a>
+            You have <b>1</b> claim that has not been confirmed by your workplace contact. They have requested that you make some changes to your claim before they can confirm it. You can <a href="./portal-screens/claims-history"> make changes to your claim in claims history.</a>
           </div>
 
 
@@ -130,11 +130,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <div class="card-body active" @if(url)>
                         <h2 class="heading-small card-heading">
                             <a class="card-link" href="./portal-screens/claims-history">
-                                Claims history  {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] !== "true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
+                                Claims history  {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
 
                             </a>
                         </h2>
-                        <p class="govuk-body">View any claims that you’ve sent in the past, as well as any claims you’ve started but not sent to us.</p>
+                        <p class="govuk-body">View claims you’ve sent us and check their progress.</p>
                     </div>
 
 
