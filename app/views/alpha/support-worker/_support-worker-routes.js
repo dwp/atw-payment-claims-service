@@ -266,7 +266,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const checked = req.session.data['sw-declaration']
 
     if (journeytype === 'supportworker' && checked === 'true') {
-    res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
   } else if (journeytype === 'supportworker') {
       res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
   } else if (journeytype === 'traveltowork-ammendment') {

@@ -477,7 +477,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const checked = req.session.data['ttw-declaration']
 
     if (journeytype === 'traveltowork-ammendment' || checked === 'true') {
-      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+      res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
   } else if (journeytype === 'traveltowork') {
     res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
   }
