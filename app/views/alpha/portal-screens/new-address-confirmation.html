@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">New address details submitted</h1>
+        <p class="govuk-body">
+            You’ve told us about a new home address. This may affect the amount of grant you have been awarded and may result in us completing a change of circumstances. If that's the case someone will be in contact with you.
+        </p>
+        <p>An Access to Work adviser will contact you within the next 10 working days if there are any problems with the details you’ve given.</p>
+
+        <form action="personal-information" method="post" class="form">
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Return to personal details
+          </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

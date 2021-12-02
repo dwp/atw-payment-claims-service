@@ -36,11 +36,12 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             Claims history
                         </h1>
                     </legend>
-
-
-                    <p>Information on claims you’ve sent us. This includes what stage a claim is at, for example, if it’s been approved. You can <a href="claims-history-timeline">find out what stages a claim goes through</a> after you’ve sent it.</p>
-
-                    <p>When you send a new claim, you’ll be able see it here. It can take up to 5 working days for a new claim to appear in your claims history.</p>
+                    {% if (data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") %}
+                    <p>Information on claims you’ve sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    {% else %}
+                    <p>Information on claims you’ve sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    {% endif %}
+                    <p>You can <a href="claims-history-timeline">find out what stages a claim goes through</a> after you’ve sent it.</p>
                 </fieldset>
             </div>
 
@@ -105,7 +106,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">01 Febuary 2021</th>
+                <th scope="row" class="govuk-table__header">01 February 2021</th>
 
                 <td class="govuk-table__cell govuk-table__cell--numeric">{%if data['journey-type'] == "specialaidsandequipment" %}Equipment and adaptations {% else %} Travel to work {% endif %}</td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
@@ -127,15 +128,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 {% else %}
             {%if (data['journey-type'] == "supportworker") %}
-            <h2 class="govuk-heading-m">Claims sent to person who can confirm your support costs</h2>
+            <h2 class="govuk-heading-m">Claims sent to the person who can confirm your support costs</h2>
             <div class="govuk-inset-text">
-            Claims that have been sent to a person who can confirm your support costs. You can change person who can confirm your support costs at any time before the claim is confirmed.
+            You can change the contact who can confirm your support costs at any time before the claim is confirmed.
             </div>
 
             {% else %}
             <h2 class="govuk-heading-m">Claims sent to workplace contact</h2>
             <div class="govuk-inset-text">
-            Claims sent to your workplace contact to confirm. You can change a workplace contact at any time before the claim is confirmed.
+            Claims sent to your workplace contact to confirm. You can change your workplace contact at any time before the claim is confirmed.
             </div>
 
             {% endif %}
@@ -146,13 +147,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <tr class="govuk-table__row">
                   <th scope="col" class="govuk-table__header">Date claim sent</th>
                   <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
-                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">Change workplace contact</th>
+                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">Change contact</th>
                 </tr
               </thead>
               <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
                   <th scope="row" class="govuk-table__header">23 August 2021</th>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{% if data["journey-type"] == "supportworker" %}Support worker{% else %} Travel for work{% endif %}</td>
                   <td class="govuk-table__cell govuk-table__cell--numeric">
                     {% if data['claim-incorrect'] =='true' %}
                     <a class="govuk-!-display-none-print" href="employees-claim-incorrect">
@@ -172,10 +173,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
             <br><br>
-            {% if (data["answers-checked-sw"]) %}
-            <h2 class="govuk-heading-m">Claims confirmed by the person who can confirm your support costs</h2>
+            {% if data["journey-type"] == "supportworker" %}
+            <h2 class="govuk-heading-m">Claims confirmed</h2>
             {% else %}
-            <h2 class="govuk-heading-m">Claims confirmed by your workplace contact</h2>
+            <h2 class="govuk-heading-m">Claims confirmed</h2>
             {% endif %}
               <p>An Access to Work Payment Officer can now process these claims.</p>
 
@@ -192,9 +193,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">23 August 2021</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if data["journey-type"] == "supportworker" %}Support worker{% else %} Travel for work{% endif %}</td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-                      {% if (data["answers-checked-sw"]) %}
+                      {% if data["journey-type"] == "supportworker" %}
                           <a href="sw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
@@ -210,9 +211,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   {%if (data['journey-type'] == "traveltowork-ammendment") and (data ['citizen-delared'] == "true")%}
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">03 July 2021</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}Support worker{% else %} Travel for work{% endif %}</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if data["journey-type"] == "supportworker" %}Support worker{% else %} Travel for work{% endif %}</td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-                      {% if (data["answers-checked-sw"]) %}
+                      {% if data["journey-type"] == "supportworker" %}
                           <a href="sw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
@@ -237,7 +238,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               <h2 class="govuk-heading-m">Claims sent for payment</h2>
               <p>Claims approved and payment sent to the company or person who needs to be paid.</p>
 
-              <p>Once we receive the claim, it can take up to 10 working days for payment to be sent to the company or person who needs to be paid.</p>
+              <p>Once we receive the claim, it can take 10 working days for payment to be sent to the company or person who needs to be paid.</p>
 
 
               <table class="govuk-table">
@@ -251,13 +252,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </thead>
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">01 Febuary 2021</th>
+                    <th scope="row" class="govuk-table__header">01 February 2021</th>
                     <td class="govuk-table__cell govuk-table__cell--numeric">Equipment and adaptations</td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">£951</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">06 March 2021</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if (data["answers-checked-sw"]) %}
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{% if data["journey-type"] == "supportworker" %}
                     Support worker
                     {% else %}
                       Travel for work
@@ -266,7 +267,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">04 April 2021</th>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">  {% if (data["answers-checked-sw"]) %}
+                    <td class="govuk-table__cell govuk-table__cell--numeric">  {% if data["journey-type"] == "supportworker" %}
                       Support worker
                       {% else %}
                         Travel for work

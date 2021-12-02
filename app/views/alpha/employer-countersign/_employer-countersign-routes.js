@@ -31,6 +31,17 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  router.post('/employer-countersign/one-time-code-answer', function (req, res) {
+    const onetimecode = req.session.data['one-time-code']
+
+    if (onetimecode === '246135' || onetimecode === '135246') {
+      res.redirect(`/${urlPrefix}/employer-countersign/one-time-code`)
+    } else if (onetimecode === '222444') {
+      res.redirect(`/${urlPrefix}/employer-countersign/incorrect-one-time-code`)
+    } else {
+      res.redirect(`/${urlPrefix}/employer-countersign/employees-claim`)
+    }
+  })
 
 
 }

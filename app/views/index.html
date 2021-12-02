@@ -127,6 +127,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           <h2 class="govuk-heading-m">Employer counter signature journey</h2>
           <p>In order to accurately view and test this journey you first need to complete a support worker or travel to work journey and return here after.</p>
 
+          <p id="travel-to-work-hint" class="govuk-body">6-digit 1 time codes to generate error states</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>You have 2 attemps remaining: <b>135246</b></li>
+            <li>You have 1 attempt remaining: <b>246135</b></li>
+            <li>Incorrect code entered 2 many times, exit screen: <b>222444</b></li>
+          </ul>
+
           <form action="alpha/employer-countersign/enter-citizen-urn" method="post" class="form">
             <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
             <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -169,7 +176,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               <li>Password: <b>htd</b></li>
             </ul>
 
-            <form action="https://dth-prototype.herokuapp.com/auth/v9/register/start?service-name=Access%20To%20Work%20Payment%20Support" method="post" class="form">
+            <form action="https://dth-prototype.herokuapp.com/auth/v9/register/start?service-name=Claim%20money%20back%20from%20Access%20to%20Work" method="post" class="form">
               <input type="hidden" id="journey-type" name="journey-type" value="authentication">
               <button type="submit" class="govuk-button" data-module="govuk-button">
                   Dynamic trust hub

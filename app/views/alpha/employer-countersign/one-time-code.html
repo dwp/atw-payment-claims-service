@@ -10,7 +10,34 @@ Claim money back from Access to Work
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="employees-claim" method="post" class="form">
+        <form action="one-time-code-answer" method="post" class="form">
+
+          {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#one-time-code">We do not recognise the 6-digit code you have provided</a>
+                </li>
+                {% if data ['one-time-code'] =='135246' %}
+                <li>
+                  <a href="#one-time-code">You have <b>2</b> attempts remaining.</a>
+                </li>
+                {% else %}
+                <li>
+                  <a href="#one-time-code">You have <b>1</b> attempt remaining.</a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+          {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+          <div class="govuk-form-group govuk-form-group--error">
+            {% endif %}
 
             <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="20">
                 <div class="govuk-form-group">
@@ -28,10 +55,20 @@ Claim money back from Access to Work
                       <label class="govuk-hint" for="event-name">
                        For example, 123456
                      </label>
+                     {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+                     <span id="national-insurance-number-error" class="govuk-error-message">
+                       <span class="govuk-visually-hidden">Error:</span> Enter the 6-digit code we have sent to your corresponding email
+                     </span>
+                     {% endif %}
+
                     <input class="govuk-input govuk-input--width-10" id="one-time-code" name="one-time-code" type="text"
                            aria-describedby="one-time-code-hint">
                 </div>
+
             </div>
+            {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+            </div>
+            {% endif %}
 
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -43,6 +80,9 @@ Claim money back from Access to Work
         </form>
     </div>
 </div>
+
+
+
 
 
 {% endblock %}

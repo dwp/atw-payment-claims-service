@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="declaration" method="post" class="form">
+
+
+
+            <fieldset class="govuk-fieldset">
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+<h1 class="govuk-fieldset__heading">
+  What’s your new address?
+</h1>
+</legend>
+
+<div class="govuk-heading-s"> 5 addresses found for {{data["new-citizen-postcode"]}} </div>
+
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Select an address
+  </label>
+  <select class="govuk-select govuk-select--width-10" id="new-citizen-address-select" name="new-citizen-address-select">
+    <option value="selected" selected>5 addresses found</option>
+    <option value="line">----</option>
+    <option value="123" >123 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-citizen-postcode"]}}</option>
+    <option value="124">124 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-citizen-postcode"]}}</option>
+    <option value="125">125 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-citizen-postcode"]}}</option>
+    <option value="126">126 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-citizen-postcode"]}}</option>
+    <option value="127">127 Hudsen House, Cresent Lane, Leeds, West Yorkshire, {{data["new-citizen-postcode"]}}</option>
+
+  </select>
+</div>
+
+</fieldset>
+
+<p><a href="new-citizen-address-manual">I can't find my address in the list</a></p>
+
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

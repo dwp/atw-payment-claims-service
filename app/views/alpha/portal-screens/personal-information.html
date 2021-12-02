@@ -100,6 +100,73 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                         </a>
                     </dd>
                 </div>
+                {% if (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") %}
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {% if data ["new-citizen-address-line-1"] %}
+                        {{data["new-citizen-address-line-1"]}}<br>
+                        {% if data["new-citizen-address-line-2"] %}{{data["new-citizen-address-line-2"]}}<br>{% endif %}
+                        {{data["new-citizen-address-town"]}}<br>
+                        {{data["new-citizen-address-county"]}}<br>
+                        {{data["new-citizen-address-postcode"]}}
+
+                        {% elif data["new-citizen-address-select"] == "123" %}
+                        123 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-citizen-postcode"]}}
+
+                        {% elif data["new-citizen-address-select"] == "124" %}
+                        124 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-citizen-postcode"]}}
+
+                        {% elif data["new-citizen-address-select"] == "125" %}
+                        125 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-citizen-postcode"]}}
+
+                        {% elif data["new-citizen-address-select"] == "126" %}
+                        126 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-citizen-postcode"]}}
+
+                        {% elif data["new-citizen-address-select"] == "127" %}
+                        127 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-citizen-postcode"]}}
+
+                        {% else %}
+                        140 Weston Grove<br>
+                        Otley<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        LS5 5NE
+                        {% endif %}
+
+                    </dd>
+                    {% if print != true %}
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="new-citizen-address">
+                            Change
+                            <span class="govuk-visually-hidden"> New citizen address</span>
+                        </a>
+                    </dd>
+                    {% endif %}
+                </div>
+                {% endif %}
                 </dl>
 
 
