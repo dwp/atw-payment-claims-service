@@ -242,7 +242,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         </dl>
 
 
-        {% elseif (data['journey-type'] == "multipleawards") %}
+        {% elseif (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %} 
 
         <h3 class="govuk-heading-s"> Travel for work grant </h3>
 
@@ -349,7 +349,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         {% endif %}
 
-         {% if (data['journey-type'] !== "multipleawards") %}
+         {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
         <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
         {% endif %}
 

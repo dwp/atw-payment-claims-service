@@ -129,7 +129,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <div class="card" id="test-card-1">
                     <div class="card-body active" @if(url)>
                         <h2 class="heading-small card-heading">
-                          {% if data['journey-type'] == "multipleawards" %}
+                          {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
                             <a class="card-link" href="./portal-screens/multiple-claims-history">
                             {% else %}
                             <a class="card-link" href="./portal-screens/claims-history">

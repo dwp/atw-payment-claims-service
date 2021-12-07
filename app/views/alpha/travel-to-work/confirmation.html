@@ -29,7 +29,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           <p>We’ve sent this claim reference number to the person responsible for confirming your claim.
           They’ll need to enter this reference number to access your claim. Once they confirm the claim is correct, we’ll process your claim.</p>
 
-
+          {% if data["employment-status"] =='Employed'%}
 
             <h2 class="govuk-heading-m">What happens next</h2>
 

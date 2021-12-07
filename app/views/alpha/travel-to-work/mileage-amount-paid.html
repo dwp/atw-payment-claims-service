@@ -58,26 +58,23 @@ Claim money back from Access to Work
 
       {%if (data["way-of-claiming"]=="journeys")%}
 
-      {% if taxiTotal === 1 %}
-      <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journey</h1>
-      {% else %}
-      <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journeys</h1>
-      {% endif %}
+      <h1 class="govuk-heading-l">Total number of journeys: {{taxiTotal + repeattaxiTotal}}</h1>
+
 
       {% else %}
 
-      {% if mileageTotal === 1 %}
-      <h1 class="govuk-heading-l">You’ve told us the journey you’re claiming for were a total of {{mileageTotal + repeatmileageTotal}} miles</h1>
-      {% else %}
-      <h1 class="govuk-heading-l">You’ve told us the journeys you’re claiming for were a total of {{mileageTotal + repeatmileageTotal}} miles</h1>
-      {% endif %}
+      <h1 class="govuk-heading-l">Total miles: {{mileageTotal + repeatmileageTotal}}</h1>
 
       {% endif %}
 
 
 
-        <p class="govuk-body">The total amount you will be paid back will be calculated based on your agreed mileage rate per mile quoted to you in your Access to Work grant approval letter, minus any agreed personal or employer contributions.
+        <p class="govuk-body">We’ll use the rate per mile quoted in your grant approval letter to work out how much you’re paid back.
         </p>
+
+        <div class="govuk-body">If you or your employer agreed to pay a contribution, the amount we’ll pay back will be less than the total cost of the journeys. This is because we’ll deduct the amount you or your employer have agreed to pay.</div>
+
+
 
 
         <form action="employer-contribution-answer" method="post" class="form">

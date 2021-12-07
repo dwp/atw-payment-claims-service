@@ -19,7 +19,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Claims History</a>
+            <a class="govuk-breadcrumbs__link" href="multiple-claims-history.html">Claims history type</a>
         </li>
     </ol>
 </div>
@@ -33,12 +33,12 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <fieldset class="govuk-fieldset" aria-describedby="travel-to-work-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Which grant award type of claims history do you want to see?
+                            Choose which claims history you want to see
                         </h1>
                     </legend>
 
 
-                    <p>As you have more than one type of grant award you can view your history for each claim type.</p>
+                    <p>As you have more than one type of award, you can view your history for each claim type.</p>
 
 
                     <div class="govuk-radios">
@@ -63,6 +63,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </fieldset>
             </div>
 
+              <input type="hidden" name="multiple-awards" value="true">
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
             </button>

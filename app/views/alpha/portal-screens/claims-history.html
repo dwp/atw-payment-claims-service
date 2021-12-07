@@ -17,8 +17,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
         </li>
+        {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
         <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="claims-history.html">Claims History</a>
+            <a class="govuk-breadcrumbs__link" href="multiple-claims-history.html">Claims history type</a>
+        </li>
+        {% endif %}
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="claims-history.html">Claims history</a>
         </li>
     </ol>
 </div>
@@ -41,9 +46,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     {% else %}
                     <p>Information on claims you’ve sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% endif %}
-                    <p>You can <a href="claims-history-timeline">find out what stages a claim goes through</a> after you’ve sent it.</p>
+
+                    {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+                    <p>You can also <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
+                    {% endif %}
+
                 </fieldset>
             </div>
+
+
 
 
             {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
@@ -301,6 +312,8 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       </div>
 
                       </dl> -->
+
+                        <p>You can <a href="claims-history-timeline">find out what stages a claim goes through</a> after you’ve sent it.</p>
 
                 </div>
             </div>
