@@ -55,13 +55,19 @@ Claim money back from Access to Work
 
 
           {% if travelLength === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journey</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journey at a total cost of £{{taxiinworkTotal + repeattaxiinworkTotal}}</h1>
           {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journeys</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journeys at a total cost of £{{taxiinworkTotal + repeattaxiinworkTotal}}</h1>
           {% endif %}
 
 
-          <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
+                  {% if taxiinworkTotal + repeattaxiinworkTotal === 100 %}
+                  <p>The amount we’ll pay back will be less than the total cost of the journeys because we will deduct the amount you or your employer have agreed to pay.</p>
+                  {% else %}
+                  <p>This is the cost of all the taxi journeys at work you’ve told us you want to claim for.</p>
+                  {% endif %}
+
+          <h3 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h3>
 
             <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
@@ -106,7 +112,7 @@ Claim money back from Access to Work
                 <li class="hmrc-add-to-a-list__contents">
       <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
 
-      
+
          {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>From {{item.repeattravel_from}} <br>To {{item.repeattravel_to}}<br>£{{item.repeattravel_cost}}
           <br>
 
@@ -130,6 +136,7 @@ Claim money back from Access to Work
         </div>
 
         {% endif %}
+
 
         <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">

@@ -90,7 +90,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
               {% endif %}
 
-              {%if (data['journey-type'] == "specialaidsandequipment") or ((data['journey-type'] == "traveltowork") and (data['employment-status'] == "Self-employed")) %}
+
 
         <h2 class="govuk-heading-m">Claims sent</h2>
         <p>Your claim request has been sent to us.</p>
@@ -108,25 +108,21 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">01 February 2021</th>
 
-                <td class="govuk-table__cell govuk-table__cell--numeric">{%if data['journey-type'] == "specialaidsandequipment" %}Equipment and adaptations {% else %} Travel to work {% endif %}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">Equipment and adaptations</td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
-                  {%if data['journey-type'] == "specialaidsandequipment" %}
+
                   <a class="govuk-!-display-none-print" href="e-a-check-your-answers-print">
                     View
                     <span class="govuk-visually-hidden">view claim</span>
                 </a>
-                {% else %}
-                <a class="govuk-!-display-none-print" href="ttw-check-your-answers-print">
-                  View
-                  <span class="govuk-visually-hidden">view claim</span>
-              </a>
-              {% endif %}
+
               </td>
               </tr>
             </tbody>
           </table>
+          <br>
 
-{% else %}
+
             {%if (data['journey-type'] == "supportworker") %}
             <h2 class="govuk-heading-m">Claims sent to the person who can confirm your support costs</h2>
             <div class="govuk-inset-text">
@@ -233,9 +229,8 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       <br><br>
 
 
-  {% endif %}
 
-              <h2 class="govuk-heading-m">Claims approved</h2>
+              <h2 class="govuk-heading-m">Claims sent for payment</h2>
               <p>Claims approved and payment sent to the company or person who needs to be paid.</p>
 
               <p>Once we receive the claim, it can take 10 working days for payment to be sent to the company or person who needs to be paid.</p>

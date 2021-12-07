@@ -13,10 +13,10 @@ Claim money back from Access to Work
 
 
 
-        <h1 class="govuk-heading-l">The total amount we'll pay towards the support you’re claiming for will be £80</h1>
+        <h1 class="govuk-heading-l">Total cost of support: £{{data['cost-of-support']}}</h1>
 
-        <p class="govuk-body">This is the total amount we’ll pay you for the support you’ve told us about.
-          This amount is slightly less than the total cost of the support because we’ve deducted the amounts your employer agreed to pay.
+        <p class="govuk-body">
+          The amount we’ll pay back will be less than the total cost. This is because we will deduct the amounts you or your employer have agreed to pay.
         </p>
 
         {% if data ["contact-confirmed"] %}

@@ -19,7 +19,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="travel-to-work.html">Travel for work</a>
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Claims History</a>
         </li>
     </ol>
 </div>
@@ -28,34 +28,34 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="travel-to-work-answers" method="post" class="form">
+        <form action="claims-history" method="post" class="form">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="travel-to-work-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Are you claiming for travel costs during work hours?
+                            Which grant award type of claims history do you want to see?
                         </h1>
                     </legend>
 
 
-                    <p id="travel-to-work-hint" class="govuk-body">You can <a href="../portal-screens/grant-information">find out what your Access to Work grant can be used for</a> in the ‘grant information’ section of your account.</p>
+                    <p>As you have more than one type of grant award you can view your history for each claim type.</p>
 
 
-                    <div class="govuk-radios govuk-radios--inline">
+                    <div class="govuk-radios">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="travel-to-work-yes" name="travel-to-work"
+                            <input class="govuk-radios__input" id="traveltowork" name="journey-type"
                                    type="radio"
-                                   value="Yes">
-                            <label class="govuk-label govuk-radios__label" for="travel-to-work-yes">
-                                Yes
+                                   value="traveltowork">
+                            <label class="govuk-label govuk-radios__label" for="traveltowork">
+                                Travel for work
                             </label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="travel-to-work-no" name="travel-to-work"
+                            <input class="govuk-radios__input" id="specialaidsandequipment" name="journey-type"
                                    type="radio"
-                                   value="No">
-                            <label class="govuk-label govuk-radios__label" for="travel-to-work-no">
-                                No
+                                   value="specialaidsandequipment">
+                            <label class="govuk-label govuk-radios__label" for="specialaidsandequipment">
+                              Equipment and adaptations
                             </label>
                         </div>
                     </div>

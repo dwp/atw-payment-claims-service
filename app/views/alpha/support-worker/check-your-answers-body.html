@@ -34,7 +34,7 @@
       <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim </h1>
       <p>This is the information you gave us in your claim. You should make the changes requested by your workplace contact and then send us your claim again.</p>
       {% endif %}
-      
+
       {% elseif data['sw-declaration'] %}
       {% if print != true %}
       <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim </h1>
@@ -195,35 +195,30 @@
                 {% endif %}
             </div>
 
-            {% if (data['one-time-code']) or (data['cost-of-support']=="100") %}
-            {% else %}
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Total cost of support worker
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    £{{data['cost-of-support']}}
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                    <a href="../support-worker/cost-of-support">
-                        Change
-                        <span class="govuk-visually-hidden"> Hours of support received</span>
-                    </a>
-                    {% else %}
-                    <a href="cost-of-support">
-                        Change
-                        <span class="govuk-visually-hidden"> Are you sharing the cost of your equipment or adaptation?</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-            {% endif %}
+                  <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Total cost of support worker
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              £{{data['cost-of-support']}}
+                          </dd>
+                          {% if print != true %}
+                          <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                          {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                              <a href="../support-worker/cost-of-support">
+                                  Change
+                                  <span class="govuk-visually-hidden"> total cost of support received</span>
+                              </a>
+                              {% else %}
+                              <a href="cost-of-support">
+                                  Change
+                                  <span class="govuk-visually-hidden"> total cost of support received</span>
+                              </a>
+                              {% endif %}
+                          </dd>
+                          {% endif %}
+                      </div>
 
-            {% if data['one-time-code'] %}
-            {% else %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   {% if data['uploads'].length === 1 %}
@@ -249,60 +244,14 @@
                 </dd>
                 {% endif %}
             </div>
-            {% endif %}
-        </dl>
 
-        {%if (data['cost-of-support']=="100") %}
-
-        <h2 class="govuk-heading-m">Support worker cost</h2>
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Total cost of support worker
-              </dt>
-              <dd class="govuk-summary-list__value">
-                  £{{data['cost-of-support']}}
-              </dd>
-              {% if print != true %}
-              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-              {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                  <a href="../support-worker/cost-of-support">
-                      Change
-                      <span class="govuk-visually-hidden"> total cost of support received</span>
-                  </a>
-                  {% else %}
-                  <a href="cost-of-support">
-                      Change
-                      <span class="govuk-visually-hidden"> total cost of support received</span>
-                  </a>
-                  {% endif %}
-              </dd>
-              {% endif %}
-          </div>
           </dl>
+    {%if (data['cost-of-support']=="100") %}
+    <div class="govuk-inset-text">
+      The amount we’ll pay back will be less than the total cost you’re claiming for. This is because we’ll deduct the amounts you or your employer have agreed to pay.
+    </div>
+    {% endif %}
 
-          <p>The amount we will pay back is slightly less than the total cost of the support because we’ve deducted the amounts your employer agreed to pay.</p>
-
-        <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Employer contribution
-            </dt>
-            <dd class="govuk-summary-list__value">
-                £20
-            </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Total amount we can pay towards this claim
-            </dt>
-            <dd class="govuk-summary-list__value">
-                £80
-            </dd>
-        </div>
-        </dl>
-        {% endif %}
 
     {%if ((data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration'])) and (data['existing-payee'] == "new") %}
         <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
@@ -690,6 +639,11 @@
 
             </div>
         </dl>
+        {% endif %}
+
+        {% if print != true %}
+        <p>You can also <a target="_blank"
+                href="check-your-answers-print">save and print a copy of your answers (opens in a new tab)</a>.</p>
         {% endif %}
 
         {% if print != true %}

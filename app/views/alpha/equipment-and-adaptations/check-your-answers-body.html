@@ -79,13 +79,11 @@
 
 {%if (data['equipment-cost']=="100") %}
 
-<h2 class="govuk-heading-m">Equipment and adaptations cost</h2>
+<div class="govuk-inset-text">
+The amount we’ll pay back will be less than the total cost you’re claiming for. This is because we’ll deduct the amounts you or your employer have agreed to pay.
+</div>
 
-
-<p>The total amount we will pay back for the equipment or adaptations you’re claiming for will be slightly less than the total cost of the of the equipment and adaptations because we will deduct the amounts you or your employer have agreed to pay.</p>
-
-
-          {% endif %}
+{% endif %}
 
         {% if print != true %}
         <h2 class="govuk-heading-m">New payee details</h2>
@@ -258,8 +256,10 @@
         </dl>
         {% endif %}
 
+        {% if print != true %}
         <p>You can also <a target="_blank"
                 href="check-your-answers-print">save and print a copy of your answers (opens in a new tab)</a>.</p>
+        {% endif %}
 
         {% if print != true %}
         <form action="declaration" method="post" novalidate>

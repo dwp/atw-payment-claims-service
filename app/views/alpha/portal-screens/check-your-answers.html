@@ -25,8 +25,11 @@ Check your answers
     <div class="govuk-grid-column-two-thirds">
 
 <h1 class="govuk-heading-l govuk-!-display-none-print">About your claim </h1>
+{% if data['journey-type'] =="supportworker" %}
 <p>This is the information you gave us about your claim. You can change the person who can confirm your support costs at any time before the claim is confirmed.</p>
-
+{% else %}
+<p>This is the information you gave us about your claim. You can change your workplace contact at any time before the claim is confirmed.</p>
+{% endif %}
 
 {% if data["employment-status"] =='Employed'%}
 
@@ -135,16 +138,16 @@ Check your answers
 
 {% include "alpha/travel-to-work/check-your-answers-body.html" %}
 
-
+<!--
 <form action="citizen-new-declaration-pre-confirm" method="post" novalidate>
 
     <!-- <input type="hidden" name="answers-checked-sw" value="true"> -->
 
-    <button type="submit" class="govuk-button" data-module="govuk-button">
+    <!-- <button type="submit" class="govuk-button" data-module="govuk-button">
         Continue
     </button>
 
-</form>
+</form> --> 
 
 {% elseif (data["answers-checked-sw"]) %}
 

@@ -260,7 +260,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-in-work/taxi-confirmation-answers', function (req, res) {
     const confirm = req.session.data['taxi-confirmation']
     if (confirm === 'Yes') {
-      res.redirect(`/${urlPrefix}/travel-in-work/taxi-cost`)
+      res.redirect(`/${urlPrefix}/travel-in-work/providing-evidence`)
     } else {
       res.redirect(`/${urlPrefix}/travel-in-work/taxi-journeys-for-day-summary`)
     }
@@ -344,11 +344,11 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi') {
       res.redirect(`/${urlPrefix}/travel-in-work/change-cost`)
     } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi-during-work') {
-      res.redirect(`/${urlPrefix}/travel-in-work/taxi-cost`)
+      res.redirect(`/${urlPrefix}/travel-in-work/providing-evidence`)
     } else if (checked && addmonth === 'no') {
       res.redirect(`/${urlPrefix}/travel-in-work/check-your-answers`)
     } else if (addmonth === 'no' && journeytype === 'travelinwork') {
-      res.redirect(`/${urlPrefix}/travel-in-work/taxi-cost`)
+      res.redirect(`/${urlPrefix}/travel-in-work/providing-evidence`)
     } else if (addmonth === 'yes') {
       res.redirect(`/${urlPrefix}/travel-in-work/claiming-for-month-repeat`)
     }
