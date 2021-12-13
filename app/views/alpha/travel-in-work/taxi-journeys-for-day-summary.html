@@ -54,7 +54,7 @@ Claim money back from Access to Work
         <div class="govuk-form-group">
 
 
-          {% if travelLength === 1 %}
+          {% if travelLength|int + repeattravelLength|int === 1 %}
           <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journey at a total cost of £{{taxiinworkTotal + repeattaxiinworkTotal}}</h1>
           {% else %}
           <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journeys at a total cost of £{{taxiinworkTotal + repeattaxiinworkTotal}}</h1>
