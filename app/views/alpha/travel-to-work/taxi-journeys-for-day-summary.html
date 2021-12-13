@@ -65,12 +65,12 @@ Claim money back from Access to Work
           {% endif %}
 
           {% if data['way-of-claiming'] %}
-          <h2 class="govuk-heading-s">Journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
+          <h2 class="govuk-heading-m">Journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
           {% else %}
-          <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
+          <h2 class="govuk-heading-m">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
           {% endif %}
 
-            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+            <!-- <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for item in data['travel'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
@@ -93,12 +93,43 @@ Claim money back from Access to Work
                 </li>
                 {% else %}
                 <div class="govuk-inset-text">
-                  Tell us about the support you received to continue.
+                  Tell us about the journeys you have taken to and from work to continue.
                 </div>
                 {% endfor %}
 
 
-            </ul>
+            </ul> -->
+
+            {% for item in data['travel'] | sortBy('day') %}
+            <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+
+                {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if (data['transport-option'] == "taxi") or (data['way-of-claiming'] == "journeys") %}
+                {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
+                {% else %}
+                From {{item.travel_from}} <br>To {{item.travel_to}}<br>£{{item.travel_cost}}
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="taxi-journeys-for-day">
+                  Change<span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
+                </a>
+              </dd>
+            </div>
+            </dl>
+
+            {% else %}
+            <div class="govuk-inset-text">
+              Tell us about the journeys you have taken to and from work to continue.
+            </div>
+            {% endfor %}
+
+
+
         </div>
 
         {% if data['travel-to-work-date-month-repeat'] %}
@@ -106,39 +137,39 @@ Claim money back from Access to Work
         <div class="govuk-form-group">
 
           {% if data['way-of-claiming'] %}
-          <h2 class="govuk-heading-s">Journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
+          <h2 class="govuk-heading-m">Journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
           {% else %}
-          <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
+          <h2 class="govuk-heading-m">Taxi journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
           {% endif %}
-            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
-                {% for item in data['repeattravel'] | sortBy('day') %}
-                <li class="hmrc-add-to-a-list__contents">
-      <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-        {% if (data['transport-option'] == "taxi") or (data['way-of-claiming'])%}
-        {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>{{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
-         <br>
-         {% else %}
-         {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} <br>From {{item.repeattravel_from}} <br>To {{item.repeattravel_to}}<br>£{{item.repeattravel_cost}}
-          <br>
-          {% endif %}
-      </span>
-      <span class="hmrc-add-to-a-list__change">
-       <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-repeat">
-         <span aria-hidden="true">Change</span>
-         <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
-       </a>
-     </span>
 
-                </li>
+            {% for item in data['repeattravel'] | sortBy('day') %}
+            <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+
+                {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if (data['transport-option'] == "taxi") or (data['way-of-claiming'] == "journeys") %}
+                {{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
                 {% else %}
-                <div class="govuk-inset-text">
-                  Tell us about the support you received to continue.
-                </div>
-                {% endfor %}
+                From {{item.repeattravel_from}} <br>To {{item.repeattravel_to}}<br>£{{item.repeattravel_cost}}
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="taxi-journeys-for-day">
+                  Change<span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}</span>
+                </a>
+              </dd>
+            </div>
+            </dl>
 
-
-            </ul>
+            {% else %}
+            <div class="govuk-inset-text">
+              Tell us about the journeys you have taken to and from work to continue.
+            </div>
+            {% endfor %}
         </div>
 
         {% endif %}
