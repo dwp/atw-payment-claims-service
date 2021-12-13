@@ -10,11 +10,11 @@ Check your answers
 {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true') and (data["answers-checked-sw"]) %}
 
 
-{% include "alpha/support-worker/check-your-answers-body.html" %}
+{% include "alpha/portal-screens/check-your-answers-sw-cs.html" %}
 
 {% elseif (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true') and (data["ttw-declaration"]) %}
 
-{% include "alpha/travel-to-work/check-your-answers-body.html" %}
+{% include "alpha/portal-screens/check-your-answers-ttw-cs.html" %}
 
 
 {% elseif data["ttw-declaration"] %}
@@ -147,7 +147,7 @@ Check your answers
         Continue
     </button>
 
-</form> --> 
+</form> -->
 
 {% elseif (data["answers-checked-sw"]) %}
 
@@ -214,15 +214,7 @@ Check your answers
 
       {% include "alpha/support-worker/check-your-answers-body.html" %}
 
-      <form action="citizen-new-declaration-pre-confirm" method="post" novalidate>
 
-          <!-- <input type="hidden" name="answers-checked-sw" value="true"> -->
-
-          <button type="submit" class="govuk-button" data-module="govuk-button">
-              Continue
-          </button>
-
-      </form>
 
 
       {% endif %}

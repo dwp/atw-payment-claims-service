@@ -19,7 +19,11 @@ Claim money back from Access to Work
           The amount we’ll pay back will be less than the total cost. This is because we will deduct the amounts you or your employer have agreed to pay.
         </p>
 
-        {% if data ["contact-confirmed"] %}
+
+
+        {% if (data ['journey-type'] == "traveltowork-ammendment") %}
+          <form action="../portal-screens/check-your-answers" method="post" class="form">
+        {% elseif (data ["contact-confirmed"]) %}
           <form action="check-your-answers" method="post" class="form">
         {% else %}
         <form action="providing-evidence" method="post" class="form">

@@ -62,12 +62,8 @@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {%if (data['journey-type'] == "traveltowork-ammendment") %}
-      {% if print != true %}
-      <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim</h1>
-      <p>This is the information you gave us in your claim. You should make the changes requested by your workplace contact and then send us your claim again.</p>
-      {% endif %}
-      {% elif data['ttw-declaration'] %}
+
+      {% if data['ttw-declaration'] %}
       {% if print != true %}
       <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim</h1>
       <p>This is the information you gave us in your claim. You should make any changes and then send us your claim again.</p>
@@ -537,7 +533,7 @@
             {%if (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work") %}
 
             <div class="govuk-inset-text">
-              We’ll use the rate per mile quoted in your grant approval letter to work out how much you’re paid back. 
+              We’ll use the rate per mile quoted in your grant approval letter to work out how much you’re paid back.
             </div>
 
 

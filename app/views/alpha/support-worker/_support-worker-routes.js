@@ -77,7 +77,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (month === 'yes') {
       res.redirect(`/${urlPrefix}/support-worker/claiming-for-month-repeat`)
     } else if (month === 'no' && journeytype === 'traveltowork-ammendment') {
-      res.redirect(`/${urlPrefix}/support-worker/change-cost`)
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (month === 'no' && checked) {
       res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
     } else if (month === 'no' && journeytype === 'supportworker') {
@@ -221,7 +221,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/support-worker/employer-contribution`)
     } else if (journeytype === 'traveltowork-ammendment'){
-      res.redirect(`/${urlPrefix}/support-worker/upload-summary`)
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (journeytype === 'supportworker' && checked){
       res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
     } else if (journeytype === 'supportworker'){

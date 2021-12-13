@@ -53,10 +53,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
-    } else if (journeytype === 'traveltowork-ammendment' || alreadyupload){
-      res.redirect(`/${urlPrefix}/travel-to-work/upload-summary`)
+    } else if (journeytype === 'traveltowork-ammendment'){
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+    } else if (alreadyupload){
+      res.redirect(`/${urlPrefix}/portal-screens/upload-summary`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
     }
@@ -355,9 +357,11 @@ module.exports = function (folderForViews, urlPrefix, router) {
     if (req.session.data.travel === undefined || req.session.data.travel.length == 0) {
       res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
     } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi') {
-      res.redirect(`/${urlPrefix}/travel-to-work/change-cost`)
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'lift') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi-during-work') {
-      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked && addmonth === 'no') {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (addmonth === 'no' && journeytype === 'traveltowork' && lift === 'journeys') {
@@ -476,11 +480,13 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const journeytype = req.session.data['journey-type']
     const checked = req.session.data['ttw-declaration']
 
-    if (journeytype === 'traveltowork-ammendment' || checked === 'true') {
+    if (journeytype === 'traveltowork-ammendment' ) {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (checked === 'true') {
       res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
-  } else if (journeytype === 'traveltowork') {
-    res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-  }
+    } else if (journeytype === 'traveltowork') {
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+    }
 })
 
 router.post('/travel-to-work/employment-status-answer', function (req, res) {
