@@ -35,7 +35,7 @@ Claim money back from Access to Work
       <form method="post" action="#">
 
         <div class="govuk-form-group">
-          {% if mileageTotal === 1 %}
+          {% if mileageTotal|int === 1 %}
           <h1 class="govuk-heading-l">You’ve told us the journey you’re claiming for were a total of {{mileageTotal + repeatmileageTotal}} miles</h1>
           {% else %}
           <h1 class="govuk-heading-l">You’ve told us the journeys you’re claiming for were a total of {{mileageTotal + repeatmileageTotal}} miles</h1>
@@ -44,7 +44,7 @@ Claim money back from Access to Work
 
 
           <h2 class="govuk-heading-s">Miles travelled in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
-            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+            <!-- <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for item in data['milage'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
@@ -65,13 +65,38 @@ Claim money back from Access to Work
           <span class="govuk-visually-hidden">Remove {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
         </a>
       </span> -->
-                </li>
+                <!-- </li>
                 {% else %}
                 <div class="govuk-inset-text">
                   Tell us about the support you received to continue.
                 </div>
                 {% endfor %}
-            </ul>
+            </ul> -->
+
+
+            {% for item in data['milage'] | sortBy('day') %}
+            <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+
+                {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{item.milage_total}} Miles
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="taxi-journeys-for-day">
+                  Change<span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
+                </a>
+              </dd>
+            </div>
+            </dl>
+
+            {% else %}
+            <div class="govuk-inset-text">
+              Tell us about the journeys you have taken to and from work to continue.
+            </div>
+            {% endfor %}
         </div>
 
         {% if data['travel-to-work-date-month-repeat'] %}
@@ -80,7 +105,7 @@ Claim money back from Access to Work
 
           <h2 class="govuk-heading-s">Miles travelled in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
 
-            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+            <!-- <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for item in data['repeatmilage'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
@@ -101,9 +126,31 @@ Claim money back from Access to Work
                             Tell us about the support you received to continue.
                           </div>
                           {% endfor %}
+                      </ul> -->
 
 
-                      </ul>
+                      {% for item in data['repeatmilage'] | sortBy('day') %}
+                      <dl class="govuk-summary-list">
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                        {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{item.repeatmilage_total}} Miles
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="taxi-journeys-for-day">
+                            Change<span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}</span>
+                          </a>
+                        </dd>
+                      </div>
+                      </dl>
+
+                      {% else %}
+                      <div class="govuk-inset-text">
+                        Tell us about the journeys you have taken to and from work to continue.
+                      </div>
+                      {% endfor %}
                   </div>
 
         {% endif %}
