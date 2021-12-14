@@ -20,15 +20,15 @@ Claim money back from Access to Work
             <div class="govuk-error-summary__body">
               <ul class="govuk-list govuk-error-summary__list">
                 <li>
-                  <a href="#one-time-code">We do not recognise the 6-digit code you have provided</a>
+                  <a href="#one-time-code">We do not recognise the 6-digit code you entered</a>
                 </li>
                 {% if data ['one-time-code'] =='135246' %}
                 <li>
-                  <a href="#one-time-code">You have <b>2</b> attempts remaining.</a>
+                  <a href="#one-time-code">You have <b>2</b> attempts remaining</a>
                 </li>
                 {% else %}
                 <li>
-                  <a href="#one-time-code">You have <b>1</b> attempt remaining.</a>
+                  <a href="#one-time-code">You have <b>1</b> attempt remaining</a>
                 </li>
                 {% endif %}
               </ul>
@@ -57,7 +57,7 @@ Claim money back from Access to Work
                      </label>
                      {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
                      <span id="national-insurance-number-error" class="govuk-error-message">
-                       <span class="govuk-visually-hidden">Error:</span> Enter the 6-digit code we have sent to your corresponding email
+                       <span class="govuk-visually-hidden">Error:</span> Enter the 6-digit code we sent to you by email
                      </span>
                      {% endif %}
 
