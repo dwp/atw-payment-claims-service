@@ -21,14 +21,14 @@ Claim money back from Access to Work
 
             </ul>
 
-            {% if (data ["new-citizen-address-line-1"]) or (data ["new-citizen-address-select"]) %}
+            {% if (data ["new-citizen-address-postcode"]) or (data ["new-citizen-address-select"]) %}
             <p>Any changes made to your address may result in Access to Work contacting you to complete a change of circumstances and may affect the amount of grant you have been awarded</p>
             {% endif %}
 
 
 
 
-          {% if (data ["new-citizen-address-line-1"]) or (data ["new-citizen-address-select"]) %}
+          {% if (data ["new-citizen-address-postcode"]) or (data ["new-citizen-address-select"]) %}
 
           <form action="new-address-confirmation" method="post" class="form">
             <button type="submit" class="govuk-button" data-module="govuk-button">
