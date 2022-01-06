@@ -17,18 +17,26 @@ Claim money back from Access to Work
         <p>You need to check the days Joe Bloggs is claiming support for and the amount of hours they are claiming for on each day.</p>
 
         <p>We’ll then ask you to confirm Joe Bloggs' claim or tell us why you cannot confirm with their claim.</p>
+
+        {% elseif (data["tiw-declaration"]) %}
+
+        <h1 class="govuk-heading-l">Joe Bloggs Travel in work claim</h1>
+
+        <p>You need to check the days Joe Bloggs is claiming travel in work costs. We’ll also ask you to confirm whether your employee was in work on the days they’re claiming for.</p>
+
+        <p>We’ll then ask you to confirm their claim, or tell us why you disagree with their claim.</p>
+
         {% else %}
+        
         <h1 class="govuk-heading-l">Joe Bloggs Travel for work claim</h1>
 
         <p>You need to check the days Joe Bloggs is claiming travel to work costs. We’ll also ask you to confirm whether your employee was in work on the days they’re claiming for.</p>
 
-        <p>We’ll then ask you to approve their claim, or tell us why you disagree with their claim.</p>
+        <p>We’ll then ask you to confirm their claim, or tell us why you disagree with their claim.</p>
 
         {% endif %}
-        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-
-        <h2 class="govuk-heading-m">Personal information</h2>
+        <!-- <h2 class="govuk-heading-m">Personal information</h2>
 
 
                   <dl class="govuk-summary-list">
@@ -59,7 +67,7 @@ Claim money back from Access to Work
 
                     </dd>
                   </div>
-                </dl>
+                </dl> -->
                 </div>
                 </div>
 
@@ -68,20 +76,15 @@ Claim money back from Access to Work
 
                 {% if (data["answers-checked-sw"]) %}
                 {% include "alpha/support-worker/check-your-answers-body.html" %}
+                {% elseif (data["tiw-declaration"]) %}
+                {% include "alpha/travel-in-work/check-your-answers-body.html" %}
                 {% else %}
                 {% include "alpha/travel-to-work/check-your-answers-body.html" %}
                 {% endif %}
 
 
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-two-thirds">
-
-
-
-
-
-
-
+        <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
         <form action="employer-countersign-answer" method="post" class="form">
                   <div class="govuk-form-group">

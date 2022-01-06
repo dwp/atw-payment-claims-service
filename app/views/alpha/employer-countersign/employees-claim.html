@@ -60,12 +60,14 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <p class="govuk-body">
                       {% if (data["answers-checked-sw"]) %}
                       Support worker
+                      {% elseif (data["tiw-declaration"]) %}
+                      Travel in work
                       {% else %}
                       Travel to Work
                       {% endif %}</p>
                   </dd>
                 </div>
-              </dl>
+              </dl> 
 
               <br>
                         <div class="govuk-form-group">

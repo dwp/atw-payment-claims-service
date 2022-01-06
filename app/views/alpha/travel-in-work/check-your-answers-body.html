@@ -86,29 +86,6 @@
 
 
 
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Type of travel
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    {%if (data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")%} Taxi {% endif %}
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/transport-option">
-                        Change
-                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
-                    </a>
-                    {% else %}
-                    <a href="transport-option">
-                        Change
-                        <span class="govuk-visually-hidden"> what month are you claiming for?</span>
-                    </a>
-                    {% endif %}
-                </dd>
-                {% endif %}
-            </div>
 
 
 <!--
@@ -341,7 +318,7 @@
 
 
 
-        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
+        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['tiw-declaration']) %}
         <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
 
 
@@ -579,7 +556,7 @@
         {% endif %}
 
 
-
+        {% if print != true %}
         {% if data["employment-status"] =='Employed'%}
 
         <h2 class="govuk-heading-m">Workplace contact details</h2>
@@ -695,6 +672,7 @@
 
           </dl>
 
+          {% endif %}
           {% endif %}
 
           {% if print != true %}

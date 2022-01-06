@@ -54,8 +54,10 @@ Claim money back from Access to Work
                     <p class="govuk-body">
                       {% if (data["answers-checked-sw"]) %}
                       Support worker
+                      {% elseif (data["tiw-declaration"]) %}
+                      Travel in work
                       {% else %}
-                      Travel to work
+                      Travel to Work
                       {% endif %}
                       </p>
                   </dd>

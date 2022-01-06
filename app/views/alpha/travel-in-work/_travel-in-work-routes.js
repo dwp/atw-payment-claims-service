@@ -336,15 +336,13 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const addmonth = req.session.data['new-month']
     const journeytype = req.session.data['journey-type']
     const checked = req.session.data['contact-confirmed']
-    const aids = req.session.data['transport-option']
+    const incorrect = req.session.data['claim-incorrect']
 
 
     if (req.session.data.travel === undefined || req.session.data.travel.length == 0) {
       res.redirect(`/${urlPrefix}/travel-in-work/no-hours-entered`)
-    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi') {
-      res.redirect(`/${urlPrefix}/travel-in-work/change-cost`)
-    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && aids === 'taxi-during-work') {
-      res.redirect(`/${urlPrefix}/travel-in-work/providing-evidence`)
+    } else if (addmonth === 'no' && journeytype === 'traveltowork-ammendment' && incorrect) {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked && addmonth === 'no') {
       res.redirect(`/${urlPrefix}/travel-in-work/check-your-answers`)
     } else if (addmonth === 'no' && journeytype === 'travelinwork') {
@@ -457,13 +455,16 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   // workplace conact answer
 
-  router.post('/travel-in-work/workplace-contact-answer', function (req, res) {
-    const journeytype = req.session.data['journey-type']
+router.post('/travel-in-work/workplace-contact-answer', function (req, res) {
+  const journeytype = req.session.data['journey-type']
+  const checked = req.session.data['tiw-declaration']
 
-    if (journeytype === 'travelinwork') {
-    res.redirect(`/${urlPrefix}/travel-in-work/check-your-answers`)
-  } else if (journeytype === 'traveltowork-ammendment') {
+  if (journeytype === 'traveltowork-ammendment' ) {
     res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+  } else if (checked === 'true') {
+    res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
+  } else if (journeytype === 'travelinwork') {
+    res.redirect(`/${urlPrefix}/travel-in-work/check-your-answers`)
   }
 })
 
