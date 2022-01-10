@@ -513,20 +513,16 @@
 
 
 
-            {%if (data['cost-of-taxi']=="100") %}
 
-            {%if data['employer-contributing']=="Yes" %}
+            {% if print != true %}
+            {% if (data['cost-of-taxi']=="100") %}
 
             <div class="govuk-inset-text">
               The amount we’ll pay back will be less than the total cost you’re claiming for. This is because we’ll deduct the amounts you or your employer have agreed to pay.
             </div>
 
-
-
-
             {% endif %}
 
-            {% endif %}
 
 
 
@@ -537,6 +533,7 @@
             </div>
 
 
+            {% endif %}
             {% endif %}
             <!-- // end of the if statement to stop showing information in counter signature journery -->
 

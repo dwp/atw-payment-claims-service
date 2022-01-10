@@ -242,10 +242,12 @@
             </div>
 
           </dl>
+    {% if print != true %}
     {%if (data['cost-of-support']=="100") %}
     <div class="govuk-inset-text">
       The amount we’ll pay back will be less than the total cost you’re claiming for. This is because we’ll deduct the amounts you or your employer have agreed to pay.
     </div>
+    {% endif %}
     {% endif %}
 
 
