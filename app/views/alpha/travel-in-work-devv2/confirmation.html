@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+              <h1 class="govuk-panel__title">Claim sent</h1>
+
+              <div class="govuk-panel__body">
+                {% if data["employment-status"] =='Employed'%}
+                  The claim reference number is <br><strong>TW125421</strong>
+
+                  {% endif %}
+              </div>
+          </div>
+
+          {% if data["employment-status"] =='Employed'%}
+          <p>We've sent the claim reference number to your workplace contact so they can check your claim. You can <a class="govuk-link" href="../portal-screens/claims-history">see the progress of your claim in your claims history</a>.</p>
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+
+          <p>We'll let you know when your workplace contact confirms your claim and sends the claim to us. If we approve the claim, we'll pay the money into the bank account you chose.</p>
+
+          <p>If your workplace contact does not confirm your claim or we do not approve it, we’ll let you know what to do next.</p>
+
+          {% else %}
+
+
+          <p>You can <a class="govuk-link" href="../portal-screens/claims-history">see the progress of your claim in your claims history</a>.</p>
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+
+          <p>If we approve your claim, we’ll pay the money into the bank account you chose.</p>
+
+          <p>If we do not approve your claim, we’ll contact you to let you know what to do next.</p>
+
+          {% endif %}
+
+
+
+
+            <p><a href="../portal">Return to account home</a></p>
+
+
+    </div>
+</div>
+
+
+<p><a target="_blank" href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
+    think of this service?</a> (opens in a new tab)</p>
+{% endblock %}

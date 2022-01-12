@@ -1,0 +1,229 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set repeattravelLength %}
+{{ data.repeattravel | length }}
+{% endset %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_journeys | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_cost | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form id="form" method="post" action="#">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about the journeys you took during work hours</h1>
+
+
+            <div data-module="moj-add-another">
+                <!-- START HERE -->
+                <fieldset class="govuk-fieldset moj-add-another__item">
+
+                  <div class="govuk-form-group">
+                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][day]">
+                          Day of travel in {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
+
+                      </label>
+
+                      <div id="date-of-birth-hint" class="govuk-hint">
+                          For example, 3
+                      </div>
+
+
+                                  <div class="govuk-input__wrapper">
+                                <input class="govuk-input govuk-input--width-2" value = "{{data.repeattravel[0].day}}" id="repeattravel[0][day]" name="repeattravel[0][day]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="repeattravel[%index%][day]" data-id="repeattravel[%index%][day]">
+                                <div class="govuk-input__suffix">{{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}</div>
+                                </div>
+                    </div> <!-- govuk-form-group -->
+
+
+
+
+
+
+                    <div class="govuk-form-group">
+                    <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][repeattravel_from]">
+                        Postcode of place where journey started
+                      </label>
+                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10"
+                             value = "{{data.repeattravel[0].repeattravel_from}}"
+                             id="repeattravel[0][repeattravel_from]"
+                             name="repeattravel[0][repeattravel_from]" type="text"
+                             data-name="repeattravel[%index%][repeattravel_from]"
+                             data-id="repeattravel[%index%][repeattravel_from]">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][repeattravel_to]">
+                      Postcode of place where journey ended
+                      </label>
+                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10"
+                             value = "{{data.repeattravel[0].repeattravel_to}}"
+                             id="repeattravel[0][repeattravel_to]"
+                             name="repeattravel[0][repeattravel_to]" type="text"
+                             data-name="repeattravel[%index%][repeattravel_to]"
+                             data-id="repeattravel[%index%][repeattravel_to]">
+                      </div>
+
+
+                             <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[0][repeattravel_cost]">
+                            Total cost of this journey in pounds
+                        </label>
+
+                        <div id="cost-of-journey" class="govuk-hint">
+                            For example, £8.20
+                        </div>
+
+
+
+                        <div class="govuk-form-group">
+                        <div class="govuk-input__wrapper">
+                          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                          <input class="govuk-input govuk-input--width-5"
+                                 value = "{{data.repeattravel[0].repeattravel_cost}}"
+                                 id="repeattravel[0][repeattravel_cost]"
+                                 name="repeattravel[0][repeattravel_cost]" type="text"
+                                 data-name="repeattravel[%index%][repeattravel_cost]"
+                                 data-id="repeattravel[%index%][repeattravel_cost]">
+
+                              </div>
+                              </div>
+
+
+
+
+                    {% if repeattravelLength > 1 %}
+                    <div class="moj-button-action">
+                    <button class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
+                            value="0">
+                        Remove day of travel
+                    </button>
+                    </div>
+                    {% endif %}
+                </fieldset>
+                <!-- ENDS HERE -->
+                {% if repeattravelLength > 1 %}
+                {% for item in data.repeattravel %}
+                {% if not loop.first %}
+                <!-- START HERE -->
+                <fieldset class="govuk-fieldset moj-add-another__item">
+
+                  <div class="govuk-form-group">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][day]">
+                          Day of travel in {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
+                      </legend>
+
+                      <div id="date-of-birth-hint" class="govuk-hint">
+                          For example, 3
+                      </div>
+
+                      <div class="govuk-input__wrapper">
+                    <input class="govuk-input govuk-input--width-2" id="repeattravel[{{loop.index0}}][day]" name="repeattravel[{{loop.index0}}][day]" type="text"  inputmode="numeric" data-name="repeattravel[%index%][day]" data-id="repeattravel[%index%][day]"
+                      value="{{item.day}}">
+                      <div class="govuk-input__suffix">{{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}</div>
+                    </div>
+                  </div>
+
+
+
+
+                    <div class="govuk-form-group">
+                    <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][repeattravel_from]">
+                        Postcode of place where journey started
+                      </label>
+                      <div id="repeattravel[0][repeattravel_from]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10" id="repeattravel[{{loop.index0}}][repeattravel_from]"
+                             name="repeattravel[{{loop.index0}}][repeattravel_from]" type="text"
+                             value="{{item.repeattravel_from}}" data-name="repeattravel[%index%][repeattravel_from]"
+                             data-id="repeattravel[%index%][repeattravel_from]">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][repeattravel_to]">
+                        Postcode of place where journey ended
+                      </label>
+                      <div id="repeattravel[0][repeattravel_to]" class="govuk-hint">For example, WA4 1AB</div>
+                      <input class="govuk-input govuk-input--width-10" id="repeattravel[{{loop.index0}}][repeattravel_to]"
+                             name="repeattravel[{{loop.index0}}][repeattravel_to]" type="text"
+                             value="{{item.repeattravel_to}}" data-name="repeattravel[%index%][repeattravel_to]"
+                             data-id="repeattravel[%index%][repeattravel_to]">
+                      </div>
+
+
+                             <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeattravel[{{loop.index0}}][repeattravel_cost]">
+                            Total cost of this journey in pounds
+                        </label>
+
+                        <div id="cost-of-journey" class="govuk-hint">
+                            For example, £8.20
+                        </div>
+
+
+
+                        <div class="govuk-form-group">
+                        <div class="govuk-input__wrapper">
+                          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                          <input class="govuk-input govuk-input--width-5" id="repeattravel[{{loop.index0}}][repeattravel_cost]"
+                                 name="repeattravel[{{loop.index0}}][repeattravel_cost]" type="text"
+                                 value="{{item.repeattravel_cost}}" data-name="repeattravel[%index%][repeattravel_cost]"
+                                 data-id="repeattravel[%index%][repeattravel_cost]">
+
+                              </div>
+                              </div>
+
+
+
+
+                    <button  class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
+                            value="{{loop.index0}}">
+                        Remove day of travel
+                    </button>
+
+                </fieldset>
+                <!-- ENDS HERE -->
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+
+                <div class="moj-button-action">
+                    <button
+                            class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
+                            data-module="govuk-button"
+                            name="action"
+                            value="add">
+                        Add another day
+                    </button>
+                </div>
+
+                <div class="moj-button-action">
+                    <button class="govuk-button" data-module="govuk-button"
+                            name="action"
+                            value="continue">
+                        Continue
+                    </button>
+                </div>
+            </div> <!-- data module -->
+        </form>
+    </div>
+    {# /govuk-grid-column-two-thirds #}
+</div>{# /govuk-grid-row #}
+{% endblock %}

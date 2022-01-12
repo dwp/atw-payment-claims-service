@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="travel-to-work.html">Travel for work</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-Information.html">Information about your grant</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="before-you-continue.html">What you’ll need to send your claim</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        <h1 class="govuk-heading-l">What you’ll need to send your claim</h1>
+
+
+        <h3 class="govuk-body">You’ll need:</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>the dates of each journey you took during work
+            </li>
+            <li>the postcode of the place where each journey started and finished
+            </li>
+            <li>the total cost of each journey you're claiming for</li>
+            <li>details of the person or company who needs to be paid back, including bank details if we’ve not paid them before</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+        The person or company who needs to be paid back could be yourself, a family member or friend, your employer or a transport company.
+        </div>
+
+
+
+        <h3 class="govuk-body">You also need to send us one of the following:</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>a receipt or invoice that contains all the journeys you’re claiming for
+            </li>
+            <li>separate receipts and invoices for each journey
+            </li>
+        </ul>
+
+          <div class="govuk-heading-s">
+            If you are an employee
+          </div>
+          <p>You’ll need the name and email address of a workplace contact who we can ask to confirm each journey you’re claiming for. This needs to be someone like your line manager or HR manager.</p>
+
+
+
+
+
+
+
+
+        <form action="claiming-for-month" method="post" class="form">
+
+
+                 <input type="hidden" name="transport-option" value="taxi">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

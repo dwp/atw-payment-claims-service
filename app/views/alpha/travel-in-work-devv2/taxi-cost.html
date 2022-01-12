@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set travelLength %}
+{{ data.travel | length }}
+{% endset %}
+
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_journeys | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% set taxiinworkTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiinworkTotal = taxiinworkTotal | float + day.travel_cost | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattaxiinworkTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiinworkTotal = repeattaxiinworkTotal | float + day.repeattravel_cost | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="taxi-cost-answer" method="post" class="form">
+
+
+
+          <div class="govuk-form-group">
+
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-taxi">
+              You’ve told us the total cost of the taxi journeys you’re claiming for is £{{taxiinworkTotal + repeattaxiinworkTotal}}
+              </<label>
+            </h1>
+
+              <p>This is the cost of all the taxi journeys during work hours you've told us you want to claim for.</p>
+              {% if taxiinworkTotal + repeattaxiinworkTotal === 100 %}
+              <p>The amount we will pay back will be slightly less than the total cost of the journeys because we will deduct the amounts you or your employer have agreed to pay.</p>
+              {% endif %}
+
+
+          </div>
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
