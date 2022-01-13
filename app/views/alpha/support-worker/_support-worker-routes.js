@@ -279,7 +279,7 @@ router.post('/support-worker/existing-payee-answers', function (req, res) {
   const checked = req.session.data['contact-confirmed']
 
   if (payee === 'New') {
-  res.redirect(`/${urlPrefix}/support-worker/guidance-payee-details`)
+  res.redirect(`/${urlPrefix}/support-worker/new-payee-name`)
 } else if (checked){
   res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
 } else {
