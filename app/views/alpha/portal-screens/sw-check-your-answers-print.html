@@ -39,7 +39,7 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
 
 <p>These are the details of the claim you submitted. You can also save and print a copy of your claim submission.</p>
 
-<input type="button" class="govuk-button govuk-!-display-none-print" data-module="govuk-button" value="Print this page" onClick="window.print()">
+<input type="button" class="govuk-button govuk-!-display-none-print" data-module="govuk-button" value="Save and print this page" onClick="window.print()">
 
   </div>
   </div>
@@ -69,6 +69,23 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
     </div>
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
+            Person or company who can confirm the support costs declaration
+        </dt>
+        <dd class="govuk-summary-list__value">
+            Yes
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Workplace contact declaration</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+    <!-- <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
             Claim reference number
         </dt>
         <dd class="govuk-summary-list__value">
@@ -83,13 +100,13 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
             </a>
         </dd>
         {% endif %}
-    </div>
+    </div> -->
     <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
             Claim submission date
         </dt>
         <dd class="govuk-summary-list__value">
-            21 July - 2021
+            21 July 2021
 
         </dd>
         {% if print != true %}

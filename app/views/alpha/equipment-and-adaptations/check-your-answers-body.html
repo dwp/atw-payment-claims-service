@@ -54,7 +54,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Copy of evidence
+                  Receipts or invoices uploaded
                 </dt>
 
                 <dd class="govuk-summary-list__value">
@@ -86,8 +86,7 @@ The amount we’ll pay back will be less than the total cost you’re claiming f
 {% endif %}
 
         {% if print != true %}
-        <h2 class="govuk-heading-m">New payee details</h2>
-        <p>New details of the person or company who needs to be paid back.</p>
+    <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
@@ -256,10 +255,10 @@ The amount we’ll pay back will be less than the total cost you’re claiming f
         </dl>
         {% endif %}
 
-        {% if print != true %}
+        <!-- {% if print != true %}
         <p>You can also <a target="_blank"
                 href="check-your-answers-print">save and print a copy of your answers (opens in a new tab)</a>.</p>
-        {% endif %}
+        {% endif %} -->
 
         {% if print != true %}
         <form action="declaration" method="post" novalidate>

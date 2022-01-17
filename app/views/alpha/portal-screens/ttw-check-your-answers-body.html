@@ -17,10 +17,10 @@
 
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  Type of claim
+                  Type of travel
               </dt>
               <dd class="govuk-summary-list__value">
-                  Travel for work
+                  Taxi
               </dd>
               {% if print != true %}
               <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -34,31 +34,48 @@
 
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                  Number of journeys taken
+                  Month of travel
               </dt>
               <dd class="govuk-summary-list__value">
-                01 Febuary 2021 -
+                  February 2021
+              </dd>
+              {% if print != true %}
+              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                  <a href="special-aids-and-equipment">
+                      Change
+                      <span class="govuk-visually-hidden"> Type of claim</span>
+                  </a>
+              </dd>
+              {% endif %}
+          </div>
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Days journeys were made in February
+              </dt>
+              <dd class="govuk-summary-list__value">
+                01 February 2021 -
                 2 Journeys <br><br>
 
-                02 Febuary 2021 -
+                02 February 2021 -
                 2 Journeys <br><br>
 
-                03 Febuary 2021 -
+                03 February 2021 -
                 2 Journeys  <br><br>
 
-                04 Febuary 2021 -
+                04 February 2021 -
                 2 Journeys  <br><br>
 
-                05 Febuary 2021 -
+                05 February 2021 -
                 2 Journeys  <br><br>
 
-                08 Febuary 2021 -
+                08 February 2021 -
                 2 Journeys  <br><br>
 
-                09 Febuary 2021 -
+                09 February 2021 -
                 2 Journeys  <br><br>
 
-                10 Febuary 2021 -
+                10 February 2021 -
                 2 Journeys  <br><br>
               </dd>
               {% if print != true %}
@@ -89,7 +106,7 @@
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Total cost of the taxi journeys
+                    Total cost of journeys
                 </dt>
                 <dd class="govuk-summary-list__value">
                     £860
@@ -106,12 +123,12 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Supporting claim evidence
+                    Receipt or invoice uploaded
                 </dt>
 
                 <dd class="govuk-summary-list__value">
 
-                    <a href="@">Screen Shot 2021-02-17 at 15.33.15.png</a>
+                    Screen Shot 2021-02-17 at 15.33.15.png
 
                 </dd>
                 {% if print != true %}
@@ -127,8 +144,8 @@
         </dl>
 
 
-                <h2 class="govuk-heading-m">Payee details</h2>
-                <p>details provided during claim submission for who needs to be paid back</p>
+                <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+
 
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                     <div class="govuk-summary-list__row">
@@ -150,7 +167,7 @@
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            Payee email address
+                            Email address
                         </dt>
                         <dd class="govuk-summary-list__value">
                             john.doe@deafactioncharity.com
@@ -169,6 +186,15 @@
                 {% if data['employment-status'] == "Employed" %}
                 <h2 class="govuk-heading-m">Workplace contact details</h2>
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Employment status
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          Employed
+
+                      </dd>
+                  </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                             Name
