@@ -4,8 +4,20 @@
 Claim money back from Access to Work
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+
 
 {% block content %}
+
 
 
 <div class="govuk-grid-row">
@@ -20,11 +32,13 @@ Claim money back from Access to Work
             </div>
             <div class="govuk-notification-banner__content">
               <h3 class="govuk-notification-banner__heading">
-                A new 6-digit security number 
+                We've sent a new 6-digit security number to your email
               </h3>
-              <p class="govuk-body">Contact <a class="govuk-notification-banner__link" href="#">example@department.gov.uk</a> if you think there's a problem.</p>
+        
             </div>
           </div>
+
+
 
           {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
           <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">

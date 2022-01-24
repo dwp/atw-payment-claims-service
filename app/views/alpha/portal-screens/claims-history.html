@@ -43,11 +43,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     </legend>
                     {% if (data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") %}
                     <p>About the claims for equipment and adaptations you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
-                    {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") %}
+                    {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
                     <p>About the claims for support worker costs you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
-                    {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") %}
+                    {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"])%}
                     <p>About the claims for travel to work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
-                    {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdevv2") %}
+                    {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
                     <p>About the claims for travel during work hours you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% endif %}
 
@@ -67,7 +67,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
             <h2 class="govuk-heading-m">Claim needs updating <span id="notifications" class="moj-notification-badge">1</span> </h2>
             <div class="govuk-inset-text">
-            Your workplace contact has reviewed your claim. You need to make some changes before they can confirm your claim.
+            Your claim has not been confirmed. You need to check the details of your claim and update it.
             </div>
 
               <table class="govuk-table">
@@ -141,7 +141,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           </table>
 
 {% else %}
-            {%if (data['journey-type'] == "supportworker") %}
+            {%if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
             <h2 class="govuk-heading-m">Claims sent to the person who can confirm your support costs</h2>
             <div class="govuk-inset-text">
             You can change the contact who can confirm your support costs at any time before the claim is confirmed.
