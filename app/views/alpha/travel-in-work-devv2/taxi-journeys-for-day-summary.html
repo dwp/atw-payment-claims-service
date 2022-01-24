@@ -64,7 +64,7 @@ Claim money back from Access to Work
                   {% if taxiinworkTotal + repeattaxiinworkTotal === 100 %}
                   <p>The amount we’ll pay back will be less than the total cost of the journeys. This is because we’ll deduct the amount you or your employer have agreed to pay.</p>
                   {% else %}
-                  <p>This is the cost of all the taxi journeys at work you’ve told us you want to claim for.</p>
+                  <p>This is the cost of all the taxi journeys during work you’ve told us you want to claim for.</p>
                   {% endif %}
 
           <h3 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h3>
@@ -142,11 +142,7 @@ Claim money back from Access to Work
   <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
-        {% if data['transport-option'] == "taxi"%}
-        Do you want to claim taxi costs for any journeys to and from work made in a different month?
-        {% else %}
-        Do you want to claim taxi costs during work hours for any journeys made in a different month?
-        {% endif %}
+        Do you want to claim taxi costs for any journeys during work made in a different month?
       </h1>
     </legend>
     <div class="govuk-radios govuk-radios--inline">
