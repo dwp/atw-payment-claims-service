@@ -63,6 +63,26 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         </ol>
 
+        {% elseif ((data['journey-type'] == "travelinwork") or (data['journey-type'] == "traveltowork")) and (data["employment-status"] =='Self-employed') %}
+
+        <ol class="hmrc-timeline">
+          <li class="hmrc-timeline__event">
+          <h2 class="hmrc-timeline__event-title">Claim sent</h2>
+          <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->
+          <div class="hmrc-timeline__event-content">
+          <p class="govuk-body">An Access to Work Payment Officer can now process the claim.</p>
+          </div>
+          </li>
+          <li class="hmrc-timeline__event">
+          <h2 class="hmrc-timeline__event-title">Claim approved</h2>
+          <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-15">15 July 2020</time> -->
+          <div class="hmrc-timeline__event-content">
+          <p class="govuk-body">Claim approved and payment sent to the company or person who needs to be paid. The payment should arrive in their account in 5 working days.</p>
+          </div>
+          </li>
+
+        </ol>
+
 {% else %}
 
 <ol class="hmrc-timeline">

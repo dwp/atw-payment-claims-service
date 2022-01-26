@@ -32,7 +32,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <h1 class="govuk-heading-l">Information about your grant</h1>
 
+        {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+        <p>We’ll help pay for support to make it easier for you to do your job.</p>
+        {% else %}
         <p>We’ll help pay for support to make it easier for you to do your job. This support can be used whilst you work as a Finance Analyst at Deaf Action. </p>
+        {% endif %}
 
 
 
@@ -246,6 +250,8 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <h3 class="govuk-heading-s"> Travel for work grant </h3>
 
+        <p>This support can be used whilst you work as a Finance Analyst at Deaf Action.</p>
+
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -298,9 +304,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         </dl>
 
+        <p>Your support for travel to work starts from <b>12 February 2020</b> until <b>12 February 2023</b> if your needs do not change.</p>
+
         <!-- <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p> -->
 
         <h3 class="govuk-heading-s">Equipment and adaptation grant</h3>
+
+        <p>This support can be used whilst you work as a Barrista at Starbucks coffee house.</p>
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -347,6 +357,8 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           </div>
         </dl>
 
+        <p>Your support for equipment and adapatations starts from <b>05 March 2021</b> until <b>05 March 2024</b> if your needs do not change.</p>
+
         {% endif %}
 
          <!-- {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
@@ -356,7 +368,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <p>You should have already received a copy of your grant approval letter by post.</p>
 
+        {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+        {% else %}
         <p>Your support starts from <b>05 March 2021</b> until <b>05 March 2024</b> if your needs do not change.</p>
+        {% endif %}
 
 
 

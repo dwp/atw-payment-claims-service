@@ -1,0 +1,155 @@
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if print != true %}
+      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+      {% endif %}
+      <h2 class="govuk-heading-m">Claim information</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Month of travel
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  February 2021
+              </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Days journeys were made in February
+              </dt>
+              <dd class="govuk-summary-list__value">
+
+                01 February 2021<br>
+                From LS1 1SE<br>
+                To LS4 4RF<br>
+                £12.50<br><br>
+
+                02 February 2021<br>
+                From LS1 1SE<br>
+                To LS5 4RK<br>
+                £8.90<br><br>
+
+                06 February 2021<br>
+                From LS1 1SE<br>
+                To LS11 1JJ<br>
+                £8.90<br><br>
+
+                18 February 2021<br>
+                From LS1 1SE<br>
+                To LS3 2DB<br>
+                £11.15<br><br>
+
+                21 February 2021<br>
+                From LS1 1SE<br>
+                To LS10 6BB<br>
+                £5.90<br><br>
+
+
+              </dd>
+          </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total number of journeys
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    5 journeys
+                </dd>
+
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total cost of journeys
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £47.35
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Receipt or invoice uploaded
+                </dt>
+
+                <dd class="govuk-summary-list__value">
+
+                    Screen Shot 2021-02-01 at 15.33.15.png<br>
+                    Screen Shot 2021-02-02 at 15.33.15.png<br>
+                    Screen Shot 2021-02-03 at 15.33.15.png<br>
+                    Screen Shot 2021-02-06 at 15.33.15.png<br>
+                    Screen Shot 2021-02-18 at 15.33.15.png<br>
+
+                </dd>
+            </div>
+
+        </dl>
+
+
+                <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            John Doe
+
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            john.doe@deafactioncharity.com
+                        </dd>
+                    </div>
+                </dl>
+
+
+                <h2 class="govuk-heading-m">Workplace contact details</h2>
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Employment status
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          Employed
+
+                      </dd>
+                  </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Martin Bloom
+
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            martin.bloom@deafactioncharity.com
+
+                        </dd>
+                    </div>
+                </dl>
+
+    </div>
+</div>
+{% endblock %}

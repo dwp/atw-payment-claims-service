@@ -104,7 +104,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
               {% endif %}
 
-              {%if (data['journey-type'] == "specialaidsandequipment") or ((data['journey-type'] == "traveltowork") and (data['employment-status'] == "Self-employed")) %}
+              {%if data['journey-type'] == "specialaidsandequipment" %}
 
         <h2 class="govuk-heading-m">Claims sent</h2>
         <p>Your claim request has been sent to us.</p>
@@ -113,7 +113,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Date of payment</th>
+                <th scope="col" class="govuk-table__header">Claim sent</th>
 
                 <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
               </tr
@@ -124,23 +124,53 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
                 <td class="govuk-table__cell govuk-table__cell--numeric">
-                  {%if data['journey-type'] == "specialaidsandequipment" %}
+
                   <a class="govuk-!-display-none-print" href="e-a-check-your-answers-print">
                     View
                     <span class="govuk-visually-hidden">view claim</span>
                 </a>
-                {% else %}
-                <a class="govuk-!-display-none-print" href="ttw-check-your-answers-print">
-                  View
-                  <span class="govuk-visually-hidden">view claim</span>
-              </a>
-              {% endif %}
+
               </td>
               </tr>
             </tbody>
           </table>
+          {% elseif ((data['journey-type'] == "travelinwork") or (data['journey-type'] == "traveltowork")) and (data["employment-status"] =='Self-employed') %}
 
-{% else %}
+          <h2 class="govuk-heading-m">Claims sent</h2>
+          <p>Your claim request has been sent to us.</p>
+
+            <table class="govuk-table">
+
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Claim sent</th>
+
+                  <th scope="col" class="govuk-table__header govuk-table__header--numeric">View claim</th>
+                </tr
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">01 February 2021</th>
+
+
+                  <td class="govuk-table__cell govuk-table__cell--numeric">
+                    {%if data['journey-type'] == "travelinwork" %}
+                    <a class="govuk-!-display-none-print" href="tiw-check-your-answers-print">
+                      View
+                      <span class="govuk-visually-hidden">view claim</span>
+                  </a>
+                  {% else %}
+                  <a class="govuk-!-display-none-print" href="ttw-check-your-answers-print">
+                    View
+                    <span class="govuk-visually-hidden">view claim</span>
+                </a>
+                {% endif %}
+                </td>
+                </tr>
+              </tbody>
+            </table>
+
+          {% else %}
             {%if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
             <h2 class="govuk-heading-m">Claims sent to the person who can confirm your support costs</h2>
             <div class="govuk-inset-text">
@@ -209,11 +239,17 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <th scope="row" class="govuk-table__header">23 August 2021</th>
 
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-                      {% if data["journey-type"] == "supportworker" %}
+                      {% if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
                           <a href="sw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
                           </a>
+                          {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
+                          <a href="tiw-check-your-answers-print">
+                              View
+                              <span class="govuk-visually-hidden"> travel during work hours claim - 01/02/2021</span>
+                          </a>
+
                           {% else %}
                           <a href="ttw-check-your-answers-print">
                               View
@@ -227,10 +263,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <th scope="row" class="govuk-table__header">03 July 2021</th>
 
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-                      {% if data["journey-type"] == "supportworker" %}
+                      {% if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
                           <a href="sw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
+                          </a>
+                          {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
+                          <a href="tiw-check-your-answers-print">
+                              View
+                              <span class="govuk-visually-hidden"> Travel in work claim - 01/02/2021</span>
                           </a>
                           {% else %}
                           <a href="ttw-check-your-answers-print">
