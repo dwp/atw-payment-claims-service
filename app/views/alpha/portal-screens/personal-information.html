@@ -35,51 +35,34 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             Personal information
                         </h1>
                     </legend>
-                    <p id="claims-history-hint" class="govuk-body">You must make sure these details are kept up to date.</p>
+
                 </fieldset>
 
-
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Full name
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            Joe Bloggs
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Access to Work number
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            ATW12004563
-                        </dd>
-                    </div>
-                </dl>
-
-
-                <h2 class="govuk-heading-m">Contact information</h2>
-
-                  <p>You must update your contact details if they change so that we can get in touch with you if we need to. Any changes you make may take a few days to show in your account.</p>
-
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Full name
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          Joe Bloggs
+                      </dd>
+                  </div>
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Access to Work number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          ATW12004563
+                      </dd>
+                  </div>
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Email address
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data['new-email-address'] %}
-                      {{data["new-email-address"]}}
-                      {% else %}
+
                       joe.bloggs@deafactioncharity.com
-                      {% endif %}
-                    </dd>
-                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                        <a href="new-email-address">
-                            Change
-                            <span class="govuk-visually-hidden"> email address</span>
-                        </a>
+
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -87,88 +70,37 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                         Phone number
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data['new-phone'] %}
-                      {{data["new-phone"]}}
-                      {% else %}
+
                       07627 847834
-                      {% endif %}
-                    </dd>
-                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                        <a href="new-phone-number">
-                            Change
-                            <span class="govuk-visually-hidden"> Phone number</span>
-                        </a>
+
                     </dd>
                 </div>
-                {% if (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") %}
+                {% if (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") or (data['journey-type'] == "travelinworkdevv2") or (data['journey-type'] == "travelinwork") %}
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Address
                     </dt>
                     <dd class="govuk-summary-list__value">
-                      {% if data ["new-citizen-address-line-1"] %}
-                        {{data["new-citizen-address-line-1"]}}<br>
-                        {% if data["new-citizen-address-line-2"] %}{{data["new-citizen-address-line-2"]}}<br>{% endif %}
-                        {{data["new-citizen-address-town"]}}<br>
-                        {{data["new-citizen-address-county"]}}<br>
-                        {{data["new-citizen-address-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "123" %}
-                        123 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "124" %}
-                        124 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "125" %}
-                        125 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "126" %}
-                        126 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "127" %}
-                        127 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% else %}
                         140 Weston Grove<br>
                         Otley<br>
                         Leeds<br>
                         West Yorkshire<br>
                         LS5 5NE
-                        {% endif %}
-
                     </dd>
-                    {% if print != true %}
-                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                        <a href="new-citizen-address">
-                            Change
-                            <span class="govuk-visually-hidden"> New citizen address</span>
-                        </a>
-                    </dd>
-                    {% endif %}
                 </div>
                 {% endif %}
                 </dl>
 
+                <div class="govuk-inset-text">
+                You must let us know if your contact details change. After you submit a change, your new details will take a few days to show in your personal information.
+                </div>
+
+                <!-- <p>You can <a href="personal-information-change"> request to change any of your personal information</a> if you want.</p> -->
+                <form action="personal-information-change" method="post" class="form">
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  Change personal information
+                </button>
+                </form>
 
 
 

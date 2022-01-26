@@ -51,14 +51,18 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <p>About the claims for travel during work hours you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% endif %}
 
-                    {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+                    {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] !== "supportworker") %}
                     <p>You can also <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
                     {% endif %}
 
                 </fieldset>
             </div>
 
-
+            {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker")%}
+            <div class="govuk-inset-text">
+            You have not made any claims against this award type. <p>You can <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
+            </div>
+            {% endif %}
 
 
             {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
@@ -169,6 +173,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </tr>
               </tbody>
             </table>
+            {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker")%}
 
           {% else %}
             {%if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
@@ -288,8 +293,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       <br><br>
 
 
-  {% endif %}
+                      {% endif %}
 
+              {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker")%}
+              {% else %}
               <h2 class="govuk-heading-m">Claims approved</h2>
               <p>Claims approved and payment sent to the company or person who needs to be paid.</p>
 
@@ -323,6 +330,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   </tr>
                 </tbody>
               </table>
+              {% endif %}
 
 
 <!--

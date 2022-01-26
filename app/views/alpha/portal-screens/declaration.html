@@ -14,7 +14,7 @@ Claim money back from Access to Work
 
             <h1 class="govuk-heading-xl">Declaration</h1>
 
-            <p>By sending us these company or person details, you are agreeing that:</p>
+            <p>By submitting a new personal details request, you are agreeing that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                 <li>the information you have given is correct</li>
                 <li>Access to Work may check and validate these details with employers, suppliers or providers</li>
@@ -28,11 +28,11 @@ Claim money back from Access to Work
 
 
 
-          {% if (data ["new-citizen-address-postcode"]) or (data ["new-citizen-address-select"]) %}
+          {% if data["personal-information"] %}
 
-          <form action="new-address-confirmation" method="post" class="form">
+          <form action="new-personal-confirmation" method="post" class="form">
             <button type="submit" class="govuk-button" data-module="govuk-button">
-              I agree – change my address
+              I agree – update personal information
             </button>
         </form>
         {% else %}
