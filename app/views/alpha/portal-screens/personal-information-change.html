@@ -4,29 +4,6 @@
 Claim money back from Access to Work
 {% endblock %}
 
-{% block beforeContent %}
-{{ govukPhaseBanner({
-tag: {
-text: "alpha"
-},
-html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-
-<div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="personal-information.html">Personal information</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="personal-information.html">Update personal information</a>
-        </li>
-    </ol>
-</div>
-{% endblock %}
-
 {% block content %}
 <div class="govuk-grid-row">
 
@@ -165,14 +142,19 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 {% endif %}
                 </dl>
 
+                <p>After you submit a change, your new details will take a few days to show in your personal information.</p>
 
+
+                {% if (data["new-name"]) or (data["new-email-address"]) or (data["new-phone"]) or (data["new-citizen-postcode"]) %}
 
                 <form action="declaration" method="post" class="form">
                 <input type="hidden" name="personal-information" value="true">
-              <button class="govuk-button" data-module="govuk-button">
-              Continue
-              </button>
-              </form>
+                <button class="govuk-button" data-module="govuk-button">
+                  Continue
+                </button>
+                </form>
+
+                {% endif %}
 
 
     </div>

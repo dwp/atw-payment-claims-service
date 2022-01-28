@@ -12,17 +12,18 @@ Claim money back from Access to Work
     <div class="govuk-grid-column-two-thirds">
 
 
-            <h1 class="govuk-heading-xl">Declaration</h1>
+            <h1 class="govuk-heading-l">Declaration</h1>
 
             <p>By submitting a new personal details request, you are agreeing that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                 <li>the information you have given is correct</li>
-                <li>Access to Work may check and validate these details with employers, suppliers or providers</li>
+                <li>Access to Work may check and confirm these details with employers, suppliers or providers</li>
 
             </ul>
 
             {% if (data ["new-citizen-address-postcode"]) or (data ["new-citizen-address-select"]) %}
-            <p>Any changes made to your address may result in Access to Work contacting you to complete a change of circumstances and may affect the amount of grant you have been awarded</p>
+            <h2 class="govuk-heading-m">If you’ve told us about a new home address</h2>
+            <p>This may affect the amount of grant you're awarded and may result in us completing a change of circumstances. If your new address affects your grant, we’ll contact you.</p>
             {% endif %}
 
 

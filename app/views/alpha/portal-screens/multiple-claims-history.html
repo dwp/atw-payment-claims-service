@@ -46,8 +46,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             <input class="govuk-radios__input" id="traveltowork" name="journey-type"
                                    type="radio"
                                    value="traveltowork">
+
                             <label class="govuk-label govuk-radios__label" for="traveltowork">
-                                Travel for work
+                                Travel for work {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
                             </label>
                         </div>
                         <div class="govuk-radios__item">
@@ -70,6 +71,8 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
                 </fieldset>
             </div>
+
+
 
               <input type="hidden" name="multiple-awards" value="true">
             <button type="submit" class="govuk-button" data-module="govuk-button">
