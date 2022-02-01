@@ -113,7 +113,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               {%if data['journey-type'] == "specialaidsandequipment" %}
 
         <h2 class="govuk-heading-m">Claims sent</h2>
-        <p>Your claim request has been sent to us.</p>
+        <p>Claims sent to us to approve. We'll process claims within 10 working days of the date you sent the claim.</p>
 
           <table class="govuk-table">
 
@@ -143,7 +143,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           {% elseif ((data['journey-type'] == "travelinwork") or (data['journey-type'] == "traveltowork")) and (data["employment-status"] =='Self-employed') %}
 
           <h2 class="govuk-heading-m">Claims sent</h2>
-          <p>Your claim request has been sent to us.</p>
+          <p>Claims sent to us to approve. We'll process claims within 10 working days of the date you sent the claim.</p>
 
             <table class="govuk-table">
 
@@ -229,7 +229,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             {% else %}
             <h2 class="govuk-heading-m">Claims confirmed</h2>
             {% endif %}
-              <p>An Access to Work Payment Officer can now process these claims.</p>
+              <p>The person who confirmed these claims has sent them to us to approve. We'll process claims within 10 working days of the confirmation date. </p>
 
 
               <table class="govuk-table">
@@ -300,9 +300,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker")%}
               {% else %}
               <h2 class="govuk-heading-m">Claims approved</h2>
-              <p>Claims approved and payment sent to the company or person who needs to be paid.</p>
 
-              <p>Once we receive the claim, it can take 10 working days for payment to be sent to the company or person who needs to be paid.</p>
+
+              <p>We've approved these claims and sent a payment to the person or company who needs paying back. Payments can take 5 working days to arrive.</p>
 
 
               <table class="govuk-table">
