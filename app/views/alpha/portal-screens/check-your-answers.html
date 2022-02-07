@@ -41,7 +41,7 @@ Check your answers
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
-  <div class="govuk-summary-list__row">
+  <!-- <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
           Employment status
       </dt>
@@ -59,7 +59,7 @@ Check your answers
 
       </dd>
 
-  </div>
+  </div> -->
 
 
     <div class="govuk-summary-list__row">
@@ -102,37 +102,7 @@ Check your answers
     </div>
 </dl>
 
-{% else %}
-
-<h2 class="govuk-heading-m">Type of employment</h2>
-
-<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-  <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-          Employment status
-      </dt>
-      <dd class="govuk-summary-list__value">
-          {{data["employment-status"]}}
-
-      </dd>
-
-      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-          <a href="../travel-to-work/employement-status">
-              Change
-              <span class="govuk-visually-hidden"> what is your employment status?</span>
-          </a>
-          {% else %}
-          <a href="employement-status">
-              Change
-              <span class="govuk-visually-hidden"> what is your employment status?</span>
-          </a>
-          {% endif %}
-      </dd>
-  </div>
-  </dl>
-  {% endif %}
+{% endif %}
 
 </div>
 </div>

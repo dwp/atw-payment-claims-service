@@ -21,6 +21,13 @@ Claim money back from Access to Work
                 <li>Joe Bloggs is only claiming for support they received in the last 9 months</li>
                 <li>Access to Work can contact you if we need more information to process Joe Bloggs’ claim</li>
             </ul>
+            {% elseif (data["tiw-declaration"]) %}
+            <p>By sending this claim, you agree that:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>your employee travelled during work on the days they’re claiming for</li>
+                <li>your employee is only claiming for journeys made in the last 9 months</li>
+                <li>Access to Work can contact you if we require more information to process your employee’s claim</li>
+            </ul>
             {% else %}
             <p>By sending this claim, you agree that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
