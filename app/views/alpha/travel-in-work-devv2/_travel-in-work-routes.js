@@ -138,7 +138,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (checked) {
       res.redirect(`/${urlPrefix}/travel-in-work-devv2/check-your-answers`)
     } else if (anotherReceipt === 'No' && journeytype === 'travelinworkdevv2') {
-      res.redirect(`/${urlPrefix}/travel-in-work-devv2/guidance-payee-details`)
+      res.redirect(`/${urlPrefix}/travel-in-work-devv2/new-payee-name`)
     }
   })
 
@@ -269,7 +269,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/travel-in-work-devv2/mileage-confirmation-answers', function (req, res) {
     const confirm = req.session.data['mileage-confirmation']
     if (confirm === 'Yes') {
-      res.redirect(`/${urlPrefix}/travel-in-work-devv2/guidance-payee-details`)
+      res.redirect(`/${urlPrefix}/travel-in-work-devv2/new-payee-name`)
     } else {
       res.redirect(`/${urlPrefix}/travel-in-work-devv2/mileage-for-day-summary`)
     }
@@ -447,9 +447,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (transport === 'lift-during-work' && checked) {
           res.redirect(`/${urlPrefix}/travel-in-work-devv2/check-your-answers`)
     } else if (transport === 'lift' && journeytype === 'traveltowork') {
-          res.redirect(`/${urlPrefix}/travel-in-work-devv2/guidance-payee-details`)
+          res.redirect(`/${urlPrefix}/travel-in-work-devv2/new-payee-name`)
     } else if (transport === 'lift-during-work' && journeytype === 'traveltowork') {
-          res.redirect(`/${urlPrefix}/travel-in-work-devv2/guidance-payee-details`)
+          res.redirect(`/${urlPrefix}/travel-in-work-devv2/new-payee-name`)
     }
   })
 
