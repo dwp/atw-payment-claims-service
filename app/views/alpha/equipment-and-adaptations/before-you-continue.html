@@ -1,38 +1,11 @@
 {% extends "layout.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
 Claim money back from Access to Work
 {% endblock %}
 
-{% block beforeContent %}
-{{ govukPhaseBanner({
-tag: {
-text: "alpha"
-},
-html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-
-
-<div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="special-aids-and-equipment.html">Equipment and adaptations</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="grant-Information.html">Information about your grant</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="before-you-continue.html">What you’ll need to submit a claim</a>
-        </li>
-    </ol>
-</div>
-{% endblock %}
-
 {% block content %}
-
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -41,19 +14,23 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <h1 class="govuk-heading-l">What you’ll need to submit a claim</h1>
 
-        <p class="govuk-body">You can claim for multiple pieces of equipment or adaptations.</p>
+        <p class="govuk-body">You can claim for more than one piece of specialist equipment.</p>
 
 
         <h1 class="govuk-body">You'll need to:</h1>
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-            <li>tell us the date you purchased your equipment or adaptation – you can find this on the receipt or invoice</li>
-            <li>send us an invoice or receipt for the equipment and adaptation you’re claiming for</li>
-            <li>tell us details of the person or company who needs to be paid back, including bank details if we’ve not paid them before</li>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>tell us the date you purchased the specialist equipment – you can find this on the receipt or invoice</li>
+            <li>send us an invoice or receipt for the specialist equipment you’re claiming for</li>
+            <li>tell us details of the person or company who needs paying back, including bank details if we’ve not paid them before</li>
         </ul>
 
-        <p class="govuk-body">This can include anyone who paid for your equipment or adaptation, such as yourself, a family or friend, your employer or the company who provided your equipment or adaptation.</p>
 
-      
+                <div class="govuk-inset-text">
+                The person or company who needs paying back could be anyone who paid for your equipment. This includes yourself, a friend, a family member, your employer or the company who provided the equipment.
+                </div>
+
+
+
         <form action="before-you-continue-answer" method="post" class="form">
 
             <button type="submit" class="govuk-button" data-module="govuk-button">

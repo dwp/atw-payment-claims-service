@@ -19,7 +19,7 @@ Claim money back from Access to Work
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about the days you travelled for work</h1>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Which dates did you travel to or from work in {{data["travel-to-work-date-month-repeat"] | numberMonth}}?</h1>
 
 
             <div data-module="moj-add-another">
@@ -91,7 +91,7 @@ Claim money back from Access to Work
                                name="repeatmilage[0][repeatmilage_total]" type="text"
                                data-name="repeatmilage[%index%][repeatmilage_total]"
                                data-id="repeatmilage[%index%][repeatmilage_total]">
-                              <div class="govuk-input__suffix">Miles</div>
+                              <div class="govuk-input__suffix">miles</div>
                               </div>
                     </div> <!-- govuk-form-group -->
 
@@ -170,7 +170,7 @@ Claim money back from Access to Work
                                name="repeatmilage[{{loop.index0}}][repeatmilage_total]" type="text"
                                value="{{item.repeatmilage_total}}" data-name="repeatmilage[%index%][repeatmilage_total]"
                                data-id="repeatmilage[%index%][repeatmilage_total]">
-                               <div class="govuk-input__suffix">Miles</div>
+                               <div class="govuk-input__suffix">miles</div>
                                </div>
                     </div> <!-- govuk-form-group -->
 

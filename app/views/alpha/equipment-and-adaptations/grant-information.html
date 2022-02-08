@@ -4,31 +4,6 @@
 Claim money back from Access to Work
 {% endblock %}
 
-{% block beforeContent %}
-{{ govukPhaseBanner({
-tag: {
-text: "alpha"
-},
-html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-
-
-<div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="special-aids-and-equipment.html">Equipment and adaptations</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="grant-Information.html">Information about your grant</a>
-        </li>
-    </ol>
-</div>
-{% endblock %}
-
-
 {% block content %}
 
 
@@ -37,9 +12,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 <form action="before-you-continue" method="post" class="form">
 
-        <h1 class="govuk-heading-l">About your equipment or adaptations grant</h1>
+        <h1 class="govuk-heading-l">About your grant</h1>
 
-        <p>Before you start your claim, this is everything you need to know about your equipment or adaptations grant.</p>
+
 
                 <dl class="govuk-summary-list">
                   <div class="govuk-summary-list__row">
@@ -86,7 +61,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                   </div>
                 </dl>
 
-                <p>You must claim for equipment and adaptations within 9 months of the purchase date. </p>
+                <p>You must claim for equipment, adaptations or software within 9 months of the purchase date.</p>
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue

@@ -44,59 +44,33 @@ Claim money back from Access to Work
 
 
           <h2 class="govuk-heading-s">Miles travelled in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
-            <!-- <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
-
-                {% for item in data['milage'] | sortBy('day') %}
-                <li class="hmrc-add-to-a-list__contents">
-      <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-
-        {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}{% if data['transport-option'] == "lift-during-work"%}<br>From {{item.milage_from}} <br>To {{item.milage_to}}{% endif %} <br>{{item.milage_total}} Miles
-         <br>
-      </span>
-      <span class="hmrc-add-to-a-list__change">
-       <a id="{{item.day}}-change" class="govuk-link" href="mileage-for-day">
-         <span aria-hidden="true">Change</span>
-         <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
-       </a>
-     </span>
-      <!-- <span class="hmrc-add-to-a-list__remove">
-        <a id="{{item.day}}-remove" class="govuk-link--no-visited-state" href="remove-support?removeId={{loop.index0}}">
-          <span aria-hidden="true">Remove</span>
-          <span class="govuk-visually-hidden">Remove {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
-        </a>
-      </span> -->
-                <!-- </li>
-                {% else %}
-                <div class="govuk-inset-text">
-                  Tell us about the support you received to continue.
-                </div>
-                {% endfor %}
-            </ul> -->
 
 
-            {% for item in data['milage'] | sortBy('day') %}
-            <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+          <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
-                {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{item.milage_total}} Miles
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="taxi-journeys-for-day">
-                  Change<span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
-                </a>
-              </dd>
-            </div>
-            </dl>
+              {% for item in data['milage'] | sortBy('day') %}
+              <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
 
-            {% else %}
-            <div class="govuk-inset-text">
-              Tell us about the journeys you have taken to and from work to continue.
-            </div>
-            {% endfor %}
+          {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}<br>
+          {{item.milage_total}} miles
+
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+          <a id="{{item.day}}-change" class="govuk-link" href="mileage-for-day">
+          <span aria-hidden="true">Change</span>
+          <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
+          </a>
+          </span>
+
+              </li>
+              {% else %}
+              <div class="govuk-inset-text">
+                Tell us about the journeys you have taken to and from work to continue.
+              </div>
+              {% endfor %}
+          </ul>
+
         </div>
 
         {% if data['travel-to-work-date-month-repeat'] %}
@@ -105,52 +79,32 @@ Claim money back from Access to Work
 
           <h2 class="govuk-heading-s">Miles travelled in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
 
-            <!-- <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+
+            <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                 {% for item in data['repeatmilage'] | sortBy('day') %}
                 <li class="hmrc-add-to-a-list__contents">
-                <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
-                  {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}{% if data['transport-option'] == "lift-during-work"%}<br>From {{item.repeatmilage_from}} <br>To {{item.repeatmilage_to}}{% endif %} <br>{{item.repeatmilage_total}} Miles
-                   <br>
-                </span>
-                <span class="hmrc-add-to-a-list__change">
-                 <a id="{{item.day}}-change" class="govuk-link" href="mileage-for-day-repeat">
-                   <span aria-hidden="true">Change</span>
-                   <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
-                 </a>
-               </span>
+            <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
 
-                          </li>
-                          {% else %}
-                          <div class="govuk-inset-text">
-                            Tell us about the support you received to continue.
-                          </div>
-                          {% endfor %}
-                      </ul> -->
+            {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}<br>
+            {{item.repeatmilage_total}} miles
 
+            </span>
+            <span class="hmrc-add-to-a-list__change">
+            <a id="{{item.day}}-change" class="govuk-link" href="mileage-for-day-repeat">
+            <span aria-hidden="true">Change</span>
+            <span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
+            </a>
+            </span>
 
-                      {% for item in data['repeatmilage'] | sortBy('day') %}
-                      <dl class="govuk-summary-list">
-                      <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                        {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                          {{item.repeatmilage_total}} Miles
-                        </dd>
-                        <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="taxi-journeys-for-day">
-                            Change<span class="govuk-visually-hidden">Change {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}</span>
-                          </a>
-                        </dd>
-                      </div>
-                      </dl>
+                </li>
+                {% else %}
+                <div class="govuk-inset-text">
+                  Tell us about the journeys you have taken to and from work to continue.
+                </div>
+                {% endfor %}
+            </ul>
 
-                      {% else %}
-                      <div class="govuk-inset-text">
-                        Tell us about the journeys you have taken to and from work to continue.
-                      </div>
-                      {% endfor %}
                   </div>
 
         {% endif %}
@@ -160,7 +114,7 @@ Claim money back from Access to Work
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
       <h1 class="govuk-fieldset__heading">
 
-        Do you want to claim travel costs for any journeys made in a different month? 
+        Do you want to claim travel costs for any journeys made in a different month?
 
       </h1>
     </legend>

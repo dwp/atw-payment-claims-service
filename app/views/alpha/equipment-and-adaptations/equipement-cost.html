@@ -4,6 +4,10 @@
 Claim money back from Access to Work
 {% endblock %}
 
+{% set equipmentLength %}
+{{ data.equipment | length }}
+{% endset %}
+
 
 {% block content %}
 
@@ -11,23 +15,24 @@ Claim money back from Access to Work
     <div class="govuk-grid-column-two-thirds">
         <form action="cost-answer" method="post" class="form">
             <div class="govuk-form-group">
-              {% if equipmentLength === 1 %}
+
                 <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-cost">
-                    How much did your equipment or adaptation cost in total?
-                </label>
+                    How much did your specialist equipment cost in total?
+                </label></h1>
+
+                  {% if equipmentLength|int === 1 %}
+                <div id="equipment-name-body" class="govuk-body">
+                     You’ll find the total cost of the equipment on the receipt or invoice. You should include any delivery fees in the total cost.
+                </div>
+
+                {% else %}
 
                 <div id="equipment-name-body" class="govuk-body">
-                     You’ll find the total cost for each piece of equipment or adaptation on the receipt or invoice. You should include any delivery fees in the total cost.
+                You’ll find the total cost for each piece of equipment on the receipt or invoice.
                 </div>
-                </h1>
-                {% else %}
-                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-cost">
-                    How much did your equipment or adaptations cost in total?
-                </label>
-                <div id="equipment-name-body" class="govuk-body">
-                You’ll find the total cost for each piece of equipment or adaptation on the receipt or invoice. You’ll need to add up the cost of all your equipment or adaptations to get the total. You should include any delivery fees in the total cost.
-                </div>
-                </h1>
+
+                <p>You’ll need to add up the cost of all your equipment to get the total. You should include any delivery fees in the total cost.</p>
+
                 {% endif %}
 
                 <div class="govuk-input__wrapper">

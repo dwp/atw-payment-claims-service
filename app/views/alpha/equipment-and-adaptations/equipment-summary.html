@@ -21,38 +21,37 @@ Claim money back from Access to Work
 
 
             {% if equipmentLength|int === 1 %}
-            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{equipmentLength}} piece of equipment or adaptation</h1>
+            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{equipmentLength}} piece of  specialist equipment</h1>
             {% else %}
-            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{equipmentLength}} pieces of equipment or adaptations</h1>
+            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{equipmentLength}} pieces of  specialist equipment</h1>
             {% endif %}
 
+          
 
-            {% for item in data['equipment'] | sortByDate('') %}
-            <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                {{item.day}} {{item.month| numberMonth}} {{item.year}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{item.equipment_name}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="description">
-                  Change<span class="govuk-visually-hidden">Change {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
-                </a>
-              </dd>
-            </div>
-            </dl>
+                <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
+                    {% for item in data['equipment'] | sortByDate('') %}
+                    <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+            {{item.day}} {{item.month| numberMonth}} {{item.year}}<br>
+             {{item.equipment_name}}
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+           <a class="govuk-link" href="description">
+             <span aria-hidden="true">Change</span>
+             <span class="govuk-visually-hidden">Change {{item.day}} {{item.month| numberMonth}} {{item.year}}</span>
+           </a>
+         </span>
 
-
-                {% else %}
-                <div class="govuk-inset-text">
-                  Tell us about the support you received to continue.
-                </div>
-                {% endfor %}
+                    </li>
+                    {% else %}
+                    <div class="govuk-inset-text">
+                      Tell us about the specialist equipment you received to continue.
+                    </div>
+                    {% endfor %}
 
 
+                </ul>
         </div>
 
 

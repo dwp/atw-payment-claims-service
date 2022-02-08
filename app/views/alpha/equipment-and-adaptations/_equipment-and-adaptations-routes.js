@@ -227,7 +227,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (checked) {
       res.redirect(`/${urlPrefix}/equipment-and-adaptations/check-your-answers`)
     } else {
-      res.redirect(`/${urlPrefix}/equipment-and-adaptations/guidance-payee-details`)
+      res.redirect(`/${urlPrefix}/equipment-and-adaptations/new-payee-name`)
     }
   })
 

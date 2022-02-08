@@ -252,7 +252,7 @@
 
 
     {%if ((data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration'])) and (data['existing-payee'] == "new") %}
-        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+        <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -309,7 +309,7 @@
 
         {% elseif ((data['existing-payee'] == "one") or (data['existing-payee'] == "two") or (data['existing-payee'] == "three")) %}
 
-        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+        <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -383,11 +383,11 @@
         {% elseif (data['existing-payee'] == "New") %}
 
         {% if print != true %}
-        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+        <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
+          <!-- <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   New details of person or company who needs to be paid back
               </dt>
@@ -411,7 +411,7 @@
                   </a>
               </dd>
               {% endif %}
-          </div>
+          </div> -->
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   Name
@@ -543,7 +543,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Account Number
+                    Account number
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{data["account-number"]}}
@@ -577,6 +577,11 @@
             </div>
             {% endif %}
         </dl>
+
+        <div class="govuk-inset-text">
+        If we have paid them before then select from the link<a class="govuk-link" href="existing-payee-details"> here</a>.
+        </div>
+
         {% endif %}
         {% endif %}
 
@@ -585,8 +590,9 @@
 
 
         {% if print != true %}
-        <h2 class="govuk-heading-m">Details of the person or company who can confirm the support costs</h2>
-        <p>This is the person or company who we’ll contact to confirm your employee received the support they’re claiming for.</p>
+        <h2 class="govuk-heading-m">Details of the person or company who can confirm support costs</h2>
+
+        <p>This is the person or company we’ll contact to confirm you received the support you're claiming for.</p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">

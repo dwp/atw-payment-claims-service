@@ -26,7 +26,7 @@ Claim money back from Access to Work
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about the days you travelled for work</h1>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Which dates did you travel to or from work in {{data["travel-to-work-date-month-repeat"] | numberMonth}}?</h1>
 
 
             <div data-module="moj-add-another">
@@ -63,7 +63,7 @@ Claim money back from Access to Work
                                name="repeattravel[0][repeattravel_journeys]" type="text"
                                data-name="repeattravel[%index%][repeattravel_journeys]"
                                data-id="repeattravel[%index%][repeattravel_journeys]">
-                              <div class="govuk-input__suffix">journey(s)</div>
+                              <div class="govuk-input__suffix">journeys</div>
                               </div>
                     </div>
                     {% endif %}
@@ -155,7 +155,7 @@ Claim money back from Access to Work
                     </div>
                   </div>
 
-                  {% if data['transport-option'] !== "taxi-during-work"%}
+
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                for="repeattravel[{{loop.index0}}][repeattravel_journeys]">
@@ -169,10 +169,10 @@ Claim money back from Access to Work
                                name="repeattravel[{{loop.index0}}][repeattravel_journeys]" type="text"
                                value="{{item.repeattravel_journeys}}" data-name="repeattravel[%index%][repeattravel_journeys]"
                                data-id="repeattravel[%index%][repeattravel_journeys]">
-                               <div class="govuk-input__suffix">journey(s)</div>
+                               <div class="govuk-input__suffix">journeys</div>
                                </div>
                     </div>
-                    {% endif %}
+
 
                     {% if data['transport-option'] == "taxi-during-work"%}
                     <div class="govuk-form-group">
@@ -220,7 +220,7 @@ Claim money back from Access to Work
                               </div>
                               </div>
 
-                    {% endif %}<!-- govuk-form-group -->
+                    {% endif %}
 
 
                     <button  class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
