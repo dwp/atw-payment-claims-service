@@ -307,7 +307,7 @@
           {% endif %}
           </dl>
 
-        {% elseif ((data['existing-payee'] == "one") or (data['existing-payee'] == "two") or (data['existing-payee'] == "three")) %}
+        {% if ((data['existing-payee'] == "one") or (data['existing-payee'] == "two") or (data['existing-payee'] == "three")) %}
 
         <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
 
@@ -579,7 +579,7 @@
         </dl>
 
         <div class="govuk-inset-text">
-        If we have paid them before then select from the link<a class="govuk-link" href="existing-payee-details"> here</a>.
+        You can change these details to <a class="govuk-link" href="existing-payee-details">pay a person or company we've paid before</a>.
         </div>
 
         {% endif %}

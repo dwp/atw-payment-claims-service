@@ -19,7 +19,9 @@ Claim money back from Access to Work
                         </h1>
                     </legend>
 
+                    {% if data['existing-payee'] !== "New" %}
                       <p>You’ll need to add new payment details if we need to pay another company or person.</p>
+                    {% endif %}
 
                       <h3 class="govuk-body">People we've paid before:</h3>
                     <div class="govuk-radios">
@@ -56,6 +58,8 @@ Claim money back from Access to Work
                               sanjid.kelly@deafactioncharity.com
                             </div>
                         </div>
+                        {% if data['existing-payee'] !== "New" %}
+
                         <div class="govuk-radios__divider">or</div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="existing-payee-new" name="existing-payee"
@@ -68,6 +72,7 @@ Claim money back from Access to Work
                               You’ll need to know the details of the person or company who needs paying, including bank details if we’ve not paid them before
                             </div>
                         </div>
+                        {% endif %}
                     </div>
 
                 </fieldset>
