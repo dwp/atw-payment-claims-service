@@ -251,63 +251,9 @@
     {% endif %}
 
 
-    {%if ((data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration'])) and (data['existing-payee'] == "new") %}
-        <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
+        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
 
-
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                  Name
-              </dt>
-              <dd class="govuk-summary-list__value">
-                  {{data["new-payee-full-name"]}}
-
-              </dd>
-              {% if print != true %}
-              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                <a href="../support-worker/existing-payee-details">
-                    Change
-                    <span class="govuk-visually-hidden"> Payee name</span>
-                </a>
-                {% else %}
-                  <a href="existing-payee-details">
-                      Change
-                      <span class="govuk-visually-hidden"> Payee name</span>
-                  </a>
-                  {% endif %}
-              </dd>
-              {% endif %}
-          </div>
-          {%if (data["payee-email"]) %}
-          <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                  Email address
-              </dt>
-              <dd class="govuk-summary-list__value">
-                  {{data["payee-email"]}}
-              </dd>
-              {% if print != true %}
-              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                <a href="../support-worker/existing-payee-details">
-                    Change
-                    <span class="govuk-visually-hidden"> Payee email</span>
-                </a>
-                {% else %}
-                  <a href="existing-payee-details">
-                      Change
-                      <span class="govuk-visually-hidden"> Payee email</span>
-                  </a>
-                  {% endif %}
-              </dd>
-              {% endif %}
-          </div>
-          {% endif %}
-          </dl>
-
-        {% if ((data['existing-payee'] == "one") or (data['existing-payee'] == "two") or (data['existing-payee'] == "three")) %}
+        {% elseif (data['existing-payee'] == "one") or (data['existing-payee'] == "two") or (data['existing-payee'] == "three") %}
 
         <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
 
@@ -387,31 +333,7 @@
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <!-- <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                  New details of person or company who needs to be paid back
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if (data['existing-payee'] == "one") %}
-                  John Doe
-                {% elseif (data['existing-payee'] == "two") %}
-                Jane Green
-                {% elseif (data['existing-payee'] == "three") %}
-                Sanjid Kelly
-                {% elseif (data['existing-payee'] == "New") %}
-                New person or company being paid back
-                {% endif %}
 
-              </dd>
-              {% if print != true %}
-              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                  <a href="existing-payee-details">
-                      Change
-                      <span class="govuk-visually-hidden"> Bank or building society account details</span>
-                  </a>
-              </dd>
-              {% endif %}
-          </div> -->
           <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                   Name
