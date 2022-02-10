@@ -235,7 +235,7 @@
                 {% endif %}
             </div>
 
-            {% if (data['one-time-code']) or (data['cost-of-taxi']=="100") %}
+            {% if data['cost-of-taxi']=="100" %}
             {% else %}
 
             <div class="govuk-summary-list__row">
@@ -265,8 +265,7 @@
 
             {% endif %}
 
-            {% if data['one-time-code'] %}
-            {% else %}
+
             {%if (data["transport-option"]=="taxi") %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -301,7 +300,7 @@
                 {% endif %}
             </div>
             {% endif %}
-            {% endif %}
+            
         </dl>
 
               {% if print != true %}
@@ -321,7 +320,7 @@
 
 
         {%if (data['journey-type'] == "traveltowork-ammendment") or (data['tiw-declaration']) %}
-        <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+        <!-- <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -375,7 +374,7 @@
               {% endif %}
           </div>
           {% endif %}
-          </dl>
+          </dl> -->
 
           {% else %}
 
