@@ -26,9 +26,9 @@ Claim money back from Access to Work
             <h1 class="govuk-heading-l">You’ve told us you want to claim for {{equipmentLength}} pieces of  specialist equipment</h1>
             {% endif %}
 
-          
 
-                <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+
+                <!-- <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
 
                     {% for item in data['equipment'] | sortByDate('') %}
                     <li class="hmrc-add-to-a-list__contents">
@@ -51,7 +51,31 @@ Claim money back from Access to Work
                     {% endfor %}
 
 
-                </ul>
+                </ul> -->
+
+                <!-- < new stuff > -->
+                {% for item in data['equipment'] | sortByDate('') %}
+                <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+
+                      {{item.day}} {{item.month| numberMonth}} {{item.year}}
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                  {{item.equipment_name}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="description">
+                      Change<span class="govuk-visually-hidden"> name</span>
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+              {% else %}
+              <div class="govuk-inset-text">
+                Tell us about the specialist equipment you received to continue.
+              </div>
+              {% endfor %}
         </div>
 
 

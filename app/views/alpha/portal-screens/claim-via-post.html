@@ -33,13 +33,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         <h1 class="govuk-heading-xl">Send your claim by post</h1>
 
         {%if data['journey-type'] == "specialaidsandequipment" %}
-        <p>It’s quickest to <a href="../equipment-and-adaptations/special-aids-and-equipment">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        <p>It’s quickest to <a href="../equipment-and-adaptations/special-aids-and-equipment">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claim by post.</p>
         {% elseif data['journey-type'] == "supportworker" %}
-        <p>It’s quickest to <a href="../support-worker/support-for-workplace">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+        <p>It’s quickest to <a href="../support-worker/support-for-workplace">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
         {% elseif (data['journey-type'] == "traveltowork") %}
-          <p>It’s quickest to <a href="../travel-to-work/travel-to-work">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+          <p>It’s quickest to <a href="../travel-to-work/travel-to-work">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claim by post.</p>
         {% elseif (data['journey-type'] == "multipleawards") %}
-          <p>It’s quickest to <a href="../multiple-award-elements/start-a-claim">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Works claims by post.</p>
+          <p>It’s quickest to <a href="../multiple-award-elements/start-a-claim">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
         {% endif %}
         <p>You’ll need to: </p>
         <ul class="govuk-list govuk-list--bullet">
