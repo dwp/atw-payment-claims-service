@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if (data['transport-option'] == "taxi") or  (data['transport-option'] == "taxi-during-work")%}
+        <h1 class="govuk-heading-l">The total amount you’ll be paid for the journeys you’re claiming for will be £80</h1>
+
+        <p class="govuk-body">This is the total amount we’ll pay you for the journeys you’ve told us about.
+          This amount is slightly less than the total cost of the journeys because we’ve deducted the amount your employer agreed to pay.
+        </p>
+
+        {% else %}
+
+        <h1 class="govuk-heading-l">The total we can pay towards the journeys you’re claiming for will be £110.40</h1>
+
+
+
+        <p class="govuk-body">This is <b>45p for every mile</b> you’re claiming for. We’ve deducted the amount your employer agreed to pay.
+        </p>
+
+        {% endif %}
+
+        <form action="employer-contribution-answer" method="post" class="form">
+
+            <input type="hidden" value="Yes" id="employer-contributing" name="employer-contributing">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

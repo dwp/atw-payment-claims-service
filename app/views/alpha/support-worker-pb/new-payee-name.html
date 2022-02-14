@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if (data ["contact-confirmed"]) and (data ["account-number"]) %}
+        <form action="check-your-answers" method="post" class="form">
+      {% else %}
+        <form action="new-payee-address" method="post" class="form">
+          {% endif %}
+
+            <h1 class="govuk-heading-l">Tell us about the person or company who needs paying back</h1>
+
+            <p>This could be anyone who paid for your support worker costs. This includes yourself, a friend, family member or the company who provided the support worker. We’ll store this information for any new claims you make.</p>
+
+            <!-- <p>If you want to change these details, or pay a different person or company instead, you can do this in the personal information section of your account.</p> -->
+
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="new-payee-full-name">
+                    Full name
+                  </label>
+                  <div id="payee-name-hint" class="govuk-hint">This can be the name of a person or company</div>
+                <input class="govuk-input" id="new-payee-full-name" name="new-payee-full-name" type="text" spellcheck="false" autocomplete="name"></div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="payee-email">
+                    Email address (optional)
+                  </label>
+                  <div id="email-hint" class="govuk-hint">We’ll only use this to let them know we’ve paid them</div>
+                  <input class="govuk-input" id="payee-email" name="payee-email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
+                </div>
+
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

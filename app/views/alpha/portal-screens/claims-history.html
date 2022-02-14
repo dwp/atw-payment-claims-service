@@ -41,15 +41,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             Claims history
                         </h1>
                     </legend>
-                    {% if (data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") %}
+                    {% if (data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") or (data ['journey-type'] == "specialaidsandequipmentpb") %}
                     <p>About the claims for equipment and adaptations you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
-                    {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker") %}
+                    {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and ((data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb")) %}
                     <p>You do not have any claims for support worker costs in your claims history. If you've sent a new claim, it can take up to 5 working days for it to appear in your claims history. You can <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
-                    {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
+                    {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") or (data["answers-checked-sw"]) %}
                     <p>About the claims for support worker costs you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
-                    {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"])%}
+                    {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"])%}
                     <p>About the claims for travel to work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
-                    {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
+                    {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
                     <p>About the claims for travel during work hours you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% endif %}
 
@@ -110,7 +110,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
               {% endif %}
 
-              {%if data['journey-type'] == "specialaidsandequipment" %}
+              {%if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "specialaidsandequipmentpb") %}
 
         <h2 class="govuk-heading-m">Claims sent</h2>
         <p>Claims sent to us to approve. We'll process claims within 10 working days of the date you sent the claim.</p>
@@ -140,7 +140,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               </tr>
             </tbody>
           </table>
-          {% elseif ((data['journey-type'] == "travelinwork") or (data['journey-type'] == "traveltowork")) and (data["employment-status"] =='Self-employed') %}
+          {% elseif ((data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb")) and (data["employment-status"] =='Self-employed') %}
 
           <h2 class="govuk-heading-m">Claims sent</h2>
           <p>Claims sent to us to approve. We'll process claims within 10 working days of the date you sent the claim.</p>
@@ -160,7 +160,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
                   <td class="govuk-table__cell govuk-table__cell--numeric">
-                    {%if data['journey-type'] == "travelinwork" %}
+                    {%if (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") %}
                     <a class="govuk-!-display-none-print" href="tiw-check-your-answers-print">
                       View
                       <span class="govuk-visually-hidden">view claim</span>
@@ -178,7 +178,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker")%}
 
           {% else %}
-            {%if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
+            {%if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") or (data["answers-checked-sw"]) %}
             <h2 class="govuk-heading-m">Claims sent to the person who can confirm your support costs</h2>
             <div class="govuk-inset-text">
             You can change the contact who can confirm your support costs at any time before the claim is confirmed.
@@ -224,7 +224,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
             <br><br>
-            {% if data["journey-type"] == "supportworker" %}
+            {% if (data["journey-type"] == "supportworker") or (data['journey-type'] == "supportworkerpb") %}
             <h2 class="govuk-heading-m">Claims confirmed</h2>
             {% else %}
             <h2 class="govuk-heading-m">Claims confirmed</h2>
@@ -246,12 +246,12 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <th scope="row" class="govuk-table__header">23 August 2021</th>
 
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-                      {% if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
+                      {% if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
                           <a href="sw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
                           </a>
-                          {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
+                          {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
                           <a href="tiw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> travel during work hours claim - 01/02/2021</span>
@@ -270,12 +270,12 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <th scope="row" class="govuk-table__header">03 July 2021</th>
 
                     <td class="govuk-table__cell govuk-table__cell--numeric">
-                      {% if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
+                      {% if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb") or (data['journey-type'] == "supportworkerdev") or (data["answers-checked-sw"]) %}
                           <a href="sw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> Support worker claim - 01/02/2021</span>
                           </a>
-                          {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
+                          {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
                           <a href="tiw-check-your-answers-print">
                               View
                               <span class="govuk-visually-hidden"> Travel in work claim - 01/02/2021</span>
@@ -297,7 +297,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
                       {% endif %}
 
-              {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker")%}
+              {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker") %}
               {% else %}
               <h2 class="govuk-heading-m">Claims approved</h2>
 

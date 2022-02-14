@@ -44,7 +44,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </fieldset>
             </div>
 
-{%if (data['journey-type'] == "specialaidsandequipment") %}
+{%if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "specialaidsandequipmentpb")%}
         <ol class="hmrc-timeline">
           <li class="hmrc-timeline__event">
           <h2 class="hmrc-timeline__event-title">Claim sent</h2>
@@ -63,7 +63,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         </ol>
 
-        {% elseif ((data['journey-type'] == "travelinwork") or (data['journey-type'] == "traveltowork")) and (data["employment-status"] =='Self-employed') %}
+        {% elseif ((data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb")) and (data["employment-status"] =='Self-employed') %}
 
         <ol class="hmrc-timeline">
           <li class="hmrc-timeline__event">
@@ -86,7 +86,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 {% else %}
 
 <ol class="hmrc-timeline">
-  {%if (data['journey-type'] == "supportworker") %}
+  {%if (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb")%}
   <li class="hmrc-timeline__event">
   <h2 class="hmrc-timeline__event-title">Claims sent to person who can confirm your support costs</h2>
   <!-- <time class="hmrc-timeline__event-meta" datetime="2020-07-14">14 July 2020</time> -->

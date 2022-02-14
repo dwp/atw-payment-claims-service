@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-l">Total cost of equipment and adaptations: £{{data["equipment-cost"]}}</h1>
+
+      <p class="govuk-body">The amount we’ll pay back will be less than the total cost. This is because we will deduct the amounts you or your employer have agreed to pay.
+      </p>
+
+
+
+        {% if data ["contact-confirmed"] %}
+          <form action="check-your-answers" method="post" class="form">
+        {% else %}
+        <form action="providing-evidence" method="post" class="form">
+          {% endif %}
+            <input type="hidden" value="Yes" id="employer-contributing" name="employer-contributing">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

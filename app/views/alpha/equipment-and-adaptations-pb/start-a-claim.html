@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Start a claim</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">Start a claim</h1>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+        <form action="special-aids-and-equipment" method="post">
+            <p>You’ll need to provide receipts or invoices if you’re claiming money back for any equipment or adaptations. You must provide digital copies of your receipts or invoices to submit a claim online. You’ll need to scan or take a photo of any paper receipts or invoices ready to upload them if you have any.</p>
+
+            <p>If you cannot provide digital copies of your receipts and invoices, you’ll need to <a href="../portal-screens/claim-via-post">submit your claims by post</a>.</p>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+        </form>
+        <h2 class="govuk-heading-m">After you submit a claim</h2>
+
+        <p>Your claim has been sent. If your claim is approved, we’ll process your claim and pay the money into the bank account you chose.</p>
+        <p>If there’s any problems with your claim, we’ll contact you to let you know what to do next.</p>
+        <p>You’ll be able to see updates about your Access to Work grant and the progress of your claims in your <a href="../portal">account</a>.</p>
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+        <p class="govuk-body govuk-!-font-weight-bold">Grant amount allocated</p>
+        <p class="govuk-body">£7,200</p>
+        <p class="govuk-body govuk-!-font-weight-bold">Remaining grant allowance</p>
+        <p class="govuk-body">£6,500</p>
+        <p class="govuk-body govuk-!-font-weight-bold">Your support starts from</p>
+        <p class="govuk-body">05 March 2020</p>
+        <p class="govuk-body govuk-!-font-weight-bold">Until</p>
+        <p class="govuk-body">05 March 2023</p>
+    </div>
+</div>
+{% endblock %}

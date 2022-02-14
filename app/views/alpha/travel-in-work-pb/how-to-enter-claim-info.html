@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-xl">Guidance how to enter your claims</span>
+        <h1 class="govuk-heading-xl">How to tell us when you travelled</h1>
+
+        <p>If you travelled by taxi you need to provide a receipt or invoice, if you have other work travel costs you don’t need to.</p>
+
+        <h2 class="govuk-heading-m">You'll need:</h2>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+            <li>to tell us the date you travelled
+            </li>
+            <li>how many journeys you made or the mileage for that day
+            </li>
+            <li>to repeat for every day you travelled
+            </li>
+        </ul>
+
+        <form action="transport-option" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

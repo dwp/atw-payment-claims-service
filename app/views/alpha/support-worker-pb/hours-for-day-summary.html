@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set supportLength %}
+{{ data.support | length }}
+{% endset %}
+
+{% set hourTotal = 0 %}
+{% for day in data.support %}
+{% set hourTotal = hourTotal | float + day.support_hours | float %}
+{% else %}
+{% set hourTotal = 0 | float %}
+{% endfor %}
+
+{% set repeatsupportLength %}
+{{ data.repeatsupport | length }}
+{% endset %}
+
+{% set repeathourTotal = 0 %}
+{% for day in data.repeatsupport %}
+{% set repeathourTotal = repeathourTotal | float + day.repeatsupport_hours | float %}
+{% else %}
+{% set repeathourTotal = 0 | float %}
+{% endfor %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="#">
+
+        <div class="govuk-form-group">
+
+          {% if hourTotal === 1 %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hour of support</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hours of support</h1>
+          {% endif %}
+
+
+          <h2 class="govuk-heading-s">Support in {{data["support-month"] | numberMonth}}</h2>
+
+            {% for item in data['support'] | sortBy('day') %}
+            <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+
+                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+              {{item.support_hours}} hours
+              <br>{{item.providor}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day">
+                  Change<span class="govuk-visually-hidden"> change support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+          {% else %}
+          <div class="govuk-inset-text">
+            Tell us about the support you received to continue.
+          </div>
+          {% endfor %}
+
+            {% if data['repeatsupport-month'] %}
+
+            <h2 class="govuk-heading-s">Support in {{data["repeatsupport-month"] | numberMonth}}</h2>
+
+              {% for item in data['repeatsupport'] | sortBy('day') %}
+              <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {{item.repeatsupport_hours}} hours
+                <br>{{item.providor}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day-repeat">
+                    Change<span class="govuk-visually-hidden"> change support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}</span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+            {% else %}
+            <div class="govuk-inset-text">
+              Tell us about the support you received to continue.
+            </div>
+            {% endfor %}
+
+              {% endif %}
+
+        </div>
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Do you want to claim support worker costs for a different month?
+      </h1>
+    </legend>
+    <div class="govuk-radios govuk-radios--inline">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="new-month" name="new-month" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="new-month">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="new-month-2" name="new-month" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="new-month-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

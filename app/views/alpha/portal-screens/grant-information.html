@@ -40,7 +40,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <h2 class="govuk-heading-m">What support you’ll get</h2>
 
-        {%if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "specialaidsandequipmentdev") %}
+        {%if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "specialaidsandequipmentdev") or (data['journey-type'] == "specialaidsandequipmentpb") %}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -87,7 +87,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           </div>
         </dl>
 
-        {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") %}
+        {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb")%}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -141,7 +141,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         </dl>
 
-        {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") %}
+        {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") or (data['journey-type'] == "traveltoworkpb") %}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -195,7 +195,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         </dl>
 
-        {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkdev") %}
+        {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdev") %}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        <h1 class="govuk-heading-l">What you’ll need to send a claim</h1>
+
+        <p class="govuk-body">You can claim for more than one piece of specialist equipment.</p>
+
+
+        <h1 class="govuk-body">You'll need to:</h1>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>tell us the date you purchased the equipment – you can find this on the receipt or invoice</li>
+            <li>send us an invoice or receipt for the equipment you’re claiming for</li>
+            <li>tell us details of the person or company who needs paying back, including bank details if we’ve not paid them before</li>
+        </ul>
+
+
+                <div class="govuk-inset-text">
+                The person or company who needs paying back could be anyone who paid for your equipment. This includes yourself, a friend, a family member, your employer or the company who provided the equipment.
+                </div>
+
+
+
+        <form action="before-you-continue-answer" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

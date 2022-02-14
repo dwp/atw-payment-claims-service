@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="one-time-code-answer" method="post" class="form">
+
+          {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#one-time-code">We do not recognise the 6-digit code you entered</a>
+                </li>
+                {% if data ['one-time-code'] =='135246' %}
+                <li>
+                  <a href="#one-time-code">You have <b>2</b> attempts remaining</a>
+                </li>
+                {% else %}
+                <li>
+                  <a href="#one-time-code">You have <b>1</b> attempt remaining</a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+          {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+          <div class="govuk-form-group govuk-form-group--error">
+            {% endif %}
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="20">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="one-time-code">
+                        Enter the 6-digit security number we sent to your email
+                    </label>
+                    </h1>
+
+                    {% if data['no-code-received'] =='true' %}
+                    <p>We’ve sent you another email with a security number. It should only take a few minutes to arrive.</p>
+                    {% else %}
+                    <p>We’ve sent you an email with a 6-digit security number. It should only take a few minutes to arrive.<p>
+                    {% endif %}
+
+                      <label class="govuk-hint" for="event-name">
+                       For example, 123456
+                     </label>
+                     {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+                     <span id="national-insurance-number-error" class="govuk-error-message">
+                       <span class="govuk-visually-hidden">Error:</span> Enter the 6-digit code we sent to you by email
+                     </span>
+                     {% endif %}
+
+                    <input class="govuk-input govuk-input--width-10" id="one-time-code" name="one-time-code" type="text"
+                           aria-describedby="one-time-code-hint">
+                </div>
+
+            </div>
+            {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
+            </div>
+            {% endif %}
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  I did not get an email
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                It may take a few minutes for it to arrive in your email inbox. Remember to check your junk folder. If the email is not there, we can <a href="one-time-code-new"> send another code</a>.
+              </div>
+            </details>
+
+            <!-- <p><a href="no-code-received">I did not get an email</a></p> -->
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

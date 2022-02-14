@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="one-time-code" method="post" class="form">
+        <h1 class="govuk-heading-l">You’ll need to enter a security number so we can confirm who you are</h1>
+        <p class="govuk-body">
+            If you have not received a security number, we can send you another one.</p>
+
+
+        <p class="govuk-body">
+            It may take a few minutes for it to arrive in your email inbox. Remember to check your spam folder.
+        </p>
+
+
+    <input type="hidden" name="no-code-received" value="true">
+
+    <button type="submit" class="govuk-button govuk-!-display-none-print" data-module="govuk-button">
+        Send me another security code
+    </button>
+
+</form>
+    </div>
+</div>
+
+
+{% endblock %}

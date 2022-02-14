@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="confirmation" method="post" class="form">
+            <span class="govuk-caption-l">Section 5 of 5</span>
+            <h1 class="govuk-heading-l">Declaration</h1>
+
+            <p>By sending this claim, you are agreeing that:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>information you have given is correct</li>
+                <li>you're sending the claim within 9 months of the date on the receipt or invoice</li>
+                <li>Access to Work may check and validate your claim with employers, suppliers or providers</li>
+            </ul>
+
+            <p>If you give us incorrect or incomplete information on purpose, or you do not tell us if your situation changes, you may:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>be prosecuted</li>
+                <li>need to pay a financial penalty</li>
+                <li>need to pay back any money you're overpaid if you're asked to</li>
+            </ul>
+
+
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    By submitting this claim you are confirming that, to the best of your knowledge, the details you are
+                    providing are correct.
+                </strong>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                I agree – send my claim
+            </button>
+
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

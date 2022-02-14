@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        <h1 class="govuk-heading-l">What you’ll need to send your claim</h1>
+
+        <p>You’ll need to send a claim for each type of support you get. For example,
+          if you use a British Sign Language interpreter and have a driver, you’ll need to send 2 claims.</p>
+
+        <h3 class="govuk-body">You’ll need:</h3>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+            <li>the dates you had support
+            </li>
+            <li>to tell us how many hours of support you had on each date
+            </li>
+            <li>the name and email address of the person or company who we can ask to confirm the support you’re claiming for </li>
+            <li>the details of the person or company who needs paying, including bank details if we’ve not paid them before</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+        The person or company who needs paying back could be anyone who paid for your support worker costs. This includes yourself, a friend, a family member, or your employer.
+        </div>
+
+        <p>You’ll need to send us an invoice or receipt for any support worker costs you’re claiming for.</p>
+
+        <h2 class="govuk-heading-m">If you are self-employed or work at the same organisation as the person providing the support</h2>
+
+        <p>You’ll need to send us a digital copy of a signed timesheet or payslip for the person who provided your support.</p>
+
+
+
+        <form action="before-you-continue-answer" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

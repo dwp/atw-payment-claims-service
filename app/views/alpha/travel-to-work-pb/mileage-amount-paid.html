@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set travelLength %}
+{{ data.travel | length }}
+{% endset %}
+
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattravelLength %}
+{{ data.repeattravel | length }}
+{% endset %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_journeys | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% set milageLength %}
+{{ data.milage | length }}
+{% endset %}
+
+{% set mileageTotal = 0 %}
+{% for day in data.milage %}
+{% set mileageTotal = mileageTotal | float + day.milage_total | float %}
+{% else %}
+{% set mileageTotal = 0 | float %}
+{% endfor %}
+
+{% set repeatmilageLength %}
+{{ data.repeatmilage | length }}
+{% endset %}
+
+{% set repeatmileageTotal = 0 %}
+{% for day in data.repeatmilage %}
+{% set repeatmileageTotal = repeatmileageTotal | float + day.repeatmilage_total | float %}
+{% else %}
+{% set repeatmileageTotal = 0 | float %}
+{% endfor %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {%if (data["way-of-claiming"]=="journeys")%}
+
+      <h1 class="govuk-heading-l">Total number of journeys: {{taxiTotal + repeattaxiTotal}}</h1>
+
+
+      {% else %}
+
+      <h1 class="govuk-heading-l">Total miles: {{mileageTotal + repeatmileageTotal}}</h1>
+
+      {% endif %}
+
+
+
+        <p class="govuk-body">We’ll use the rate per mile quoted in your grant approval letter to work out how much you’re paid back.
+        </p>
+
+        <div class="govuk-body">If you or your employer agreed to pay a contribution, the amount we’ll pay back will be less than the total cost of the journeys. This is because we’ll deduct the amount you or your employer have agreed to pay.</div>
+
+
+
+
+        <form action="employer-contribution-answer" method="post" class="form">
+
+            <input type="hidden" value="Yes" id="employer-contributing" name="employer-contributing">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

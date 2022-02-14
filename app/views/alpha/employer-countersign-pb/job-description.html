@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="check-your-answers" method="post" class="form">
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="job-description">
+                        What’s your job title?
+                    </label>
+                    </h1>
+                    <div id="job-description-hint" class="govuk-body">
+                        For example, Office Manager or Human Resources Manager
+                    </div>
+
+                    <input class="govuk-input" id="job-description" name="job-description" type="text"
+                           aria-describedby="job-description-hint">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

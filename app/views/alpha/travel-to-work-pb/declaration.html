@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="confirmation" method="post" class="form">
+          {%if (data["transport-option"]=="lift") %}
+        <span class="govuk-caption-l">Section 4 of 4</span>
+          {% else %}
+        <span class="govuk-caption-l">Section 5 of 5</span>
+          {% endif %}
+            <h1 class="govuk-heading-l">Declaration</h1>
+
+            <p>By sending this claim, I confirm that:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>the information I’ve given is complete and correct</li>
+                <li>this is the only claim I’ve made for these costs</li>
+                <li>I'm only claiming money back for agreed support</li>
+                <li>I will let DWP know if my circumstances change whilst I’m getting Access to work</li>
+            </ul>
+
+            <p>I understand and agree that DWP may recover any money wrongly paid to me because I did not:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>provide correct or complete information, or</li>
+                <li>report a change in my circumstances</li>
+            </ul>
+
+            <p>I understand if I give wrong or incomplete information, or I do not report changes as they happen, I may:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>be prosecuted</li>
+                <li>need to pay a financial penalty </li>
+                <li>have my Access to Work grant reduced or stopped</li>
+            </ul>
+
+
+
+            <input type="hidden" name="ttw-declaration" value="true">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                I agree – send my claim
+            </button>
+
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

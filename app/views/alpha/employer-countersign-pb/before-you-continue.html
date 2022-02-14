@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+
+
+        <h1 class="govuk-heading-l">What you’ll need to review the claim</h1>
+
+        <p>Joe Bloggs has made a claim from their Access to Work grant. You need to review their claim before we can make a payment.</p>
+
+        {% if (data["answers-checked-sw"]) %}
+
+        <h3 class="govuk-body">You’ll need to confirm:</h3>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+
+
+            <li>your employer and job details
+            </li>
+            <li>Joe Bloggs was in work on the days they’re claiming for
+            </li>
+            <li>how long Joe Bloggs received support for on each date
+            </li>
+        </ul>
+            {% else %}
+
+            <h3 class="govuk-body">You’ll need to confirm:</h3>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+
+                <li>your employer and job details
+                </li>
+                <li>Joe Bloggs was in work on the days they’re claiming for
+                </li>
+
+            </ul>
+            {% endif %}
+
+
+        <form action="company-name" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

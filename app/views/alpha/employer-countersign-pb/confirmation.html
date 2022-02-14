@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% set print = true %}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+            {% if data['claim-incorrect'] =='true' %}
+
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">Claim returned to Joe Bloggs</h1>
+                <div class="govuk-panel__body">
+                    Joe Bloggs's claim reference number<br><strong>{{data['citizens-urn']}}</strong>
+                </div>
+            </div>
+
+            {% else %}
+
+            <div class="govuk-panel govuk-panel--confirmation">
+                <h1 class="govuk-panel__title">Claim confirmed</h1>
+                <div class="govuk-panel__body">
+
+                </div>
+            </div>
+
+            {% endif %}
+
+
+            <h2 class="govuk-heading-m">What happens next</h2>
+
+            {% if data['claim-incorrect'] =='true' %}
+
+
+            <p>Joe Bloggs’s claim has been sent back to them. They will need to update their claim.</p>
+
+            <p>We’ll contact you when they’ve updated their claim. If you confirm the claim is correct, we’ll process the claim. If we approve it, we'll pay the money into the bank account they chose.</p>
+
+            <p>Joe Bloggs can see the progress of their claim in their claims history.</p>
+
+
+            {% else %}
+
+            <p>If we approve Joe Bloggs’s claim, we’ll pay the money into the bank account they chose.</p>
+
+            <p>If we do not approve the claim, we’ll contact Joe Bloggs to let them know what to do next.</p>
+
+            <p>Joe Bloggs can see the progress of their claim in their claims history.</p>
+
+            {% endif %}
+
+
+            <p> <a href="../../index">Sign out</a></p>
+
+
+    </div>
+</div>
+
+
+<p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you
+    think of this service?</a> (takes 30 seconds)</p>
+{% endblock %}

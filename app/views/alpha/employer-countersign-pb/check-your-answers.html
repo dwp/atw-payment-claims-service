@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = false %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-xl">Check your answers </h1>
+
+      <h2 class="govuk-heading-m">Organisation Information</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name of company or organisation you work for
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["comapany-name"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="company-name">
+                        Change
+                        <span class="govuk-visually-hidden"> Type of claim</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Organisation address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data ["new-payee-address-line-1"] %}
+                    {{data["new-payee-address-line-1"]}}<br>
+                    {% if data["new-payee-address-line-2"] %}{{data["new-payee-address-line-2"]}}<br>{% endif %}
+                    {{data["new-payee-address-town"]}}<br>
+                    {{data["new-payee-address-county"]}}<br>
+                    {{data["new-payee-address-postcode"]}}
+                    {% endif %}
+
+                    {% if data["new-payee-address-select"] == "123" %}
+                    123 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-payee-postcode"]}}
+
+                    {% elif data["new-payee-address-select"] == "124" %}
+                    124 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-payee-postcode"]}}
+
+                    {% elif data["new-payee-address-select"] == "125" %}
+                    125 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-payee-postcode"]}}
+
+                    {% elif data["new-payee-address-select"] == "126" %}
+                    126 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-payee-postcode"]}}
+
+                    {% elif data["new-payee-address-select"] == "127" %}
+                    127 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-payee-postcode"]}}
+
+                    {% endif %}
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="company-address">
+                        Change
+                        <span class="govuk-visually-hidden"> Type of claim</span>
+                    </a>
+                </dd>
+                {% endif %}
+        </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Your job title
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{data["job-description"]}}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="job-description">
+                        Change
+                        <span class="govuk-visually-hidden"> Type of claim</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+
+            </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <form action="review-claim" method="post" class="form">
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

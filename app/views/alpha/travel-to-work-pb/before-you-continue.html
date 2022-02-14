@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        <h1 class="govuk-heading-l">What you’ll need to send your claim</h1>
+
+
+        <h3 class="govuk-body">You’ll need to tell us the:</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>dates that you travelled to or from work</li>
+            <li>name and email address of a workplace contact who we can ask to confirm each journey you’re claiming for</li>
+            <li>details of the person or company who needs paying back, including bank details if we’ve not paid them before</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+        The person or company who needs paying back could be yourself, a family member or friend, your employer or a transport company.
+        </div>
+
+        <h2 class="govuk-heading-m">If you’re claiming for travel by taxi</h2>
+
+
+        <h3 class="govuk-body">You’ll need to:</h3>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>tell us how many journeys you made each day</li>
+            <li>tell us the total cost of the journeys you're claiming for</li>
+            <li>send us an invoice or receipt for any journeys you’re claiming for</li>
+        </ul>
+
+        <h3 class="govuk-body">You can either send us:</h3>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>a receipt or invoice that contains all the journeys you’re claiming for
+            </li>
+            <li>separate receipts and invoices for each single journey
+            </li>
+        </ul>
+
+
+        <h2 class="govuk-heading-m">If you’re claiming for lifts from a friend, colleague or family member</h2>
+
+        <p>You’ll need to tell us the total mileage travelled or the total number of journeys on each date.</p>
+
+
+        <form action="transport-option" method="post" class="form">
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start a claim
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

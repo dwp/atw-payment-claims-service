@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if data ['job-description'] %}
+        <form action="check-your-answers" method="post" class="form">
+      {% else %}
+        <form action="company-address" method="post" class="form">
+      {% endif %}
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="comapany-name">
+                        Enter the name of the company or organisation you work for
+                    </label>
+                    </h1>
+
+
+                    <input class="govuk-input" id="comapany-name" name="comapany-name" type="text"
+                           aria-describedby="comapany-name-hint">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

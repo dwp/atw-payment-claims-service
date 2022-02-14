@@ -66,6 +66,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                           <a class="card-link" href="./equipment-and-adaptations/special-aids-and-equipment">
                               Send a claim online
                           </a>
+                          {% elseif (data['journey-type'] == "specialaidsandequipmentpb") %}
+                            <a class="card-link" href="./equipment-and-adaptations-pb/special-aids-and-equipment">
+                                Send a claim online
+                            </a>
                           {% elseif (data['journey-type'] == "specialaidsandequipmentdev") %}
                             <a class="card-link" href="./equipment-and-adaptations-dev/special-aids-and-equipment">
                                 Send a claim online
@@ -74,6 +78,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                           <a class="card-link" href="./support-worker/support-for-workplace">
                               Send a claim online
                           </a>
+                          {% elseif (data['journey-type'] == "supportworkerpb") %}
+                            <a class="card-link" href="./support-worker-pb/support-for-workplace">
+                                Send a claim online
+                            </a>
                           {% elseif (data['journey-type'] == "supportworkerdev") %}
                             <a class="card-link" href="./support-worker-dev/support-for-workplace">
                                 Send a claim online
@@ -82,6 +90,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                           <a class="card-link" href="./travel-to-work/travel-to-work">
                               Send a claim online
                           </a>
+                          {% elseif (data['journey-type'] == "traveltoworkpb") %}
+                            <a class="card-link" href="./travel-to-work-pb/travel-to-work">
+                                Send a claim online
+                            </a>
                           {% elseif (data['journey-type'] == "traveltoworkdev") %}
                             <a class="card-link" href="./travel-to-work-dev/travel-to-work">
                                 Send a claim online
@@ -90,6 +102,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             <a class="card-link" href="./travel-in-work/travel-to-work">
                                 Send a claim online
                             </a>
+                            {% elseif (data['journey-type'] == "travelinworkpb") %}
+                              <a class="card-link" href="./travel-in-work-pb/travel-to-work">
+                                  Send a claim online
+                              </a>
                             {% elseif (data['journey-type'] == "travelinworkdev") %}
                               <a class="card-link" href="./travel-in-work-dev/travel-to-work">
                                   Send a claim online

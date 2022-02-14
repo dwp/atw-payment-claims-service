@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block content %}
+{% set hourTotal = 0 %}
+{% for day in data['hours'] %}
+{% set hourTotal = hourTotal | float + day.hours | float %}
+{% else %}
+{% set hourTotal = 0 | float %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="hours-confirm-post" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="hours-confirmation-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            You’ve told us you’ve had {{hourTotal}} hours of support across {{data['hours'] | length}} {% if data['hours'].length === 1 %} day {% else %} days {% endif %} in
+                            {{data['support-date-month'] | numberMonth}}, is this correct?
+                        </h1>
+                    </legend>
+
+                    <br>
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="hours-confirmation-yes" name="hours-confirmation"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="hours-confirmation-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="hours-confirmation-no" name="hours-confirmation"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="hours-confirmation-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

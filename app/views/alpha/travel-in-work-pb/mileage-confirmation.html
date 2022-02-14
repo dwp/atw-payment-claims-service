@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block content %}
+{% set mileageTotal = 0 %}
+{% for day in data['mileages'] %}
+{% set mileageTotal = mileageTotal | float + day.mileage | float %}
+{% else %}
+{% set mileageTotal = 0 | float %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="mileage-confirmation-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="mileage-confirmation-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+
+
+                            You’ve told us you’ve travelled {{mileageTotal}} miles over {{data['mileages'] | length}} {% if data['mileages'].length === 1 %} day {% else %} days {% endif %} in
+                            {{data['travel-to-work-date-month'] | numberMonth}}, is this correct?
+                        </h1>
+                    </legend>
+
+                  
+
+
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="mileage-confirmation-yes" name="mileage-confirmation"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="mileage-confirmation-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="mileage-confirmation-no" name="mileage-confirmation"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="mileage-confirmation-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

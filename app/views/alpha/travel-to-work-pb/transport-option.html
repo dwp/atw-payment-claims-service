@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="transport-option-answer-preview" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="transport-option-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <span class="govuk-caption-l">Section 1 of 5</span>
+                        <h1 class="govuk-fieldset__heading">
+                            How did you travel to or from work?
+                        </h1>
+                    </legend>
+
+                    <p>You only need to tell us about the journeys you’re claiming for.</p>
+
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transport-option-yes" name="transport-option"
+                                   type="radio"
+                                   value="taxi">
+                            <label class="govuk-label govuk-radios__label" for="transport-option-yes">
+                                A taxi
+                            </label>
+                        </div>
+
+                        <!-- <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transport-option-yes-hours" name="transport-option"
+                                   type="radio"
+                                   value="taxi-during-work">
+                            <label class="govuk-label govuk-radios__label" for="transport-option-yes-hours">
+                                A taxi to different locations during work hours
+                            </label>
+                        </div> -->
+
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transport-option-no-hours" name="transport-option"
+                                   type="radio"
+                                   value="lift">
+                            <label class="govuk-label govuk-radios__label" for="transport-option-no-hours">
+                                A lift from a friend, colleague or family member
+                            </label>
+                        </div>
+
+                        <!-- <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="transport-option-no" name="transport-option"
+                                   type="radio"
+                                   value="lift-during-work">
+                            <label class="govuk-label govuk-radios__label" for="transport-option-no">
+                                A lift from a friend, colleague or family member to different locations during work hours
+                            </label>
+                        </div> -->
+                    </div>
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

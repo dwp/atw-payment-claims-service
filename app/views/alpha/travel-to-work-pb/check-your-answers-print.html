@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner ({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-print" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Travel to work claims submission</h1>
+
+{% if data['employer-declaration'] =="true" %}
+<p>These are the details of the claim you countersigned on behalf of Joe Bloggs. You can also save and print a copy of your claim submission.</p>
+{% else %}
+<p>These are the details of the claim you submitted. You can also save and print a copy of your claim submission.</p>
+{% endif %}
+
+<input type="button" class="govuk-button govuk-!-display-none-print" data-module="govuk-button" value="Save this page" onClick="window.print()">
+
+  </div>
+  </div>
+
+{% include "alpha/travel-to-work-pb/check-your-answers-body.html" %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+<h2 class="govuk-heading-m">Claim declaration</h2>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Citizen declaration
+        </dt>
+        <dd class="govuk-summary-list__value">
+            Yes
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Citizen declaration</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+    {% if data['employer-declaration'] =="true" %}
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Workplace contact declaration
+        </dt>
+        <dd class="govuk-summary-list__value">
+            Yes
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Citizen declaration</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Claim reference number
+        </dt>
+        <dd class="govuk-summary-list__value">
+            TTW125421
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Claim reference number</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Claim submission date
+        </dt>
+        <dd class="govuk-summary-list__value">
+            21 July - 2021
+
+        </dd>
+        {% if print != true %}
+        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+            <a href="counter-signatory-name">
+                Change
+                <span class="govuk-visually-hidden"> Claim submission date</span>
+            </a>
+        </dd>
+        {% endif %}
+    </div>
+</dl>
+
+</div>
+</div>
+
+{% endblock %}

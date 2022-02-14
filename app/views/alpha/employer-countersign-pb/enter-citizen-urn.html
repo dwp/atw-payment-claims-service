@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner ({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-print" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="one-time-code" method="post" class="form">
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="citizens-urn">
+                        Enter the claim reference number
+                    </label>
+                    </h1>
+
+                    <!-- <p>Your employee is given a claim reference number when they make an Access to Work claim.
+                      This makes it easier to identify a claim. You need to know your employee’s claim reference number so that we can make sure you’re reviewing the right claim. <p> -->
+
+                      <p>You can find the number in the email we sent you asking you to review the claim.</p>
+
+                     <p>Once you’ve entered the claim reference number, we’ll send a security code to your email address.<p>
+
+                    <div id="citizens-urn-hint" class="govuk-hint">
+                        For example, SW1002345
+                    </div>
+
+                    <input class="govuk-input" id="citizens-urn" name="citizens-urn" type="text"
+                           aria-describedby="citizens-urn-hint">
+                </div>
+            </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+            <p><a href="cannot-countersign">I do not have the claim reference number</a></p>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

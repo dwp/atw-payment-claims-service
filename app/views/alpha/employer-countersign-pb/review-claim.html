@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+{% set print = true %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+{% if (data["answers-checked-sw"]) %}
+        <h1 class="govuk-heading-l">Joe Bloggs’ support worker claim</h1>
+
+        <p>You need to check the days Joe Bloggs is claiming support for and the number of hours they are claiming for each day.</p>
+
+        <p>We’ll then ask you to confirm Joe Bloggs’ claim or tell us why you cannot confirm their claim.</p>
+
+        {% elseif (data["tiw-declaration"]) %}
+
+        <h1 class="govuk-heading-l">Joe Bloggs' travel during work claim</h1>
+
+        <p>You need to check the days Joe Bloggs is claiming travel in work costs. We’ll also ask you to confirm whether your employee was in work on the days they’re claiming for.</p>
+
+        <p>We’ll then ask you to confirm their claim, or tell us why you disagree with their claim.</p>
+
+        {% else %}
+
+        <h1 class="govuk-heading-l">Joe Bloggs' travel to work claim</h1>
+
+        <p>You need to check the days Joe Bloggs is claiming travel to work costs. We’ll also ask you to confirm whether your employee was in work on the days they’re claiming for.</p>
+
+        <p>We’ll then ask you to confirm their claim, or tell us why you disagree with their claim.</p>
+
+        {% endif %}
+
+
+                </div>
+                </div>
+
+
+
+
+                {% if (data["answers-checked-sw"]) %}
+                {% include "alpha/support-worker/check-your-answers-body.html" %}
+                {% elseif (data["tiw-declaration"]) %}
+                {% include "alpha/travel-in-work/check-your-answers-body.html" %}
+                {% else %}
+                {% include "alpha/travel-to-work/check-your-answers-body.html" %}
+                {% endif %}
+
+
+        <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+        <form action="employer-countersign-answer" method="post" class="form">
+                  <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" aria-describedby="employer-agree-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">
+                        Do you confirm this claim is correct?
+                      </h1>
+                    </legend>
+
+                    <div class="govuk-radios govuk-radios--inline">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="employer-agree" name="employer-agree" type="radio" value="Yes">
+                        <label class="govuk-label govuk-radios__label" for="employer-agree">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="employer-agree-2" name="employer-agree" type="radio" value="No">
+                        <label class="govuk-label govuk-radios__label" for="employer-agree-2">
+                          No
+                        </label>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                </div>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}
