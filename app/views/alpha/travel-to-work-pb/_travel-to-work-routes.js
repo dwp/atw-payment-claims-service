@@ -3,8 +3,8 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.render(`./${folderForViews}/travel-to-work-pb/start-a-claim`)
   })
 
-  router.post('/travel-to-work-pb/travel-to-work-pb-answers', function (req, res) {
-    const aids = req.session.data['travel-to-work-pb']
+  router.post('/travel-to-work-pb/travel-to-work-answers', function (req, res) {
+    const aids = req.session.data['travel-to-work']
 
     if (aids === 'Yes') {
       res.redirect(`/${urlPrefix}/travel-to-work-pb/grant-information`)
