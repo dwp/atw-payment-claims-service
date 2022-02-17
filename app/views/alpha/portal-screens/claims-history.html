@@ -51,7 +51,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"])%}
                     <p>About the claims for travel to work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
-                    <p>About the claims for travel during work hours you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for travel during work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% endif %}
 
                     {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] !== "supportworker") %}
@@ -255,7 +255,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                           {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
                           <a href="tiw-check-your-answers-print">
                               View
-                              <span class="govuk-visually-hidden"> travel during work hours claim - 01/02/2021</span>
+                              <span class="govuk-visually-hidden"> travel during work claim - 01/02/2021</span>
                           </a>
 
                           {% else %}
