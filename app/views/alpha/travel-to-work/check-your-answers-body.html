@@ -109,13 +109,13 @@
             {% if data['transport-option']=="lift" %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Travel to and from work
+                    Travel to or from work
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {%if (data["way-of-claiming"]=="journeys")%}
-                    Total number of journeys taken to and from work each day.
+                    Total number of journeys taken to or from work each day.
                     {% elseif (data["way-of-claiming"]=="mileage") %}
-                    Total distance in miles travelled to and from work each day
+                    Total distance in miles travelled to or from work each day
                     {% endif %}
                 </dd>
                 {% if print != true %}

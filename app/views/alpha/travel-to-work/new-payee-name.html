@@ -16,8 +16,11 @@ Claim money back from Access to Work
       {% else %}
       <form action="new-payee-address" method="post" class="form">
       {% endif %}
-
+          {% if data["transport-option"] =="taxi" %}
           <span class="govuk-caption-l">Section 3 of 5</span>
+          {% else %}
+          <span class="govuk-caption-l">Section 2 of 4</span>
+          {% endif %}
             <h1 class="govuk-heading-l">Tell us about the person or company who needs paying back</h1>
 
             <p>This could be anyone who paid for your travel. This includes yourself, a friend, family member, your employer or a transport company. We’ll store this information for any new claims you make.</p>

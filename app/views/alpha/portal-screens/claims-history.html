@@ -42,7 +42,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                         </h1>
                     </legend>
                     {% if (data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") or (data ['journey-type'] == "specialaidsandequipmentpb") %}
-                    <p>About the claims for equipment and adaptations you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for specialist equipment you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and ((data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb")) %}
                     <p>You do not have any claims for support worker costs in your claims history. If you've sent a new claim, it can take up to 5 working days for it to appear in your claims history.</p>
                      <p>You can <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
