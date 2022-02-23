@@ -19,9 +19,11 @@ Check your answers
 
 {% include "alpha/portal-screens/check-your-answers-tiw-cs.html" %}
 
-{% elseif (data["ttw-declaration"]) or (data["tiw-declaration"]) or (data["ttw-declaration"]) %}
+{% elseif (data["ttw-declaration"]) or (data["tiw-declaration"]) or (data["answers-checked-sw"]) %}
 
 {% set print = true %}
+
+
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -36,7 +38,10 @@ Check your answers
 <p>This is the information you gave us about your claim. You can change your workplace contact at any time before the claim is confirmed.</p>
 {% endif %}
 
-{% if (data["employment-status"] =='Employed') and ((data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb") or (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb"))%}
+</div>
+</div>
+
+{% if (data["ttw-declaration"]) %}
 
 <h2 class="govuk-heading-m">Workplace contact details</h2>
 
@@ -82,15 +87,8 @@ Check your answers
 
     </div>
 </dl>
-
-
-
-
-{% endif %}
-
 </div>
 </div>
-
 
 
 {% include "alpha/travel-to-work/check-your-answers-body.html" %}
@@ -112,8 +110,7 @@ Check your answers
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-<h1 class="govuk-heading-l">About your claim </h1>
-<p>This is the information you gave us in your claim. You can change the person or company who we’ll contact to confirm you received the support at any time before the claim is confirmed.</p>
+
 <h2 class="govuk-heading-m">Details of the person or company who can confirm the support costs</h2>
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
@@ -124,19 +121,11 @@ Check your answers
             {{data["counter-signatory-full-name"]}}
 
         </dd>
-
         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
             <a href="../support-worker/counter-signatory-name">
                 Change
                 <span class="govuk-visually-hidden"> name of counter signatory</span>
             </a>
-            {% else %}
-            <a href="counter-signatory-name">
-                Change
-                <span class="govuk-visually-hidden"> name of counter signatory</span>
-            </a>
-            {% endif %}
         </dd>
 
     </div>
@@ -148,19 +137,11 @@ Check your answers
             {{data["counter-signatory-email"]}}
 
         </dd>
-
         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
             <a href="../support-worker/counter-signatory-name">
                 Change
                 <span class="govuk-visually-hidden"> name of counter signatory</span>
             </a>
-            {% else %}
-            <a href="counter-signatory-name">
-                Change
-                <span class="govuk-visually-hidden"> email of counter signatory</span>
-            </a>
-            {% endif %}
         </dd>
 
         </div>
@@ -176,16 +157,6 @@ Check your answers
 
       <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-l govuk-!-display-none-print">About your claim </h1>
-      {% if data['journey-type'] =="supportworker" %}
-      <p>This is the information you gave us about your claim. You can change the person who can confirm your support costs at any time before the claim is confirmed.</p>
-      {% else %}
-      <p>This is the information you gave us about your claim. You can change your workplace contact at any time before the claim is confirmed.</p>
-      {% endif %}
-
-      {% if data["employment-status"] =='Employed'%}
-
       <h2 class="govuk-heading-m">Workplace contact details</h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -230,44 +201,12 @@ Check your answers
 
           </div>
       </dl>
-
-      {% else %}
-
-      <h2 class="govuk-heading-m">Type of employment</h2>
-
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Employment status
-            </dt>
-            <dd class="govuk-summary-list__value">
-                {{data["employment-status"]}}
-
-            </dd>
-
-            <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-              {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                <a href="../travel-in-work/employement-status">
-                    Change
-                    <span class="govuk-visually-hidden"> what is your employment status?</span>
-                </a>
-                {% else %}
-                <a href="employement-status">
-                    Change
-                    <span class="govuk-visually-hidden"> what is your employment status?</span>
-                </a>
-                {% endif %}
-            </dd>
-        </div>
-        </dl>
-        {% endif %}
-
       </div>
       </div>
 
       {% include "alpha/travel-in-work/check-your-answers-body.html" %}
 
+      {% endif %}
       {% endif %}
 
 
