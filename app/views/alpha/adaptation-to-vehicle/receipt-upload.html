@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="receipt-upload-add" method="post" class="form">
+
+            <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">Upload your receipts or invoices</h1>
+                </legend>
+
+                  <p>You’ll need to upload your receipts or invoices from a computer, phone or tablet. You’ll have the option to upload more than one if you need to.</p>
+
+                <p>You’ll need to:</p>
+                <ol class="govuk-list govuk-list--number">
+                    <li>Choose the file you want to upload</li>
+                    <li>Select upload</li>
+                </ol>
+
+                <p>Check that the file you want to upload is in the correct file format before uploading. Files can be PNG, JPEG, PDF, DOC or DOCX. Make sure that the document is not password protected.</p>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="file-upload">
+                        Upload a file
+                    </label>
+                    <input class="govuk-file-upload" id="file-upload" name="file-upload" type="file">
+                </div>
+
+
+            </fieldset>
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Upload
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

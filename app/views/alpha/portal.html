@@ -90,6 +90,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                           <a class="card-link" href="./travel-to-work/travel-to-work">
                               Send a claim online
                           </a>
+                          {% elseif (data['journey-type'] == "adaptations") %}
+                            <a class="card-link" href="./adaptation-to-vehicle/adaptation-to-vehicle">
+                                Send a claim online
+                            </a>
                           {% elseif (data['journey-type'] == "traveltoworkpb") %}
                             <a class="card-link" href="./travel-to-work-pb/travel-to-work">
                                 Send a claim online

@@ -87,6 +87,52 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           </div>
         </dl>
 
+        {% elseif (data['journey-type'] == "adaptations") %}
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Agreed support and cost
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £1340.00 - adaptations to vehicle<br>
+
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total cost of support
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £1340.00
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount you or your employer have agreed to contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £382.85
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount Access to Work will contribute
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £957.15
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of grant left
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £568.20
+            </dd>
+          </div>
+        </dl>
+
         {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb")%}
 
         <dl class="govuk-summary-list">

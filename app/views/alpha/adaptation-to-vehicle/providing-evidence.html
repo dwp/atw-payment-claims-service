@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="receipt-upload" method="post" class="form">
+            <span class="govuk-caption-l">Section 2 of 4</span>
+            <h1 class="govuk-heading-l">How to send us copies of receipts or invoices</h1>
+
+              <p>We accept either:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>photos or scans of paper receipts or invoices</li>
+                <li>digital receipts or invoices</li>
+            </ul>
+
+            <p>Your receipts or invoices must show:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>the cost of the equipment</li>
+                <li>the date the equipment was bought</li>
+                <li>the full name of the person or company who provided the equipment</li>
+                <li>a short description of the equipment</li>
+            </ul>
+
+            <h1 class="govuk-heading-m">Taking photos of receipts or invoices</h1>
+            <p>Make sure:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>you're in a well-lit place</li>
+                <li>you include the whole receipt or invoice in the image</li>
+                <li>you take the photo from above and not at an angle</li>
+                <li>the photo is not blurry</li>
+            </ul>
+
+
+
+            <h1 class="govuk-heading-m">Scanning receipts or invoices</h1>
+            <p>Make sure:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>you include the whole receipt or invoice in the scan</li>
+                <li>the scan is not blurry</li>
+            </ul>
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
