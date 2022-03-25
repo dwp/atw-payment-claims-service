@@ -17,21 +17,19 @@ Claim money back from Access to Work
             <div class="govuk-form-group">
 
                 <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="adaptation-cost">
-                    How much did your adaptations to a vehicle cost in total?
+                    How much did the adaptations cost in total?
                 </label></h1>
 
                   {% if adaptationLength|int === 1 %}
                 <div id="adaptation-name-body" class="govuk-body">
-                     You’ll find the total cost of the adaptation on the receipt or invoice. You should include any delivery fees in the total cost.
+                     You’ll find the total cost of the adaptation on the receipt or invoice.
                 </div>
 
                 {% else %}
 
                 <div id="adaptation-name-body" class="govuk-body">
-                You’ll find the total cost for each adaptation to a vehicle on the receipt or invoice.
+                You’ll find the total cost for each adaptation on the receipt or invoice. You’ll need to add up the cost of all your adaptations to get the total.
                 </div>
-
-                <p>You’ll need to add up the cost of all your adaptations to get the total. You should include any delivery fees in the total cost.</p>
 
                 {% endif %}
 

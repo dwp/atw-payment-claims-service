@@ -12,20 +12,18 @@ Claim money back from Access to Work
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
           <span class="govuk-caption-l">Section 1 of 4</span>
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about your adaptations to a vehicle</h1>
-            <p>You must tell us about any related training or installation costs in a separate entry.</p>
-
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tells us about the adaptation to the vehicle</h1>
 
             <div data-module="moj-add-another">
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="adaptation[0][adaptation_name]">
-                            Name or description of adaptation to a vehicle.
+                            Name or description of the adaptation
                         </label>
 
                         <div id="adaptation-name-hint" class="govuk-hint">
-                              For example, Changing the car from manual to automatic
+                              For example, changing the car from manual to automatic
                         </div>
                         <input class="govuk-input"
                                value = "{{data.adaptation[0].adaptation_name}}"
@@ -36,12 +34,12 @@ Claim money back from Access to Work
                     </div> <!-- govuk-form-group -->
                     <div class="govuk-form-group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            Date of purchase
+                            Date the work was completed
                         </legend>
 
 
                         <div id="date-of-purchase-hint" class="govuk-hint">
-                          You'll find this on the invoice or receipt for your adaptation. For example, 21 05 2021.
+                          You'll find this on the invoice or receipt. For example, 21 05 2021
                         </div>
 
                         <div class="govuk-date-input__item">
@@ -103,7 +101,7 @@ Claim money back from Access to Work
                             Name or description of adaptation
                         </label>
                         <div id="adaptation-name-hint" class="govuk-hint">
-                              For example, a Karma Ergo 115 wheelchair or a lowered curb.
+                              For example, changing the car from manual to automatic
                         </div>
 
                         <input class="govuk-input" id="adaptation[{{loop.index0}}][adaptation_name]"
@@ -113,10 +111,10 @@ Claim money back from Access to Work
                     </div> <!-- govuk-form-group -->
                     <div class="govuk-form-group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            Date of purchase
+                            Date the work was completed
                         </legend>
                         <div id="date-of-birth-hint" class="govuk-hint">
-                            You'll find this on the invoice or receipt for your adaptation. For example, 21 05 2021.
+                            You'll find this on the invoice or receipt. For example, 21 05 2021
                         </div>
                         <div class="govuk-date-input__item">
                             <div class="govuk-date-input" id="date-adaptation-purchased">
@@ -173,7 +171,7 @@ Claim money back from Access to Work
                             data-module="govuk-button"
                             name="action"
                             value="add">
-                        Claim for another adaptations to a vehicle
+                        Claim for another adaptation
                     </button>
                 </div>
                 <div class="moj-button-action">
