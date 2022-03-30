@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set travelLength %}
+{{ data.travel | length }}
+{% endset %}
+
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattravelLength %}
+{{ data.repeattravel | length }}
+{% endset %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_journeys | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% set taxiinworkTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiinworkTotal = taxiinworkTotal | float + day.travel_cost | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattaxiinworkTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiinworkTotal = repeattaxiinworkTotal | float + day.repeattravel_cost | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="employees-claim-incorrect" method="post" class="form">
+
+          <h1 class="govuk-heading-l">You’ve told us that 3 days of journeys are incorrect</h1>
+
+          <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              01 December 2021
+            </dt>
+            <dd class="govuk-summary-list__value">
+            2 journeys
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              04 December 2021
+            </dt>
+            <dd class="govuk-summary-list__value">
+            2 journeys
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            26 November 2021
+          </dt>
+          <dd class="govuk-summary-list__value">
+          2 journeys
+          </dd>
+        </div>
+      </dl>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <p> Tell us why these journeys are incorrect</p>
+
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="300">
+            <div class="govuk-form-group">
+              <div id="job-description-hint" class="govuk-body">
+                  For example, Joe Bloggs could be claiming for too many or too few days of travel, or they might not have been in work for one of the days they are claiming for.
+              </div>
+              <p>You need to make sure you provide enough information, so Joe Bloggs understands what needs to be updated.</p>
+
+              <textarea class="govuk-textarea govuk-js-character-count" id="claim-incorrect" name="claim-incorrect" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+            </div>
+
+            <div id="claim-incorrect-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+              You can enter up to 300 characters
+            </div>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

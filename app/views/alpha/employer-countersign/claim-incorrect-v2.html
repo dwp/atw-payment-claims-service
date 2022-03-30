@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set travelLength %}
+{{ data.travel | length }}
+{% endset %}
+
+{% set taxiTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattravelLength %}
+{{ data.repeattravel | length }}
+{% endset %}
+
+{% set repeattaxiTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_journeys | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% set taxiinworkTotal = 0 %}
+{% for day in data.travel %}
+{% set taxiinworkTotal = taxiinworkTotal | float + day.travel_cost | float %}
+{% else %}
+{% set taxiTotal = 0 | float %}
+{% endfor %}
+
+{% set repeattaxiinworkTotal = 0 %}
+{% for day in data.repeattravel %}
+{% set repeattaxiinworkTotal = repeattaxiinworkTotal | float + day.repeattravel_cost | float %}
+{% else %}
+{% set repeattaxiTotal = 0 | float %}
+{% endfor %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="providing-information" method="post" class="form">
+
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+              Select the journeys that are incorrect
+                  </h1>
+                </legend>
+                <div id="waste-hint" class="govuk-hint">
+                Select all the days of travel that you don't believe are correct in the claim.
+                </div>
+
+                {% if data['way-of-claiming'] %}
+                <h2 class="govuk-heading-s">Journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
+                {% else %}
+                <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
+                {% endif %}
+
+                {% for item in data['travel'] | sortBy('day') %}
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="incorrect-journey" name="incorrect-journey" type="checkbox" value="carcasses">
+                    <label class="govuk-label govuk-checkboxes__label" for="incorrect-journey">
+                      {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}} - {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}<br><br>
+                    </label>
+                  </div>
+                </div>
+                {% endfor %}
+
+                {% if data['travel-to-work-date-month-repeat'] %}
+
+                {% if data['way-of-claiming'] %}
+                <h2 class="govuk-heading-s">Journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
+                {% else %}
+                <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
+                {% endif %}
+
+                {% for item in data['repeattravel'] | sortBy('day') %}
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="incorrect-journey-repeat" name="incorrect-journey-repeat" type="checkbox" value="carcasses">
+                    <label class="govuk-label govuk-checkboxes__label" for="incorrect-journey-repeat">
+                      {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}} - {{item.repeattravel_journeys}} {% if repeattaxiTotal === 1 %} journey {% else %} journeys {% endif %}<br><br>
+                    </label>
+                  </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+              </fieldset>
+            </div>
+
+
+
+
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
