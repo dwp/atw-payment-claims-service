@@ -11,7 +11,9 @@ Claim money back from Access to Work
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data ["contact-confirmed"] %}
+      {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true') and (data["answers-checked-sw"]) %}
+      <form action="../portal-screens/check-your-answers" method="post" class="form">
+      {% elseif data ["contact-confirmed"] %}
         <form action="check-your-answers" method="post" class="form">
       {% else %}
         <form action="counter-signatory-name" method="post" class="form">
@@ -60,6 +62,9 @@ Claim money back from Access to Work
                        spellcheck="false" aria-describedby="roll-number-hint">
             </div>
 
+            {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true') and (data["answers-checked-sw"]) %}
+            <input type="hidden" name="new-payee-details-ammendment" value="true">
+            {% endif %}
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
             </button>

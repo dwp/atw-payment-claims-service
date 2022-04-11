@@ -276,10 +276,13 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
 router.post('/support-worker/existing-payee-answers', function (req, res) {
   const payee = req.session.data['existing-payee']
+  const journey = req.session.data['journey-type']
   const checked = req.session.data['contact-confirmed']
 
   if (payee === 'New') {
   res.redirect(`/${urlPrefix}/support-worker/new-payee-name`)
+} else if (journey === 'traveltowork-ammendment') {
+  res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
 } else if (checked){
   res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
 } else {

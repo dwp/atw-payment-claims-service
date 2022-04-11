@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set print = true %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">Claim money back from Access to Work by post</h1>
+
+        <p>If you cannot claim online, you can send Access to Work claims by post.</p>
+
+        <p>You’ll need to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>fill in the paper claim form we sent with your Access to Work award letter</li>
+            <li>include any receipts or invoices we ask for in the claims form</li>
+        </ul>
+
+        <h3 class="govuk-heading-s">You should post your claim to Access to Work:</h3>
+
+        <p class="govuk-body">
+            Access to Work Service Centre<br>
+            Harrow Jobcentre<br>
+            Mail Handling Site A<br>
+            Wolverhampton<br>
+            WV98 1JE
+        </p>
+
+        <p>You’ll get a text message or email to let you know when we’ve received your claim form.</p>
+
+        <p>You can <a class="govuk-link" href="https://www.gov.uk/access-to-work/claiming-from-your-grant"> contact Access to Work</a> to get a paper claim form if you need one.
+
+
+        <!-- <form action="../../index" method="post" class="form">
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Log in
+          </button>
+
+        </form> -->
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}

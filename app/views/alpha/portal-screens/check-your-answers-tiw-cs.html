@@ -227,6 +227,190 @@
               {% endif %}
 
 
+              {% if data ["new-payee-details-ammendment"] %}
+              <h2 class="govuk-heading-m">New details of new person or company being paid</h2>
+              {% else %}
+              <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+              {% endif %}
+
+
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Name
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data["new-payee-full-name"]}}
+                    </dd>
+                    {% if print != true %}
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="../travel-in-work/new-payee-name">
+                            Change
+                            <span class="govuk-visually-hidden">How are you claiming?</span>
+                        </a>
+                    </dd>
+                    {% endif %}
+                </div>
+
+                {%if (data["payee-email"]) %}
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Email address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{data["payee-email"]}}
+                    </dd>
+                    {% if print != true %}
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="../travel-in-work/new-payee-name">
+                            Change
+                            <span class="govuk-visually-hidden">How are you claiming?</span>
+                        </a>
+                    </dd>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {% if data ["new-payee-details-ammendment"] %}
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Address
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {% if data ["new-payee-address-line-1"] %}
+                        {{data["new-payee-address-line-1"]}}<br>
+                        {% if data["new-payee-address-line-2"] %}{{data["new-payee-address-line-2"]}}<br>{% endif %}
+                        {{data["new-payee-address-town"]}}<br>
+                        {{data["new-payee-address-county"]}}<br>
+                        {{data["new-payee-address-postcode"]}}
+                        {% endif %}
+
+                        {% if data["new-payee-address-select"] == "123" %}
+                        123 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-payee-postcode"]}}
+
+                        {% elif data["new-payee-address-select"] == "124" %}
+                        124 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-payee-postcode"]}}
+
+                        {% elif data["new-payee-address-select"] == "125" %}
+                        125 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-payee-postcode"]}}
+
+                        {% elif data["new-payee-address-select"] == "126" %}
+                        126 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-payee-postcode"]}}
+
+                        {% elif data["new-payee-address-select"] == "127" %}
+                        127 Hudsen House<br>
+                        Cresent Lane<br>
+                        Leeds<br>
+                        West Yorkshire<br>
+                        {{data["new-payee-postcode"]}}
+
+                        {% endif %}
+
+
+                    </dd>
+                    {% if print != true %}
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="../travel-in-work/new-payee-address">
+                            Change
+                            <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                        </a>
+                    </dd>
+                    {% endif %}
+                </div>
+
+
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Name on bank account
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          {{data["name-on-the-account"]}}
+
+                      </dd>
+                      {% if print != true %}
+                      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                          <a href="../travel-in-work/banking-details">
+                              Change
+                              <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                          </a>
+                      </dd>
+                      {% endif %}
+                  </div>
+
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Sort code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          {{data["sort-code"]}}
+                      </dd>
+                      {% if print != true %}
+                      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                          <a href="../travel-in-work/banking-details">
+                              Change
+                              <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                          </a>
+                      </dd>
+                    {% endif %}
+                  </div>
+
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Account number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          {{data["account-number"]}}
+                      </dd>
+                      {% if print != true %}
+                      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                          <a href="../travel-in-work/banking-details">
+                              Change
+                              <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                          </a>
+                      </dd>
+                      {% endif %}
+                  </div>
+
+                  {%if (data['roll-number']) %}
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                          Building society roll number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                          {{data["roll-number"]}}
+                      </dd>
+                      {% if print != true %}
+                      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                          <a href="../travel-in-work/banking-details">
+                              Change
+                              <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                          </a>
+                      </dd>
+                      {% endif %}
+                  </div>
+                  {% endif %}
+
+                  {% endif %}
+
+                </dl>
+
 
               <h2 class="govuk-heading-m">Workplace contact details</h2>
 
@@ -267,31 +451,6 @@
               </div>
 
               </dl>
-
-              <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
-
-
-              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Name
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{data["new-payee-full-name"]}}
-                    </dd>
-                </div>
-
-                {%if (data["payee-email"]) %}
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Email address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{data["payee-email"]}}
-                    </dd>
-                </div>
-                {% endif %}
-                </dl>
 
                 <!-- {% if print != true %}
                 <p>You can also <a target="_blank"

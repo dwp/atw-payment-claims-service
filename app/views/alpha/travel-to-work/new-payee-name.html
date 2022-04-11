@@ -11,11 +11,14 @@ Claim money back from Access to Work
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data ["contact-confirmed"] %}
+      {% if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =='true') and (data["ttw-declaration"]) %}
+      <form action="new-payee-address" method="post" class="form">
+      {% elseif (data ["contact-confirmed"]) %}
         <form action="check-your-answers" method="post" class="form">
       {% else %}
       <form action="new-payee-address" method="post" class="form">
       {% endif %}
+
           {% if data["transport-option"] =="taxi" %}
           <span class="govuk-caption-l">Section 3 of 5</span>
           {% else %}
