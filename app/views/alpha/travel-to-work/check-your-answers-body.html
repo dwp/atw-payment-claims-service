@@ -113,7 +113,7 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {%if (data["way-of-claiming"]=="journeys")%}
-                    Total number of journeys taken to or from work each day.
+                    Total number of journeys taken to or from work each day
                     {% elseif (data["way-of-claiming"]=="mileage") %}
                     Total distance in miles travelled to or from work each day
                     {% endif %}
@@ -168,7 +168,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days journeys were made
+                    Days journeys were made in {{data["travel-to-work-date-month"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['milage'] | sortBy('day') %}
@@ -228,7 +228,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days journeys were made
+                    Days journeys were made in {{data["travel-to-work-date-month-repeat"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
 
