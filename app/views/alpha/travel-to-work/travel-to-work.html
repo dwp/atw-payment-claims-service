@@ -18,6 +18,16 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
         </li>
+        {% if data['multiple-employers'] %}
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../multiple-employers/start-a-claim.html">What job and employer do you want to claim against?</a>
+        </li>
+        {% endif %}
+        {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../multiple-award-elements/start-a-claim.html">Claims history type</a>
+        </li>
+        {% endif %}
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="travel-to-work.html">Travel to or from work</a>
         </li>

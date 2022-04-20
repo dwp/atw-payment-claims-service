@@ -17,6 +17,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
         </li>
+        {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="multiple-employer-history.html">Employer history</a>
+        </li>
+        {% endif %}
         {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="multiple-claims-history.html">Claims history type</a>
@@ -56,7 +61,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     <p>About the claims for an adaptation to a vehicle you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% endif %}
 
-                    {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] !== "supportworker") %}
+
+                    {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") and (data['journey-type'] !== "supportworker") %}
+                    <p>You can also <a href="multiple-employer-history">view the claims history of your other awards</a>.</p>
+                    {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] !== "supportworker") %}
                     <p>You can also <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
                     {% endif %}
 

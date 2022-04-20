@@ -28,7 +28,14 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form action="claims-history" method="post" class="form">
+
+
+        <form action="../multiple-employer-history-answer" method="post" class="form">
+
+
+
+
+
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="travel-to-work-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -38,46 +45,35 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     </legend>
 
 
-                    <p>As you have more than one type of award, you can view your history for each claim type.</p>
+                    <p>As you have more than one employer, you can view your history for each employer.</p>
 
 
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="traveltowork" name="journey-type"
+                            <input class="govuk-radios__input" id="journey-type-multipleawards" name="journey-type"
                                    type="radio"
-                                   value="traveltowork">
+                                   value="multipleawards">
 
-                            <label class="govuk-label govuk-radios__label" for="traveltowork">
-                                Travel to or from work {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
+                            <label class="govuk-label govuk-radios__label" for="journey-type-multipleawards">
+                              Deaf Action Charity
                             </label>
                         </div>
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="specialaidsandequipment" name="journey-type"
-                                   type="radio"
-                                   value="specialaidsandequipment">
-                            <label class="govuk-label govuk-radios__label" for="specialaidsandequipment">
-                              Specialist equipment
-                            </label>
-                        </div>
-                        {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                        {% else %}
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="supportworker" name="journey-type"
+                            <input class="govuk-radios__input" id="journey-type-supportworker" name="journey-type"
                                    type="radio"
                                    value="supportworker">
-                            <label class="govuk-label govuk-radios__label" for="supportworker">
-                              Support workers
+                            <label class="govuk-label govuk-radios__label" for="journey-type-supportworker">
+                              Google
                             </label>
                         </div>
-                        {% endif %}
                     </div>
 
                 </fieldset>
             </div>
 
+        
 
-
-              <input type="hidden" name="multiple-awards" value="true">
+              <input type="hidden" name="multiple-employers" value="true">
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
             </button>

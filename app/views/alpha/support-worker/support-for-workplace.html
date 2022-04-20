@@ -18,6 +18,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
         </li>
+        {% if data['multiple-employers'] %}
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../multiple-employers/start-a-claim.html">What job and employer do you want to claim against?</a>
+        </li>
+        {% endif %}
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="support-for-workplace.html">Support for work</a>
         </li>

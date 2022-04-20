@@ -62,10 +62,19 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               <div class="card" id="test-card">
                   <div class="card-body active" @if(url)>
                       <h2 class="heading-small card-heading">
-                        {%if (data['journey-type'] == "specialaidsandequipment") %}
-                          <a class="card-link" href="./equipment-and-adaptations/special-aids-and-equipment">
-                              Send a claim online
-                          </a>
+
+                          {% if ((data['journey-type'] == "multipleawards") or (data['multiple-employers'] == "true")) and (data['multiple-employers'] !== "true") %}
+                            <a class="card-link" href="./multiple-award-elements/start-a-claim">
+                                Send a claim online
+                            </a>
+                          {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                            <a class="card-link" href="./multiple-employers/start-a-claim">
+                                Send a claim online
+                            </a>
+                          {% elseif (data['journey-type'] == "specialaidsandequipment") %}
+                            <a class="card-link" href="./equipment-and-adaptations/special-aids-and-equipment">
+                                    Send a claim online
+                            </a>
                           {% elseif (data['journey-type'] == "specialaidsandequipmentpb") %}
                             <a class="card-link" href="./equipment-and-adaptations-pb/special-aids-and-equipment">
                                 Send a claim online
@@ -130,10 +139,6 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                             <a class="card-link" href="./support-worker-old/start-a-claim">
                                 Send a claim online
                             </a>
-                            {% elseif (data['journey-type'] == "multipleawards") %}
-                              <a class="card-link" href="./multiple-award-elements/start-a-claim">
-                                  Send a claim online
-                              </a>
                             {% elseif (data['journey-type'] == "supportworkeroldv2") %}
                               <a class="card-link" href="./support-worker-old-two/start-a-claim">
                                   Send a claim online
@@ -153,11 +158,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 <div class="card" id="test-card-1">
                     <div class="card-body active" @if(url)>
                         <h2 class="heading-small card-heading">
-                          {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+                          {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['multiple-employers'] !== "true") %}
                             <a class="card-link" href="./portal-screens/multiple-claims-history">
-                            {% else %}
+                          {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                            <a class="card-link" href="./portal-screens/multiple-employer-history">
+                          {% else %}
                             <a class="card-link" href="./portal-screens/claims-history">
-                            {% endif %}
+                          {% endif %}
                                 Claims history  {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
 
                             </a>
@@ -210,9 +217,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       <div class="card" id="test-card-3">
                           <div class="card-body active" @if(url)>
                               <h2 class="heading-small card-heading">
+                                {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                                  <a class="card-link" href="./multiple-employers/employers-grant-information">
+                                      Grant information
+                                  </a>
+                                  {% else %}
                                   <a class="card-link" href="./portal-screens/grant-information">
                                       Grant information
                                   </a>
+                                  {% endif %}
                               </h2>
                               <p class="govuk-body">View information like grant awarded, grant remaining and renew date.</p>
                           </div>

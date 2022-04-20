@@ -54,6 +54,17 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/index`)
   })
 
+  router.post('/multiple-employer-history-answer', function (req, res) {
+    const employer = req.session.data['journey-type']
+
+    if (employer === 'multipleawards') {
+      res.redirect(`/${urlPrefix}/portal-screens/multiple-claims-history`)
+    } else if (employer === 'supportworker') {
+      res.redirect(`/${urlPrefix}/portal-screens/claims-history`)
+    }
+  })
+
+
   // Get
   router.get('/post-login-routing', function (req, res) {
     const useremail = req.query.email

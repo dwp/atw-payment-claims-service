@@ -27,6 +27,7 @@ require(`../views/${folderWithinViews}/travel-in-work-devv2/_travel-in-work-rout
 require(`../views/${folderWithinViews}/travel-to-work-old/_travel-to-work-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/adaptation-to-vehicle/_adaptation-to-vehicle-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/multiple-award-elements/_multiple-award-routes`)(folderWithinViews, urlPrefix, router)
+require(`../views/${folderWithinViews}/multiple-employers/_multiple-employer-routes`)(folderWithinViews, urlPrefix, router)
 
 
 
