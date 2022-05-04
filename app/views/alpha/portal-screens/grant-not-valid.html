@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-not-valid.html">You cannot make a claim using this service</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">Sorry, you cannot make a claim using this service</h1>
+
+
+        <p>This might be because you:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>do not have any grant left</li>
+            <li>are outside your grant period</li>
+        </ul>
+
+        <h2 class="govuk-heading-s">If you are outside your grant period</h2>
+
+
+        <p>You’ll need to contact the <a href="contact-atw">Access to Work helpline</a> to speak to an adviser. </p>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

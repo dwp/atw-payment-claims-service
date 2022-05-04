@@ -234,6 +234,20 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 </button>
               </form>
 
+              <form action="alpha/start-journey" method="post" class="form">
+                <input type="hidden" id="journey-type" name="journey-type" value="notvalid">
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Grant no longer valid
+                </button>
+              </form>
+
+              <form action="alpha/portal-screens/not-invited-pb" method="post" class="form">
+
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Individual not part of private beta
+                </button>
+              </form>
+
               <form action="alpha/portal-screens/dth-kick-out" method="post" class="form">
 
                 <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -242,7 +256,6 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               </form>
 
               <p>The IDV page is not part of our service technically but it will be shown to citizens who cannot verify their identity through DTH</p>
-
 
 
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
