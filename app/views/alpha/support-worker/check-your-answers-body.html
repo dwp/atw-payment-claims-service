@@ -78,8 +78,11 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
-                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} </br>{{item.support_hours}} Hours
-                   {% if item.providor %}</br> {{item.providor}} {% endif %}</br></br>
+                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} Hours
+                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                  {% else %}
+                   {% if item.providor %}<br> {{item.providor}} {% endif %}
+                   {% endif %}<br><br>
                    {% endfor %}
 
                 </dd>
@@ -140,7 +143,11 @@
 
                        {% for item in data['repeatsupport'] | sortBy('day') %}
                        {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}} <br>{{item.repeatsupport_hours}} hours
-                        <br> {{item.providor}} </br> </br>
+                        <br>
+                        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                        {% else %}
+                        {{item.providor}}
+                        {% endif %} <br>
                         {% endfor %}
 
 
