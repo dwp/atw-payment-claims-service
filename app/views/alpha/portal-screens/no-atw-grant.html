@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set print = true %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+classes: "govuk-!-display-none-print",
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">Sorry, you cannot use this service</h1>
+
+
+
+        <p>We have been unable to locate your grant award information. This might be because you need to apply and receive your grant award.</p>
+
+        <p>You can <a class="govuk-link" href="https://www.gov.uk/access-to-work/claiming-from-your-grant"> contact Access to Work</a> if you need to speak to an Access to Work Advisor</p>
+
+        <h2 class="govuk-heading-s">If you haven't applied for an Access to Work grant</h2>
+        <p>You’ll need to <a class="govuk-link" href="https://www.gov.uk/access-to-work">submit an Access to Work application.</p>
+
+    </div>
+</div>
+
+
+{% endblock %}

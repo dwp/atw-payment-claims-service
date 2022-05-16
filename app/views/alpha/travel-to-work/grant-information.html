@@ -14,6 +14,24 @@ Claim money back from Access to Work
 
         <h1 class="govuk-heading-l">About your grant</h1>
 
+        {% if data ['grant-valid'] == "notvalid" %}
+
+          <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You do not have any grant left.
+              <a class="govuk-notification-banner__link" href="../portal-screens/contact-atw">Talk to an adviser</a> before you use this service.
+            </p>
+          </div>
+        </div>
+
+        {% endif %}
+
         <p>Your support starts from 05 March 2021 and is available until 05 March 2024 if your needs do not change.</p>
 
         <p>If your needs do change then you need to <a href="../portal-screens/contact-atw">contact us</a>.</p>
@@ -67,9 +85,15 @@ Claim money back from Access to Work
                     <dt class="govuk-summary-list__key">
                       Amount of grant left
                     </dt>
+                    {% if data ['grant-valid'] == "notvalid" %}
+                    <dd class="govuk-summary-list__value">
+                      £0
+                    </dd>
+                    {% else %}
                     <dd class="govuk-summary-list__value">
                       £6,500
                     </dd>
+                    {% endif %}
                   </div>
 
                 </dl>

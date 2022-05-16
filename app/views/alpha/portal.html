@@ -31,10 +31,31 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-
+      <!-- <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You have 1 claim that has not been confirmed. You need to
+            <a class="govuk-notification-banner__link" href="./portal-screens/claims-history">correct the claim</a> and resubmit it.
+          </p>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You need to
+            <a class="govuk-notification-banner__link" href="./portal-screens/personal-information">tell us your email address</a> so we can send you notifications.
+          </p>
+        </div>
+      </div> -->
 
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-two-thirds">
+
+
+
                 <span class="govuk-caption-xl">Account home</span>
                 <h1 class="govuk-heading-xl">Joe Bloggs</h1>
 
@@ -42,10 +63,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           <div class="govuk-inset-text">
             You have <b>1</b> claim that has not been confirmed. You need to <a href="./portal-screens/claims-history"> correct the claim</a> and resubmit it.
           </div>
+          {% endif %}
 
-
-
-
+          {% if data["new-email-address"] %}
+          {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+          <div class="govuk-inset-text">
+          You need to <a href="./portal-screens/personal-information"> tell us your email address</a> so we can send you notifications.
+          </div>
           {% endif %}
 
         </div>
@@ -191,7 +215,9 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                       <div class="card-body active" @if(url)>
                           <h2 class="heading-small card-heading">
                               <a class="card-link" href="./portal-screens/personal-information">
-                                  Personal information
+                                  Personal information{% if data["new-email-address"] %} {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                                    <span id="notifications" class="moj-notification-badge">1</span>
+                                    {% endif %}
                               </a>
                           </h2>
                           <p class="govuk-body">View and change your personal information.</p>

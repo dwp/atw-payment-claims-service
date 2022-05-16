@@ -36,6 +36,12 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                         </h1>
                     </legend>
                 </fieldset>
+                {% if data["new-email-address"] %}
+                {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                <div class="govuk-inset-text">
+                Tell us your email address to receive notifications about your claims
+                </div>
+                {% endif %}
 
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                   <div class="govuk-summary-list__row">
@@ -59,8 +65,11 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                         Email address
                     </dt>
                     <dd class="govuk-summary-list__value">
-
+                      {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                      Not present
+                      {% else %}
                       joe.bloggs@deafactioncharity.com
+                      {% endif %}
 
                     </dd>
                 </div>
@@ -87,16 +96,19 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                         LS5 5NE
                     </dd>
                 </div>
-          
+
                 </dl>
 
-                <div class="govuk-inset-text">
+                <!-- <div class="govuk-inset-text">
                 You must let us know if these details change. If you tell us about a change, your new details will take a few days to show in your account.
-                </div>
+                {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %} <br> <br>
+                also tell us your email address to receive notifications about your claims
+                {% endif %}
+                </div> -->
 
                 <!-- <p>You can <a href="personal-information-change"> request to change any of your personal information</a> if you want.</p> -->
 
-
+                <p>You must let us know if these details change. If you tell us about a change, your new details will take a few days to show in your account.</p>
 
                 <form action="personal-information-change" method="post" class="form">
               <button class="govuk-button" data-module="govuk-button">

@@ -235,7 +235,8 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
               </form>
 
               <form action="alpha/start-journey" method="post" class="form">
-                <input type="hidden" id="journey-type" name="journey-type" value="notvalid">
+                <input type="hidden" id="journey-type" name="journey-type" value="traveltowork">
+                <input type="hidden" id="grant-valid" name="grant-valid" value="notvalid">
                 <button type="submit" class="govuk-button" data-module="govuk-button">
                     Grant no longer valid
                 </button>
@@ -245,6 +246,13 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
                 <button type="submit" class="govuk-button" data-module="govuk-button">
                     Individual not part of private beta
+                </button>
+              </form>
+
+              <form action="/alpha/portal-screens/no-atw-grant" method="post" class="form">
+
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Individual has no data in disc
                 </button>
               </form>
 

@@ -37,6 +37,24 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
         <h1 class="govuk-heading-l">Information about your grant</h1>
 
+        {% if data ['grant-valid'] == "notvalid" %}
+
+          <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You do not have any grant left.
+              <a class="govuk-notification-banner__link" href="../portal-screens/contact-atw">Talk to an adviser</a> before you use this service.
+            </p>
+          </div>
+        </div>
+
+        {% endif %}
+
         {% if (data['journey-type'] == "supportworker") and (data['multiple-employers'] == "true") %}
         <p>We’ll help pay for support to make it easier for you to do your job. This support can be used whilst you work as a Human Resources assistant at Google. </p>
         {% else %}
@@ -144,7 +162,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           </div>
         </dl>
 
-        {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") or (data['journey-type'] == "notvalid")%}
+        {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") %}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -237,9 +255,15 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
             <dt class="govuk-summary-list__key">
               Amount of grant left
             </dt>
+            {% if data ['grant-valid'] == "notvalid" %}
+            <dd class="govuk-summary-list__value">
+              £0
+            </dd>
+            {% else %}
             <dd class="govuk-summary-list__value">
               £6,500
             </dd>
+            {% endif %}
           </div>
 
         </dl>
