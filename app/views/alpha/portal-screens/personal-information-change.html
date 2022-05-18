@@ -19,7 +19,7 @@ Claim money back from Access to Work
                     {% if data["new-email-address"] %}
                     {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
                     <div class="govuk-inset-text">
-                    tell us your email address to receive notifications about your claims before you continue
+                    Add an email address so we can let you know the progress of your claims.
                     </div>
                     {% endif %}
 
@@ -40,7 +40,7 @@ Claim money back from Access to Work
                       <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                           <a href="new-name">
                               Change
-                              <span class="govuk-visually-hidden">name</span>
+                              <span class="govuk-visually-hidden">add name</span>
                           </a>
                       </dd>
                   </div>
@@ -52,16 +52,29 @@ Claim money back from Access to Work
                       {% if data['new-email-address'] %}
                       {{data["new-email-address"]}}
                       {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                      Not present
+                      Not given
                       {% else %}
                       joe.bloggs@deafactioncharity.com
                       {% endif %}
                     </dd>
                     <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                        <a href="new-email-address">
-                            Change
-                            <span class="govuk-visually-hidden"> email address</span>
-                        </a>
+                      {% if data['new-email-address'] %}
+                      <a href="new-email-address">
+                          Change
+                          <span class="govuk-visually-hidden"> email address</span>
+                      </a>
+                      {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                      <a href="new-email-address">
+                          Add email
+                          <span class="govuk-visually-hidden"> add an email address</span>
+                      </a>
+                      {% else %}
+                      <a href="new-email-address">
+                          Change
+                          <span class="govuk-visually-hidden"> change email address</span>
+                      </a>
+                      {% endif %}
+
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -78,7 +91,7 @@ Claim money back from Access to Work
                     <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                         <a href="new-phone-number">
                             Change
-                            <span class="govuk-visually-hidden"> Phone number</span>
+                            <span class="govuk-visually-hidden"> add phone number</span>
                         </a>
                     </dd>
                 </div>
@@ -143,7 +156,7 @@ Claim money back from Access to Work
                     <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                         <a href="new-citizen-address">
                             Change
-                            <span class="govuk-visually-hidden"> New citizen address</span>
+                            <span class="govuk-visually-hidden"> change citizen address</span>
                         </a>
                     </dd>
                     {% endif %}

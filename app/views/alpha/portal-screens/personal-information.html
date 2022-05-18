@@ -39,7 +39,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                 {% if data["new-email-address"] %}
                 {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
                 <div class="govuk-inset-text">
-                Tell us your email address to receive notifications about your claims
+                Add an email address so we can let you know the progress of your claims.
                 </div>
                 {% endif %}
 
@@ -66,7 +66,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
                     </dt>
                     <dd class="govuk-summary-list__value">
                       {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                      Not present
+                      Not given
                       {% else %}
                       joe.bloggs@deafactioncharity.com
                       {% endif %}
