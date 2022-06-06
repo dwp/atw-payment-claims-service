@@ -35,6 +35,11 @@ Claim money back from Access to Work
                 </li>
 
                 {% endfor %}
+                {% if data['uploads'].length === 0 %}
+                <div class="govuk-inset-text">
+                  You will need to upload a receipt or invoice to send a claim
+                </div>
+                {% endif %}
 
 
             </ul>

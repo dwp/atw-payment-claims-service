@@ -52,9 +52,10 @@ Claim money back from Access to Work
                     <p>We’ve sent you an email with a 6-digit security number. It should only take a few minutes to arrive.<p>
                     {% endif %}
 
-                      <label class="govuk-hint" for="event-name">
+
+                      <div class="govuk-hint" for="event-name">
                        For example, 123456
-                     </label>
+                     </div>
                      {% if (data ['one-time-code'] =='135246') or (data ['one-time-code'] == '246135') %}
                      <span id="national-insurance-number-error" class="govuk-error-message">
                        <span class="govuk-visually-hidden">Error:</span> Enter the 6-digit code we sent to you by email

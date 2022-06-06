@@ -1,0 +1,252 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        {% if data ['multiple-employers'] == "true" %}
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../multiple-employers/employers-grant-information.html">What job and employer grant information do you want to see?</a>
+        </li>
+        {% endif %}
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-information.html">Information about your grant</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="grant-information-history.html">Grant award history</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-l">Grant award history</h1>
+
+        <!-- <h2 class="govuk-heading-m">Specialist Equipment grants</h2> -->
+
+
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button"  id="accordion-default-heading-1">
+                  Specialist equipment
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+            5 March 2019 until 5 March 2022
+               </div>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Agreed support and cost
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2089.98 - Hearing aid <br>
+                    £102.00 - Keyboard <br>
+                    £474.00 - Magnifier and speech software <br>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Total cost of support
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2665.98
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Total amount you or your employer have agreed to contribute
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £266.59
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Total amount Access to Work will contribute
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2399.39
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Amount of grant left
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2089.98
+                  </dd>
+                </div>
+              </dl>
+
+            </div>
+          </div>
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Specialist equipment
+                </span>
+              </h2>
+              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+            5 March 2017 until 5 March 2019
+               </div>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+
+              <dl class="govuk-summary-list govuk-summary-list--no-border">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Agreed support and cost
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2089.98 - Hearing aid <br>
+                    £102.00 - Keyboard <br>
+                    £474.00 - Magnifier and speech software <br>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Total cost of support
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2665.98
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Total amount you or your employer have agreed to contribute
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £266.59
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Total amount Access to Work will contribute
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2399.39
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Amount of grant left
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2089.98
+                  </dd>
+                </div>
+              </dl>
+
+            </div>
+          </div>
+
+
+
+
+
+
+        <!-- <h2 class="govuk-heading-m">Travel to or from work grants</h2> -->
+
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+              Travel to or from work
+              </span>
+            </h2>
+            <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+          5 March 2019 until 5 March 2022
+             </div>
+          </div>
+          <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+
+            <dl class="govuk-summary-list govuk-summary-list--no-border">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Agreed support and cost
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £45.00 per journey
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total cost of support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £7,200
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total amount you or your employer have agreed to contribute
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £7.50 per journey
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total amount Access to Work will contribute
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £37.50 per journey
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Amount of grant left
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £6,500
+                </dd>
+              </div>
+
+            </dl>
+          </div>
+          </div>
+          </div>
+
+
+
+        <form action="../portal" method="post" class="form">
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Return to account home
+          </button>
+
+        </form>
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}
