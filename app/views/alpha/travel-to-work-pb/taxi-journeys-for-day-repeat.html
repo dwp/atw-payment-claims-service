@@ -241,7 +241,11 @@ Claim money back from Access to Work
                             data-module="govuk-button"
                             name="action"
                             value="add">
-                        Add another day
+                            {% if data['transport-option'] == "taxi-during-work"%}
+                        Add another journey
+                        {% else %}
+                        Add another day of travel
+                        {% endif %}
                     </button>
                 </div>
 
