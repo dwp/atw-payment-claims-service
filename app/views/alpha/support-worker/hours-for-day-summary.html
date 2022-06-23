@@ -54,7 +54,7 @@ Claim money back from Access to Work
                   {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}}
               </dt>
               <dd class="govuk-summary-list__value">
-              {{item.support_hours}} hours
+              {{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
               <br>{{item.providor}}
               </dd>
               <dd class="govuk-summary-list__actions">

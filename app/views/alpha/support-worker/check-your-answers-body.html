@@ -78,7 +78,8 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
-                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} Hours
+                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
+                  {{item.travel_journeys}}
                   {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
                   {% else %}
                    {% if item.providor %}<br> {{item.providor}} {% endif %}
@@ -137,13 +138,13 @@
 
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                      
+
                         Days of support in {{data["repeatsupport-month"] | numberMonth}} and name of support worker or agency
                     </dt>
                     <dd class="govuk-summary-list__value">
 
                        {% for item in data['repeatsupport'] | sortBy('day') %}
-                       {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}} <br>{{item.repeatsupport_hours}} hours
+                       {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}} <br>{{item.repeatsupport_hours}} {% if repeathourTotal === 1 %} hour {% else %} hours {% endif %}
                         <br>
                         {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
                         {% else %}
@@ -179,7 +180,7 @@
                     Total support
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{hourTotal + repeathourTotal}} hours <br>
+                    {{hourTotal + repeathourTotal}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %} <br>
 
                 </dd>
                 {% if print != true %}
