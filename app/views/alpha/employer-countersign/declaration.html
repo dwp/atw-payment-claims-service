@@ -15,25 +15,25 @@ Claim money back from Access to Work
             <h1 class="govuk-heading-xl">Declaration</h1>
 
             {% if (data["answers-checked-sw"]) %}
-            <p>By sending this claim, you agree that:</p>
+            <p>By confirming this claim, you agree that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                 <li>Joe Bloggs received support on the days they’re claiming for</li>
                 <li>Joe Bloggs is only claiming for support they received in the last 9 months</li>
-                <li>Access to Work can contact you if we need more information to process Joe Bloggs’ claim</li>
+                <li>we can contact you if we need more information to process Joe Bloggs’ claim</li>
             </ul>
             {% elseif (data["tiw-declaration"]) %}
-            <p>By sending this claim, you agree that:</p>
+            <p>By confirming this claim, you agree that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                 <li>your employee travelled during work on the days they’re claiming for</li>
                 <li>your employee is only claiming for journeys made in the last 9 months</li>
-                <li>Access to Work can contact you if we require more information to process your employee’s claim</li>
+                <li>we can contact you if we require more information to process your employee’s claim</li>
             </ul>
             {% else %}
-            <p>By sending this claim, you agree that:</p>
+            <p>By confirming this claim, you agree that:</p>
             <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                 <li>your employee travelled to work on the days they’re claiming for</li>
                 <li>your employee is only claiming for journeys made in the last 9 months</li>
-                <li>Access to Work can contact you if we require more information to process your employee’s claim</li>
+                <li>we can contact you if we require more information to process your employee’s claim</li>
             </ul>
             {% endif %}
 
@@ -44,7 +44,7 @@ Claim money back from Access to Work
                 <input type="hidden" name="employer-declaration" value="true">
 
                 <button type="submit" class="govuk-button govuk-!-display-none-print" data-module="govuk-button">
-                    I agree - send this claim
+                    Agree and confirm
                 </button>
 
             </form>
