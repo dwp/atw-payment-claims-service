@@ -90,15 +90,15 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
 
                           {% if ((data['journey-type'] == "multipleawards") or (data['multiple-employers'] == "true")) and (data['multiple-employers'] !== "true") %}
                             <a class="card-link" href="./multiple-award-elements/start-a-claim">
-                                Send a claim online
+                                Start a claim
                             </a>
                           {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
                             <a class="card-link" href="./multiple-employers/start-a-claim">
-                                Send a claim online
+                              Start a claim
                             </a>
                           {% elseif (data['journey-type'] == "specialaidsandequipment") %}
                             <a class="card-link" href="./equipment-and-adaptations/special-aids-and-equipment">
-                                    Send a claim online
+                              Start a claim
                             </a>
                           {% elseif (data['journey-type'] == "specialaidsandequipmentpb") %}
                             <a class="card-link" href="./equipment-and-adaptations-pb/special-aids-and-equipment">
@@ -106,79 +106,79 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
                             </a>
                           {% elseif (data['journey-type'] == "specialaidsandequipmentdev") %}
                             <a class="card-link" href="./equipment-and-adaptations-dev/special-aids-and-equipment">
-                                Send a claim online
+                              Start a claim
                             </a>
                         {% elseif (data['journey-type'] == "supportworker") %}
                           <a class="card-link" href="./support-worker/support-for-workplace">
-                              Send a claim online
+                            Start a claim
                           </a>
                           {% elseif (data['journey-type'] == "supportworkerpb") %}
                             <a class="card-link" href="./support-worker-pb/support-for-workplace">
-                                Send a claim online
+                              Start a claim
                             </a>
                           {% elseif (data['journey-type'] == "supportworkerdev") %}
                             <a class="card-link" href="./support-worker-dev/support-for-workplace">
-                                Send a claim online
+                              Start a claim
                             </a>
                         {% elseif (data['journey-type'] == "traveltowork") %}
                           <a class="card-link" href="./travel-to-work/travel-to-work">
-                              Send a claim online
+                            Start a claim
                           </a>
                           {% elseif (data['journey-type'] == "adaptations") %}
                             <a class="card-link" href="./adaptation-to-vehicle/adaptation-to-vehicle">
-                                Send a claim online
+                              Start a claim
                             </a>
                           {% elseif (data['journey-type'] == "traveltoworkpb") %}
                             <a class="card-link" href="./travel-to-work-pb/travel-to-work">
-                                Send a claim online
+                              Start a claim
                             </a>
                           {% elseif (data['journey-type'] == "traveltoworkdev") %}
                             <a class="card-link" href="./travel-to-work-dev/travel-to-work">
-                                Send a claim online
+                              Start a claim
                             </a>
                           {% elseif (data['journey-type'] == "travelinwork") %}
                             <a class="card-link" href="./travel-in-work/travel-to-work">
-                                Send a claim online
+                              Start a claim
                             </a>
                             {% elseif (data['journey-type'] == "travelinworkpb") %}
                               <a class="card-link" href="./travel-in-work-pb/travel-to-work">
-                                  Send a claim online
+                                Start a claim
                               </a>
                             {% elseif (data['journey-type'] == "travelinworkdev") %}
                               <a class="card-link" href="./travel-in-work-dev/travel-to-work">
-                                  Send a claim online
+                                Start a claim
                               </a>
                               {% elseif (data['journey-type'] == "travelinworkdevv2") %}
                                 <a class="card-link" href="./travel-in-work-devv2/travel-to-work">
-                                    Send a claim online
+                                  Start a claim
                                 </a>
                           {% elseif (data['journey-type'] == "traveltoworkold") %}
                             <a class="card-link" href="./travel-to-work-old/start-a-claim">
-                                Send a claim online
+                              Start a claim
                             </a>
                         {% elseif (data['journey-type'] == "specialaidsandequipmentvi") %}
                           <a class="card-link" href="./equipment-and-adaptations-vi/start-a-claim">
-                              Send a claim online
+                            Start a claim
                           </a>
                           {% elseif (data['journey-type'] == "supportworkerold") %}
                             <a class="card-link" href="./support-worker-old/start-a-claim">
-                                Send a claim online
+                              Start a claim
                             </a>
                             {% elseif (data['journey-type'] == "supportworkeroldv2") %}
                               <a class="card-link" href="./support-worker-old-two/start-a-claim">
-                                  Send a claim online
+                                Start a claim
                               </a>
                             {% elseif (data['journey-type'] == "notvalid") %}
                               <a class="card-link" href="./portal-screens/grant-not-valid">
-                                  Send a claim online
+                                Start a claim
                               </a>
                         {% else %}
                         <a class="card-link" href="#">
-                            Send a claim online
+                          Start a claim
                         </a>
                         {% endif %}
                       </h2>
-                      <p class="govuk-body">Send a claim and copies of receipts or invoices online.</p>
+                      <p class="govuk-body">Claim money back from your grant.</p>
                   </div>
               </div>
             </div>
@@ -194,7 +194,7 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
                           {% else %}
                             <a class="card-link" href="./portal-screens/claims-history">
                           {% endif %}
-                                Claims history  {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
+                                Your claims  {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
 
                             </a>
                         </h2>
@@ -215,12 +215,12 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
                       <div class="card-body active" @if(url)>
                           <h2 class="heading-small card-heading">
                               <a class="card-link" href="./portal-screens/personal-information">
-                                  Personal information{% if data["new-email-address"] %} {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                                  Personal details{% if data["new-email-address"] %} {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
                                     <span id="notifications" class="moj-notification-badge">1</span>
                                     {% endif %}
                               </a>
                           </h2>
-                          <p class="govuk-body">View and change your personal information.</p>
+                          <p class="govuk-body">View and update your personal details.</p>
                       </div>
 
                       <!-- <div class="card-action">
@@ -236,10 +236,10 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
                         <div class="card-body active" @if(url)>
                             <h2 class="heading-small card-heading">
                                 <a class="card-link" href="./portal-screens/claim-via-post">
-                                    Send your claim by post
+                                    How to claim by post
                                 </a>
                             </h2>
-                            <p class="govuk-body">Find out how to send a claim by post if you cannot send a claim online.</p>
+                            <p class="govuk-body">Get a claim form and send a claim by post if you cannot claim online.</p>
                         </div>
                     </div>
                   </div>
@@ -250,15 +250,15 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
                               <h2 class="heading-small card-heading">
                                 {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
                                   <a class="card-link" href="./multiple-employers/employers-grant-information">
-                                      Grant information
+                                      Grant summary
                                   </a>
                                   {% else %}
                                   <a class="card-link" href="./portal-screens/grant-information">
-                                      Grant information
+                                      Grant summary
                                   </a>
                                   {% endif %}
                               </h2>
-                              <p class="govuk-body">View information like grant awarded, grant remaining and renew date.</p>
+                              <p class="govuk-body">Your grant total, how much you have left and when you'll need to renew.</p>
                           </div>
                       </div>
                     </div>
@@ -270,7 +270,7 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
                                         Contact us
                                     </a>
                                 </h2>
-                                <p class="govuk-body">Find out how to contact us if you have any questions about your claims.</p>
+                                <p class="govuk-body">Contact us if you have any questions about your claims.</p>
                             </div>
                         </div>
                       </div>
