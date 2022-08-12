@@ -119,7 +119,8 @@ middleware.forEach(func => app.use(func))
 // Set up App
 var appViews = extensions.getAppViews([
   path.join(__dirname, '/app/views/'),
-  path.join(__dirname, '/lib/')
+  path.join(__dirname, '/lib/'),
+  path.resolve(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
 ])
 
 var nunjucksConfig = {

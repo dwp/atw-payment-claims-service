@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "card/macro.njk" import card %}
 
 {% block pageTitle %}
 
@@ -11,17 +12,18 @@ Claim money back from Access to Work
 tag: {
 text: "alpha"
 },
-html: 'This is a new service – your <a class="govuk-link" href="./feedback-page">feedback</a> will help us to improve it.'
+html: 'This is a new service – your <a class="govuk-link"
+                                       href="./feedback-page">feedback</a> will help us to improve it.'
 }) }}
 
 
 <div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="portal">Home</a>
-    </li>
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="portal">Home</a>
+        </li>
 
-  </ol>
+    </ol>
 </div>
 
 
@@ -31,255 +33,216 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <!-- <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            You have 1 claim that has not been confirmed. You need to
-            <a class="govuk-notification-banner__link" href="./portal-screens/claims-history">correct the claim</a> and resubmit it.
-          </p>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            You need to
-            <a class="govuk-notification-banner__link" href="./portal-screens/personal-information">tell us your email address</a> so we can send you notifications.
-          </p>
-        </div>
-      </div> -->
+        <!-- <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You have 1 claim that has not been confirmed. You need to
+              <a class="govuk-notification-banner__link" href="./portal-screens/claims-history">correct the claim</a> and resubmit it.
+            </p>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              You need to
+              <a class="govuk-notification-banner__link" href="./portal-screens/personal-information">tell us your email address</a> so we can send you notifications.
+            </p>
+          </div>
+        </div> -->
 
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
 
 
                 <span class="govuk-caption-xl">Account home</span>
                 <h1 class="govuk-heading-xl">Joe Bloggs</h1>
 
-          {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
-          <div class="govuk-inset-text">
-            You have <b>1</b> claim that has not been confirmed. You need to <a href="./portal-screens/claims-history"> correct the claim</a> and resubmit it.
-          </div>
-          {% endif %}
+                {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and
+                (data['citizen-delared'] !=="true")%}
+                <div class="govuk-inset-text">
+                    You have <b>1</b> claim that has not been confirmed. You need to <a
+                        href="./portal-screens/claims-history"> correct the claim</a> and resubmit it.
+                </div>
+                {% endif %}
 
-          {% if data["new-email-address"] %}
-          {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-          <div class="govuk-inset-text">
-          <a href="./portal-screens/personal-information">Add an email address</a> to your personal information so we can let you know the progress of your claims.
-          </div>
-          {% endif %}
+                {% if data["new-email-address"] %}
+                {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                <div class="govuk-inset-text">
+                    <a href="./portal-screens/personal-information">Add an email address</a> to your personal
+                    information so we can let you know the progress of your claims.
+                </div>
+                {% endif %}
 
+            </div>
         </div>
-      </div>
-
-
-
 
 
         <hr class="govuk-section-break govuk-section-break--s govuk-section-break">
 
 
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-third">
-              <div class="card" id="test-card">
-                  <div class="card-body active" @if(url)>
-                      <h2 class="heading-small card-heading">
 
-                          {% if ((data['journey-type'] == "multipleawards") or (data['multiple-employers'] == "true")) and (data['multiple-employers'] !== "true") %}
-                            <a class="card-link" href="./multiple-award-elements/start-a-claim">
-                                Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                            <a class="card-link" href="./multiple-employers/start-a-claim">
-                                Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "specialaidsandequipment") %}
-                            <a class="card-link" href="./equipment-and-adaptations/special-aids-and-equipment">
-                                    Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "specialaidsandequipmentpb") %}
-                            <a class="card-link" href="./equipment-and-adaptations-pb/special-aids-and-equipment">
-                                Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "specialaidsandequipmentdev") %}
-                            <a class="card-link" href="./equipment-and-adaptations-dev/special-aids-and-equipment">
-                                Send a claim online
-                            </a>
-                        {% elseif (data['journey-type'] == "supportworker") %}
-                          <a class="card-link" href="./support-worker/support-for-workplace">
-                              Send a claim online
-                          </a>
-                          {% elseif (data['journey-type'] == "supportworkerpb") %}
-                            <a class="card-link" href="./support-worker-pb/support-for-workplace">
-                                Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "supportworkerdev") %}
-                            <a class="card-link" href="./support-worker-dev/support-for-workplace">
-                                Send a claim online
-                            </a>
-                        {% elseif (data['journey-type'] == "traveltowork") %}
-                          <a class="card-link" href="./travel-to-work/travel-to-work">
-                              Send a claim online
-                          </a>
-                          {% elseif (data['journey-type'] == "adaptations") %}
-                            <a class="card-link" href="./adaptation-to-vehicle/adaptation-to-vehicle">
-                                Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "traveltoworkpb") %}
-                            <a class="card-link" href="./travel-to-work-pb/travel-to-work">
-                                Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "traveltoworkdev") %}
-                            <a class="card-link" href="./travel-to-work-dev/travel-to-work">
-                                Send a claim online
-                            </a>
-                          {% elseif (data['journey-type'] == "travelinwork") %}
-                            <a class="card-link" href="./travel-in-work/travel-to-work">
-                                Send a claim online
-                            </a>
-                            {% elseif (data['journey-type'] == "travelinworkpb") %}
-                              <a class="card-link" href="./travel-in-work-pb/travel-to-work">
-                                  Send a claim online
-                              </a>
-                            {% elseif (data['journey-type'] == "travelinworkdev") %}
-                              <a class="card-link" href="./travel-in-work-dev/travel-to-work">
-                                  Send a claim online
-                              </a>
-                              {% elseif (data['journey-type'] == "travelinworkdevv2") %}
-                                <a class="card-link" href="./travel-in-work-devv2/travel-to-work">
-                                    Send a claim online
-                                </a>
-                          {% elseif (data['journey-type'] == "traveltoworkold") %}
-                            <a class="card-link" href="./travel-to-work-old/start-a-claim">
-                                Send a claim online
-                            </a>
-                        {% elseif (data['journey-type'] == "specialaidsandequipmentvi") %}
-                          <a class="card-link" href="./equipment-and-adaptations-vi/start-a-claim">
-                              Send a claim online
-                          </a>
-                          {% elseif (data['journey-type'] == "supportworkerold") %}
-                            <a class="card-link" href="./support-worker-old/start-a-claim">
-                                Send a claim online
-                            </a>
-                            {% elseif (data['journey-type'] == "supportworkeroldv2") %}
-                              <a class="card-link" href="./support-worker-old-two/start-a-claim">
-                                  Send a claim online
-                              </a>
-                            {% elseif (data['journey-type'] == "notvalid") %}
-                              <a class="card-link" href="./portal-screens/grant-not-valid">
-                                  Send a claim online
-                              </a>
-                        {% else %}
-                        <a class="card-link" href="#">
-                            Send a claim online
-                        </a>
-                        {% endif %}
-                      </h2>
-                      <p class="govuk-body">Send a claim and copies of receipts or invoices online.</p>
-                  </div>
-              </div>
-            </div>
-
-            <div class="govuk-grid-column-one-third">
-                <div class="card" id="test-card-1">
-                    <div class="card-body active" @if(url)>
-                        <h2 class="heading-small card-heading">
-                          {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['multiple-employers'] !== "true") %}
-                            <a class="card-link" href="./portal-screens/multiple-claims-history">
-                          {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                            <a class="card-link" href="./portal-screens/multiple-employer-history">
-                          {% else %}
-                            <a class="card-link" href="./portal-screens/claims-history">
-                          {% endif %}
-                                Claims history  {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}<span id="notifications" class="moj-notification-badge">1</span>{% endif %}
-
-                            </a>
-                        </h2>
-                        <p class="govuk-body">Check what stage a claim is at and view previous claims we’ve paid.</p>
-                    </div>
+            <ul class="nhsuk-grid-row nhsuk-card-group">
 
 
+                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+
+                    {% if ((data['journey-type'] == "multipleawards") or (data['multiple-employers'] == "true"))
+                    and (data['multiple-employers'] !== "true") %}
+                    {% set sendClaimLink %}./multiple-award-elements/start-a-claim{% endset %}
+
+                    {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] ==
+                    "true") %}
+                    {% set sendClaimLink %}./multiple-employers/start-a-claim{% endset %}
+
+                    {% elseif (data['journey-type'] == "specialaidsandequipment") %}
+                    {% set sendClaimLink %}./equipment-and-adaptations/special-aids-and-equipment{% endset %}
+                    {% elseif (data['journey-type'] == "specialaidsandequipmentpb") %}
+                    {% set sendClaimLink %}./equipment-and-adaptations-pb/special-aids-and-equipment{% endset %}
+                    {% elseif (data['journey-type'] == "specialaidsandequipmentdev") %}
+                    {% set sendClaimLink %}./equipment-and-adaptations-dev/special-aids-and-equipment{% endset %}
+
+                    {% elseif (data['journey-type'] == "supportworker") %}
+                    {% set sendClaimLink %}./support-worker/support-for-workplace{% endset %}
+
+                    {% elseif (data['journey-type'] == "supportworkerpb") %}
+                    {% set sendClaimLink %}./support-worker-pb/support-for-workplace{% endset %}
+
+                    {% elseif (data['journey-type'] == "supportworkerdev") %}
+                    {% set sendClaimLink %}./support-worker-dev/support-for-workplace{% endset %}
+
+                    {% elseif (data['journey-type'] == "traveltowork") %}
+                    {% set sendClaimLink %}./travel-to-work/travel-to-work{% endset %}
+
+                    {% elseif (data['journey-type'] == "adaptations") %}
+                    {% set sendClaimLink %}./adaptation-to-vehicle/adaptation-to-vehicle{% endset %}
+
+                    {% elseif (data['journey-type'] == "traveltoworkpb") %}
+                    {% set sendClaimLink %}./travel-to-work-pb/travel-to-work{% endset %}
+
+                    {% elseif (data['journey-type'] == "traveltoworkdev") %}
+                    {% set sendClaimLink %}./travel-to-work-dev/travel-to-work{% endset %}
+
+                    {% elseif (data['journey-type'] == "travelinwork") %}
+                    {% set sendClaimLink %}./travel-in-work/travel-to-work{% endset %}
+
+                    {% elseif (data['journey-type'] == "travelinworkpb") %}
+                    {% set sendClaimLink %}./travel-in-work-pb/travel-to-work{% endset %}
+
+                    {% elseif (data['journey-type'] == "travelinworkdev") %}
+                    {% set sendClaimLink %}./travel-in-work-dev/travel-to-work{% endset %}
+
+                    {% elseif (data['journey-type'] == "travelinworkdevv2") %}
+                    {% set sendClaimLink %}./travel-in-work-devv2/travel-to-work{% endset %}
+
+                    {% elseif (data['journey-type'] == "traveltoworkold") %}
+                    {% set sendClaimLink %}./travel-to-work-old/start-a-claim{% endset %}
+
+                    {% elseif (data['journey-type'] == "specialaidsandequipmentvi") %}
+                    {% set sendClaimLink %}./equipment-and-adaptations-vi/start-a-claim{% endset %}
+
+                    {% elseif (data['journey-type'] == "supportworkerold") %}
+                    {% set sendClaimLink %}./support-worker-old/start-a-claim{% endset %}
+
+                    {% elseif (data['journey-type'] == "supportworkeroldv2") %}
+                    {% set sendClaimLink %}./support-worker-old-two/start-a-claim{% endset %}
+
+                    {% elseif (data['journey-type'] == "notvalid") %}
+                    {% set sendClaimLink %}./portal-screens/grant-not-valid{% endset %}
+
+                    {% else %}
+                    {% set sendClaimLink %}#{% endset %}
+                    {% endif %}
 
 
-                    <!-- <div class="card-action">
-                        <p class="govuk-body">some content</p>
-                    </div> -->
-                </div>
-              </div>
-
-              <div class="govuk-grid-column-one-third">
-                  <div class="card" id="test-card-2">
-                      <div class="card-body active" @if(url)>
-                          <h2 class="heading-small card-heading">
-                              <a class="card-link" href="./portal-screens/personal-information">
-                                  Personal information{% if data["new-email-address"] %} {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                                    <span id="notifications" class="moj-notification-badge">1</span>
-                                    {% endif %}
-                              </a>
-                          </h2>
-                          <p class="govuk-body">View and change your personal information.</p>
-                      </div>
-
-                      <!-- <div class="card-action">
-                        <p class="govuk-body">
-                          some content
-                        </p>
-                      </div> -->
-                  </div>
-                </div>
-
-                <div class="govuk-grid-column-one-third">
-                    <div class="card" id="test-card-3">
-                        <div class="card-body active" @if(url)>
-                            <h2 class="heading-small card-heading">
-                                <a class="card-link" href="./portal-screens/claim-via-post">
-                                    Send your claim by post
-                                </a>
-                            </h2>
-                            <p class="govuk-body">Find out how to send a claim by post if you cannot send a claim online.</p>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="govuk-grid-column-one-third">
-                      <div class="card" id="test-card-3">
-                          <div class="card-body active" @if(url)>
-                              <h2 class="heading-small card-heading">
-                                {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                                  <a class="card-link" href="./multiple-employers/employers-grant-information">
-                                      Grant information
-                                  </a>
-                                  {% else %}
-                                  <a class="card-link" href="./portal-screens/grant-information">
-                                      Grant information
-                                  </a>
-                                  {% endif %}
-                              </h2>
-                              <p class="govuk-body">View information like grant awarded, grant remaining and renew date.</p>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="govuk-grid-column-one-third">
-                        <div class="card" id="test-card-3">
-                            <div class="card-body active" @if(url)>
-                                <h2 class="heading-small card-heading">
-                                    <a class="card-link" href="./portal-screens/contact-atw">
-                                        Contact us
-                                    </a>
-                                </h2>
-                                <p class="govuk-body">Find out how to contact us if you have any questions about your claims.</p>
-                            </div>
-                        </div>
-                      </div>
+                    {{ card({
+                    "href": sendClaimLink | safe,
+                    "clickable": "true",
+                    "heading": "Send a claim online",
+                    "headingClasses": "govuk-heading-m",
+                    "description": "Send a claim and copies of receipts or invoices online."
+                    }) }}
+                </li>
 
 
-          </div>
+                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                    {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and
+                    (data['multiple-employers'] !== "true") %}
+                        {% set claimHistoryLink %}./portal-screens/multiple-claims-history{% endset %}
+                    {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                        {% set claimHistoryLink %}./portal-screens/multiple-employer-history{% endset %}
+                    {% else %}
+                        {% set claimHistoryLink %}./portal-screens/claims-history{% endset %}
+                    {% endif %}
+
+                    {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
+                        {% set claimHistoryTitle %}Claims history <span id="notifications-claim-history" class="moj-notification-badge">1</span>{% endset %}
+                    {% else %}
+                        {% set claimHistoryTitle %}Claims history{% endset %}
+                    {% endif %}
+
+                    {{ card({
+                    "href": claimHistoryLink | safe,
+                    "clickable": "true",
+                    "heading": claimHistoryTitle | safe,
+                    "headingClasses": "govuk-heading-m",
+                    "description": "Check what stage a claim is at and view previous claims we’ve paid."
+                    }) }}
+                </li>
+
+                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                    {% set title %}
+                    Personal information{% if data["new-email-address"] %} {% elseif (data['journey-type']
+                    == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                    <span id="notifications-personal-info" class="moj-notification-badge">1</span>
+                    {% endif %}
+                    {% endset %}
+
+
+                    {{ card({
+                    "href": "./portal-screens/personal-information",
+                    "clickable": "true",
+                    "heading": title | safe,
+                    "headingClasses": "govuk-heading-m",
+                    "description": "View and change your personal information."
+                    }) }}
+                </li>
+
+                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                    {{ card({
+                    "href": "./portal-screens/claim-via-post",
+                    "clickable": "true",
+                    "heading": "Send your claim by post",
+                    "headingClasses": "govuk-heading-m",
+                    "description": "Find out how to send a claim by post if you cannot send a claim online."
+                    }) }}
+                </li>
+                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                    {{ card({
+                    "href": "./multiple-employers/employers-grant-information" if ((data['journey-type'] ==
+                    "multipleemployers")) or (data['multiple-employers'] ==
+                    "true") else "./portal-screens/grant-information",
+                    "clickable": "true",
+                    "heading": "Grant information",
+                    "headingClasses": "govuk-heading-m",
+                    "description": "View information like grant awarded, grant remaining and renew date."
+                    }) }}
+                </li>
+                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                    {{ card({
+                    "href": "./portal-screens/contact-atw",
+                    "clickable": "true",
+                    "heading": "Contact us",
+                    "headingClasses": "govuk-heading-m",
+                    "description": "Find out how to contact us if you have any questions about your claims."
+                    }) }}
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
-
-
 
 {% endblock %}

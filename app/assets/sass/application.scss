@@ -1,6 +1,31 @@
-// global styles for <a> and <p> tags
+// Ordering is important must be before the inline declarations below so that they override the values set in core/all
+$nhsuk-include-font-face:false;
+
+@import '../../../node_modules/nhsuk-frontend/packages/core/all';
+
 $govuk-global-styles: true;
 $govuk-new-link-styles: true;
+
+$color_nhsuk-white: #f8f8f8; // Override the card background colour
+
+// Override colors of the links on the NHS Cards
+$nhsuk-link-color: #1d70b8;
+$nhsuk-link-hover-color: #003078;
+$nhsuk-link-active-color: #0b0c0c;
+$nhsuk-link-visited-color: #4c2c92;
+
+// Override the default size, as the NHS design makees the below changes for @media (min-width: 40.0625em)
+// ol, ul, .nhsuk-list {
+// font-size: 19px;
+//  font-size: 1.128rem;
+//}
+@media (min-width: 40.0625em) {
+  ol {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
 
 // We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
 $govuk-assets-path: '/govuk/assets/';
@@ -17,8 +42,9 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-nav";
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
+@import "../../../node_modules/nhsuk-frontend/packages/components/card/card";
 
-
-// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-// @import "modules/colours";
-// // @import "patterns/card";
+.nhsuk-grid-column-one-third {
+  box-sizing: border-box;
+  padding: 0 10px;
+}
