@@ -74,7 +74,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days of support in {{data["support-month"] | numberMonth}} and name of support worker or agency
+                    Days support was recieved in {{data["support-month"] | numberMonth}} 
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
