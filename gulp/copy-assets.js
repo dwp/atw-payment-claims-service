@@ -5,6 +5,7 @@
 */
 
 const gulp = require('gulp')
+const rename = require('gulp-rename');
 
 const config = require('./config.json')
 
@@ -15,6 +16,10 @@ gulp.task('copy-assets', function () {
   ])
     .pipe(gulp.dest(config.paths.public))
 })
+
+gulp.task('build-nhs-js', () => gulp.src([`./node_modules/nhsuk-frontend/dist/nhsuk-*.min.js`])
+  .pipe(rename('nhsuk.js'))
+  .pipe(gulp.dest(config.paths.public+'/javascripts')))
 
 gulp.task('copy-assets-documentation', function () {
   return gulp.src([
