@@ -161,9 +161,9 @@ html: 'This is a new service – your <a class="govuk-link"
                     {{ card({
                     "href": sendClaimLink | safe,
                     "clickable": "true",
-                    "heading": "Send a claim online",
+                    "heading": "Start a claim",
                     "headingClasses": "govuk-heading-m",
-                    "description": "Send a claim and copies of receipts or invoices online."
+                    "description": "Claim money back from your grant."
                     }) }}
                 </li>
 
@@ -179,9 +179,9 @@ html: 'This is a new service – your <a class="govuk-link"
                     {% endif %}
 
                     {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
-                        {% set claimHistoryTitle %}Claims history <span id="notifications-claim-history" class="moj-notification-badge">1</span>{% endset %}
+                        {% set claimHistoryTitle %}Your claims <span id="notifications-claim-history" class="moj-notification-badge">1</span>{% endset %}
                     {% else %}
-                        {% set claimHistoryTitle %}Claims history{% endset %}
+                        {% set claimHistoryTitle %}Your claims{% endset %}
                     {% endif %}
 
                     {{ card({
@@ -195,7 +195,7 @@ html: 'This is a new service – your <a class="govuk-link"
 
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
                     {% set title %}
-                    Personal information{% if data["new-email-address"] %} {% elseif (data['journey-type']
+                    Personal details{% if data["new-email-address"] %} {% elseif (data['journey-type']
                     == "multipleemployers") or (data['multiple-employers'] == "true") %}
                     <span id="notifications-personal-info" class="moj-notification-badge">1</span>
                     {% endif %}
@@ -207,7 +207,7 @@ html: 'This is a new service – your <a class="govuk-link"
                     "clickable": "true",
                     "heading": title | safe,
                     "headingClasses": "govuk-heading-m",
-                    "description": "View and change your personal information."
+                    "description": "View and update your details."
                     }) }}
                 </li>
 
@@ -215,9 +215,9 @@ html: 'This is a new service – your <a class="govuk-link"
                     {{ card({
                     "href": "./portal-screens/claim-via-post",
                     "clickable": "true",
-                    "heading": "Send your claim by post",
+                    "heading": "Claim by post",
                     "headingClasses": "govuk-heading-m",
-                    "description": "Find out how to send a claim by post if you cannot send a claim online."
+                    "description": "How to get a claim form and send it by post if you cannot claim online."
                     }) }}
                 </li>
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
@@ -226,9 +226,9 @@ html: 'This is a new service – your <a class="govuk-link"
                     "multipleemployers")) or (data['multiple-employers'] ==
                     "true") else "./portal-screens/grant-information",
                     "clickable": "true",
-                    "heading": "Grant information",
+                    "heading": "Grant summary",
                     "headingClasses": "govuk-heading-m",
-                    "description": "View information like grant awarded, grant remaining and renew date."
+                    "description": "Your grant total, how much you have left and when you'll need to renew."
                     }) }}
                 </li>
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
@@ -237,7 +237,7 @@ html: 'This is a new service – your <a class="govuk-link"
                     "clickable": "true",
                     "heading": "Contact us",
                     "headingClasses": "govuk-heading-m",
-                    "description": "Find out how to contact us if you have any questions about your claims."
+                    "description": "Get in touch if you need help with a claim."
                     }) }}
                 </li>
             </ul>
