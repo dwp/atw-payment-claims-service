@@ -12,8 +12,8 @@ Claim money back from Access to Work
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
           <span class="govuk-caption-l">Section 1 of 4</span>
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tell us about your specialist equipment</h1>
-            <p>You must tell us about any related training or installation costs in a separate entry.</p>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">What type of specialist equipment are you claiming for?</h1>
+            <p>Tell us the name of the equipment and any delivery, training or installation costs your grant covers.</p>
 
 
             <div data-module="moj-add-another">
@@ -25,7 +25,7 @@ Claim money back from Access to Work
                         </label>
 
                         <div id="equipment-name-hint" class="govuk-hint">
-                              For example, a Karma Ergo 115 wheelchair or a lowered curb.
+                              For example, a Karma Ergo 115 wheelchair including delivery
                         </div>
                         <input class="govuk-input"
                                value = "{{data.equipment[0].equipment_name}}"
@@ -41,7 +41,7 @@ Claim money back from Access to Work
 
 
                         <div id="date-of-purchase-hint" class="govuk-hint">
-                          You'll find this on the invoice or receipt for your equipment. For example, 21 05 2021.
+                          You'll find this on the invoice or receipt for your equipment. For example, 21 05 2021
                         </div>
 
                         <div class="govuk-date-input__item">
@@ -103,7 +103,7 @@ Claim money back from Access to Work
                             Name or description of equipment
                         </label>
                         <div id="equipment-name-hint" class="govuk-hint">
-                              For example, a Karma Ergo 115 wheelchair or a lowered curb.
+                              For example, a Karma Ergo 115 wheelchair or a lowered curb
                         </div>
 
                         <input class="govuk-input" id="equipment[{{loop.index0}}][equipment_name]"
@@ -116,7 +116,7 @@ Claim money back from Access to Work
                             Date of purchase
                         </legend>
                         <div id="date-of-birth-hint" class="govuk-hint">
-                            You'll find this on the invoice or receipt for your equipment. For example, 21 05 2021.
+                            You'll find this on the invoice or receipt for your equipment. For example, 21 05 2021
                         </div>
                         <div class="govuk-date-input__item">
                             <div class="govuk-date-input" id="date-equipment-purchased">
