@@ -51,7 +51,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
                     {% elseif (data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") or (data ['journey-type'] == "specialaidsandequipmentpb") %}
                     <p>About the claims for specialist equipment you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% elseif ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and ((data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"]))%}
-                    <p>About your claims for claims for travel to or from work at Deaf Action Charity. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About your claims for claims for travel to and from work at Deaf Action Charity. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
 
                     {% elseif ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and ((data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb")) %}
                     <p>You do not have any claims for support worker costs at Google in your claims history. If you've sent a new claim, it can take up to 5 working days for it to appear in your claims history.</p>
@@ -63,7 +63,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
                     {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") or (data["answers-checked-sw"]) %}
                     <p>About the claims for support worker costs you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"])%}
-                    <p>About the claims for travel to or from work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for travel to and from work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
                     <p>About the claims for travel during work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
                     {% elseif (data['journey-type'] == "adaptations") %}
