@@ -84,7 +84,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Type of travel
+                    Type of travel test
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {%if (data["transport-option"]=="taxi") or (data["transport-option"]=="taxi-during-work")%} Taxi {% elif (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work")%}Lift from a friend, colleague or relative{% endif %}
@@ -168,7 +168,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days journeys were made in {{data["travel-to-work-date-month"] | numberMonth}}
+                    Journeys made in {{data["travel-to-work-date-month"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['milage'] | sortBy('day') %}
@@ -228,7 +228,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days journeys were made in {{data["travel-to-work-date-month-repeat"] | numberMonth}}
+                    Journeys made in {{data["travel-to-work-date-month-repeat"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
 
@@ -316,7 +316,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days journeys were made in {{data["travel-to-work-date-month"] | numberMonth}}
+                    Journeys made in {{data["travel-to-work-date-month"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% if (data['transport-option'] == "taxi") or (data['way-of-claiming']) %}
@@ -377,7 +377,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days journeys were made in {{data["travel-to-work-date-month-repeat"] | numberMonth}}
+                    Journeys made in {{data["travel-to-work-date-month-repeat"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
 
