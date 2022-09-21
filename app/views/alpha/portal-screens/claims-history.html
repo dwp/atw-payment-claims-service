@@ -28,7 +28,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
         </li>
         {% endif %}
         <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="claims-history.html">Claims history</a>
+            <a class="govuk-breadcrumbs__link" href="claims-history.html">Your claims</a>
         </li>
     </ol>
 </div>
@@ -43,38 +43,38 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
                 <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading">
-                            Claims history
+                            Your claims
                         </h1>
                     </legend>
                     {% if ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and ((data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") or (data ['journey-type'] == "specialaidsandequipmentpb"))%}
-                    <p>About your claims for specialist equipment you've sent at Deaf Action Charity. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About your claims for specialist equipment you've made at Deaf Action Charity. When you make a new claim, it can take up to 5 working days for it to appear on this page.</p>
                     {% elseif (data ['journey-type'] == "specialaidsandequipment") or (data ['journey-type'] == "specialaidsandequipmentdev") or (data ['journey-type'] == "specialaidsandequipmentpb") %}
-                    <p>About the claims for specialist equipment you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for specialist equipment you've sent. When you make a new claim, it can take up to 5 working days for it to appear on this page.</p>
                     {% elseif ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and ((data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"]))%}
-                    <p>About your claims for claims for travel to and from work at Deaf Action Charity. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About your claims for travel to and from work at Deaf Action Charity. When you make a new claim, it can take up to 5 working days for it to appear on this page.</p>
 
                     {% elseif ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and ((data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb")) %}
-                    <p>You do not have any claims for support worker costs at Google in your claims history. If you've sent a new claim, it can take up to 5 working days for it to appear in your claims history.</p>
-                     <p>You can <a href="multiple-employer-history">view claims history for your other employers</a>.</p>
+                    <p>You do not have any claims for support worker costs at Google yet. If you've made a new claim, it can take up to 5 working days for it to appear on this page.</p>
+                     <p>You can <a href="multiple-employer-history">view claims for your other jobs</a>.</p>
 
                     {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and ((data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerpb")) %}
-                    <p>You do not have any claims for support worker costs in your claims history. If you've sent a new claim, it can take up to 5 working days for it to appear in your claims history.</p>
+                    <p>You do not have any claims for support worker costs yet. If you've made a new claim, it can take up to 5 working days for it to appear on this page.</p>
                      <p>You can <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
                     {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") or (data["answers-checked-sw"]) %}
-                    <p>About the claims for support worker costs you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for support worker costs you've sent. When you make a new claim, it can take up to 5 working days for it to appear on this page.</p>
                     {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkpb") or (data['journey-type'] == "traveltoworkdev") or (data["ttw-declaration"])%}
-                    <p>About the claims for travel to and from work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for travel to and from work you've sent. When you make a new claim, it can take up to 5 working days for it to appear on this page.</p>
                     {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdevv2") or (data["tiw-declaration"]) %}
-                    <p>About the claims for travel during work you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for travel during work you've sent. When you make a new claim, it can take up to 5 working days for it to appear on this page.</p>
                     {% elseif (data['journey-type'] == "adaptations") %}
-                    <p>About the claims for an adaptation to a vehicle you've sent. When you send a new claim, you’ll be able to see it here. It can take up to 5 working days for a claim to appear in your claims history.</p>
+                    <p>About the claims for an adaptation to a vehicle you've sent. When you make a new claim, it can take up to 5 working days for it to appear on this page.</p>
                     {% endif %}
 
 
                     {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") and (data['journey-type'] !== "supportworker") %}
-                    <p>You can <a href="multiple-employer-history">view claims history for your other employers</a>.</p>
+                    <p>You can <a href="multiple-employer-history">view claims for your other jobs</a>.</p>
                     {% elseif ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] !== "supportworker") %}
-                    <p>You can also <a href="multiple-claims-history">view the claims history of your other awards</a>.</p>
+                    <p>You can also <a href="multiple-claims-history">view claims for other types of support</a>.</p>
                     {% endif %}
 
                 </fieldset>
@@ -82,7 +82,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
             <!-- {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and (data['journey-type'] == "supportworker")%}
             <div class="govuk-inset-text">
-            You can <a href="multiple-claims-history">view the claims history of your other awards</a>.
+            You can <a href="multiple-claims-history">view claims for other types of support</a>.
             </div>
             {% endif %} -->
 
