@@ -14,6 +14,13 @@
 {% set hourTotal = 0 | float %}
 {% endfor %}
 
+{% set minuteTotal = 0 %}
+{% for day in data.support %}
+{% set minuteTotal = minuteTotal | float + day.support_minutes | float %}
+{% else %}
+{% set minuteTotal = 0 | float %}
+{% endfor %}
+
 {% set repeatsupportLength %}
 {{ data.repeatsupport | length }}
 {% endset %}
@@ -23,6 +30,13 @@
 {% set repeathourTotal = repeathourTotal | float + day.repeatsupport_hours | float %}
 {% else %}
 {% set repeathourTotal = 0 | float %}
+{% endfor %}
+
+{% set repeatMinuteTotal = 0 %}
+{% for day in data.repeatsupport %}
+{% set repeatMinuteTotal = repeatMinuteTotal | float + day.repeatsupport_minutes | float %}
+{% else %}
+{% set repeatMinuteTotal = 0 | float %}
 {% endfor %}
 
 
@@ -74,11 +88,11 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Days support was recieved in {{data["support-month"] | numberMonth}} 
+                    Days support was recieved in {{data["support-month"] | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
-                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}  {{item.support_minutes}} {% if hourTotal === 1 %} hour {% else %} minutes {% endif %}
+                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}  {{item.support_minutes}} {% if minuteTotal === 1 %} minute {% else %} minutes {% endif %}
                   {{item.travel_journeys}}
                   {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
                   {% else %}

@@ -30,7 +30,7 @@ Claim money back from Access to Work
 
 
                   <div class="govuk-form-group">
-                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatsupport[0][day]">
+                      <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatrepeatsupport[0][day]">
                           Day you had support in {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}}
 
                       </label>
@@ -40,13 +40,13 @@ Claim money back from Access to Work
                       </div>
 
                         <div class="govuk-input__wrapper">
-                      <input class="govuk-input govuk-input--width-2" value = "{{data.repeatsupport[0].day}}" id="repeatsupport[0][day]" name="repeatsupport[0][day]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="repeatsupport[%index%][day]" data-id="repeatsupport[%index%][day]">
+                      <input class="govuk-input govuk-input--width-2" value = "{{data.repeatrepeatsupport[0].day}}" id="repeatrepeatsupport[0][day]" name="repeatrepeatsupport[0][day]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="repeatsupport[%index%][day]" data-id="repeatsupport[%index%][day]">
                       <div class="govuk-input__suffix">{{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}}</div>
                       </div>
                     </div> <!-- govuk-form-group -->
 
                     <div class="govuk-form-group">
-                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatsupport[0][repeatsupport_hours]">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatrepeatsupport[0][repeatsupport_hours]">
                             Total hours of support on this day
                         </label>
 
@@ -62,11 +62,11 @@ Claim money back from Access to Work
                                 <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
                                   Hours
                                 </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_hours}}"
-                                id="support[0][support_hours]"
-                                name="support[0][support_hours]" type="text"
-                                data-name="support[%index%][support_hours]"
-                                data-id="support[%index%][support_hours]">
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.repeatsupport[0].support_hours}}"
+                                id="repeatsupport[0][repeatsupport_hours]"
+                                name="repeatsupport[0][repeatsupport_hours]" type="text"
+                                data-name="repeatsupport[%index%][repeatsupport_hours]"
+                                data-id="repeatsupport[%index%][repeatsupport_hours]">
                               </div>
                             </div>
                             :
@@ -75,22 +75,22 @@ Claim money back from Access to Work
                                 <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
                                   Minutes
                                 </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_minutes}}"
-                                id="support[0][support_minutes]"
-                                name="support[0][support_minutes]" type="text"
-                                data-name="support[%index%][support_minutes]"
-                                data-id="support[%index%][support_minutes]">>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.repeatsupport[0].support_minutes}}"
+                                id="repeatsupport[0][repeatsupport_minutes]"
+                                name="repeatsupport[0][repeatsupport_minutes]" type="text"
+                                data-name="repeatsupport[%index%][repeatsupport_minutes]"
+                                data-id="repeatsupport[%index%][repeatsupport_minutes]">>
                               </div>
                             </div>
-                           
+
                           </div>
 
 
                         <!-- <div class="govuk-input__wrapper">
                         <input class="govuk-input govuk-input--width-2"
-                               value = "{{data.repeatsupport[0].repeatsupport_hours}}"
-                               id="repeatsupport[0][repeatsupport_hours]"
-                               name="repeatsupport[0][repeatsupport_hours]" type="text"
+                               value = "{{data.repeatrepeatsupport[0].repeatsupport_hours}}"
+                               id="repeatrepeatsupport[0][repeatsupport_hours]"
+                               name="repeatrepeatsupport[0][repeatsupport_hours]" type="text"
                                data-name="repeatsupport[%index%][repeatsupport_hours]"
                                data-id="repeatsupport[%index%][repeatsupport_hours]">
                               <div class="govuk-input__suffix">hours</div>
@@ -98,21 +98,16 @@ Claim money back from Access to Work
                     </div> <!-- govuk-form-group -->
 
                     <div class="govuk-form-group">
-                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="support[0][providor]">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatsupport[0][providor]">
                             Name of your support worker or agency
                         </label>
-
-
                                <input class="govuk-input"
-                                      value = "{{data.repeatsupport[0].providor}}"
-                                      id="repeatsupport[0][providor]"
-                                      name="repeatsupport[0][providor]" type="text"
+                                      value = "{{data.repeatrepeatsupport[0].providor}}"
+                                      id="repeatrepeatsupport[0][providor]"
+                                      name="repeatrepeatsupport[0][providor]" type="text"
                                       data-name="repeatsupport[%index%][providor]"
                                       data-id="repeatsupport[%index%][providor]">
-
                     </div>
-
-
 
                     {% if repeatsupportLength > 1 %}
                     <div class="moj-button-action">
@@ -163,11 +158,11 @@ Claim money back from Access to Work
                                 <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
                                   Hours
                                 </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_hours}}"
-                                id="support[0][support_hours]"
-                                name="support[0][support_hours]" type="text"
-                                data-name="support[%index%][support_hours]"
-                                data-id="support[%index%][support_hours]">
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.repeatsupport[0].support_hours}}"
+                                id="repeatsupport[0][repeatsupport_hours]"
+                                name="repeatsupport[0][repeatsupport_hours]" type="text"
+                                data-name="repeatsupport[%index%][repeatsupport_hours]"
+                                data-id="repeatsupport[%index%][repeatsupport_hours]">
                               </div>
                             </div>
                             :
@@ -176,14 +171,14 @@ Claim money back from Access to Work
                                 <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
                                   Minutes
                                 </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_minutes}}"
-                                id="support[0][support_minutes]"
-                                name="support[0][support_minutes]" type="text"
-                                data-name="support[%index%][support_minutes]"
-                                data-id="support[%index%][support_minutes]">>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.repeatsupport[0].support_minutes}}"
+                                id="repeatsupport[0][repeatsupport_minutes]"
+                                name="repeatsupport[0][repeatsupport_minutes]" type="text"
+                                data-name="repeatsupport[%index%][repeatsupport_minutes]"
+                                data-id="repeatsupport[%index%][repeatsupport_minutes]">>
                               </div>
                             </div>
-                           
+
                           </div>
 
 
@@ -199,7 +194,7 @@ Claim money back from Access to Work
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
-                               for="support[{{loop.index0}}][providor]">
+                               for="repeatsupport[{{loop.index0}}][providor]">
                             Name of your support worker or agency
                         </label>
 

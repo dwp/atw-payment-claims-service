@@ -15,6 +15,13 @@ Claim money back from Access to Work
 {% set hourTotal = 0 | float %}
 {% endfor %}
 
+{% set minuteTotal = 0 %}
+{% for day in data.support %}
+{% set minuteTotal = minuteTotal | float + day.support_minutes | float %}
+{% else %}
+{% set minuteTotal = 0 | float %}
+{% endfor %}
+
 {% set repeatsupportLength %}
 {{ data.repeatsupport | length }}
 {% endset %}
@@ -26,10 +33,14 @@ Claim money back from Access to Work
 {% set repeathourTotal = 0 | float %}
 {% endfor %}
 
+{% set repeatminuteTotal = 0 %}
+{% for day in data.repeatsupport %}
+{% set repeatminuteTotal = repeatminuteTotal | float + day.repeatsupport_minutes | float %}
+{% else %}
+{% set repeatminuteTotal = 0 | float %}
+{% endfor %}
 
 {% block content %}
-
-
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -38,15 +49,15 @@ Claim money back from Access to Work
         <div class="govuk-form-group">
 
           {% if hourTotal === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hour and {{minutesTotal + repeatminutesTotal}} minute of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hour and {{minuteTotal + repeatminuteTotal}} minute of support</h1>
           {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hours and {{minutesTotal + repeatminutesTotal}} minutes of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hours and {{minuteTotal + repeatminuteTotal}} minutes of support</h1>
           {% endif %}
 
-          <!-- {% if minutesTotal === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minutesTotal + repeatminutesTotal}} hour of support</h1>
+          <!-- {% if minuteTotal === 1 %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minuteTotal + repeatminuteTotal}} hour of support</h1>
           {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minutesTotal + repeatminutesTotal}} hours of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minuteTotal + repeatminuteTotal}} hours of support</h1>
           {% endif %} -->
 
           <h2 class="govuk-heading-s">Support in {{data["support-month"] | numberMonth}}</h2>
@@ -55,7 +66,6 @@ Claim money back from Access to Work
             <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-
                   {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}}
               </dt>
               <dd class="govuk-summary-list__value">
@@ -64,19 +74,8 @@ Claim money back from Access to Work
               </dd>
 
               <dd class="govuk-summary-list__value">
-                {{item.support_minutes}} {% if minutesTotal === 1 %} minutes {% else %} minutes {% endif %}
-                
-                </dd>
-
-                <!-- <dd class="govuk-summary-list__value">
-              {{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
-              <br>{{item.providor}}
+                {{item.support_minutes}} {% if minuteTotal === 1 %} minute {% else %} minutes {% endif %}
               </dd>
-
-              <dd class="govuk-summary-list__value">
-                {{item.support_minutes}} {% if minutesTotal === 1 %} mintues {% else %} minutes {% endif %}
-                <br>{{item.providor}}
-                </dd> -->
 
               <dd class="govuk-summary-list__actions">
                 <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day">
@@ -101,9 +100,13 @@ Claim money back from Access to Work
                 <dt class="govuk-summary-list__key">
                   {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}}
                 </dt>
+
                 <dd class="govuk-summary-list__value">
                 {{item.repeatsupport_hours}} hours
                 <br>{{item.providor}}
+                </dd>
+                <dd class="govuk-summary-list__value">
+                  {{item.repeatsupport_minutes}} {% if repeatminuteTotal === 1 %} minute {% else %} minutes {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day-repeat">
