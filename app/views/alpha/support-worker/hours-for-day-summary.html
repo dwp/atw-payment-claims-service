@@ -38,11 +38,16 @@ Claim money back from Access to Work
         <div class="govuk-form-group">
 
           {% if hourTotal === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hour of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hour and {{minutesTotal + repeatminutesTotal}} minute of support</h1>
           {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hours of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hours and {{minutesTotal + repeatminutesTotal}} minutes of support</h1>
           {% endif %}
 
+          <!-- {% if minutesTotal === 1 %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minutesTotal + repeatminutesTotal}} hour of support</h1>
+          {% else %}
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minutesTotal + repeatminutesTotal}} hours of support</h1>
+          {% endif %} -->
 
           <h2 class="govuk-heading-s">Support in {{data["support-month"] | numberMonth}}</h2>
 
@@ -57,6 +62,22 @@ Claim money back from Access to Work
               {{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
               <br>{{item.providor}}
               </dd>
+
+              <dd class="govuk-summary-list__value">
+                {{item.support_minutes}} {% if minutesTotal === 1 %} minutes {% else %} minutes {% endif %}
+                
+                </dd>
+
+                <!-- <dd class="govuk-summary-list__value">
+              {{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
+              <br>{{item.providor}}
+              </dd>
+
+              <dd class="govuk-summary-list__value">
+                {{item.support_minutes}} {% if minutesTotal === 1 %} mintues {% else %} minutes {% endif %}
+                <br>{{item.providor}}
+                </dd> -->
+
               <dd class="govuk-summary-list__actions">
                 <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day">
                   Change<span class="govuk-visually-hidden"> change support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}</span>

@@ -14,6 +14,14 @@ Claim money back from Access to Work
 {% else %}
 {% set hourTotal = 0 | float %}
 {% endfor %}
+
+{% set minutesTotal = 0 %}
+{% for day in data['support_minutes'] %}
+{% set minutesTotal = minutesTotal | float + item.support_minutes | float %}
+{% else %}
+{% set minutesTotal = 0 | float %}
+{% endfor %}
+
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -50,7 +58,7 @@ Claim money back from Access to Work
                             Total hours of support on this day
                         </label>
 
-                        <div id="support-name-hint" class="govuk-hint">
+                        <!-- <div id="support-name-hint" class="govuk-hint">
                               Including half hours, for example, 8.5
                         </div>
 
@@ -62,8 +70,69 @@ Claim money back from Access to Work
                                data-name="support[%index%][support_hours]"
                                data-id="support[%index%][support_hours]">
                               <div class="govuk-input__suffix">hours</div>
+
+                            <div></div>
+
+                              <input class="govuk-input govuk-input--width-2"
+                                       value = "{{data.support[0].support_hours}}"
+                                       id="support[0][support_hours]"
+                                       name="support[0][support_hours]" type="text"
+                                       data-name="support[%index%][support_hours]"
+                                       data-id="support[%index%][support_hours]">
+                                      <div class="govuk-input__suffix">minutes</div>
+                              
+                              </div> -->
+
+                              
+
+                              
+
+                                      
+
+                              <div class="govuk-form-group">
+                                <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                                 
+                                  <div id="passport-issued-hint" class="govuk-hint">
+                                    For example, 8 hours and 27 minutes
+                                  </div>
+                                  <div class="govuk-date-input" id="passport-issued">
+                                    <div class="govuk-date-input__item">
+                                      <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                          Hours
+                                        </label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_hours}}"
+                                        id="support[0][support_hours]"
+                                        name="support[0][support_hours]" type="text"
+                                        data-name="support[%index%][support_hours]"
+                                        data-id="support[%index%][support_hours]">
+                                      </div>
+                                    </div>
+                                    :
+                                    <div class="govuk-date-input__item">
+                                      <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                          Minutes
+                                        </label>
+                                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_minutes}}"
+                                        id="support[0][support_minutes]"
+                                        name="support[0][support_minutes]" type="text"
+                                        data-name="support[%index%][support_minutes]"
+                                        data-id="support[%index%][support_minutes]">>
+                                      </div>
+                                    </div>
+                                   
+                                  </div>
+                              
+                                </fieldset>
                               </div>
-                    </div> <!-- govuk-form-group -->
+
+                    </div> 
+                    
+                    
+
+                    
+                    <!-- govuk-form-group -->
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="support[0][providor]">
@@ -121,7 +190,7 @@ Claim money back from Access to Work
                         </label>
 
                         <div id="support-name-hint" class="govuk-hint">
-                              Including half hours, for example 8.5
+                          For example, 8 hours and 27 minutes
                         </div>
 
                         <div class="govuk-input__wrapper">

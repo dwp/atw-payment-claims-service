@@ -51,10 +51,42 @@ Claim money back from Access to Work
                         </label>
 
                         <div id="repeatsupport-name-hint" class="govuk-hint">
-                              Including half hours, for example 8.5
+                            For example, 8 hours and 27 minutes
                         </div>
 
-                        <div class="govuk-input__wrapper">
+
+
+                        <div class="govuk-date-input" id="passport-issued">
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                  Hours
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_hours}}"
+                                id="support[0][support_hours]"
+                                name="support[0][support_hours]" type="text"
+                                data-name="support[%index%][support_hours]"
+                                data-id="support[%index%][support_hours]">
+                              </div>
+                            </div>
+                            :
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                  Minutes
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_minutes}}"
+                                id="support[0][support_minutes]"
+                                name="support[0][support_minutes]" type="text"
+                                data-name="support[%index%][support_minutes]"
+                                data-id="support[%index%][support_minutes]">>
+                              </div>
+                            </div>
+                           
+                          </div>
+
+
+                        <!-- <div class="govuk-input__wrapper">
                         <input class="govuk-input govuk-input--width-2"
                                value = "{{data.repeatsupport[0].repeatsupport_hours}}"
                                id="repeatsupport[0][repeatsupport_hours]"
@@ -62,7 +94,7 @@ Claim money back from Access to Work
                                data-name="repeatsupport[%index%][repeatsupport_hours]"
                                data-id="repeatsupport[%index%][repeatsupport_hours]">
                               <div class="govuk-input__suffix">hours</div>
-                              </div>
+                              </div> -->
                     </div> <!-- govuk-form-group -->
 
                     <div class="govuk-form-group">
@@ -121,16 +153,48 @@ Claim money back from Access to Work
                         </label>
 
                         <div id="repeatsupport-name-hint" class="govuk-hint">
-                              Including half hours, for example 8.5
+                            For example, 8 hours and 27 minutes
                         </div>
 
-                        <div class="govuk-input__wrapper">
+
+                        <div class="govuk-date-input" id="passport-issued">
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                  Hours
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_hours}}"
+                                id="support[0][support_hours]"
+                                name="support[0][support_hours]" type="text"
+                                data-name="support[%index%][support_hours]"
+                                data-id="support[%index%][support_hours]">
+                              </div>
+                            </div>
+                            :
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                  Minutes
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.support[0].support_minutes}}"
+                                id="support[0][support_minutes]"
+                                name="support[0][support_minutes]" type="text"
+                                data-name="support[%index%][support_minutes]"
+                                data-id="support[%index%][support_minutes]">>
+                              </div>
+                            </div>
+                           
+                          </div>
+
+
+
+                        <!-- <div class="govuk-input__wrapper">
                         <input class="govuk-input govuk-input--width-4" id="repeatsupport[{{loop.index0}}][repeatsupport_hours]"
                                name="repeatsupport[{{loop.index0}}][repeatsupport_hours]" type="text"
                                value="{{item.repeatsupport_hours}}" data-name="repeatsupport[%index%][repeatsupport_hours]"
                                data-id="repeatsupport[%index%][repeatsupport_hours]">
                                <div class="govuk-input__suffix">hours</div>
-                               </div>
+                               </div> -->
                     </div> <!-- govuk-form-group -->
 
                     <div class="govuk-form-group">

@@ -78,7 +78,7 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% for item in data['support'] | sortBy('day') %}
-                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
+                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}  {{item.support_minutes}} {% if hourTotal === 1 %} hour {% else %} minutes {% endif %}
                   {{item.travel_journeys}}
                   {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
                   {% else %}
@@ -180,7 +180,12 @@
                     Total support
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{hourTotal + repeathourTotal}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %} <br>
+                    {{hourTotal + repeathourTotal}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %} {{hourTotal + repeathourTotal}} {% if hourTotal === 1 %} hour {% else %} minutes {% endif %}<br>
+
+                </dd>
+
+                <dd class="govuk-summary-list__value">
+                    {{minutesTotal + repeatminutesTotal}} {% if minutesTotal === 1 %} hour {% else %} minutes {% endif %} <br>
 
                 </dd>
                 {% if print != true %}
