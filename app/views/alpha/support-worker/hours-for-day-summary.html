@@ -40,6 +40,19 @@ Claim money back from Access to Work
 {% set repeatminuteTotal = 0 | float %}
 {% endfor %}
 
+{% set summaryHours = 0 %}
+{% set summaryMinutes = 0 %}
+
+{% if minuteTotal + repeatminuteTotal >= 60 %}
+  {% set summaryHours = ((minuteTotal + repeatminuteTotal) / 60) | int %}
+  {% set summaryMinutes = ((minuteTotal + repeatminuteTotal) % 60) | int %}
+  <!-- Add hours to total (now that we know how many hours are there form the minutes. eg. 110 minutes would make summaryHours = 1 and summaryMinutes = 50. Then we add the hours entered below -->
+  {% set summaryHours = summaryHours + hourTotal + repeathourTotal %}
+{% else %}
+  {% set summaryHours = (hourTotal + repeathourTotal) | int %}
+  {% set summaryMinutes = (minuteTotal + repeatminuteTotal) | int %}
+{% endif %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -49,16 +62,10 @@ Claim money back from Access to Work
         <div class="govuk-form-group">
 
           {% if hourTotal === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hour and {{minuteTotal + repeatminuteTotal}} minute of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{summaryHours}} hour and {{summaryMinutes}} minute of support</h1>
           {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{hourTotal + repeathourTotal}} hours and {{minuteTotal + repeatminuteTotal}} minutes of support</h1>
+          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{summaryHours}} hours and {{summaryMinutes}} minutes of support</h1>
           {% endif %}
-
-          <!-- {% if minuteTotal === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minuteTotal + repeatminuteTotal}} hour of support</h1>
-          {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{minuteTotal + repeatminuteTotal}} hours of support</h1>
-          {% endif %} -->
 
           <h2 class="govuk-heading-s">Support in {{data["support-month"] | numberMonth}}</h2>
 
@@ -69,14 +76,15 @@ Claim money back from Access to Work
                   {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}}
               </dt>
               <dd class="govuk-summary-list__value">
-              {{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
-              <br>{{item.providor}}
+                <ul class="govuk-list">
+                  <li>
+                    {{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %} {{item.support_minutes}} {% if minuteTotal === 1 %} minute {% else %} minutes {% endif %}
+                  </li>
+                  <li>
+                    {{item.providor}}
+                  </li>
+                </ul>
               </dd>
-
-              <dd class="govuk-summary-list__value">
-                {{item.support_minutes}} {% if minuteTotal === 1 %} minute {% else %} minutes {% endif %}
-              </dd>
-
               <dd class="govuk-summary-list__actions">
                 <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day">
                   Change<span class="govuk-visually-hidden"> change support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}</span>
@@ -102,12 +110,14 @@ Claim money back from Access to Work
                 </dt>
 
                 <dd class="govuk-summary-list__value">
-                {{item.repeatsupport_hours}} hours
-                <br>{{item.providor}}
-                </dd>
-                <dd class="govuk-summary-list__value">
-                  {{item.repeatsupport_minutes}} {% if repeatminuteTotal === 1 %} minute {% else %} minutes {% endif %}
-                </dd>
+                  <ul class="govuk-list">
+                    <li>
+                      {{item.repeatsupport_hours}} {% if repeatsupport_hours === 1 %} hour {% else %} hours {% endif %} {{item.repeatsupport_minutes}} {% if repeatsupport_minutes === 1 %} minute {% else %} minutes {% endif %}
+                    </li>
+                    <li>
+                      {{item.providor}}
+                    </li>
+                  </ul>
                 <dd class="govuk-summary-list__actions">
                   <a id="{{item.day}}-change" class="govuk-link" href="hours-for-day-repeat">
                     Change<span class="govuk-visually-hidden"> change support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}</span>
