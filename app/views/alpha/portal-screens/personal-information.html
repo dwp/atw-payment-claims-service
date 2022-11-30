@@ -75,32 +75,21 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
                 </div>
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Telephone number
+                        Telephone number(s)
                     </dt>
                     <dd class="govuk-summary-list__value">
                       {% if data['new-phone'] %}
                       {{data["new-phone"]}}
-                      {% elif (data['journey-type'] == "mobilenumber") or (data['mobile-number'] == "true") %}
-                      01234 567890
                       {% else %}
-                      07627 847834
+                      01234 567890
                       {% endif %}
-                    </dd>
-                </div>
 
-                {% if (data['journey-type'] == "mobilenumber") or (data['mobile-number'] == "true") %}
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                      Mobile number
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    {% if data['new-mobile'] %}
-                    {{data["new-mobile"]}}
-                    {% endif %}
-                  </dd>
-              </div>
+                {% if data['new-mobile'] %}
+                    <br>{{data["new-mobile"]}}
                 {% endif %}
+              </dd>
 
+              </div>
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Address
