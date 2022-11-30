@@ -111,6 +111,9 @@ html: 'This is a new service – your <a class="govuk-link"
                     {% elseif (data['journey-type'] == "supportworkerpb") %}
                     {% set sendClaimLink %}./support-worker-pb/support-for-workplace{% endset %}
 
+                    {% elseif (data['journey-type'] == "mobilenumber") %}
+                    {% set sendClaimLink %}./mobile-number/smobile-number{% endset %}
+
                     {% elseif (data['journey-type'] == "supportworkerdev") %}
                     {% set sendClaimLink %}./support-worker-dev/support-for-workplace{% endset %}
 

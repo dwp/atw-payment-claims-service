@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="personal-information-change" method="post" class="form">
+
+            <h1 class="govuk-heading-l">What's your new mobile number?</h1>
+            <div id="new-mobile-number-hint" class="govuk-body">We will use this to contact you about updates to your claims</div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="mobile-number">
+                    UK mobile number
+                  </label>
+
+                  <input class="govuk-input govuk-input--width-20" id="new-mobile" name="new-mobile" type="tel" autocomplete="mob"></div>
+
+
+
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

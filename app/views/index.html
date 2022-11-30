@@ -70,6 +70,14 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
 
 
           <form action="alpha/start-journey" method="post" class="form">
+            <input type="hidden" id="journey-type" name="journey-type" value="mobilenumber">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Add mobile number
+            </button>
+          </form>
+
+
+          <form action="alpha/start-journey" method="post" class="form">
             <input type="hidden" id="journey-type" name="journey-type" value="multipleawards">
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Multiple Award Elements
@@ -124,7 +132,6 @@ html: 'This is a new service – your <a class="govuk-link" href="./feedback-pag
                 Support worker private beta
             </button>
           </form>
-
 
           <form action="alpha/start-journey" method="post" class="form">
             <input type="hidden" id="journey-type" name="journey-type" value="specialaidsandequipmentpb">
