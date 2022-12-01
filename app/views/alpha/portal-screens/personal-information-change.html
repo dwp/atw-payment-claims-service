@@ -10,7 +10,7 @@ Claim money back from Access to Work
         <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
-                    Personal details
+                    Change personal details
                 </h1>
             </legend>
 
@@ -75,22 +75,44 @@ Claim money back from Access to Work
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Telephone number(s)
+                    Home number
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {% if data['new-phone'] %}
                     {{data["new-phone"]}}
                     {% else %}
                     {% endif %}
-
+                </dd>
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="telephone-number-change">
+                        {% if data['new-phone'] %}
+                        Change
+                        <span class="govuk-visually-hidden">change home number</span>
+                        {% else %}
+                        Add
+                        <span class="govuk-visually-hidden"> add home number</span>
+                        {% endif %}
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Mobile number
+                </dt>
+                <dd class="govuk-summary-list__value">
                     {% if data['new-mobile'] %}
-                    <br>{{data["new-mobile"]}}
+                    {{data["new-mobile"]}}
                     {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="telephone-number-change">
+                        {% if data['new-mobile'] %}
                         Change
-                        <span class="govuk-visually-hidden"> change telephone numbers</span>
+                        <span class="govuk-visually-hidden">change mobile number</span>
+                        {% else %}
+                        Add
+                        <span class="govuk-visually-hidden"> add mobile number</span>
+                        {% endif %}
                     </a>
                 </dd>
             </div>

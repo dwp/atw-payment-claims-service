@@ -74,22 +74,43 @@ improve it.'
 
         </dd>
       </div>
+      {% if data['new-phone'] %}
       <div class="govuk-summary-list__row">
+        {% if ((data['new-phone']) and (data['new-mobile'])) %}
         <dt class="govuk-summary-list__key">
-          Telephone number(s)
+          Home number
         </dt>
+        {% else %}
+        <dt class="govuk-summary-list__key">
+          Contact number
+        </dt>
+        {% endif %}
         <dd class="govuk-summary-list__value">
-          {% if data['new-phone'] %}
           {{data["new-phone"]}}
-          {% else %}
-          {% endif %}
-
-          {% if data['new-mobile'] %}
-          <br>{{data["new-mobile"]}}
-          {% endif %}
         </dd>
 
       </div>
+      {% endif %}
+
+      {% if data['new-mobile'] %}
+      <div class="govuk-summary-list__row">
+        {% if ((data['new-phone']) and (data['new-mobile'])) %}
+        <dt class="govuk-summary-list__key">
+          Mobile number
+        </dt>
+        {% else %}
+        <dt class="govuk-summary-list__key">
+          Contact number
+        </dt>
+        {% endif %}
+        <dd class="govuk-summary-list__value">
+          {{data["new-mobile"]}}
+
+        </dd>
+
+      </div>
+      {% else %}
+          {% endif %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Address
