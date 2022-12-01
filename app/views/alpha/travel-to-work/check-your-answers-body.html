@@ -152,13 +152,13 @@
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                   {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/claiming-for-month">
-                        Change
+                    <a href="../travel-to-work/remove-month">
+                        Remove
                         <span class="govuk-visually-hidden"> month of travel</span>
                     </a>
                     {% else %}
-                    <a href="claiming-for-month">
-                        Change
+                    <a href="remove-month">
+                        Remove
                         <span class="govuk-visually-hidden"> month of travel</span>
                     </a>
                     {% endif %}
@@ -300,13 +300,13 @@
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                   {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/claiming-for-month">
-                        Change
+                    <a href="../travel-to-work/remove-month?removeId={{loop.index0}}">
+                        Remove month
                         <span class="govuk-visually-hidden"> month of travel</span>
                     </a>
                     {% else %}
-                    <a href="claiming-for-month">
-                        Change
+                    <a href="remove-month?removeId={{loop.index0}}">
+                        Remove month
                         <span class="govuk-visually-hidden"> month of travel</span>
                     </a>
                     {% endif %}
@@ -361,13 +361,13 @@
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                 {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
-                    <a href="../travel-to-work/claiming-for-month-repeat">
-                        Change
+                    <a href="../travel-to-work/remove-month">
+                        Remove month
                         <span class="govuk-visually-hidden"> month of travel</span>
                     </a>
                     {% else %}
-                    <a href="claiming-for-month-repeat">
-                        Change
+                    <a href="remove-month">
+                        Remove month
                         <span class="govuk-visually-hidden"> month of travel</span>
                     </a>
                     {% endif %}

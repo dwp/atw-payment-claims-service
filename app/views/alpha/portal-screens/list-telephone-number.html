@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="personal-information.html">Personal details</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="personal-information-change">Change personal details</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="list-telephone-number.html">Your contact details</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="personal-information-change" method="post" class="form">
+
+            <h1 class="govuk-heading-l">Your contact telephone numbers</h1>
+           
+         
+<div class="govuk-form-group">
+
+  <dl class="govuk-summary-list hmrc-list-with-actions hmrc-list-with-actions--short">
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Mobile telephone
+          </dt>
+      <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+        07627847834
+      </dt>
+      <dd class="govuk-summary-list__actions hmrc-summary-list__actions">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="new-phone-number"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change mobile telephone number</span></a></li>
+          <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="are-sure-delete"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove mobile telephone number from the list</span></a></li>
+        </ul>
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+            Home telephone
+          </dt>
+      <dt class="govuk-summary-list__key govuk-!-font-weight-regular hmrc-summary-list__key">
+        0131 123 1234
+      </dt>
+      <dd class="govuk-summary-list__actions hmrc-summary-list__actions">
+        <ul class="govuk-summary-list__actions-list">
+          <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="new-phone-number"><span aria-hidden="true">Change</span><span class="govuk-visually-hidden">Change Michael Cain</span></a></li>
+          <li class="govuk-summary-list__actions-list-item"><a class="govuk-link" href="are-sure-delete"><span aria-hidden="true">Remove</span><span class="govuk-visually-hidden">Remove Michael Cain from the list</span></a></li>
+        </ul>
+      </dd>
+    </div>
+   
+  </dl>
+
+</div>
+
+<!-- <form action="personal-information-change" method="post" class="form">
+    <button class="govuk-button" data-module="govuk-button">
+        Back to personal details
+    </button>
+    </form> -->
+    
+
+        </form>
+
+      
+
+    </div>
+</div>
+
+
+{% endblock %}
