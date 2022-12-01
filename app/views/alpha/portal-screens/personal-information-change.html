@@ -6,193 +6,183 @@ Claim money back from Access to Work
 
 {% block content %}
 <div class="govuk-grid-row">
-
     <div class="govuk-grid-column-two-thirds">
+        <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Personal details
+                </h1>
+            </legend>
 
-                <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            Personal details
-                        </h1>
-                    </legend>
+            {% if data["new-email-address"] %}
+            {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+            <div class="govuk-inset-text">
+                Add an email address so we can let you know the progress of your claims.
+            </div>
+            {% endif %}
+        </fieldset>
 
-                    {% if data["new-email-address"] %}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Full name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {% if data['new-name'] %}
+                    {{data["new-name"]}} {{data["last-name"]}}
+                    {% else %}
+                    Joe Bloggs
+                    {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="new-name">
+                        Change
+                        <span class="govuk-visually-hidden">add name</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {% if data['new-email-address'] %}
+                    {{data["new-email-address"]}}
                     {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                    <div class="govuk-inset-text">
-                    Add an email address so we can let you know the progress of your claims.
-                    </div>
+                    Not given
+                    {% else %}
+                    joe.bloggs@deafactioncharity.com
+                    {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    {% if data['new-email-address'] %}
+                    <a href="new-email-address">
+                        Change
+                        <span class="govuk-visually-hidden"> email address</span>
+                    </a>
+                    {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                    <a href="new-email-address">
+                        Add email
+                        <span class="govuk-visually-hidden"> add an email address</span>
+                    </a>
+                    {% else %}
+                    <a href="new-email-address">
+                        Change
+                        <span class="govuk-visually-hidden"> change email address</span>
+                    </a>
+                    {% endif %}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Telephone number(s)
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {% if data['new-phone'] %}
+                    {{data["new-phone"]}}
+                    {% else %}
                     {% endif %}
 
-                </fieldset>
-
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                  <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                          Full name
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        {% if data['new-name'] %}
-                        {{data["new-name"]}} {{data["last-name"]}}
-                        {% else %}
-                        Joe Bloggs
-                        {% endif %}
-                      </dd>
-                      <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                          <a href="new-name">
-                              Change
-                              <span class="govuk-visually-hidden">add name</span>
-                          </a>
-                      </dd>
-                  </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Email address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      {% if data['new-email-address'] %}
-                      {{data["new-email-address"]}}
-                      {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                      Not given
-                      {% else %}
-                      joe.bloggs@deafactioncharity.com
-                      {% endif %}
-                    </dd>
-                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                      {% if data['new-email-address'] %}
-                      <a href="new-email-address">
-                          Change
-                          <span class="govuk-visually-hidden"> email address</span>
-                      </a>
-                      {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                      <a href="new-email-address">
-                          Add email
-                          <span class="govuk-visually-hidden"> add an email address</span>
-                      </a>
-                      {% else %}
-                      <a href="new-email-address">
-                          Change
-                          <span class="govuk-visually-hidden"> change email address</span>
-                      </a>
-                      {% endif %}
-
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Telephone number(s)
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      {% if data['new-phone'] %}
-                      {{data["new-phone"]}}
-                      {% else %}
-
-                      {% endif %}
-            
                     {% if data['new-mobile'] %}
-                      <br>{{data["new-mobile"]}}
-                      {% endif %}
-
-            </dd>
-            <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                <a href="telephone-number-change">
-                    Change
-                    <span class="govuk-visually-hidden"> add phone number</span>
-                </a>
-            </dd>
-        </div>
-
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      {% if data ["new-citizen-address-line-1"] %}
-                        {{data["new-citizen-address-line-1"]}}<br>
-                        {% if data["new-citizen-address-line-2"] %}{{data["new-citizen-address-line-2"]}}<br>{% endif %}
-                        {{data["new-citizen-address-town"]}}<br>
-                        {{data["new-citizen-address-county"]}}<br>
-                        {{data["new-citizen-address-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "123" %}
-                        123 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "124" %}
-                        124 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "125" %}
-                        125 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "126" %}
-                        126 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% elif data["new-citizen-address-select"] == "127" %}
-                        127 Hudsen House<br>
-                        Cresent Lane<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        {{data["new-citizen-postcode"]}}
-
-                        {% else %}
-                        140 Weston Grove<br>
-                        Otley<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        LS5 5NE
-                        {% endif %}
-
-                    </dd>
-                    {% if print != true %}
-                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                        <a href="new-citizen-address">
-                            Change
-                            <span class="govuk-visually-hidden"> change citizen address</span>
-                        </a>
-                    </dd>
+                    <br>{{data["new-mobile"]}}
                     {% endif %}
-                </div>
-                </dl>
+                </dd>
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="telephone-number-change">
+                        Change
+                        <span class="govuk-visually-hidden"> change telephone numbers</span>
+                    </a>
+                </dd>
+            </div>
 
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {% if data ["new-citizen-address-line-1"] %}
+                    {{data["new-citizen-address-line-1"]}}<br>
+                    {% if data["new-citizen-address-line-2"] %}{{data["new-citizen-address-line-2"]}}<br>{% endif %}
+                    {{data["new-citizen-address-town"]}}<br>
+                    {{data["new-citizen-address-county"]}}<br>
+                    {{data["new-citizen-address-postcode"]}}
 
+                    {% elif data["new-citizen-address-select"] == "123" %}
+                    123 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-citizen-postcode"]}}
 
-                {% if ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and (data["new-email-address"]) %}
+                    {% elif data["new-citizen-address-select"] == "124" %}
+                    124 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-citizen-postcode"]}}
 
-                <form action="declaration" method="post" class="form">
-                <input type="hidden" name="personal-information" value="true">
-                <button class="govuk-button" data-module="govuk-button">
-                  Continue
-                </button>
-                </form>
+                    {% elif data["new-citizen-address-select"] == "125" %}
+                    125 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-citizen-postcode"]}}
 
-                {% elseif (data["new-name"]) or (data["new-email-address"]) or (data["new-phone"]) or (data["new-mobile"]) or (data["new-citizen-postcode"]) %}
+                    {% elif data["new-citizen-address-select"] == "126" %}
+                    126 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-citizen-postcode"]}}
 
-                <form action="declaration" method="post" class="form">
-                <input type="hidden" name="personal-information" value="true">
-                <button class="govuk-button" data-module="govuk-button">
-                  Continue
-                </button>
-                </form>
+                    {% elif data["new-citizen-address-select"] == "127" %}
+                    127 Hudsen House<br>
+                    Cresent Lane<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    {{data["new-citizen-postcode"]}}
 
+                    {% else %}
+                    140 Weston Grove<br>
+                    Otley<br>
+                    Leeds<br>
+                    West Yorkshire<br>
+                    LS5 5NE
+                    {% endif %}
+
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="new-citizen-address">
+                        Change
+                        <span class="govuk-visually-hidden"> change citizen address</span>
+                    </a>
+                </dd>
                 {% endif %}
+            </div>
+        </dl>
 
+        {% if ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and
+        (data["new-email-address"]) %}
 
+        <form action="declaration" method="post" class="form">
+            <input type="hidden" name="personal-information" value="true">
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+
+        {% elseif (data["new-name"]) or (data["new-email-address"]) or (data["new-phone"]) or (data["new-mobile"]) or
+        (data["new-citizen-postcode"]) %}
+
+        <form action="declaration" method="post" class="form">
+            <input type="hidden" name="personal-information" value="true">
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+
+        {% endif %}
     </div>
 </div>
-
-
 {% endblock %}

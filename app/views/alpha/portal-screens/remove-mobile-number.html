@@ -7,7 +7,6 @@ Claim money back from Access to Work
 
 {% block content %}
 
-
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -15,12 +14,14 @@ Claim money back from Access to Work
 
             <h1 class="govuk-heading-l">Are you sure you want to remove this telephone number?</h1>
 
-                <div class="govuk-form-group" style="display: none;">
-                  <label class="govuk-label" for="mobile-number">
+            <div class="govuk-form-group" style="display: none;">
+                <label class="govuk-label" for="mobile-number">
                     UK mobile number
-                  </label>
+                </label>
 
-                  <input class="govuk-input govuk-input--width-20" id="new-mobile" name="new-mobile" type="tel" autocomplete="mob"></div>
+                <input class="govuk-input govuk-input--width-20" id="new-mobile" name="new-mobile" type="tel"
+                    autocomplete="mob">
+            </div>
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Remove
@@ -29,6 +30,5 @@ Claim money back from Access to Work
         </form>
     </div>
 </div>
-
 
 {% endblock %}

@@ -9,122 +9,121 @@ Claim money back from Access to Work
 tag: {
 text: "alpha"
 },
-html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to improve it.'
+html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to
+improve it.'
 }) }}
 
 <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="personal-details.html">Personal details</a>
-        </li>
-    </ol>
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="personal-details.html">Personal details</a>
+    </li>
+  </ol>
 </div>
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
 
-                <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            Personal details
-                        </h1>
-                    </legend>
-                </fieldset>
-                {% if data["new-email-address"] %}
-                {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                <div class="govuk-inset-text">
-                Add an email address so we can let you know the progress of your claims.
-                </div>
-                {% endif %}
+    <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Personal details
+        </h1>
+      </legend>
+    </fieldset>
+    {% if data["new-email-address"] %}
+    {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+    <div class="govuk-inset-text">
+      Add an email address so we can let you know the progress of your claims.
+    </div>
+    {% endif %}
 
-                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                  <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                          Full name
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          Joe Bloggs
-                      </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                          Access to Work number
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                          12004563
-                      </dd>
-                  </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Email address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                      Not given
-                      {% else %}
-                      joe.bloggs@deafactioncharity.com
-                      {% endif %}
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Joe Bloggs
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Access to Work number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          12004563
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+          Not given
+          {% else %}
+          joe.bloggs@deafactioncharity.com
+          {% endif %}
 
-                    </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Telephone number(s)
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      {% if data['new-phone'] %}
-                      {{data["new-phone"]}}
-                      {% else %}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Telephone number(s)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['new-phone'] %}
+          {{data["new-phone"]}}
+          {% else %}
+          {% endif %}
 
-                      {% endif %}
+          {% if data['new-mobile'] %}
+          <br>{{data["new-mobile"]}}
+          {% endif %}
+        </dd>
 
-                {% if data['new-mobile'] %}
-                    <br>{{data["new-mobile"]}}
-                {% endif %}
-              </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          140 Weston Grove<br>
+          Otley<br>
+          Leeds<br>
+          West Yorkshire<br>
+          LS5 5NE
+        </dd>
+      </div>
 
-              </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Address
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        140 Weston Grove<br>
-                        Otley<br>
-                        Leeds<br>
-                        West Yorkshire<br>
-                        LS5 5NE
-                    </dd>
-                </div>
+    </dl>
 
-                </dl>
-
-                <!-- <div class="govuk-inset-text">
+    <!-- <div class="govuk-inset-text">
                 You must let us know if these details change. If you tell us about a change, your new details will take a few days to show in your account.
                 {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %} <br> <br>
                 also tell us your email address to receive notifications about your claims
                 {% endif %}
                 </div> -->
 
-                <!-- <p>You can <a href="personal-information-change"> request to change any of your personal information</a> if you want.</p> -->
+    <!-- <p>You can <a href="personal-information-change"> request to change any of your personal information</a> if you want.</p> -->
 
-                <p>You must let us know if these details change. If you tell us about a change, your new details will take a few days to show in your account.</p>
+    <p>You must let us know if these details change. If you tell us about a change, your new details will take a few
+      days to show in your account.</p>
 
-                <form action="personal-information-change" method="post" class="form">
-              <button class="govuk-button" data-module="govuk-button">
-                  Change personal details
-              </button>
-              </form>
+    <form action="personal-information-change" method="post" class="form">
+      <button class="govuk-button" data-module="govuk-button">
+        Change personal details
+      </button>
+    </form>
 
-
-
-              <!-- <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
+    <!-- <h2 class="govuk-heading-m">Details of new person or company being paid</h2>
 
                 <p id="claims-history-hint" class="govuk-body">You’ll need to add new payment details if we need to pay another company or person.</p>
 
@@ -160,7 +159,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
 
 
-<!--
+    <!--
               <form action="guidance-payee-details" method="post" class="form">
               <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
                 Add a new payee
@@ -171,15 +170,13 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
 
 
-              <!-- <form action="../portal" method="post" class="form">
+    <!-- <form action="../portal" method="post" class="form">
             <button class="govuk-button" data-module="govuk-button">
               Return to account home
             </button>
             </form> -->
 
 
-    </div>
+  </div>
 </div>
-
-
 {% endblock %}
