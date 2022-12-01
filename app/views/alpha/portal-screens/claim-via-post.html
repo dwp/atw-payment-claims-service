@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-Claim money back from Access to Work
+How to claim by post - Claim money back from Access to Work
 {% endblock %}
 {% block beforeContent %}
 {{ govukPhaseBanner({
@@ -15,7 +15,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
             <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="claim-via-post.html">Send your claim by post</a>
+            <a class="govuk-breadcrumbs__link" href="claim-via-post.html">How to claim by post</a>
         </li>
     </ol>
 </div>
@@ -23,35 +23,35 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">Send your claim by post</h1>
+        <h1 class="govuk-heading-xl">How to claim by post</h1>
         {%if data['journey-type'] == "specialaidsandequipment" %}
-        <p>It’s quickest to <a href="../equipment-and-adaptations/special-aids-and-equipment">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../equipment-and-adaptations/special-aids-and-equipment">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         {% elseif data['journey-type'] == "supportworker" %}
-        <p>It’s quickest to <a href="../support-worker/support-for-workplace">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../support-worker/support-for-workplace">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
 <<<<<<< Updated upstream
         {% elseif data['journey-type'] == "adaptations" %}
-        <p>It’s quickest to <a href="../adaptation-to-vehicle/adaptation-to-vehicle.html">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../adaptation-to-vehicle/adaptation-to-vehicle.html">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         {% elseif data['journey-type'] == "travelinwork" %}
-        <p>It’s quickest to <a href="../travel-in-work/travel-to-work.html">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../travel-in-work/travel-to-work.html">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         {% elseif data['journey-type'] == "multipleemployers" %}
-        <p>It’s quickest to <a href="../multiple-employers/start-a-claim.html">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../multiple-employers/start-a-claim.html">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
 
         
         {% elseif data['journey-type'] == "adaptations" %}
-        <p>It’s quickest to <a href="../adaptation-to-vehicle/adaptation-to-vehicle.html">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../adaptation-to-vehicle/adaptation-to-vehicle.html">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         
         {% elseif data['journey-type'] == "travelinwork" %}
-        <p>It’s quickest to <a href="../travel-in-work/travel-to-work.html">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../travel-in-work/travel-to-work.html">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         
         {% elseif data['journey-type'] == "multipleemployers" %}
-        <p>It’s quickest to <a href="../multiple-employers/start-a-claim.html">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+        <p>It’s quickest to <a href="../multiple-employers/start-a-claim.html">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         
 
 >>>>>>> Stashed changes
         {% elseif (data['journey-type'] == "traveltowork") %}
-          <p>It’s quickest to <a href="../travel-to-work/travel-to-work">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+          <p>It’s quickest to <a href="../travel-to-work/travel-to-work">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         {% elseif (data['journey-type'] == "multipleawards") %}
-          <p>It’s quickest to <a href="../multiple-award-elements/start-a-claim">send your Access to Work claims online</a>. If you cannot send your claims online, you can send Access to Work claims by post.</p>
+          <p>It’s quickest to <a href="../multiple-award-elements/start-a-claim">make Access to Work claims online</a>. If you cannot make claims online, you can send Access to Work claims by post.</p>
         {% endif %}
         <p>You’ll need to: </p>
         <ul class="govuk-list govuk-list--bullet">
@@ -59,7 +59,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
             <li>include any receipts or invoices we ask for in the claims form</li>
         </ul>
         <p>You can contact Access to Work to get a paper claim form if you need one.</p>
-        <h3 class="govuk-heading-s">You should post your claim to Access to Work:</h3>
+        <h3 class="govuk-heading-s">Post your claim to Access to Work:</h3>
         <p class="govuk-body">
             Access to Work Service Centre<br>
             Harrow Jobcentre<br>
