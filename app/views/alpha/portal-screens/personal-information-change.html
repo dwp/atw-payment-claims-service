@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Claim money back from Access to Work
+Change personal details - Claim money back from Access to Work
 {% endblock %}
 
 {% block content %}
@@ -37,7 +37,7 @@ Claim money back from Access to Work
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="new-name">
                         Change
-                        <span class="govuk-visually-hidden">add name</span>
+                        <span class="govuk-visually-hidden">name</span>
                     </a>
                 </dd>
             </div>
@@ -62,13 +62,13 @@ Claim money back from Access to Work
                     </a>
                     {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
                     <a href="new-email-address">
-                        Add email
-                        <span class="govuk-visually-hidden"> add an email address</span>
+                        Add
+                        <span class="govuk-visually-hidden"> email address</span>
                     </a>
                     {% else %}
                     <a href="new-email-address">
                         Change
-                        <span class="govuk-visually-hidden"> change email address</span>
+                        <span class="govuk-visually-hidden"> email address</span>
                     </a>
                     {% endif %}
                 </dd>
@@ -87,11 +87,12 @@ Claim money back from Access to Work
                     <a href="telephone-number-change">
                         {% if data['new-phone'] %}
                         Change
-                        <span class="govuk-visually-hidden">change home number</span>
+                        <span class="govuk-visually-hidden"> home number</span>
                         {% else %}
                         Add
-                        <span class="govuk-visually-hidden"> add home number</span>
+                        <span class="govuk-visually-hidden"> home number</span>
                         {% endif %}
+
                     </a>
                 </dd>
             </div>
@@ -108,10 +109,10 @@ Claim money back from Access to Work
                     <a href="telephone-number-change">
                         {% if data['new-mobile'] %}
                         Change
-                        <span class="govuk-visually-hidden">change mobile number</span>
+                        <span class="govuk-visually-hidden">mobile number</span>
                         {% else %}
                         Add
-                        <span class="govuk-visually-hidden"> add mobile number</span>
+                        <span class="govuk-visually-hidden"> mobile number</span>
                         {% endif %}
                     </a>
                 </dd>
@@ -177,7 +178,7 @@ Claim money back from Access to Work
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                     <a href="new-citizen-address">
                         Change
-                        <span class="govuk-visually-hidden"> change citizen address</span>
+                        <span class="govuk-visually-hidden"> address</span>
                     </a>
                 </dd>
                 {% endif %}

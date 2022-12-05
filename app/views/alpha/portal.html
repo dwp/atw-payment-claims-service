@@ -3,7 +3,7 @@
 
 {% block pageTitle %}
 
-Claim money back from Access to Work
+Account home - Claim money back from Access to Work
 
 {% endblock %}
 
@@ -57,8 +57,8 @@ html: 'This is a new service – your <a class="govuk-link"
             <div class="govuk-grid-column-two-thirds">
 
 
-                <span class="govuk-caption-xl">Account home</span>
-                <h1 class="govuk-heading-xl">Joe Bloggs</h1>
+                <span class="govuk-caption-xl">Joe Bloggs</span>
+                <h1 class="govuk-heading-xl">Account home</h1>
 
                 {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and
                 (data['citizen-delared'] !=="true")%}
@@ -218,9 +218,9 @@ html: 'This is a new service – your <a class="govuk-link"
                     {{ card({
                     "href": "./portal-screens/claim-via-post",
                     "clickable": "true",
-                    "heading": "Send your claim by post",
+                    "heading": "How to claim by post",
                     "headingClasses": "govuk-heading-m",
-                    "description": "How to get a claim form and send it by post if you cannot claim online."
+                    "description": "Get a claim form and send it by post if you cannot claim online."
                     }) }}
                 </li>
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
@@ -238,9 +238,9 @@ html: 'This is a new service – your <a class="govuk-link"
                     {{ card({
                     "href": "./portal-screens/contact-atw",
                     "clickable": "true",
-                    "heading": "Contact us",
+                    "heading": "Get help",
                     "headingClasses": "govuk-heading-m",
-                    "description": "Get in touch if you need help with a claim."
+                    "description": "Contact us if you need help with a claim."
                     }) }}
                 </li>
             </ul>

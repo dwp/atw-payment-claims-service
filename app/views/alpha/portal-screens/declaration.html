@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Claim money back from Access to Work
+Personal details change declaration - Claim money back from Access to Work
 {% endblock %}
 
 
@@ -33,13 +33,13 @@ Claim money back from Access to Work
 
           <form action="new-personal-confirmation" method="post" class="form">
             <button type="submit" class="govuk-button" data-module="govuk-button">
-              I agree – update personal details
+              Agree and update personal details
             </button>
         </form>
         {% else %}
           <form action="new-payee-confirmation" method="post" class="form">
             <button type="submit" class="govuk-button" data-module="govuk-button">
-              I agree – add new payee
+              Agree and add new payee
             </button>
           </form>
           {% endif %}
