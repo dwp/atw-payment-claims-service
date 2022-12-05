@@ -8,7 +8,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     const journeytype = req.session.data['journeytype']
 
-    if (journeytype ==='equipment-and-adaptations') {
+    if (journeytype === 'equipment-and-adaptations') {
       req.session.data['aids-and-equipment'] = "Yes"
       req.session.data['equipment-name'] = "A wheelchair"
       req.session.data['purchase-date-day'] = "12"
@@ -22,7 +22,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       req.session.data['account-number'] = "12453288"
       req.session.data['digital-upload'] = "Yes"
       req.session.data['file-upload'] = "invoice12-12-21.PDF"
-    } else if (journeytype ==='Support-worker') {
+    } else if (journeytype === 'Support-worker') {
       req.session.data['support-for-workplace'] = "Yes"
       req.session.data['support-date-month'] = "May"
       req.session.data['support-date-year'] = "2021"
@@ -37,7 +37,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       // req.session.data['file'] = "invoice12-12-21.PDF"
       req.session.data['counter-signatory-full-name'] = "Mark Stephenson"
       req.session.data['counter-signatory-email'] = "mark.stephenson@deaf-action.co.uk"
-    } else if (journeytype ==='travel-to-work') {
+    } else if (journeytype === 'travel-to-work') {
       req.session.data['travel-to-work'] = "Yes"
       req.session.data['travel-to-work-date-month'] = "June"
       req.session.data['travel-to-work-date-year'] = "2021"
@@ -69,23 +69,57 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/post-login-routing', function (req, res) {
     const useremail = req.query.email
     if (useremail === 'supportworker@email.com') {
-    req.session.data['journey-type'] = "supportworker"
-    res.redirect(`/${urlPrefix}/portal`)
+      req.session.data['journey-type'] = "supportworker"
+      res.redirect(`/${urlPrefix}/portal`)
     } else if (useremail === 'equipment@email.com') {
-    req.session.data['journey-type'] = "specialaidsandequipment"
-    res.redirect(`/${urlPrefix}/portal`)
+      req.session.data['journey-type'] = "specialaidsandequipment"
+      res.redirect(`/${urlPrefix}/portal`)
+    } else if (useremail === 'mobile@email.com') {
+      req.session.data['journey-type'] = "mobilenumber"
+      res.redirect(`/${urlPrefix}/portal`)
     } else if (useremail === 'travel@email.com') {
-    req.session.data['journey-type'] = "traveltowork"
-    res.redirect(`/${urlPrefix}/portal`)
+      req.session.data['journey-type'] = "traveltowork"
+      res.redirect(`/${urlPrefix}/portal`)
     } else if (useremail === 'travelinwork@email.com') {
-    req.session.data['journey-type'] = "travelinwork"
-    res.redirect(`/${urlPrefix}/portal`)
+      req.session.data['journey-type'] = "travelinwork"
+      res.redirect(`/${urlPrefix}/portal`)
     } else {
       res.redirect(`/index`)
     }
 
 
-    })
+  })
 
+  // Get
+  router.get('/portal-screens/remove-phone-number', function (req, res) {
+    res.render(`./${folderForViews}/portal-screens/remove-phone-number`)
+  })
+
+  // post - Remove phone number confirmation
+  router.post('/portal-screens/remove-phone-number', function (req, res) {
+    const phoneNumber = req.session.data['new-phone']
+    const removeNumber = req.session.data['phone-number-remove']
+
+    if (removeNumber === 'Yes') {
+      req.session.data['new-phone'] = null
+    }
+    res.redirect(`/${urlPrefix}/portal-screens/telephone-number-change`)
+  })
+
+  // Get
+  router.get('/portal-screens/remove-mobile-number', function (req, res) {
+    res.render(`./${folderForViews}/portal-screens/remove-mobile-number`)
+  })
+
+  // post - Remove phone number confirmation
+  router.post('/portal-screens/remove-mobile-number', function (req, res) {
+    const mobileNumber = req.session.data['new-mobile']
+    const removeNumber = req.session.data['mobile-number-remove']
+
+    if (removeNumber === 'Yes') {
+      req.session.data['new-mobile'] = null
+    }
+    res.redirect(`/${urlPrefix}/portal-screens/telephone-number-change`)
+  })
 
 }

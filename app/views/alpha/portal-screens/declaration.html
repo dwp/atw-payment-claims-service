@@ -29,7 +29,7 @@ Personal details change - Claim money back from Access to Work
 
 
 
-          {% if data["personal-information"] %}
+          {% if data["personal-information"] or data["personal-information-change"]  %}
 
           <form action="new-personal-confirmation" method="post" class="form">
             <button type="submit" class="govuk-button" data-module="govuk-button">
