@@ -7,26 +7,44 @@ Claim money back from Access to Work
 
 {% block content %}
 
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        <form action="remove-mobile-number" method="post" class="form">
 
-        <form action="telephone-number-change" method="post" class="form">
 
-            <h1 class="govuk-heading-l">Are you sure you want to remove this telephone number?</h1>
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="mobile-number-remove-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Are you sure you want to remove this telephone number?
+                        </h1>
+                    </legend>
 
-            <div class="govuk-form-group" style="display: none;">
-                <label class="govuk-label" for="mobile-number">
-                    UK mobile number
-                </label>
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="mobile-number-remove-yes" name="mobile-number-remove"
+                                   type="radio"
+                                   value="Yes">
+                            <label class="govuk-label govuk-radios__label" for="mobile-number-remove-yes">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="mobile-number-remove-no" name="mobile-number-remove"
+                                   type="radio"
+                                   value="No">
+                            <label class="govuk-label govuk-radios__label" for="mobile-number-remove-no">
+                                No
+                            </label>
+                        </div>
+                    </div>
 
-                <input class="govuk-input govuk-input--width-20" id="new-mobile" name="new-mobile" type="tel"
-                    autocomplete="mob">
+                </fieldset>
             </div>
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Remove
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
             </button>
-
         </form>
     </div>
 </div>
