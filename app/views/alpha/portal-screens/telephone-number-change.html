@@ -7,95 +7,83 @@ Claim money back from Access to Work
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">
-                    Telephone numbers
-                </h1>
-            </legend>
-        </fieldset>
+        <form action="personal-information-change" method="post" class="form">
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Home number
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    {% if data['new-phone'] %}
-                    {{data["new-phone"]}}
-                    {% else %}
-                    {% endif %}
-                </dd>
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="new-phone-number">
+            <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                        Telephone numbers
+                    </h1>
+                </legend>
+            </fieldset>
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Home number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
                         {% if data['new-phone'] %}
-                        Change
-                        <span class="govuk-visually-hidden">change home number</span>
+                        {{data["new-phone"]}}
                         {% else %}
-                        Add
-                        <span class="govuk-visually-hidden"> add home number</span>
                         {% endif %}
-                    </a>
-                </dd>
-                {% if ((data['new-mobile']) and (data['new-phone'])) %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="remove-phone-number">
-                        Remove
-                        <span class="govuk-visually-hidden"> remove home number</span>
-                    </a>
-                </dd>
-                {% endif %}
-            </div>
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Mobile number
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    {% if data['new-mobile'] %}
-                    {{data["new-mobile"]}}
-                    {% endif %}
-                </dd>
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="new-mobile-number">
-                        {% if data['new-mobile'] %}
-                        Change
-                        <span class="govuk-visually-hidden">change mobile number</span>
-                        {% else %}
-                        Add
-                        <span class="govuk-visually-hidden">add mobile number</span>
-                        {% endif %}
-                    </a>
+                    </dd>
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="new-phone-number">
+                            {% if data['new-phone'] %}
+                            Change
+                            <span class="govuk-visually-hidden">change home number</span>
+                            {% else %}
+                            Add
+                            <span class="govuk-visually-hidden"> add home number</span>
+                            {% endif %}
+                        </a>
+                    </dd>
                     {% if ((data['new-mobile']) and (data['new-phone'])) %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                    <a href="remove-mobile-number">
-                        Remove
-                        <span class="govuk-visually-hidden"> remove mobile number</span>
-                    </a>
-                </dd>
-                {% endif %}
-                </dd>
-            </div>
-        </dl>
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="remove-phone-number">
+                            Remove
+                            <span class="govuk-visually-hidden"> remove home number</span>
+                        </a>
+                    </dd>
+                    {% endif %}
+                </div>
 
-        {% if ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) and
-        (data["new-email-address"]) %}
-        <form action="declaration" method="post" class="form">
-            <input type="hidden" name="personal-information-change" value="true">
-            <button class="govuk-button" data-module="govuk-button">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Mobile number
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {% if data['new-mobile'] %}
+                        {{data["new-mobile"]}}
+                        {% endif %}
+                    </dd>
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="new-mobile-number">
+                            {% if data['new-mobile'] %}
+                            Change
+                            <span class="govuk-visually-hidden">change mobile number</span>
+                            {% else %}
+                            Add
+                            <span class="govuk-visually-hidden">add mobile number</span>
+                            {% endif %}
+                        </a>
+                        {% if ((data['new-mobile']) and (data['new-phone'])) %}
+                    <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <a href="remove-mobile-number">
+                            Remove
+                            <span class="govuk-visually-hidden"> remove mobile number</span>
+                        </a>
+                    </dd>
+                    {% endif %}
+                    </dd>
+                </div>
+            </dl>
+            
+            <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
             </button>
         </form>
-
-        {% elseif (data["new-name"]) or (data["new-email-address"]) or (data["new-phone"]) or (data["new-mobile"]) or
-        (data["new-citizen-postcode"]) %}
-        <form action="declaration" method="post" class="form">
-            <input type="hidden" name="personal-information-change" value="true">
-            <button class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
-        </form>
-        {% endif %}
     </div>
 </div>
 {% endblock %}

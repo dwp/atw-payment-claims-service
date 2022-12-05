@@ -74,6 +74,7 @@ improve it.'
 
         </dd>
       </div>
+
       {% if data['new-phone'] %}
       <div class="govuk-summary-list__row">
         {% if ((data['new-phone']) and (data['new-mobile'])) %}
@@ -88,7 +89,6 @@ improve it.'
         <dd class="govuk-summary-list__value">
           {{data["new-phone"]}}
         </dd>
-
       </div>
       {% endif %}
 
@@ -105,12 +105,21 @@ improve it.'
         {% endif %}
         <dd class="govuk-summary-list__value">
           {{data["new-mobile"]}}
-
         </dd>
-
       </div>
-      {% else %}
-          {% endif %}
+      {% endif %}
+
+      {% if (not (data['new-mobile']) and not (data['new-phone'])) %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          01234 567890
+        </dd>
+      </div>
+      {% endif %}
+
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Address
