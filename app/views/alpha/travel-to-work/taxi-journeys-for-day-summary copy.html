@@ -76,15 +76,10 @@ Claim money back from Access to Work
               {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}}
             </dt>
             <dd class="govuk-summary-list__value">
-              {% if item.travel_journeys %}
-                {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
-              {% else %}
-                {{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
-              {% endif %}
-
+              {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-test?month={{month_data.month}}&year={{month_data.year}}">
+              <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day">
                 Change<span class="govuk-visually-hidden"> Change {{item.day}} {{month_data.month |
                   numberMonth}} {{month_data.year}}</span>
               </a>
