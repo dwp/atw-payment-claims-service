@@ -95,6 +95,13 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.render(`./${folderForViews}/portal-screens/remove-phone-number`)
   })
 
+  router.get('/portal-screens/personal-information', function (req, res) {
+    if (!(req.session.data['new-phone']) && !(req.session.data['new-mobile'])){
+      req.session.data['new-phone'] = "01234 567890"
+    }
+    res.render(`./${folderForViews}/portal-screens/personal-information`)
+  })
+
   // post - Remove phone number confirmation
   router.post('/portal-screens/remove-phone-number', function (req, res) {
     const phoneNumber = req.session.data['new-phone']
