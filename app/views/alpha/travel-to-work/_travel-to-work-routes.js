@@ -462,6 +462,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
       } else {
         console.log('Continue')
+        var month = req.session.data['travel-to-work-date-month']
+        var year = req.session.data['travel-to-work-date-year']
+        var month_milage = req.session.data.milage
+        console.log(month)
+        console.log(year)
+        console.log(month_milage)
+        var list = [
+          { month: month, year: year, milage: month_milage }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
       }
     }
@@ -487,6 +509,29 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
       } else {
         console.log('Continue')
+        var month = req.session.data['travel-to-work-date-month-repeat']
+        var year = req.session.data['travel-to-work-date-year-repeat']
+        var month_milage = req.session.data.repeatmilage
+        req.session.data.repeatmilage = null
+        console.log(month)
+        console.log(year)
+        console.log(month_milage)
+        var list = [
+          { month: month, year: year, milage: month_milage }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
       }
     }
