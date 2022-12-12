@@ -102,7 +102,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.render(`./${folderForViews}/portal-screens/personal-information`)
   })
 
-
   // post - Remove phone number confirmation
   router.post('/portal-screens/remove-phone-number', function (req, res) {
     const phoneNumber = req.session.data['new-phone']

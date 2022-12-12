@@ -15,11 +15,11 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/travel-to-work/transport-option-answers', function (req, res) {
     const aids = req.session.data['transport-option']
-      const claiming = req.session.data['way-of-claiming']
+    const claiming = req.session.data['way-of-claiming']
 
     if (aids === 'taxi' || aids === 'taxi-during-work') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
-    } else if (aids === 'lift'  && claiming === 'mileage') {
+    } else if (aids === 'lift' && claiming === 'mileage') {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
     } else if (aids === 'lift' && claiming === 'journeys') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
@@ -53,11 +53,11 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/travel-to-work/employer-contribution`)
-    } else if (journeytype === 'traveltowork-ammendment'){
+    } else if (journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (alreadyupload){
+    } else if (alreadyupload) {
       res.redirect(`/${urlPrefix}/portal-screens/upload-summary`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
@@ -69,7 +69,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     if (change === 'yes') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
-    } else if (change === 'no'){
+    } else if (change === 'no') {
       res.redirect(`/${urlPrefix}/travel-to-work/upload-summary`)
     }
   })
@@ -241,7 +241,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       req.session.data['taxi-journeys-for-day-journeys'] = null
 
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
-    } else if (addAnotherDay === 'No' && (req.session.data.journeys === undefined||req.session.data.journeys.length == 0)){
+    } else if (addAnotherDay === 'No' && (req.session.data.journeys === undefined || req.session.data.journeys.length == 0)) {
       res.redirect(`/${urlPrefix}/travel-to-work/no-hours-entered`)
     } else {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-confirmation`)
@@ -291,6 +291,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   // new journey stuff - taxis
 
+  // Get
+  router.get('/travel-to-work/taxi-journeys-for-day-test', function (req, res) {
+    if (req.query.month){
+      var month_list = req.session.data['month-list']
+      var month_data = month_list.find((month) => month.month === req.query.month && month.year === req.query.year);
+      if (month_data.travel[0]["repeattravel_journeys"]){
+        req.session.data["travel-to-work-date-month-repeat"] = req.query.month
+        req.session.data["travel-to-work-date-year-repeat"] = req.query.year
+        req.session.data["repeattravel"] = month_data.travel
+        res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-repeat`)
+      }
+      else {
+        req.session.data["travel-to-work-date-month"] = req.query.month
+        req.session.data["travel-to-work-date-year"] = req.query.year
+        req.session.data["travel"] = month_data.travel
+        res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+      }
+    }
+    else{
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+    }
+  })
 
   router.post('/travel-to-work/taxi-journeys-for-day', function (req, res) {
     console.log(req.session.data.support)
@@ -312,6 +334,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
       } else {
         console.log('Continue')
+        var month = req.session.data['travel-to-work-date-month']
+        var year = req.session.data['travel-to-work-date-year']
+        var month_travel = req.session.data.travel
+        console.log(month)
+        console.log(year)
+        console.log(month_travel)
+        var list = [
+          { month: month, year: year, travel: month_travel }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
       }
     }
@@ -337,6 +381,29 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
       } else {
         console.log('Continue')
+        var month = req.session.data['travel-to-work-date-month-repeat']
+        var year = req.session.data['travel-to-work-date-year-repeat']
+        var month_travel = req.session.data.repeattravel
+        req.session.data.repeattravel = null
+        console.log(month)
+        console.log(year)
+        console.log(month_travel)
+        var list = [
+          { month: month, year: year, travel: month_travel }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
       }
     }
@@ -374,7 +441,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
 
-// new journey stuff - milage
+  // new journey stuff - milage
   router.post('/travel-to-work/mileage-for-day', function (req, res) {
     console.log(req.session.data.support)
     if (req.session.data.remove !== undefined) {
@@ -395,6 +462,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
       } else {
         console.log('Continue')
+        var month = req.session.data['travel-to-work-date-month']
+        var year = req.session.data['travel-to-work-date-year']
+        var month_milage = req.session.data.milage
+        console.log(month)
+        console.log(year)
+        console.log(month_milage)
+        var list = [
+          { month: month, year: year, milage: month_milage }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
       }
     }
@@ -420,6 +509,29 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
       } else {
         console.log('Continue')
+        var month = req.session.data['travel-to-work-date-month-repeat']
+        var year = req.session.data['travel-to-work-date-year-repeat']
+        var month_milage = req.session.data.repeatmilage
+        req.session.data.repeatmilage = null
+        console.log(month)
+        console.log(year)
+        console.log(month_milage)
+        var list = [
+          { month: month, year: year, milage: month_milage }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
       }
     }
@@ -431,10 +543,10 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
 
 
-     if (addmonth === "yes") {
+    if (addmonth === "yes") {
       res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month-repeat`)
     } else if (addmonth === "no") {
-        res.redirect(`/${urlPrefix}/travel-to-work/mileage-amount-paid`)
+      res.redirect(`/${urlPrefix}/travel-to-work/mileage-amount-paid`)
     }
   })
 
@@ -448,29 +560,29 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const checked = req.session.data['contact-confirmed']
 
     if (transport === 'taxi' && journeytype === 'traveltowork-ammendment') {
-          res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (transport === 'taxi-during-work' && journeytype === 'traveltowork-ammendment') {
-          res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (transport === 'taxi' && checked) {
-          res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (transport === 'taxi-during-work' && checked) {
-          res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (transport === 'taxi' && journeytype === 'traveltowork') {
-          res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
+      res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
     } else if (transport === 'taxi-during-work' && journeytype === 'traveltowork') {
-          res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
+      res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
     } else if (transport === 'lift' && journeytype === 'traveltowork-ammendment') {
-          res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (transport === 'lift-during-work' && journeytype === 'traveltowork-ammendment') {
-          res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (transport === 'lift' && checked) {
-          res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (transport === 'lift-during-work' && checked) {
-          res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (transport === 'lift' && journeytype === 'traveltowork') {
-          res.redirect(`/${urlPrefix}/travel-to-work/new-payee-name`)
+      res.redirect(`/${urlPrefix}/travel-to-work/new-payee-name`)
     } else if (transport === 'lift-during-work' && journeytype === 'traveltowork') {
-          res.redirect(`/${urlPrefix}/travel-to-work/new-payee-name`)
+      res.redirect(`/${urlPrefix}/travel-to-work/new-payee-name`)
     }
   })
 
@@ -480,40 +592,36 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const journeytype = req.session.data['journey-type']
     const checked = req.session.data['ttw-declaration']
 
-    if (journeytype === 'traveltowork-ammendment' ) {
+    if (journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked === 'true') {
       res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
     } else if (journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     }
-})
+  })
 
-router.post('/travel-to-work/employment-status-answer', function (req, res) {
-  const status = req.session.data['employment-status']
-  const checked = req.session.data['ttw-declaration']
+  router.post('/travel-to-work/employment-status-answer', function (req, res) {
+    const status = req.session.data['employment-status']
+    const checked = req.session.data['ttw-declaration']
 
-  if (status === 'Employed') {
-  res.redirect(`/${urlPrefix}/travel-to-work/counter-signatory-name`)
-} else if (status === 'Self-employed' && checked === 'true') {
-  res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
-} else if (status === 'Self-employed') {
-  res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-}
-})
+    if (status === 'Employed') {
+      res.redirect(`/${urlPrefix}/travel-to-work/counter-signatory-name`)
+    } else if (status === 'Self-employed' && checked === 'true') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (status === 'Self-employed') {
+      res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
+    }
+  })
 
-router.post('/travel-to-work/transport-option-answer-preview', function (req, res) {
-  const transport = req.session.data['transport-option']
+  router.post('/travel-to-work/transport-option-answer-preview', function (req, res) {
+    const transport = req.session.data['transport-option']
 
-  if (transport === 'taxi') {
-  res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month`)
-} else if (transport === 'lift') {
-  res.redirect(`/${urlPrefix}/travel-to-work/mileage-or-journey`)
-}
-})
-
-
-
-
+    if (transport === 'taxi') {
+      res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month`)
+    } else if (transport === 'lift') {
+      res.redirect(`/${urlPrefix}/travel-to-work/mileage-or-journey`)
+    }
+  })
 
 }

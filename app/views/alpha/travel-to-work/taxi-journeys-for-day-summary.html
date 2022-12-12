@@ -9,8 +9,15 @@ Claim money back from Access to Work
 {% endset %}
 
 {% set taxiTotal = 0 %}
-{% for day in data.travel %}
+{% for month in data['month-list'] %}
+{% for day in month.travel %}
+{% if day.travel_journeys %}
 {% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
+{% endif %}
+{% if day.repeattravel_journeys %}
+{% set taxiTotal = taxiTotal | float + day.repeattravel_journeys | float %}
+{% endif %}
+{% endfor %}
 {% else %}
 {% set taxiTotal = 0 | float %}
 {% endfor %}
@@ -19,11 +26,18 @@ Claim money back from Access to Work
 {{ data.repeattravel | length }}
 {% endset %}
 
-{% set repeattaxiTotal = 0 %}
-{% for day in data.repeattravel %}
-{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_journeys | float %}
+{% set mileageTotal = 0 %}
+{% for month in data['month-list'] %}
+{% for day in month.milage %}
+{% if day.milage_total %}
+{% set mileageTotal = mileageTotal | float + day.milage_total | float %}
+{% endif %}
+{% if day.repeatmilage_total %}
+{% set mileageTotal = mileageTotal | float + day.repeatmilage_total | float %}
+{% endif %}
+{% endfor %}
 {% else %}
-{% set repeattaxiTotal = 0 | float %}
+{% set mileageTotal = 0 | float %}
 {% endfor %}
 
 {% set taxiinworkTotal = 0 %}
@@ -45,133 +59,91 @@ Claim money back from Access to Work
 
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="#">
+      <div class="govuk-form-group">
 
-      <form method="post" action="#">
-
-
-
-        <div class="govuk-form-group">
-
-          {% if (data['transport-option'] == "taxi") or (data['way-of-claiming']) %}
-          {% if taxiTotal === 1 %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journey</h1>
-          {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journeys</h1>
-          {% endif %}
-
-          {% else %}
-          <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}} journey</h1>
-          {% endif %}
-
-          {% if data['way-of-claiming'] %}
-          <h2 class="govuk-heading-s">Journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
-          {% else %}
-          <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month"] | numberMonth}}</h2>
-          {% endif %}
-
-
-            {% for item in data['travel'] | sortBy('day') %}
-              <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}
-                </dt>
-                <dd class="govuk-summary-list__value">
-                {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day">
-                    Change<span class="govuk-visually-hidden"> Change {{item.day}} {{data["travel-to-work-date-month"] | numberMonth}} {{data["travel-to-work-date-year"]}}</span>
-                  </a>
-                </dd>
-              </div>
-            </dl>
-            {% else %}
-            <div class="govuk-inset-text">
-              Tell us about the journeys you have taken to and from work to continue.
-            </div>
-            {% endfor %}
-
-
-
-        </div>
-
-        {% if data['travel-to-work-date-month-repeat'] %}
-
-        <div class="govuk-form-group">
-
-          {% if data['way-of-claiming'] %}
-          <h2 class="govuk-heading-s">Journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
-          {% else %}
-          <h2 class="govuk-heading-s">Taxi journeys in {{data["travel-to-work-date-month-repeat"] | numberMonth}}</h2>
-          {% endif %}
-
-
-            <!-- < new stuff > -->
-
-            {% for item in data['repeattravel'] | sortBy('day') %}
-              <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {{item.repeattravel_journeys}} {% if repeattaxiTotal === 1 %} journey {% else %} journeys {% endif %}
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-repeat">
-                    Change<span class="govuk-visually-hidden"> Change {{item.day}} {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}</span>
-                  </a>
-                </dd>
-              </div>
-            </dl>
-            {% else %}
-            <div class="govuk-inset-text">
-              Tell us about the journeys you have taken to and from work to continue.
-            </div>
-            {% endfor %}
-
-
-        </div>
-
+        {% if (data['transport-option'] == "taxi") or (data['way-of-claiming']) %}
+        {% if taxiTotal === 1 %}
+        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal}} journey</h1>
+        {% else %}
+        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal}} journeys</h1>
         {% endif %}
 
-        <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
+        {% else %}
+        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}}
+          journey</h1>
+        {% endif %}
 
+        {% for month_data in data['month-list'] %}
 
+        {% if data['way-of-claiming'] %}
+        <h2 class="govuk-heading-s">Journeys in {{month_data.month | numberMonth}}</h2>
+        {% else %}
+        <h2 class="govuk-heading-s">Taxi journeys in {{month_data.month | numberMonth}}</h2>
+        {% endif %}
 
-        Do you want to claim travel costs for any journeys made in a different month?
-  
-      </h1>
-    </legend>
-    <div class="govuk-radios govuk-radios--inline">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="new-month" name="new-month" type="radio" value="yes">
-        <label class="govuk-label govuk-radios__label" for="new-month">
-          Yes
-        </label>
+        {% for item in month_data['travel'] | sortBy('day') %}
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if item.travel_journeys %}
+                {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
+              {% else %}
+                {{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
+              {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-test?month={{month_data.month}}&year={{month_data.year}}">
+                Change<span class="govuk-visually-hidden"> Change {{item.day}} {{month_data.month |
+                  numberMonth}} {{month_data.year}}</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+        {% else %}
+        <div class="govuk-inset-text">
+          Tell us about the journeys you have taken to and from work to continue.
+        </div>
+        {% endfor %}
+        {% endfor %}
+
       </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="new-month-2" name="new-month" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="new-month-2">
-          No
-        </label>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want to claim travel costs for any journeys made in a different month?
+            </h1>
+          </legend>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="new-month" name="new-month" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="new-month">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="new-month-2" name="new-month" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="new-month-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
       </div>
-    </div>
 
-  </fieldset>
-</div>
-
-
-            <button class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
-        </form>
-    </div>
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

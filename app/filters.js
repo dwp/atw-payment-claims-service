@@ -12,7 +12,7 @@ filters.numberMonth = function(i) {
     if (i == '1' || i == '01'){
     return "January"
   } else if (i == '2' || i == '02'){
-    return "Febuary"
+    return "February"
   } else if (i == '3' || i == '03'){
     return "March"
   } else if (i == '4' || i == '04'){
