@@ -624,4 +624,22 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  // Get
+  router.get('/travel-to-work/remove-month-travel', function (req, res) {
+    req.session.data['month-index-to-remove'] = req.query.monthIndex
+    res.render(`./${folderForViews}/travel-to-work/remove-month-travel`)
+  })
+
+  // post - Remove phone number confirmation
+  router.post('/travel-to-work/remove-month-travel', function (req, res) {
+    const monthNumber = req.session.data['month-index-to-remove']
+    const removeMonth = req.session.data['remove-month-travel']
+
+    if (removeMonth === 'Yes') {
+      req.session.data['month-list'].splice(monthNumber, 1);
+    }
+    res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
+  })
+
+
 }
