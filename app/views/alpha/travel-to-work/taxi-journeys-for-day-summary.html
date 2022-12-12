@@ -71,45 +71,64 @@ Claim money back from Access to Work
         {% endif %}
 
         {% else %}
-        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{travelLength|int + repeattravelLength|int}}
+        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{mileageTotal|int}}
           journey</h1>
         {% endif %}
 
         {% for month_data in data['month-list'] %}
 
-        {% if data['way-of-claiming'] %}
-        <h2 class="govuk-heading-s">Journeys in {{month_data.month | numberMonth}}</h2>
-        {% else %}
-        <h2 class="govuk-heading-s">Taxi journeys in {{month_data.month | numberMonth}}</h2>
-        {% endif %}
-
-        {% for item in month_data['travel'] | sortBy('day') %}
         <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {% if data['way-of-claiming'] %}
+              Journeys in {{month_data.month | numberMonth}}
+              {% else %}
+              Taxi journeys in {{month_data.month | numberMonth}}
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if data['month-list'].length > 1 %}
+              <a id="{{item.day}}-change" class="govuk-link"
+                href="remove-month-travel?monthIndex={{data['month-list'].indexOf(month_data)}}&travelType=1">
+
+                Remove
+                <span class="govuk-visually-hidden"> {{month_data.month | numberMonth}} {{month_data.year}}</span>
+              </a>
+              {% endif %}
+            </dd>
+          </div>
+
+          {% for item in month_data['travel'] | sortBy('day') %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}}
             </dt>
             <dd class="govuk-summary-list__value">
               {% if item.travel_journeys %}
-                {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
+              {{item.travel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
               {% else %}
-                {{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
+              {{item.repeattravel_journeys}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
               {% endif %}
 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a id="{{item.day}}-change" class="govuk-link" href="taxi-journeys-for-day-test?month={{month_data.month}}&year={{month_data.year}}">
+              <a id="{{item.day}}-change" class="govuk-link"
+                href="taxi-journeys-for-day-test?month={{month_data.month}}&year={{month_data.year}}">
                 Change<span class="govuk-visually-hidden"> Change {{item.day}} {{month_data.month |
                   numberMonth}} {{month_data.year}}</span>
               </a>
             </dd>
           </div>
+          {% else %}
+          <div class="govuk-inset-text">
+            Tell us about the journeys you have taken to and from work to continue.
+          </div>
+          {% endfor %}
         </dl>
-        {% else %}
-        <div class="govuk-inset-text">
-          Tell us about the journeys you have taken to and from work to continue.
-        </div>
-        {% endfor %}
+
         {% endfor %}
 
       </div>
