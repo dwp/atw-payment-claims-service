@@ -9,8 +9,15 @@ Claim money back from Access to Work
 {% endset %}
 
 {% set mileageTotal = 0 %}
-{% for day in data.milage %}
+{% for month in data['month-list'] %}
+{% for day in month.milage %}
+{% if day.milage_total %}
 {% set mileageTotal = mileageTotal | float + day.milage_total | float %}
+{% endif %}
+{% if day.repeatmilage_total %}
+{% set mileageTotal = mileageTotal | float + day.repeatmilage_total | float %}
+{% endif %}
+{% endfor %}
 {% else %}
 {% set mileageTotal = 0 | float %}
 {% endfor %}
@@ -19,12 +26,6 @@ Claim money back from Access to Work
 {{ data.repeatmilage | length }}
 {% endset %}
 
-{% set repeatmileageTotal = 0 %}
-{% for day in data.repeatmilage %}
-{% set repeatmileageTotal = repeatmileageTotal | float + day.repeatmilage_total | float %}
-{% else %}
-{% set repeatmileageTotal = 0 | float %}
-{% endfor %}
 
 {% block content %}
 
@@ -36,11 +37,9 @@ Claim money back from Access to Work
 
       <div class="govuk-form-group">
         {% if mileageTotal|int === 1 %}
-        <h1 class="govuk-heading-l">You’ve told us the journey you’re claiming for were a total of {{mileageTotal +
-          repeatmileageTotal}} miles</h1>
+        <h1 class="govuk-heading-l">You’ve told us the journey you’re claiming for were a total of {{mileageTotal}} miles</h1>
         {% else %}
-        <h1 class="govuk-heading-l">You’ve told us the journeys you’re claiming for were a total of {{mileageTotal +
-          repeatmileageTotal}} miles</h1>
+        <h1 class="govuk-heading-l">You’ve told us the journeys you’re claiming for were a total of {{mileageTotal}} miles</h1>
         {% endif %}
 
         {% for month_data in data['month-list'] %}

@@ -9,8 +9,15 @@ Claim money back from Access to Work
 {% endset %}
 
 {% set taxiTotal = 0 %}
-{% for day in data.travel %}
+{% for month in data['month-list'] %}
+{% for day in month.travel %}
+{% if day.travel_journeys %}
 {% set taxiTotal = taxiTotal | float + day.travel_journeys | float %}
+{% endif %}
+{% if day.repeattravel_journeys %}
+{% set taxiTotal = taxiTotal | float + day.repeattravel_journeys | float %}
+{% endif %}
+{% endfor %}
 {% else %}
 {% set taxiTotal = 0 | float %}
 {% endfor %}
@@ -19,11 +26,18 @@ Claim money back from Access to Work
 {{ data.repeattravel | length }}
 {% endset %}
 
-{% set repeattaxiTotal = 0 %}
-{% for day in data.repeattravel %}
-{% set repeattaxiTotal = repeattaxiTotal | float + day.repeattravel_journeys | float %}
+{% set mileageTotal = 0 %}
+{% for month in data['month-list'] %}
+{% for day in month.milage %}
+{% if day.milage_total %}
+{% set mileageTotal = mileageTotal | float + day.milage_total | float %}
+{% endif %}
+{% if day.repeatmilage_total %}
+{% set mileageTotal = mileageTotal | float + day.repeatmilage_total | float %}
+{% endif %}
+{% endfor %}
 {% else %}
-{% set repeattaxiTotal = 0 | float %}
+{% set mileageTotal = 0 | float %}
 {% endfor %}
 
 {% set taxiinworkTotal = 0 %}
@@ -51,9 +65,9 @@ Claim money back from Access to Work
 
         {% if (data['transport-option'] == "taxi") or (data['way-of-claiming']) %}
         {% if taxiTotal === 1 %}
-        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journey</h1>
+        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal}} journey</h1>
         {% else %}
-        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal + repeattaxiTotal}} journeys</h1>
+        <h1 class="govuk-heading-l">You’ve told us you want to claim for {{taxiTotal}} journeys</h1>
         {% endif %}
 
         {% else %}
