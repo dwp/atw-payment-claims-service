@@ -627,6 +627,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // Get
   router.get('/travel-to-work/remove-month-travel', function (req, res) {
     req.session.data['month-index-to-remove'] = req.query.monthIndex
+    req.session.data['travel-type'] = req.query.travelType
     res.render(`./${folderForViews}/travel-to-work/remove-month-travel`)
   })
 
@@ -638,7 +639,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
     if (removeMonth === 'Yes') {
       req.session.data['month-list'].splice(monthNumber, 1);
     }
-    res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
+    if (req.session.data["travel-type"] == 1){
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day-summary`)
+    }
+    else{
+      res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-summary`)
+    }
   })
 
 

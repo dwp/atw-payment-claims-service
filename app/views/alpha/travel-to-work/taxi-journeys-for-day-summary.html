@@ -92,7 +92,8 @@ Claim money back from Access to Work
             <dd class="govuk-summary-list__actions">
               {% if data['month-list'].length > 1 %}
               <a id="{{item.day}}-change" class="govuk-link"
-                href="remove-month-travel?monthIndex={{data['month-list'].indexOf(month_data)}}">
+                href="remove-month-travel?monthIndex={{data['month-list'].indexOf(month_data)}}&travelType=1">
+
                 Remove
                 <span class="govuk-visually-hidden"> {{month_data.month | numberMonth}} {{month_data.year}}</span>
               </a>

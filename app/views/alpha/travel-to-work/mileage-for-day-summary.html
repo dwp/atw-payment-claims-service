@@ -36,6 +36,8 @@ Claim money back from Access to Work
     <form method="post" action="#">
 
       <div class="govuk-form-group">
+        <dl class="govuk-summary-list">
+
         {% if mileageTotal|int === 1 %}
         <h1 class="govuk-heading-l">You’ve told us the journey you’re claiming for were a total of {{mileageTotal}} miles</h1>
         {% else %}
@@ -45,12 +47,27 @@ Claim money back from Access to Work
         {% for month_data in data['month-list'] %}
 
 
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Miles travelled in {{month_data.month | numberMonth}}
+            </dt>
+            <dd class="govuk-summary-list__value">
 
-        <h2 class="govuk-heading-s">Miles travelled in {{month_data.month | numberMonth}}</h2>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if data['month-list'].length > 1 %}
+              <a id="{{item.day}}-change" class="govuk-link"
+                href="remove-month-travel?monthIndex={{data['month-list'].indexOf(month_data)}}&travelType=2">
+                Remove
+                <span class="govuk-visually-hidden"> {{month_data.month | numberMonth}} {{month_data.year}}</span>
+              </a>
+              {% endif %}
+            </dd>
+          </div>
 
 
         {% for item in month_data.milage | sortBy('day') %}
-        <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}}
@@ -69,12 +86,12 @@ Claim money back from Access to Work
               </a>
             </dd>
           </div>
-        </dl>
         {% else %}
         <div class="govuk-inset-text">
           Tell us about the journeys you have taken to and from work to continue.
         </div>
         {% endfor %}
+      </dl>
         {% endfor %}
 
       </div>
