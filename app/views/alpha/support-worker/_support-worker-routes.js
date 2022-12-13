@@ -121,6 +121,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
       } else {
         console.log('Continue')
+        var month = req.session.data['support-month']
+        var year = req.session.data['support-year']
+        var month_support = req.session.data.support
+        console.log(month)
+        console.log(year)
+        console.log(month_support)
+        var list = [
+          { month: month, year: year, support: month_support }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
       }
     }
@@ -146,10 +168,56 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
       } else {
         console.log('Continue')
+        var month = req.session.data['repeatsupport-month']
+        var year = req.session.data['repeatsupport-year']
+        var month_support = req.session.data.repeatsupport
+        req.session.data.repeatsupport = null
+        console.log(month)
+        console.log(year)
+        console.log(month_support)
+        var list = [
+          { month: month, year: year, support: month_support }
+        ];
+        if (req.session.data['month-list']){
+          var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
+          if (month_index != -1){
+            req.session.data['month-list'][month_index] = list[0]
+          }
+          else{
+            req.session.data['month-list'].push(list[0]);
+          }
+        }
+        else{
+          req.session.data['month-list'] = list
+        }
+        console.log(req.session.data['month-list'])
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
       }
     }
   })
+
+  // Get
+router.get('/support-worker/hours-for-day-change', function (req, res) {
+  if (req.query.month){
+    var month_list = req.session.data['month-list']
+    var month_data = month_list.find((month) => month.month === req.query.month && month.year === req.query.year);
+    if (month_data.support[0]["repeatsupport_hours"]){
+      req.session.data["repeatsupport-month-repeat"] = req.query.month
+      req.session.data["repeatsupport-year-repeat"] = req.query.year
+      req.session.data["repeatsupport"] = month_data.support
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
+    }
+    else {
+      req.session.data["support-month"] = req.query.month
+      req.session.data["support-year"] = req.query.year
+      req.session.data["support"] = month_data.support
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+    }
+  }
+  else{
+    res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+  }
+})
 
   // post - Submit for upload
   router.post('/support-worker/receipt-upload-add', function (req, res) {
@@ -289,5 +357,7 @@ router.post('/support-worker/existing-payee-answers', function (req, res) {
   res.redirect(`/${urlPrefix}/support-worker/counter-signatory-name`)
 }
 })
+
+
 
 }

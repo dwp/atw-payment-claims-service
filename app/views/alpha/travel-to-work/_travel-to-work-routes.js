@@ -292,7 +292,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // new journey stuff - taxis
 
   // Get
-  router.get('/travel-to-work/taxi-journeys-for-day-test', function (req, res) {
+  router.get('/travel-to-work/taxi-journeys-for-day-change', function (req, res) {
     if (req.query.month){
       var month_list = req.session.data['month-list']
       var month_data = month_list.find((month) => month.month === req.query.month && month.year === req.query.year);
@@ -311,6 +311,29 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
     else{
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-journeys-for-day`)
+    }
+  })
+
+  // Get
+  router.get('/travel-to-work/mileage-for-day-change', function (req, res) {
+    if (req.query.month){
+      var month_list = req.session.data['month-list']
+      var month_data = month_list.find((month) => month.month === req.query.month && month.year === req.query.year);
+      if (month_data.milage[0]["repeatmilage_total"]){
+        req.session.data["travel-to-work-date-month-repeat"] = req.query.month
+        req.session.data["travel-to-work-date-year-repeat"] = req.query.year
+        req.session.data["repeatmilage"] = month_data.milage
+        res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day-repeat`)
+      }
+      else {
+        req.session.data["travel-to-work-date-month"] = req.query.month
+        req.session.data["travel-to-work-date-year"] = req.query.year
+        req.session.data["milage"] = month_data.milage
+        res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
+      }
+    }
+    else{
+      res.redirect(`/${urlPrefix}/travel-to-work/mileage-for-day`)
     }
   })
 

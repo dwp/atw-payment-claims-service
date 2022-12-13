@@ -8,22 +8,24 @@
 {% endset %}
 
 {% set hourTotal = 0 %}
-{% for day in data.support %}
+{% for month in data['month-list'] %}
+{% for day in month.support %}
+{% if day.support_hours %}
 {% set hourTotal = hourTotal | float + day.support_hours | float %}
+{% endif %}
+{% if day.repeatsupport_hours %}
+{% set hourTotal = hourTotal | float + day.repeatsupport_hours | float %}
+{% endif %}
+{% endfor %}
 {% else %}
 {% set hourTotal = 0 | float %}
 {% endfor %}
+
 
 {% set repeatsupportLength %}
 {{ data.repeatsupport | length }}
 {% endset %}
 
-{% set repeathourTotal = 0 %}
-{% for day in data.repeatsupport %}
-{% set repeathourTotal = repeathourTotal | float + day.repeatsupport_hours | float %}
-{% else %}
-{% set repeathourTotal = 0 | float %}
-{% endfor %}
 
 
 <div class="govuk-grid-row">
@@ -45,67 +47,8 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-          <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                  Month support was received
-              </dt>
-              <dd class="govuk-summary-list__value">
-
-                {{data["support-month"] | numberMonth}} {{data["support-year"]}}
-
-              </dd>
-              {% if print != true %}
-              <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                  <a href="../support-worker/claiming-for-month">
-                      Change
-                      <span class="govuk-visually-hidden"> month of support received</span>
-                  </a>
-                  {% else %}
-                  <a href="claiming-for-month">
-                      Change
-                      <span class="govuk-visually-hidden"> month of support received</span>
-                  </a>
-                  {% endif %}
-              </dd>
-              {% endif %}
-          </div>
-
-
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Days support was recieved in {{data["support-month"] | numberMonth}} 
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  {% for item in data['support'] | sortBy('day') %}
-                  {{item.day}} {{data["support-month"] | numberMonth}} {{data["support-year"]}} <br>{{item.support_hours}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %}
-                  {{item.travel_journeys}}
-                  {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                  {% else %}
-                   {% if item.providor %}<br> {{item.providor}} {% endif %}
-                   {% endif %}<br><br>
-                   {% endfor %}
-
-                </dd>
-                {% if print != true %}
-                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-
-                    {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                      <a href="../support-worker/hours-for-day-summary">
-                          Change
-                          <span class="govuk-visually-hidden"> Hours of support received</span>
-                      </a>
-                      {% else %}
-                      <a href="hours-for-day-summary">
-                          Change
-                          <span class="govuk-visually-hidden"> Hours of support received</span>
-                      </a>
-                      {% endif %}
-                </dd>
-                {% endif %}
-            </div>
-
-            {% if data['repeatsupport-month'] %}
+          
+            {% for month_data in data['month-list'] %}
 
 
 
@@ -114,9 +57,7 @@
                       Month support was received
                   </dt>
                   <dd class="govuk-summary-list__value">
-
-                    {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}}
-
+                    {{month_data.month | numberMonth}} {{month_data.year}}
                   </dd>
                   {% if print != true %}
                   <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -139,12 +80,19 @@
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
 
-                        Days of support in {{data["repeatsupport-month"] | numberMonth}} and name of support worker or agency
+                        Days of support in {{month_data.month | numberMonth}} and name of support worker or agency
                     </dt>
                     <dd class="govuk-summary-list__value">
 
-                       {% for item in data['repeatsupport'] | sortBy('day') %}
-                       {{item.day}} {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}} <br>{{item.repeatsupport_hours}} {% if repeathourTotal === 1 %} hour {% else %} hours {% endif %}
+                       {% for item in month_data.support | sortBy('day') %}
+                       {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}} <br>
+                       {% if item.support_hours %}
+                       {{item.support_hours}} {% if item.support_hours == 1 %} hour {% else %} hours {% endif %}
+                       {% elif item.repeatsupport_hours %}
+                       {{item.repeatsupport_hours}}  {% if item.repeatsupport_hours == 1 %} hour {% else %} hours {% endif %}
+                       {% endif %}
+                       
+
                         <br>
                         {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
                         {% else %}
@@ -173,14 +121,14 @@
                     {% endif %}
                 </div>
 
-                {% endif %}
+                {% endfor %}
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Total support
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{hourTotal + repeathourTotal}} {% if hourTotal === 1 %} hour {% else %} hours {% endif %} <br>
+                    {{hourTotal}} {% if hourTotal == 1 %} hour {% else %} hours {% endif %} <br>
 
                 </dd>
                 {% if print != true %}
@@ -226,7 +174,7 @@
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  {% if data['uploads'].length === 1 %}
+                  {% if data['uploads'].length == 1 %}
                     Receipt or invoice uploaded
                     {% else %}
                     Receipts or invoices uploaded
