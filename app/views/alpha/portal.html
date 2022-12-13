@@ -198,10 +198,7 @@ html: 'This is a new service – your <a class="govuk-link"
 
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
                     {% set title %}
-                    Personal details{% if data["new-email-address"] %} {% elseif (data['journey-type']
-                    == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                    <span id="notifications-personal-info" class="moj-notification-badge">1</span>
-                    {% endif %}
+                    Personal details
                     {% endset %}
 
 
