@@ -98,6 +98,11 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/portal-screens/personal-information', function (req, res) {
     if (!(req.session.data['new-phone']) && !(req.session.data['new-mobile'])){
     }
+    currentPersonalInfo = {
+      mobile: req.session.data['new-mobile'],
+      home: req.session.data['new-phone']
+    }
+    req.session.data['currentPersonalInfo'] = currentPersonalInfo
     res.render(`./${folderForViews}/portal-screens/personal-information`)
   })
 

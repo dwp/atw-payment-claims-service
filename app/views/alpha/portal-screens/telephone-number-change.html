@@ -5,6 +5,7 @@ Telephone numbers – Claim money back from Access to Work – GOV.UK
 {% endblock %}
 
 {% block content %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form action="personal-information-change" method="post" class="form">
@@ -82,10 +83,11 @@ Telephone numbers – Claim money back from Access to Work – GOV.UK
                     </dd>
                 </div>
             </dl>
-            
+            {% if (((data['new-mobile']) and (data['new-mobile'] != data['currentPersonalInfo']['mobile'])) or ((data['new-phone']) and (data['new-phone'] != data['currentPersonalInfo']['home'])) ) %}
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
             </button>
+            {% endif %}
         </form>
     </div>
 </div>
