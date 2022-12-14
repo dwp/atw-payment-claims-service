@@ -81,6 +81,7 @@ Change personal details – Claim money back from Access to Work – GOV.UK
                     {% if data['new-phone'] %}
                     {{data["new-phone"]}}
                     {% else %}
+                    Not given
                     {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -103,6 +104,8 @@ Change personal details – Claim money back from Access to Work – GOV.UK
                 <dd class="govuk-summary-list__value">
                     {% if data['new-mobile'] %}
                     {{data["new-mobile"]}}
+                    {% else %}
+                    Not given
                     {% endif %}
                 </dd>
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
