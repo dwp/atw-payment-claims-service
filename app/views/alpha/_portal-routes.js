@@ -97,7 +97,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.get('/portal-screens/personal-information', function (req, res) {
     if (!(req.session.data['new-phone']) && !(req.session.data['new-mobile'])){
-      req.session.data['new-phone'] = "01234 567890"
     }
     res.render(`./${folderForViews}/portal-screens/personal-information`)
   })
