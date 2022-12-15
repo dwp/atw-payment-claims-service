@@ -273,10 +273,13 @@
                                     {{month_data.year}} <br>
                                     {% if item.travel_journeys %}
                                         {{item.travel_journeys}}
+                                        {% if item.travel_journeys == 1 %} journey {% else %} journeys {% endif %}
+
                                     {% else %}
                                         {{item.repeattravel_journeys}}
+                                        {% if item.repeattravel_journeys == 1 %} journey {% else %} journeys {% endif %}
+
                                     {% endif %}
-                                    {% if repeattaxiTotal === 1 %} journey {% else %} journeys {% endif %}
                                     </br> <br>
                                 {% endfor %}
                             {% else %}
@@ -317,7 +320,7 @@
                         {%if data["transport-option"]=="taxi-during-work" %}
                             {{travelLength|int + repeattravelLength|int}} journeys <br>
                         {% else %}
-                            {{taxiTotal}} {% if taxiTotal === 1 %} journey {% else %} journeys {% endif %}
+                            {{taxiTotal}} {% if taxiTotal == 1 %} journey {% else %} journeys {% endif %}
                         {% endif %}
                     </dd>
                     {% if print != true %}
@@ -366,7 +369,7 @@
                 {%if (data["transport-option"]=="taxi") %}
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                            {% if data['uploads'].length === 1 %}
+                            {% if data['uploads'].length == 1 %}
                                 Receipt or invoice uploaded
                             {% else %}
                                 Receipts or invoices uploaded
