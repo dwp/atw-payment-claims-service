@@ -62,18 +62,20 @@ html: 'This is a new service – your <a class="govuk-link"
 
                 {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and
                 (data['citizen-delared'] !=="true")%}
-                <div class="govuk-inset-text">
-                    You have <b>1</b> claim that has not been confirmed. You need to <a
-                        href="./portal-screens/claims-history"> correct the claim</a> and resubmit it.
-                </div>
-                {% endif %}
-
-                {% if data["new-email-address"] %}
-                {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                <div class="govuk-inset-text">
-                    <a href="./portal-screens/personal-information">Add an email address</a> to your personal
-                    details so we can let you know the progress of your claims.
-                </div>
+                <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                        Important
+                      </h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                      <p class="govuk-notification-banner__heading">
+                        You have <b>1</b> claim that has not been confirmed. You need to correct the claim and resubmit it.
+                        <a class="govuk-notification-banner__link" href="./portal-screens/claims-history">View claim</a>.
+                      </p>
+                    </div>
+                  </div>
+                
                 {% endif %}
 
             </div>
@@ -180,12 +182,8 @@ html: 'This is a new service – your <a class="govuk-link"
                     {% else %}
                         {% set claimHistoryLink %}./portal-screens/claims-history{% endset %}
                     {% endif %}
-
-                    {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
-                        {% set claimHistoryTitle %}Your claims <span id="notifications-claim-history" class="moj-notification-badge">1</span>{% endset %}
-                    {% else %}
+                    
                         {% set claimHistoryTitle %}Your claims{% endset %}
-                    {% endif %}
 
                     {{ card({
                     "href": claimHistoryLink | safe,

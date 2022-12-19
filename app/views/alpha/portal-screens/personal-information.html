@@ -39,9 +39,20 @@ improve it.'
     </fieldset>
     {% if data["new-email-address"] %}
     {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-    <div class="govuk-inset-text">
-      Add an email address so we can let you know the progress of your claims.
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          Add an email address so we can let you know the progress of your claims.
+          <a class="govuk-notification-banner__link" href="./personal-information-change">Add email</a>.
+        </p>
+      </div>
     </div>
+
     {% endif %}
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
