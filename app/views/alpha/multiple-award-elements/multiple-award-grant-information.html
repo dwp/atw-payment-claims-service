@@ -34,9 +34,9 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        {% if data['journey-type'] == "traveltowork" %}
+        {% if data['journey-type-secondary'] == "traveltowork" %}
         <h1 class="govuk-heading-l">Travel to and from work grant summary</h1>
-        {% elseif data['journey-type'] == "specialaidsandequipment" %}
+        {% elseif data['journey-type-secondary'] == "specialaidsandequipment" %}
         <h1 class="govuk-heading-l">Special aids and equipment grant summary</h1>
         {% else %}
         <h1 class="govuk-heading-l">Grant summary</h1>
@@ -60,22 +60,22 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
         {% endif %}
 
-        {% if (data['journey-type'] == "supportworker") and (data['multiple-employers'] == "true") %}
+        {% if (data['journey-type-secondary'] == "supportworker") and (data['multiple-employers'] == "true") %}
         <p>We’ll help pay for support to make it easier for you to do your job. This support can be used whilst you work as a Human Resources Assistant at Google. </p>
         {% elseif (data['multiple-employers'] == "true") %}
         <p>We’ll help pay for support to make it easier for you to do your job. This support can be used whilst you work as a Finance Analyst at Deaf Action Charity. </p>
         {% endif %}
 
 
-        {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+        {% if (data['journey-type-secondary'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
         <p>You can also <a href="../multiple-employers/employers-grant-information">view the claims history of your other awards</a>.</p>
         {% endif %}
 
-        {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+        {% if (data['journey-type-secondary'] == "multipleawards") or (data['multiple-awards'] == "true") %}
         <p>You can also <a href="../multiple-award-elements/grant-summary-support-type">view a grant summary for other types of support</a>.</p>
         {% endif %}
 
-        {%if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "specialaidsandequipmentdev") or (data['journey-type'] == "specialaidsandequipmentpb") %}
+        {%if (data['journey-type-secondary'] == "specialaidsandequipment") or (data['journey-type-secondary'] == "specialaidsandequipmentdev") or (data['journey-type-secondary'] == "specialaidsandequipmentpb") %}
 
         <h2 class="govuk-heading-m">Developer at Deaf Action Charity</h2>
 
@@ -124,7 +124,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
           </div>
         </dl>
 
-        {% elseif (data['journey-type'] == "adaptations") %}
+        {% elseif (data['journey-type-secondary'] == "adaptations") %}
 
         <h2 class="govuk-heading-m">What support you’ll get</h2>
 
@@ -172,7 +172,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
           </div>
         </dl>
 
-        {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") %}
+        {% elseif (data['journey-type-secondary'] == "supportworker") or (data['journey-type-secondary'] == "supportworkerdev") or (data['journey-type-secondary'] == "supportworkerpb") %}
 
         <h2 class="govuk-heading-m">What support you’ll get</h2>
 
@@ -228,7 +228,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
         </dl>
 
-        {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") or (data['journey-type'] == "traveltoworkpb") %}
+        {% elseif (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type-secondary'] == "traveltoworkpb") %}
 
         <h2 class="govuk-heading-m">Developer at Deaf Action Charity</h2>
 
@@ -334,7 +334,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
         </dl>
 
-        {% elseif (data['journey-type'] == "travelinwork") or (data['journey-type'] == "travelinworkpb") or (data['journey-type'] == "travelinworkdev") %}
+        {% elseif (data['journey-type-secondary'] == "travelinwork") or (data['journey-type-secondary'] == "travelinworkpb") or (data['journey-type-secondary'] == "travelinworkdev") %}
         
         <h2 class="govuk-heading-m">What support you’ll get</h2>
 
@@ -375,7 +375,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
         </dl>
 
 
-        {% elseif (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+        {% elseif (data['journey-type-secondary'] == "multipleawards") or (data['multiple-awards'] == "true") %}
 
         <h3 class="govuk-heading-s"> Travel to or from work grant </h3>
 
@@ -476,14 +476,14 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
         {% endif %}
 
-         <!-- {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+         <!-- {% if (data['journey-type-secondary'] == "multipleawards") or (data['multiple-awards'] == "true") %}
         <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
         {% endif %} -->
 
 
         <p>You should have already received a copy of your grant approval letter by post.</p>
 
-        {% if (data['journey-type'] == "supportworker") and (data['multiple-employers'] == "true") %}
+        {% if (data['journey-type-secondary'] == "supportworker") and (data['multiple-employers'] == "true") %}
         <p>Your support starts from <b>12 February 2022</b> until <b>12 February 2025</b> if your needs do not change.</p>
         {% else %}
         <p>Your support starts from <b>5 March 2021</b> until <b>5 March 2024</b> if your needs do not change.</p>
