@@ -87,11 +87,11 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
             {% endif %} -->
 
 
-            {%if ((data['journey-type'] == "traveltowork-ammendment") or (data["multiple-awards"])) and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
+            {%if ((data['journey-type'] == "traveltowork-ammendment") or (data["multiple-awards"])) and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true") or 1===1%}
 
 
 
-            <h2 class="govuk-heading-m">Claim needs updating <span id="notifications" class="moj-notification-badge">1</span> </h2>
+            <h2 class="govuk-heading-m">Claim needs updating</h2>
             <div class="govuk-inset-text">
             Your claim has not been confirmed. You need to check the details of your claim and update it.
             </div>

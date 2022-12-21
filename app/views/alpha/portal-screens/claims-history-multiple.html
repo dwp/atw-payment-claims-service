@@ -49,8 +49,6 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
             {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and (data['citizen-delared'] !=="true")%}
 
 
-
-            <h2 class="govuk-heading-m">Claim needs updating <span id="notifications" class="moj-notification-badge">1</span> </h2>
             <div class="govuk-inset-text">
             Your workplace contact has reviewed your claim. You need to make some changes before they can confirm your claim.
             </div>
@@ -62,7 +60,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
                     <th scope="col" class="govuk-table__header">Date of payment</th>
                     <th scope="col" class="govuk-table__header govuk-table__header--numeric">Claim type</th>
                     <th scope="col" class="govuk-table__header govuk-table__header--numeric">Make changes to your claim</th>
-                  </tr
+                  </tr>
                 </thead>
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
