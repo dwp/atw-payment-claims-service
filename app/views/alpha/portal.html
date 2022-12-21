@@ -224,7 +224,6 @@ html: 'This is a new service – your <a class="govuk-link"
                     }) }}
                 </li>
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-                    {{data['journey-type']}}
                     {% if ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) %}
                         {% set grantSummaryLink %}./multiple-employers/employers-grant-information{% endset %}
                     {% elseif (data['journey-type'] == "multipleawards") %}
