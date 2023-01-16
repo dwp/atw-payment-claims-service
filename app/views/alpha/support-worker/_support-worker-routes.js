@@ -101,6 +101,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
   })
 
+  router.post('/support-worker/check-your-answers', function (req, res) {
+    console.log(req.session.data.testtest)
+    req.session.data.testtest = req.session.data.testtest
+    res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+  })
+
   router.post('/support-worker/hours-for-day', function (req, res) {
     console.log(req.session.data.support)
     if (req.session.data.remove !== undefined) {

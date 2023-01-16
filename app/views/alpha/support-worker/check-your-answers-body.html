@@ -42,11 +42,62 @@
         {% endif %}
         {% endif %}
 
-        {% set testtest =1 %}
+        <form action="check-your-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="support-for-workplace-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                            Check your answers version
+                        </h1>
+                    </legend>
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="testtest_0" name="testtest"
+                                   type="radio"
+                                   value="0">
+                            <label class="govuk-label govuk-radios__label" for="testtest_0">
+                                0
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="testtest_1" name="testtest"
+                                   type="radio"
+                                   value="1">
+                            <label class="govuk-label govuk-radios__label" for="testtest_1">
+                                1
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="testtest_2" name="testtest"
+                                   type="radio"
+                                   value="2">
+                            <label class="govuk-label govuk-radios__label" for="testtest_2">
+                                2
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="testtest_3" name="testtest"
+                                   type="radio"
+                                   value="3">
+                            <label class="govuk-label govuk-radios__label" for="testtest_3">
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
 
 
 
-        {% if testtest == 1 %}
+
+        {% if data.testtest == 1 %}
 
 
         {% for month_data in data['month-list'] %}
@@ -182,7 +233,7 @@
         </dl>
 
 
-        {% elseif testtest == 2 %}
+        {% elseif data.testtest == 2 %}
 
         <h2 class="govuk-heading-m">Claim information (New 2)</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-6">
@@ -313,7 +364,7 @@
 
 
         
-        {% elseif testtest == 3 %}
+        {% elseif data.testtest == 3 %}
 
         <h2 class="govuk-heading-m">Claim information (New 3)</h2>
 
