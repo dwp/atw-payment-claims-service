@@ -234,6 +234,8 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
         <h2 class="govuk-heading-m">Finance Analyst at Deaf Action Charity</h2>
 
+        <h3 class="govuk-heading-s">Current grant</h2>
+
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -283,6 +285,58 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
           </div>
 
         </dl>
+
+        <h3 class="govuk-heading-s">Previous grant</h2>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Agreed support and cost
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £40.00 per journey
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Total cost of support
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £6,800
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Total amount you or your employer have agreed to contribute
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £7.00 per journey
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Total amount Access to Work will contribute
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £33.00 per journey
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Amount of grant left
+              </dt>
+              {% if data ['grant-valid'] == "notvalid" %}
+              <dd class="govuk-summary-list__value">
+                £0
+              </dd>
+              {% else %}
+              <dd class="govuk-summary-list__value">
+                £6,500
+              </dd>
+              {% endif %}
+            </div>
+  
+          </dl>
 
         {% elseif (data['journey-type-multipleawards'] == "humanresources") %}
 
