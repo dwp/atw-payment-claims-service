@@ -65,11 +65,23 @@ Claim money back from Access to Work
                   </div>
                 </dl>
 
-                <p>You must claim for specialist equipment within 9 months of the purchase date.</p>
+        </form>
 
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
+        <p>You should have already received a copy of your grant approval letter by post.</p>
+
+        {% if (data['journey-type'] == "supportworker") and (data['multiple-employers'] == "true") %}
+        <p>Your support starts from <b>12 February 2022</b> until <b>12 February 2025</b> if your needs do not change.</p>
+        {% else %}
+        <p>Your support starts from <b>5 March 2021</b> until <b>5 March 2024</b> if your needs do not change.</p>
+        {% endif %}
+
+
+
+        <form action="../portal" method="post" class="form">
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+              Return to account home
+          </button>
 
         </form>
 

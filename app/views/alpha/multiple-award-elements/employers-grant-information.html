@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to improve it.'
+}) }}
+
+
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Which job do you want to see grant information for?</a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="../multiple-award-elements/multiple-award-grant-information" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="travel-to-work-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Which job do you want to see grant information for?
+                        </h1>
+                    </legend>
+
+
+                    <p id="multiple-awards-hint" class="govuk-body">You can <a href="../portal-screens/grant-information">find out what your Access to Work grant can be used for</a> in the ‘grant information’ section of your account.</p>
+
+
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="journey-type-multipleawards-fa" name="journey-type-multipleawards"
+                                   type="radio"
+                                   value="financeanalyst">
+                            <label class="govuk-label govuk-radios__label" for="journey-type-multipleawards">
+                                Finance Analyst at Deaf Action Charity
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="journey-type-multipleawards-hr" name="journey-type-multipleawards"
+                                   type="radio"
+                                   value="humanresources">
+                            <label class="govuk-label govuk-radios__label" for="journey-type-supportworker">
+                                Human Resources Assistant at Google
+                            </label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+
+            <input type="hidden" name="multiple-employers" value="true">
+            
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
