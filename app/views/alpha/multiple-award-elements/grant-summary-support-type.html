@@ -4,31 +4,6 @@
 Claim money back from Access to Work
 {% endblock %}
 
-{% block beforeContent %}
-{{ govukPhaseBanner({
-tag: {
-text: "alpha"
-},
-html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to improve it.'
-}) }}
-
-
-<div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
-        </li>
-        {% if data['multiple-employers'] %}
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../multiple-employers/start-a-claim.html">What job and employer do you want to claim against?</a>
-        </li>
-        {% endif %}
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">What type of support do you want to see your grant summary for?</a>
-        </li>
-    </ol>
-</div>
-{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">

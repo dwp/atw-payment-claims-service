@@ -4,26 +4,6 @@
 Claim money back from Access to Work
 {% endblock %}
 
-{% block beforeContent %}
-{{ govukPhaseBanner({
-tag: {
-text: "alpha"
-},
-html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to improve it.'
-}) }}
-
-
-<div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="start-a-claim.html">Which job do you want to see grant information for?</a>
-        </li>
-    </ol>
-</div>
-{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -36,10 +16,6 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
                             Which job do you want to see grant information for?
                         </h1>
                     </legend>
-
-
-                    <p id="multiple-awards-hint" class="govuk-body">You can <a href="../portal-screens/grant-information">find out what your Access to Work grant can be used for</a> in the ‘grant information’ section of your account.</p>
-
 
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
