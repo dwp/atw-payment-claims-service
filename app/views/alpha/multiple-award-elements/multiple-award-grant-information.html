@@ -4,30 +4,6 @@
 Claim money back from Access to Work
 {% endblock %}
 
-{% block beforeContent %}
-{{ govukPhaseBanner({
-tag: {
-text: "alpha"
-},
-html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to improve it.'
-}) }}
-
-<div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
-        </li>
-        {% if data ['multiple-employers'] == "true" %}
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="../multiple-employers/employers-grant-information.html">What job and employer grant information do you want to see?</a>
-        </li>
-        {% endif %}
-        <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link" href="grant-information.html">Information about your grant</a>
-        </li>
-    </ol>
-</div>
-{% endblock %}
 
 {% block content %}
 
@@ -35,9 +11,9 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
     <div class="govuk-grid-column-two-thirds">
 
         {% if data['journey-type-secondary'] == "traveltowork" %}
-        <h1 class="govuk-heading-l">Travel to and from work grant summary</h1>
+        <h1 class="govuk-heading-l">Grant summary</h1>
         {% elseif data['journey-type-secondary'] == "specialaidsandequipment" %}
-        <h1 class="govuk-heading-l">Special aids and equipment grant summary</h1>
+        <h1 class="govuk-heading-l">Grant summary</h1>
         {% else %}
         <h1 class="govuk-heading-l">Grant summary</h1>
         {% endif %}
@@ -64,11 +40,6 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
         <p>We’ll help pay for support to make it easier for you to do your job. This support can be used whilst you work as a Human Resources Assistant at Google. </p>
         {% elseif (data['multiple-employers'] == "true") %}
         <p>We’ll help pay for support to make it easier for you to do your job. This support can be used whilst you work as a Finance Analyst at Deaf Action Charity. </p>
-        {% endif %}
-
-
-        {% if (data['journey-type-secondary'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-        <p>You can also <a href="../multiple-employers/employers-grant-information">view the claims history of your other awards</a>.</p>
         {% endif %}
 
         {% if (data['journey-type-secondary'] == "multipleawards") or (data['multiple-awards'] == "true") %}
@@ -230,7 +201,9 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 
         {% elseif (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type-secondary'] == "traveltoworkpb") %}
 
-        <h2 class="govuk-heading-m">Developer at Deaf Action Charity</h2>
+        {% if (data['journey-type-multipleawards'] == "financeanalyst") %}
+
+        <h2 class="govuk-heading-m">Finance Analyst at Deaf Action Charity</h2>
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -281,6 +254,66 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
           </div>
 
         </dl>
+
+        <p>You should have already received a copy of your grant approval letter by post.</p>
+
+        <p>Your support starts from <b>12 December 2022</b> until <b>12 December 2025</b> if your needs do not change.</p>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Agreed support and cost
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £40.00 per journey
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Total cost of support
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £6,800
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Total amount you or your employer have agreed to contribute
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £7.00 per journey
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Total amount Access to Work will contribute
+              </dt>
+              <dd class="govuk-summary-list__value">
+                £33.00 per journey
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Amount of grant left
+              </dt>
+              {% if data ['grant-valid'] == "notvalid" %}
+              <dd class="govuk-summary-list__value">
+                £0
+              </dd>
+              {% else %}
+              <dd class="govuk-summary-list__value">
+                £6,500
+              </dd>
+              {% endif %}
+            </div>
+  
+          </dl>
+
+          <p>You should have already received a copy of your grant approval letter by post.</p>
+
+        <p>Your support starts from <b>12 December 2019</b> until <b>12 December 2022</b> if your needs do not change.</p>
+
+        {% elseif (data['journey-type-multipleawards'] == "humanresources") %}
 
         <h2 class="govuk-heading-m">Human Resources Assistant at Google</h2>
 
@@ -333,6 +366,12 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
           </div>
 
         </dl>
+
+        <p>You should have already received a copy of your grant approval letter by post.</p>
+
+        <p>Your support starts from <b>12 December 2021</b> until <b>12 December 2024</b> if your needs do not change.</p>
+
+        {% endif %}
 
         {% elseif (data['journey-type-secondary'] == "travelinwork") or (data['journey-type-secondary'] == "travelinworkpb") or (data['journey-type-secondary'] == "travelinworkdev") %}
         
@@ -480,6 +519,9 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
         <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
         {% endif %} -->
 
+        {% if (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type-secondary'] == "traveltoworkpb") %}
+
+        {% else %}
 
         <p>You should have already received a copy of your grant approval letter by post.</p>
 
@@ -487,6 +529,7 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
         <p>Your support starts from <b>12 February 2022</b> until <b>12 February 2025</b> if your needs do not change.</p>
         {% else %}
         <p>Your support starts from <b>5 March 2021</b> until <b>5 March 2024</b> if your needs do not change.</p>
+        {% endif %}
         {% endif %}
 
 
