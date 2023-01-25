@@ -402,22 +402,6 @@
 
         </dl>
 
-        {% if print != true %}
-            {% if (data['cost-of-taxi']=="100") %}
-                <div class="govuk-inset-text">
-                    The amount we’ll pay will be less than the total cost you’re claiming for. This is because we’ll deduct
-                        the amounts you or your employer have agreed to pay.
-                </div>
-            {% endif %}
-
-            {%if (data["transport-option"]=="lift") or (data["transport-option"]=="lift-during-work") %}
-                <div class="govuk-inset-text">
-                    We’ll use the rate per mile quoted in your grant approval letter to work out how much you’re paid back.
-                </div>
-            {% endif %}
-        {% endif %}
-        <!-- // end of the if statement to stop showing information in counter signature journery -->
-
         {%if (data['journey-type'] == "traveltowork-ammendment") or (data['ttw-declaration']) %}
 
         {% else %}
