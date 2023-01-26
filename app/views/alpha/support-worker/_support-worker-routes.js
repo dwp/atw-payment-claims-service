@@ -1,3 +1,5 @@
+const { indexOf } = require("lodash")
+
 module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/support-worker/start-a-claim', function (req, res) {
 
@@ -103,6 +105,36 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/support-worker/hours-for-day', function (req, res) {
     console.log(req.session.data.support)
+    var month = req.session.data['support-month']
+    var year = req.session.data['support-year']
+
+    var daysInMonth = function (month, year) {
+      switch (month) {
+          case 1 :
+              return (year % 4 == 0 && year % 100) || year % 400 == 0 ? 29 : 28;
+          case 8 : case 3 : case 5 : case 10 :
+              return 30;
+          default :
+              return 31
+      }
+    };
+    var month_support_check = req.session.data.support
+    var errors = []
+
+    month_support_check.forEach(function(day_support) {
+      if (day_support.day && (isNaN(day_support.day) || day_support.day < 1 || day_support.day > daysInMonth )){
+        errors.push({text: "Day must be valid for the month", index: indexOf(month_support_check, day_support)})
+      }
+      if (day_support.support_hours && (isNaN(day_support.support_hours) || day_support.support_hours < 0 || day_support.support_hours > 24) ){
+        errors.push({text: "Hours of support must be between 1 and 24", index: indexOf(month_support_check, day_support)})
+      }
+    });
+
+    if (errors){
+      req.session.data["support-worker-errors"] = errors
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+    }
+
     if (req.session.data.remove !== undefined) {
       console.log('Remove')
       req.session.data.remove = undefined
@@ -121,8 +153,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
       } else {
         console.log('Continue')
-        var month = req.session.data['support-month']
-        var year = req.session.data['support-year']
+        
         var month_support = req.session.data.support
         console.log(month)
         console.log(year)
