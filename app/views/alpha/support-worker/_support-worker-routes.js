@@ -120,19 +120,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
     };
     var month_support_check = req.session.data.support
     var errors = []
+    req.session.data["support-worker-errors"] = []
 
     month_support_check.forEach(function(day_support) {
       if (day_support.day && (isNaN(day_support.day) || day_support.day < 1 || day_support.day > daysInMonth )){
-        errors.push({text: "Day must be valid for the month", index: indexOf(month_support_check, day_support)})
+        errors.push({text: "Day must be valid for the month", href: "#support["+indexOf(month_support_check, day_support)+"][day]"})
       }
-      if (day_support.support_hours && (isNaN(day_support.support_hours) || day_support.support_hours < 0 || day_support.support_hours > 24) ){
-        errors.push({text: "Hours of support must be between 1 and 24", index: indexOf(month_support_check, day_support)})
+      if (day_support.support_hours && (isNaN(day_support.support_hours) || day_support.support_hours < 1 || day_support.support_hours > 24) ){
+        errors.push({text: "Hours of support must be between 1 and 24", href: "#support["+indexOf(month_support_check, day_support)+"][support_hours]"})
+      }
+      if (day_support.support_minutes && (isNaN(day_support.support_minutes) || day_support.support_minutes < 0 || day_support.support_minutes >= 60) ){
+        errors.push({text: "Minutes of support must be below 60", href: "#support["+indexOf(month_support_check, day_support)+"][support_minutes]"})
       }
     });
 
-    if (errors){
+    if (errors.length){
       req.session.data["support-worker-errors"] = errors
       res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+      return
     }
 
     if (req.session.data.remove !== undefined) {
@@ -146,6 +151,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         console.log(req.session.data)
         req.session.data.support = [...req.session.data.support, {
           support_hours: '',
+          support_minutes: '',
           day: '',
           month: '',
           year: ''
@@ -181,6 +187,42 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/support-worker/hours-for-day-repeat', function (req, res) {
     console.log(req.session.data.support)
+
+    var month = req.session.data['repeatsupport-month']
+    var year = req.session.data['repeatsupport-year']
+
+    var daysInMonth = function (month, year) {
+      switch (month) {
+          case 1 :
+              return (year % 4 == 0 && year % 100) || year % 400 == 0 ? 29 : 28;
+          case 8 : case 3 : case 5 : case 10 :
+              return 30;
+          default :
+              return 31
+      }
+    };
+    var month_support_check = req.session.data.repeatsupport
+    var errors = []
+    req.session.data["support-worker-errors"] = []
+
+    month_support_check.forEach(function(day_support) {
+      if (day_support.day && (isNaN(day_support.day) || day_support.day < 1 || day_support.day > daysInMonth )){
+        errors.push({text: "Day must be valid for the month", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][day]"})
+      }
+      if (day_support.repeatsupport_hours && (isNaN(day_support.repeatsupport_hours) || day_support.repeatsupport_hours < 1 || day_support.repeatsupport_hours > 24) ){
+        errors.push({text: "Hours of support must be between 1 and 24", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][repeatsupport_hours]"})
+      }
+      if (day_support.repeatsupport_minutes && (isNaN(day_support.repeatsupport_minutes) || day_support.repeatsupport_minutes < 0 || day_support.repeatsupport_minutes >= 60) ){
+        errors.push({text: "Minutes of support must be below 60", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][repeatsupport_minutes]"})
+      }
+    });
+
+    if (errors.length){
+      req.session.data["support-worker-errors"] = errors
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
+      return
+    }
+
     if (req.session.data.remove !== undefined) {
       console.log('Remove')
       req.session.data.remove = undefined
@@ -192,6 +234,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         console.log(req.session.data)
         req.session.data.support = [...req.session.data.support, {
           support_hours: '',
+          support_minutes: '',
           day: '',
           month: '',
           year: ''
