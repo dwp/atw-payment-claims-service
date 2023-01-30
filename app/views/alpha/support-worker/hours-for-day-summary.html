@@ -8,6 +8,20 @@ Claim money back from Access to Work
 {{ data.support | length }}
 {% endset %}
 
+{% set minuteTotal = 0 %}
+{% for month in data['month-list'] %}
+{% for day in month.support %}
+{% if day.support_minutes %}
+{% set minuteTotal = minuteTotal | float + day.support_minutes | float %}
+{% endif %}
+{% if day.repeatsupport_minutes %}
+{% set minuteTotal = minuteTotal | float + day.repeatsupport_minutes | float %}
+{% endif %}
+{% endfor %}
+{% else %}
+{% set minuteTotal = 0 | float %}
+{% endfor %}
+
 {% set hourTotal = 0 %}
 {% for month in data['month-list'] %}
 {% for day in month.support %}
@@ -56,8 +70,18 @@ Claim money back from Access to Work
             <dd class="govuk-summary-list__value">
               {% if item.support_hours %}
               {{item.support_hours}} {% if item.support_hours == 1 %} hour {% else %} hours {% endif %}
+              {% if item.support_minutes %}
+              and 
+              {{item.support_minutes}} {% if item.support_minutes == 1 %} minute {% else %} minutes {% endif %}
+              {% endif %}
+
               {% elseif item.repeatsupport_hours %}
               {{item.repeatsupport_hours}} {% if item.repeatsupport_hours == 1 %} hour {% else %} hours {% endif %}
+              {% if item.repeatsupport_minutes %}
+              and
+              {{item.repeatsupport_minutes}} {% if item.repeatsupport_minutes == 1 %} minute {% else %} minutes {% endif %}
+              {% endif %}
+
               {% endif %}
 
               <br>{{item.providor}}

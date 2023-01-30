@@ -123,15 +123,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
     req.session.data["support-worker-errors"] = []
 
     month_support_check.forEach(function(day_support) {
-      if (day_support.day && (isNaN(day_support.day) || day_support.day < 1 || day_support.day > daysInMonth )){
-        errors.push({text: "Day must be valid for the month", href: "#support["+indexOf(month_support_check, day_support)+"][day]"})
+      //Enter hours of support
+      if (!day_support.support_hours){
+        errors.push({text: "Enter hours of support", href: "#support["+indexOf(month_support_check, day_support)+"][support_hours]"})
       }
-      if (day_support.support_hours && (isNaN(day_support.support_hours) || day_support.support_hours < 1 || day_support.support_hours > 24) ){
+      //Hours of support must be between 1 and 24
+      else if (day_support.support_hours < 1 || day_support.support_hours > 24){
         errors.push({text: "Hours of support must be between 1 and 24", href: "#support["+indexOf(month_support_check, day_support)+"][support_hours]"})
       }
-      if (day_support.support_minutes && (isNaN(day_support.support_minutes) || day_support.support_minutes < 0 || day_support.support_minutes >= 60) ){
+      //Hours must be a whole number
+      else if (isNaN(day_support.support_hours)){
+        errors.push({text: "Hours must be a whole number", href: "#support["+indexOf(month_support_check, day_support)+"][support_hours]"})
+      }
+
+      //Minutes of support must be below 60
+      if (day_support.support_minutes > 60){
         errors.push({text: "Minutes of support must be below 60", href: "#support["+indexOf(month_support_check, day_support)+"][support_minutes]"})
       }
+      //Minutes must be a whole number
+      else if (isNaN(day_support.support_minutes)){
+        errors.push({text: "Minutes must be a whole number", href: "#support["+indexOf(month_support_check, day_support)+"][support_minutes]"})
+      }
+      
     });
 
     if (errors.length){
@@ -206,15 +219,28 @@ module.exports = function (folderForViews, urlPrefix, router) {
     req.session.data["support-worker-errors"] = []
 
     month_support_check.forEach(function(day_support) {
-      if (day_support.day && (isNaN(day_support.day) || day_support.day < 1 || day_support.day > daysInMonth )){
-        errors.push({text: "Day must be valid for the month", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][day]"})
+      //Enter hours of support
+      if (!day_support.repeatsupport_hours){
+        errors.push({text: "Enter hours of support", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][repeatsupport_hours]"})
       }
-      if (day_support.repeatsupport_hours && (isNaN(day_support.repeatsupport_hours) || day_support.repeatsupport_hours < 1 || day_support.repeatsupport_hours > 24) ){
+      //Hours of support must be between 1 and 24
+      else if (day_support.repeatsupport_hours < 1 || day_support.repeatsupport_hours > 24){
         errors.push({text: "Hours of support must be between 1 and 24", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][repeatsupport_hours]"})
       }
-      if (day_support.repeatsupport_minutes && (isNaN(day_support.repeatsupport_minutes) || day_support.repeatsupport_minutes < 0 || day_support.repeatsupport_minutes >= 60) ){
+      //Hours must be a whole number
+      else if (isNaN(day_support.repeatsupport_hours)){
+        errors.push({text: "Hours must be a whole number", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][repeatsupport_hours]"})
+      }
+
+      //Minutes of support must be below 60
+      if (day_support.repeatsupport_minutes > 60){
         errors.push({text: "Minutes of support must be below 60", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][repeatsupport_minutes]"})
       }
+      //Minutes must be a whole number
+      else if (isNaN(day_support.repeatsupport_minutes)){
+        errors.push({text: "Minutes must be a whole number", href: "#repeatsupport["+indexOf(month_support_check, day_support)+"][repeatsupport_minutes]"})
+      }
+      
     });
 
     if (errors.length){
