@@ -88,8 +88,12 @@
                        {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}} <br>
                        {% if item.support_hours %}
                        {{item.support_hours}} {% if item.support_hours == 1 %} hour {% else %} hours {% endif %}
+                       and
+                       {{item.support_minutes}} {% if item.support_minutes == 1 %} minute {% else %} minutes {% endif %}
                        {% elif item.repeatsupport_hours %}
                        {{item.repeatsupport_hours}}  {% if item.repeatsupport_hours == 1 %} hour {% else %} hours {% endif %}
+                       and
+                       {{item.repeatsupport_minutes}} {% if item.repeatsupport_minutes == 1 %} minute {% else %} minutes {% endif %}
                        {% endif %}
                        
 
@@ -128,7 +132,8 @@
                     Total support
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{hourTotal}} {% if hourTotal == 1 %} hour {% else %} hours {% endif %} <br>
+                    {{data['hour-total']}} {% if data['hour-total'] == 1 %} hour {% else %} hours {% endif %} and
+                    {{data['minute-total']}} {% if data['minute-total'] == 1 %} minute {% else %} minutes {% endif %} <br>
 
                 </dd>
                 {% if print != true %}
