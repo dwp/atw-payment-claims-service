@@ -15,6 +15,49 @@ Claim money back from Access to Work
 {% set repeathourTotal = 0 | float %}
 {% endfor %}
 {% block content %}
+
+<script>
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+
+    function testClick() {
+        delay(10).then(() => {
+            const foundDivs = document.getElementsByClassName("testclass")
+            console.log(foundDivs)
+            console.log(foundDivs.length)
+
+            for (var i = 0; i < foundDivs.length; i++) {
+                console.log(i)
+                foundDivs[i].innerHTML = "Entry " + (i + 1);
+            }
+
+            const removeButtons = document.getElementsByClassName("moj-add-another__remove-button")
+            console.log(removeButtons)
+
+            for (var i = 0; i < removeButtons.length; i++) {
+                console.log(i)
+                removeButtons[i].addEventListener("click", testClickR);
+            }
+            
+        });
+    };
+    function testClickR() {
+        delay(10).then(() => {
+            const foundDivs = document.getElementsByClassName("testclass")
+            console.log(foundDivs)
+            console.log(foundDivs.length)
+
+            for (var i = 0; i < foundDivs.length; i++) {
+                console.log(i)
+                foundDivs[i].innerHTML = "Entry " + (i + 1);
+            }
+        });
+    };
+
+</script>
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -35,6 +78,8 @@ Claim money back from Access to Work
             <div data-module="moj-add-another">
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
+
+                    <h2 class="govuk-heading-m testclass">Entry 1</h2>
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatsupport[0][day]">
@@ -84,12 +129,12 @@ Claim money back from Access to Work
 
                     <div class="govuk-form-group govuk-form-group--error">
                         <fieldset class="govuk-fieldset" role="group" aria-describedby="support-hours-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"
+                            <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="repeatsupport[0][repeatsupport_hours]">
                                 <h1 class="govuk-fieldset__heading">
                                     Total hours of support on this day
                                 </h1>
-                            </legend>
+                            </label>
 
                             <div id="support-hours-hint" class="govuk-hint">
                                 For example. 8 hours and 27 minutes
@@ -227,6 +272,8 @@ Claim money back from Access to Work
 
                     {% set loopIndex = loop.index0 %}
 
+                    <h2 class="govuk-heading-m testclass">Entry {{loopIndex+1}}</h2>
+
                     <div class="govuk-form-group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"
                             for="repeatsupport[{{loopIndex}}][day]">
@@ -274,12 +321,12 @@ Claim money back from Access to Work
 
                     <div class="govuk-form-group govuk-form-group--error">
                         <fieldset class="govuk-fieldset" role="group" aria-describedby="support-hours-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"
+                            <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="repeatsupport[0][repeatsupport_hours]">
                                 <h1 class="govuk-fieldset__heading">
                                     Total hours of support on this day
                                 </h1>
-                            </legend>
+                            </label>
 
                             <div id="support-hours-hint" class="govuk-hint">
                                 For example. 8 hours and 27 minutes
@@ -343,12 +390,12 @@ Claim money back from Access to Work
 
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" role="group" aria-describedby="support-hours-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"
+                            <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="repeatsupport[{{loopIndex}}][repeatsupport_hours]">
                                 <h1 class="govuk-fieldset__heading">
                                     Total hours of support on this day
                                 </h1>
-                            </legend>
+                            </label>
                             <div id="support-hours-hint" class="govuk-hint">
                                 For example. 8 hours and 27 minutes
                             </div>
