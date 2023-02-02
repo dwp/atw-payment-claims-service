@@ -15,6 +15,50 @@ Claim money back from Access to Work
 {% set hourTotal = 0 | float %}
 {% endfor %}
 {% block content %}
+
+<script>
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+
+    function testClick() {
+        delay(10).then(() => {
+            const foundDivs = document.getElementsByClassName("testclass")
+            console.log(foundDivs)
+            console.log(foundDivs.length)
+
+            for (var i = 0; i < foundDivs.length; i++) {
+                console.log(i)
+                foundDivs[i].innerHTML = "Entry " + (i + 1);
+            }
+
+            const removeButtons = document.getElementsByClassName("moj-add-another__remove-button")
+            console.log(removeButtons)
+
+            for (var i = 0; i < removeButtons.length; i++) {
+                console.log(i)
+                removeButtons[i].addEventListener("click", testClickR);
+            }
+            
+        });
+    };
+    function testClickR() {
+        delay(10).then(() => {
+            const foundDivs = document.getElementsByClassName("testclass")
+            console.log(foundDivs)
+            console.log(foundDivs.length)
+
+            for (var i = 0; i < foundDivs.length; i++) {
+                console.log(i)
+                foundDivs[i].innerHTML = "Entry " + (i + 1);
+            }
+        });
+    };
+
+</script>
+
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -41,7 +85,7 @@ Claim money back from Access to Work
 
 
 
-
+                    <h2 class="govuk-heading-m testclass">Entry 1</h2>
                     <div class="govuk-form-group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s" for="support[0][day]">
                             Day you had support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
@@ -114,7 +158,8 @@ Claim money back from Access to Work
                                             Hours
                                         </label>
                                         {% if hoursFieldErrors | length %}
-                                        <input class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
+                                        <input
+                                            class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
                                             value="{{data.support[0].support_hours}}" id="support[0][support_hours]"
                                             name="support[0][support_hours]" type="text"
                                             data-name="support[%index%][support_hours]"
@@ -134,7 +179,8 @@ Claim money back from Access to Work
                                             Minutes
                                         </label>
                                         {% if minutesFieldErrors | length %}
-                                        <input class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
+                                        <input
+                                            class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
                                             value="{{data.support[0].support_minutes}}" id="support[0][support_minutes]"
                                             name="support[0][support_minutes]" type="text"
                                             data-name="support[%index%][support_minutes]"
@@ -239,8 +285,7 @@ Claim money back from Access to Work
 
                     {% if supportLength > 1 %}
                     <div class="moj-button-action">
-                        <button class="govuk-button govuk-button--secondary moj-add-another__remove-button"
-                            name="remove" value="0">
+                        <button class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove" value="0" onclick="testClickR()">
                             Remove
                         </button>
                     </div>
@@ -254,6 +299,8 @@ Claim money back from Access to Work
                 <fieldset class="govuk-fieldset moj-add-another__item">
 
                     {% set loopIndex = loop.index0 %}
+
+                    <h2 class="govuk-heading-m">Entry {{loopIndex+1}}</h2>
 
                     <div class="govuk-form-group">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"
@@ -324,11 +371,13 @@ Claim money back from Access to Work
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-input__label" for="support[{{lloopIndex}}][support_hours]">
+                                        <label class="govuk-label govuk-input__label"
+                                            for="support[{{lloopIndex}}][support_hours]">
                                             Hours
                                         </label>
                                         {% if hoursFieldErrors | length %}
-                                        <input class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
+                                        <input
+                                            class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
                                             value="{{item.support_hours}}" id="support[{{loopIndex}}][support_hours]"
                                             name="support[{{loopIndex}}][support_hours]" type="text"
                                             data-name="support[%index%][support_hours]"
@@ -344,18 +393,22 @@ Claim money back from Access to Work
                                 </div>
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-input__label" for="support[{{loopIndex}}][support_minutes]">
+                                        <label class="govuk-label govuk-input__label"
+                                            for="support[{{loopIndex}}][support_minutes]">
                                             Minutes
                                         </label>
                                         {% if minutesFieldErrors | length %}
-                                        <input class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
-                                            value="{{item.support_minutes}}" id="support[{{loopIndex}}][support_minutes]"
+                                        <input
+                                            class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
+                                            value="{{item.support_minutes}}"
+                                            id="support[{{loopIndex}}][support_minutes]"
                                             name="support[{{loopIndex}}][support_minutes]" type="text"
                                             data-name="support[%index%][support_minutes]"
                                             data-id="support[%index%][support_minutes]" inputmode="numeric">
                                         {% else %}
                                         <input class="govuk-input govuk-input__input govuk-input--width-2"
-                                            value="{{item.support_minutes}}" id="support[{{loopIndex}}][support_minutes]"
+                                            value="{{item.support_minutes}}"
+                                            id="support[{{loopIndex}}][support_minutes]"
                                             name="support[{{loopIndex}}][support_minutes]" type="text"
                                             data-name="support[%index%][support_minutes]"
                                             data-id="support[%index%][support_minutes]" inputmode="numeric">
@@ -382,7 +435,8 @@ Claim money back from Access to Work
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-input__label" for="support[{{loopIndex}}][support_hours]">
+                                        <label class="govuk-label govuk-input__label"
+                                            for="support[{{loopIndex}}][support_hours]">
                                             Hours
                                         </label>
                                         <input class="govuk-input govuk-input__input govuk-input--width-2"
@@ -394,11 +448,13 @@ Claim money back from Access to Work
                                 </div>
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-input__label" for="support[{{loopIndex}}][support_minutes]">
+                                        <label class="govuk-label govuk-input__label"
+                                            for="support[{{loopIndex}}][support_minutes]">
                                             Minutes
                                         </label>
                                         <input class="govuk-input govuk-input__input govuk-input--width-2"
-                                            value="{{item.support_minutes}}" id="support[{{loopIndex}}][support_minutes]"
+                                            value="{{item.support_minutes}}"
+                                            id="support[{{loopIndex}}][support_minutes]"
                                             name="support[{{loopIndex}}][support_minutes]" type="text"
                                             data-name="support[%index%][support_minutes]"
                                             data-id="support[%index%][support_minutes]" inputmode="numeric">
@@ -417,14 +473,13 @@ Claim money back from Access to Work
                         </label>
 
                         <input class="govuk-input" id="support[{{loopIndex}}][providor]"
-                            name="support[{{loopIndex}}][providor]" type="text"
-                            value="{{item.providor}}"
+                            name="support[{{loopIndex}}][providor]" type="text" value="{{item.providor}}"
                             data-name="support[%index%][providor]" data-id="support[%index%][providor]">
 
                     </div> <!-- govuk-form-group -->
 
                     <button class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
-                        value="{{loopIndex}}">
+                        value="{{loopIndex}}" onclick="testClickR()">
                         Remove
                     </button>
 
@@ -441,7 +496,7 @@ Claim money back from Access to Work
                 <div class="moj-button-action">
                     <button
                         class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
-                        data-module="govuk-button" name="action" value="add">
+                        data-module="govuk-button" name="action" value="add" onclick="testClick()">
                         Add another day of support
                     </button>
                 </div>
