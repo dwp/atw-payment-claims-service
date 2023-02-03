@@ -219,10 +219,10 @@ html: 'This is a new service – your <a class="govuk-link"
                     }) }}
                 </li>
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-                    {% if ((data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true")) %}
-                        {% set grantSummaryLink %}./multiple-employers/employers-grant-information{% endset %}
-                    {% elseif (data['journey-type'] == "multipleawards") %}
-                        {% set grantSummaryLink %}./multiple-award-elements/grant-summary-support-type{% endset %}
+                    {% if (data['journey-type'] == "multipleawards") %}
+                      {% set grantSummaryLink %}./multiple-award-elements/grant-summary-support-type{% endset %}
+                    {% elseif ((data['journey-type'] == "multipleemployers")) %}
+                      {% set grantSummaryLink %}./multiple-employers/employers-grant-information{% endset %}
                     {% else %}
                         {% set grantSummaryLink %}./portal-screens/grant-information {% endset %}
                     {% endif %}
