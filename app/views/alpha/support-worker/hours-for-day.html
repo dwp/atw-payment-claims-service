@@ -149,12 +149,12 @@ Claim money back from Access to Work
                             </div>
                             {% for error in hoursFieldErrors %}
                             <p id="support[0][support_hours]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             {% for error in minutesFieldErrors %}
                             <p id="support[0][support_minutes]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             <div class="govuk-date-input" id="support-hours">
@@ -264,7 +264,7 @@ Claim money back from Access to Work
                         </label>
                         {% for error in fieldErrors %}
                         <p id="support[0][providor]-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                            <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                         </p>
                         {% endfor %}
                         <input class="govuk-input govuk-input--error" value="{{data.support[0].providor}}"
@@ -366,12 +366,12 @@ Claim money back from Access to Work
                             </div>
                             {% for error in hoursFieldErrors %}
                             <p id="support[{{loopIndex}}][support_hours]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             {% for error in minutesFieldErrors %}
                             <p id="support[{{loopIndex}}][support_minutes]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             <div class="govuk-date-input" id="support-hours">

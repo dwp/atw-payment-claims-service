@@ -147,12 +147,12 @@ Claim money back from Access to Work
                             </div>
                             {% for error in hoursFieldErrors %}
                             <p id="repeatsupport[0][repeatsupport_hours]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             {% for error in minutesFieldErrors %}
                             <p id="repeatsupport[0][repeatsupport_minutes]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             <div class="govuk-date-input" id="support-hours">
@@ -339,12 +339,12 @@ Claim money back from Access to Work
                             </div>
                             {% for error in hoursFieldErrors %}
                             <p id="repeatsupport[0][repeatsupport_hours]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             {% for error in minutesFieldErrors %}
                             <p id="repeatsupport[0][repeatsupport_minutes]-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{error.text}}
+                                <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             <div class="govuk-date-input" id="support-hours">
@@ -464,7 +464,7 @@ Claim money back from Access to Work
                 <div class="moj-button-action">
                     <button
                         class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
-                        data-module="govuk-button" name="action" value="add">
+                        data-module="govuk-button" name="action" value="add" onclick="testClick()">
                         Add another day of support
                     </button>
                 </div>
