@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        
+        <form action="#" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="month-of-travel-to-work-hint">
+
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <span class="govuk-caption-l">Section 1 of 5</span>
+                        <h1 class="govuk-fieldset__heading">
+                            Name of your support worker or agency
+                        </h1>
+                    </legend>
+
+                    <input class="govuk-input" value="{{data.providor}}" id="providor"
+                            name="providor" type="text" data-name="providor"
+                            data-id="providor">
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

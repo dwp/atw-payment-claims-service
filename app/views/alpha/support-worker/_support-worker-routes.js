@@ -130,10 +130,18 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   router.post('/support-worker/before-you-continue-answer', function (req, res) {
+    res.redirect(`/${urlPrefix}/support-worker/support-worker-agency-name`)
+  })
+
+  router.post('/support-worker/support-worker-agency-name', function (req, res) {
     res.redirect(`/${urlPrefix}/support-worker/claiming-for-month`)
   })
 
   router.post('/support-worker/month-claim-answer', function (req, res) {
+    res.redirect(`/${urlPrefix}/support-worker/days-for-month`)
+  })
+
+  router.post('/support-worker/days-for-month', function (req, res) {
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
   })
 
