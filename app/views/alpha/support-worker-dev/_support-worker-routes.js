@@ -114,6 +114,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         console.log(req.session.data)
         req.session.data.support = [...req.session.data.support, {
           support_hours: '',
+          support_minutes: '',
           day: '',
           month: '',
           year: ''
@@ -139,6 +140,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         console.log(req.session.data)
         req.session.data.support = [...req.session.data.support, {
           support_hours: '',
+          support_minutes: '',
           day: '',
           month: '',
           year: ''
