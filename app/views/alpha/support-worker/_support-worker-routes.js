@@ -1,3 +1,5 @@
+const { indexOf } = require("lodash")
+
 module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/support-worker/start-a-claim', function (req, res) {
 
@@ -47,7 +49,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       req.session.data['hours-of-day-worked'] = null
 
       res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
-    } else if (addAnotherDay === 'No' && (req.session.data.hours === undefined||req.session.data.hours.length == 0)){
+    } else if (addAnotherDay === 'No' && (req.session.data.hours === undefined || req.session.data.hours.length == 0)) {
       res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
     } else {
       res.redirect(`/${urlPrefix}/support-worker/hours-confirmation`)
@@ -85,6 +87,44 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  router.get('/support-worker/hours-for-day-summary', function (req, res) {
+    var minuteTotal = 0
+    var hourTotal = 0
+
+    var monthList = req.session.data['month-list']
+    if (monthList) {
+      monthList.forEach(function (month) {
+        if (month.support) {
+          month.support.forEach(function (day) {
+            if (day.support_minutes) {
+              minuteTotal = minuteTotal + parseInt(day.support_minutes)
+            }
+            if (day.support_hours) {
+              hourTotal = hourTotal + parseInt(day.support_hours)
+            }
+            if (day.repeatsupport_minutes) {
+              minuteTotal = minuteTotal + parseInt(day.repeatsupport_minutes)
+            }
+            if (day.repeatsupport_hours) {
+              hourTotal = hourTotal + parseInt(day.repeatsupport_hours)
+            }
+          });
+        }
+      });
+    }
+
+    while (minuteTotal >= 60) {
+      hourTotal += 1
+      minuteTotal -= 60
+    }
+
+    req.session.data["hour-total"] = hourTotal
+    req.session.data["minute-total"] = minuteTotal
+
+    res.render(`./${folderForViews}/support-worker/hours-for-day-summary`)
+
+  })
+
   router.post('/support-worker/grant-information-answer', function (req, res) {
     res.redirect(`/${urlPrefix}/support-worker/before-you-continue`)
   })
@@ -109,6 +149,54 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/support-worker/hours-for-day', function (req, res) {
     console.log(req.session.data.support)
+    var month = req.session.data['support-month']
+    var year = req.session.data['support-year']
+
+    var daysInMonth = function (month, year) {
+      switch (month) {
+        case 1:
+          return (year % 4 == 0 && year % 100) || year % 400 == 0 ? 29 : 28;
+        case 8: case 3: case 5: case 10:
+          return 30;
+        default:
+          return 31
+      }
+    };
+    var month_support_check = req.session.data.support
+    var errors = []
+    req.session.data["support-worker-errors"] = []
+
+    month_support_check.forEach(function (day_support) {
+      //Enter hours of support
+      if (!day_support.support_hours) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Enter hours of support", message: "Enter hours of support", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+      }
+      //Hours of support must be between 1 and 24
+      else if (day_support.support_hours < 1 || day_support.support_hours > 24) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+      }
+      //Hours must be a whole number
+      else if (isNaN(day_support.support_hours)) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours must be a whole number", message: "Hours must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+      }
+
+      //Minutes of support must be below 60
+      if (day_support.support_minutes > 60) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
+      }
+      //Minutes must be a whole number
+      else if (isNaN(day_support.support_minutes)) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
+      }
+
+    });
+
+    if (errors.length) {
+      req.session.data["support-worker-errors"] = errors
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+      return
+    }
+
     if (req.session.data.remove !== undefined) {
       console.log('Remove')
       req.session.data.remove = undefined
@@ -120,6 +208,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         console.log(req.session.data)
         req.session.data.support = [...req.session.data.support, {
           support_hours: '',
+          support_minutes: '',
           day: '',
           month: '',
           year: ''
@@ -127,8 +216,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
       } else {
         console.log('Continue')
-        var month = req.session.data['support-month']
-        var year = req.session.data['support-year']
+
         var month_support = req.session.data.support
         console.log(month)
         console.log(year)
@@ -136,19 +224,54 @@ module.exports = function (folderForViews, urlPrefix, router) {
         var list = [
           { month: month, year: year, support: month_support }
         ];
-        if (req.session.data['month-list']){
+        if (req.session.data['month-list']) {
           var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
-          if (month_index != -1){
+          if (month_index != -1) {
             req.session.data['month-list'][month_index] = list[0]
           }
-          else{
+          else {
             req.session.data['month-list'].push(list[0]);
           }
         }
-        else{
+        else {
           req.session.data['month-list'] = list
         }
         console.log(req.session.data['month-list'])
+
+        var minuteTotal = 0
+        var hourTotal = 0
+
+        var monthList = req.session.data['month-list']
+        if (monthList) {
+          monthList.forEach(function (month) {
+            if (month.support) {
+              month.support.forEach(function (day) {
+                if (day.support_minutes) {
+                  minuteTotal = minuteTotal + parseInt(day.support_minutes)
+                }
+                if (day.support_hours) {
+                  hourTotal = hourTotal + parseInt(day.support_hours)
+                }
+                if (day.repeatsupport_minutes) {
+                  minuteTotal = minuteTotal + parseInt(day.repeatsupport_minutes)
+                }
+                if (day.repeatsupport_hours) {
+                  hourTotal = hourTotal + parseInt(day.repeatsupport_hours)
+                }
+              });
+            }
+          });
+        }
+
+        while (minuteTotal >= 60) {
+          hourTotal += 1
+          minuteTotal -= 60
+        }
+
+        req.session.data["hour-total"] = hourTotal
+        req.session.data["minute-total"] = minuteTotal
+
+
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
       }
     }
@@ -156,6 +279,55 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/support-worker/hours-for-day-repeat', function (req, res) {
     console.log(req.session.data.support)
+
+    var month = req.session.data['repeatsupport-month']
+    var year = req.session.data['repeatsupport-year']
+
+    var daysInMonth = function (month, year) {
+      switch (month) {
+        case 1:
+          return (year % 4 == 0 && year % 100) || year % 400 == 0 ? 29 : 28;
+        case 8: case 3: case 5: case 10:
+          return 30;
+        default:
+          return 31
+      }
+    };
+    var month_support_check = req.session.data.repeatsupport
+    var errors = []
+    req.session.data["support-worker-errors"] = []
+
+    month_support_check.forEach(function (day_support) {
+      //Enter hours of support
+      if (!day_support.repeatsupport_hours) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Enter hours of support", message: "Enter hours of support", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+      }
+      //Hours of support must be between 1 and 24
+      else if (day_support.repeatsupport_hours < 1 || day_support.repeatsupport_hours > 24) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+      }
+      //Hours must be a whole number
+      else if (isNaN(day_support.repeatsupport_hours)) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours must be a whole number", message: "Hours must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+      }
+
+      //Minutes of support must be below 60
+      if (day_support.repeatsupport_minutes >= 60) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
+      }
+      //Minutes must be a whole number
+      else if (isNaN(day_support.repeatsupport_minutes)) {
+        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
+      }
+
+    });
+
+    if (errors.length) {
+      req.session.data["support-worker-errors"] = errors
+      res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
+      return
+    }
+
     if (req.session.data.remove !== undefined) {
       console.log('Remove')
       req.session.data.remove = undefined
@@ -167,6 +339,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
         console.log(req.session.data)
         req.session.data.support = [...req.session.data.support, {
           support_hours: '',
+          support_minutes: '',
           day: '',
           month: '',
           year: ''
@@ -174,6 +347,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
       } else {
         console.log('Continue')
+
+
+
         var month = req.session.data['repeatsupport-month']
         var year = req.session.data['repeatsupport-year']
         var month_support = req.session.data.repeatsupport
@@ -184,46 +360,80 @@ module.exports = function (folderForViews, urlPrefix, router) {
         var list = [
           { month: month, year: year, support: month_support }
         ];
-        if (req.session.data['month-list']){
+        if (req.session.data['month-list']) {
           var month_index = req.session.data['month-list'].findIndex((el) => el.month === month && el.year === year);
-          if (month_index != -1){
+          if (month_index != -1) {
             req.session.data['month-list'][month_index] = list[0]
           }
-          else{
+          else {
             req.session.data['month-list'].push(list[0]);
           }
         }
-        else{
+        else {
           req.session.data['month-list'] = list
         }
         console.log(req.session.data['month-list'])
+
+        var minuteTotal = 0
+        var hourTotal = 0
+
+        var monthList = req.session.data['month-list']
+        if (monthList) {
+          monthList.forEach(function (month) {
+            if (month.support) {
+              month.support.forEach(function (day) {
+                if (day.support_minutes) {
+                  minuteTotal = minuteTotal + parseInt(day.support_minutes)
+                }
+                if (day.support_hours) {
+                  hourTotal = hourTotal + parseInt(day.support_hours)
+                }
+                if (day.repeatsupport_minutes) {
+                  minuteTotal = minuteTotal + parseInt(day.repeatsupport_minutes)
+                }
+                if (day.repeatsupport_hours) {
+                  hourTotal = hourTotal + parseInt(day.repeatsupport_hours)
+                }
+              });
+            }
+          });
+        }
+
+        while (minuteTotal >= 60) {
+          hourTotal += 1
+          minuteTotal -= 60
+        }
+
+        req.session.data["hour-total"] = hourTotal
+        req.session.data["minute-total"] = minuteTotal
+
         res.redirect(`/${urlPrefix}/support-worker/hours-for-day-summary`)
       }
     }
   })
 
   // Get
-router.get('/support-worker/hours-for-day-change', function (req, res) {
-  if (req.query.month){
-    var month_list = req.session.data['month-list']
-    var month_data = month_list.find((month) => month.month === req.query.month && month.year === req.query.year);
-    if (month_data.support[0]["repeatsupport_hours"]){
-      req.session.data["repeatsupport-month-repeat"] = req.query.month
-      req.session.data["repeatsupport-year-repeat"] = req.query.year
-      req.session.data["repeatsupport"] = month_data.support
-      res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
+  router.get('/support-worker/hours-for-day-change', function (req, res) {
+    if (req.query.month) {
+      var month_list = req.session.data['month-list']
+      var month_data = month_list.find((month) => month.month === req.query.month && month.year === req.query.year);
+      if (month_data.support[0]["repeatsupport_hours"]) {
+        req.session.data["repeatsupport-month-repeat"] = req.query.month
+        req.session.data["repeatsupport-year-repeat"] = req.query.year
+        req.session.data["repeatsupport"] = month_data.support
+        res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
+      }
+      else {
+        req.session.data["support-month"] = req.query.month
+        req.session.data["support-year"] = req.query.year
+        req.session.data["support"] = month_data.support
+        res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+      }
     }
     else {
-      req.session.data["support-month"] = req.query.month
-      req.session.data["support-year"] = req.query.year
-      req.session.data["support"] = month_data.support
       res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
     }
-  }
-  else{
-    res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
-  }
-})
+  })
 
   // post - Submit for upload
   router.post('/support-worker/receipt-upload-add', function (req, res) {
@@ -294,11 +504,11 @@ router.get('/support-worker/hours-for-day-change', function (req, res) {
 
     if (cost === '100') {
       res.redirect(`/${urlPrefix}/support-worker/employer-contribution`)
-    } else if (journeytype === 'traveltowork-ammendment'){
+    } else if (journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
-    } else if (journeytype === 'supportworker' && checked){
+    } else if (journeytype === 'supportworker' && checked) {
       res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
-    } else if (journeytype === 'supportworker'){
+    } else if (journeytype === 'supportworker') {
       res.redirect(`/${urlPrefix}/support-worker/providing-evidence`)
     }
   })
@@ -308,7 +518,7 @@ router.get('/support-worker/hours-for-day-change', function (req, res) {
 
     if (change === 'yes') {
       res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
-    } else if (change === 'no'){
+    } else if (change === 'no') {
       res.redirect(`/${urlPrefix}/travel-to-work/upload-summary`)
     }
   })
@@ -340,29 +550,29 @@ router.get('/support-worker/hours-for-day-change', function (req, res) {
     const checked = req.session.data['sw-declaration']
 
     if (journeytype === 'supportworker' && checked === 'true') {
-    res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
-  } else if (journeytype === 'supportworker') {
+      res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
+    } else if (journeytype === 'supportworker') {
       res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
-  } else if (journeytype === 'traveltowork-ammendment') {
-    res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
-  }
-})
+    } else if (journeytype === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    }
+  })
 
-router.post('/support-worker/existing-payee-answers', function (req, res) {
-  const payee = req.session.data['existing-payee']
-  const journey = req.session.data['journey-type']
-  const checked = req.session.data['contact-confirmed']
+  router.post('/support-worker/existing-payee-answers', function (req, res) {
+    const payee = req.session.data['existing-payee']
+    const journey = req.session.data['journey-type']
+    const checked = req.session.data['contact-confirmed']
 
-  if (payee === 'New') {
-  res.redirect(`/${urlPrefix}/support-worker/new-payee-name`)
-} else if (journey === 'traveltowork-ammendment') {
-  res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
-} else if (checked){
-  res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
-} else {
-  res.redirect(`/${urlPrefix}/support-worker/counter-signatory-name`)
-}
-})
+    if (payee === 'New') {
+      res.redirect(`/${urlPrefix}/support-worker/new-payee-name`)
+    } else if (journey === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (checked) {
+      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+    } else {
+      res.redirect(`/${urlPrefix}/support-worker/counter-signatory-name`)
+    }
+  })
 
 
 
