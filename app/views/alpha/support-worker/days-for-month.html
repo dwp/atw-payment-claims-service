@@ -81,8 +81,11 @@ Claim money back from Access to Work
 
         <form id="form" method="post" action="#">
 
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Support you had in {{data["support-month"] | numberMonth}} {{data["support-year"]}}</h1>
-
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Support you had in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+                </h1>
+              </legend>
 
             <div data-module="moj-add-another">
                 <!-- START HERE -->
@@ -94,10 +97,6 @@ Claim money back from Access to Work
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="support[0][day]">
                             Date of support in {{data["support-month"] | numberMonth}}
                         </label>
-
-                        <div id="support-day-hint" class="govuk-hint">
-                            For example, 3
-                        </div>
 
                         <div class="govuk-input__wrapper">
                             <input class="govuk-input govuk-input--width-2" value="{{data.support[0].day}}"

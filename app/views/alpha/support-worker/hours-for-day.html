@@ -16,55 +16,6 @@ Claim money back from Access to Work
 {% endfor %}
 {% block content %}
 
-<script>
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-    }
-
-
-    function testClick() {
-        delay(10).then(() => {
-            const foundDivs = document.getElementsByClassName("testclass")
-            console.log(foundDivs)
-            console.log(foundDivs.length)
-
-            for (var i = 0; i < foundDivs.length; i++) {
-                console.log(i)
-                foundDivs[i].innerHTML = "Entry " + (i + 1);
-            }
-
-            const removeButtons = document.getElementsByClassName("moj-add-another__remove-button")
-            console.log(removeButtons)
-
-            for (var i = 0; i < removeButtons.length; i++) {
-                console.log(i)
-                removeButtons[i].addEventListener("click", testClickR);
-            }
-            
-        });
-    };
-    function testClickR() {
-        delay(10).then(() => {
-            const foundDivs = document.getElementsByClassName("testclass")
-            console.log(foundDivs)
-            console.log(foundDivs.length)
-
-            for (var i = 0; i < foundDivs.length; i++) {
-                console.log(i)
-                foundDivs[i].innerHTML = "Entry " + (i + 1);
-            }
-        });
-    };
-
-</script>
-
-<style>
-    .moj-add-another__remove-button {
-    position: relative;
-}
-</style>
-
-
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -118,16 +69,13 @@ Claim money back from Access to Work
 
                     <div class="govuk-form-group govuk-form-group--error">
                         <fieldset class="govuk-fieldset" role="group" aria-describedby="support-hours-hint">
-                            <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="support[{{loopIndex}}][support_hours]">
                                 <h1 class="govuk-fieldset__heading">
                                     Total support on {{item.day}} {{data["support-month"] | numberMonth}}
                                 </h1>
-                            </label>
+                            </legend>
 
-                            <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 27 minutes
-                            </div>
                             {% for error in hoursFieldErrors %}
                             <p id="support[{{loopIndex}}][support_hours]-error" class="govuk-error-message">
                                 <span class="govuk-visually-hidden">Error:</span> {{error.message}}
@@ -199,9 +147,6 @@ Claim money back from Access to Work
                                     Total support on {{item.day}} {{data["support-month"] | numberMonth}}
                                 </h1>
                             </label>
-                            <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 27 minutes
-                            </div>
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
