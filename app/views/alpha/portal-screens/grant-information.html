@@ -6,6 +6,182 @@ Claim money back from Access to Work
 
 {% block content %}
 
+<style>
+  .govuk-summary-card {
+    margin-bottom: 20px;
+    border:1px solid #b1b4b6
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card {
+        margin-bottom:30px
+    }
+}
+
+.govuk-summary-card__title-wrapper {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    background-color:#f3f2f1
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__title-wrapper {
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-pack: justify;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        padding:15px 20px
+    }
+}
+
+.govuk-summary-card__title {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin:5px 20px 10px 0
+}
+
+@media print {
+    .govuk-summary-card__title {
+        font-family:sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__title {
+        font-size: 19px;
+        font-size: 1.1875rem;
+        line-height:1.3157894737
+    }
+}
+
+@media print {
+    .govuk-summary-card__title {
+        font-size: 14pt;
+        line-height:1.15
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__title {
+        margin-bottom:5px
+    }
+}
+
+.govuk-summary-card__actions {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    margin: 5px 0;
+    padding: 0;
+    list-style:none
+}
+
+@media print {
+    .govuk-summary-card__actions {
+        font-family:sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__actions {
+        font-size: 19px;
+        font-size: 1.1875rem;
+        line-height:1.3157894737
+    }
+}
+
+@media print {
+    .govuk-summary-card__actions {
+        font-size: 14pt;
+        line-height:1.15
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__actions {
+        -ms-flex-pack: right;
+        -webkit-box-pack: right;
+        justify-content: right;
+        text-align:right
+    }
+}
+
+.govuk-summary-card__action {
+    display: inline;
+    margin: 0 10px 0 0;
+    padding-right: 10px;
+    border-right:1px solid #b1b4b6
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__action {
+        margin-right:0
+    }
+}
+
+@media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
+    .govuk-summary-card__action {
+        margin-bottom:5px
+    }
+}
+
+.govuk-summary-card__action:last-child {
+    margin: 0;
+    padding-right: 0;
+    border-right:none
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__action:last-child {
+        padding-left:10px
+    }
+}
+
+@media screen and (-ms-high-contrast: active),(-ms-high-contrast: none) {
+    .govuk-summary-card__action:last-child {
+        margin-bottom:0
+    }
+}
+
+.govuk-summary-card__content {
+    padding:15px 15px 0
+}
+
+@media (min-width: 40.0625em) {
+    .govuk-summary-card__content {
+        padding:15px 20px
+    }
+}
+
+.govuk-summary-card__content .govuk-summary-list {
+    margin-bottom:0
+}
+
+.govuk-summary-card__content .govuk-summary-list__row:last-of-type {
+    margin-bottom: 0;
+    border-bottom:none
+}
+</style>
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -30,19 +206,17 @@ Claim money back from Access to Work
 
         {% endif %}
 
-        {% if (data['journey-type'] == "supportworker") and (data['multiple-employers'] == "true") %}
-        <p>This support can be used while you work as a Human Resources Assistant at Google. </p>
-        {% else %}
-        <p>This support can be used while you work as a Finance Analyst at Deaf Action Charity. </p>
-        {% endif %}
-
 
         {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
         <p>You can also <a href="../multiple-employers/employers-grant-information">view the claims history of your other awards</a>.</p>
         {% endif %}
 
+        <p>You should have already received a copy of your grant approval letter by post.</p>
 
-        <h2 class="govuk-heading-m">What support you’ll get</h2>
+        <h2 class="govuk-heading-m">Your support at Deaf Action Charity</h2>
+
+
+       
 
         {%if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "specialaidsandequipmentdev") or (data['journey-type'] == "specialaidsandequipmentpb") %}
 
@@ -139,58 +313,123 @@ Claim money back from Access to Work
 
         {% elseif (data['journey-type'] == "supportworker") or (data['journey-type'] == "supportworkerdev") or (data['journey-type'] == "supportworkerpb") %}
 
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Support type
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Support worker
-            </dd>
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">BSL Intepreter grant</h2>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £45.00 per hour
-            </dd>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Support dates
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  From 5 March 2021 until 5 March 2024
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Cost of support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £45.00 per hour
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total cost of support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £7,200
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total amount you or your employer have agreed to contribute
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £7.50 per hour
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total amount Access to Work will contribute
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £37.50 per hour
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Amount of grant left
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £6,500
+                </dd>
+              </div>
+            </dl>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £7,200
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount you or your employer have agreed to contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £7.50 per hour
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount Access to Work will contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £37.50 per hour
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Amount of grant left
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £6,500
-            </dd>
-          </div>
+        </div>
 
-        </dl>
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">Driver grant</h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Support dates
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  From 5 March 2021 until 5 March 2024
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Cost of support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £35.00 per hour
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total cost of support
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £6,200
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total amount you or your employer have agreed to contribute
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £5.50 per hour
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Total amount Access to Work will contribute
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £73.50 per hour
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Amount of grant left
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  £4,500
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
 
+               
         {% elseif (data['journey-type'] == "traveltowork") or (data['journey-type'] == "traveltoworkdev") or (data['journey-type'] == "traveltoworkpb") %}
 
         <dl class="govuk-summary-list">
@@ -387,17 +626,6 @@ Claim money back from Access to Work
         <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
         {% endif %} -->
 
-
-        <p>You should have already received a copy of your grant approval letter by post.</p>
-
-        {% if (data['journey-type'] == "supportworker") and (data['multiple-employers'] == "true") %}
-        <p>Your support starts from <b>12 February 2022</b> until <b>12 February 2025</b> if your needs do not change.</p>
-        {% else %}
-        <p>Your support starts from <b>5 March 2021</b> until <b>5 March 2024</b> if your needs do not change.</p>
-        {% endif %}
-
-
-
         <form action="../portal" method="post" class="form">
 
           <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -413,3 +641,5 @@ Claim money back from Access to Work
 
 
 {% endblock %}
+
+
