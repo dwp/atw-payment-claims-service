@@ -11,19 +11,19 @@ Claim money back from Access to Work
     <div class="govuk-grid-column-two-thirds">
         <form action="cost-of-support-answer" method="post" class="form">
 
-                <div class="govuk-form-group">
-                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="cost-of-support">
-                        How much did your support cost in total?
-                    </label>
-                    </h1>
-                    <p>You’ll find the total cost for each day of support on the receipt or invoice. You’ll need to add up the cost of each day of support to get the total.</p>
-
-                    <div class="govuk-input__wrapper">
-                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                        <input class="govuk-input govuk-input--width-5" id="cost-of-support" name="cost-of-support"
-                               type="text" spellcheck="false">
-                    </div>
-                </div>
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {{ govukInput({
+            label: {
+            text: "How much did your support cost in total, in pounds?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+            },
+            hint: {
+            text: "Include any additional costs like food or accomodation your grant covers."
+            },
+            id: "cost-of-support",
+            name: "cost-of-support"
+            }) }}
 
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
