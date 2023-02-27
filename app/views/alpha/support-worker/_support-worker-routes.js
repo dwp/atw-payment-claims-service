@@ -145,6 +145,10 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
   })
 
+  router.post('/support-worker/days-for-month1', function (req, res) {
+    res.redirect(`/${urlPrefix}/support-worker/hours-for-day1`)
+  })
+
   router.post('/support-worker/month-claim-answer-repeat', function (req, res) {
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
   })
