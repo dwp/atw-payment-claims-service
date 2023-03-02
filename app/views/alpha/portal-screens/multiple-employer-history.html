@@ -22,58 +22,40 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 </div>
 {% endblock %}
 
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 {% block content %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-
         <form action="../multiple-employer-history-answer" method="post" class="form">
 
-
-
-
-
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="travel-to-work-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            Which job do you want to view claims for?
-                        </h1>
-                    </legend>
-
-
-                    <p>Because you have more than one job, you can view claims for each employer.</p>
-
-
-                    <div class="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="journey-type-multipleawards" name="journey-type"
-                                   type="radio"
-                                   value="multipleawards">
-
-                            <label class="govuk-label govuk-radios__label" for="journey-type-multipleawards">
-                              Finance Analyst at Deaf Action Charity
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="journey-type-supportworker" name="journey-type"
-                                   type="radio"
-                                   value="supportworker">
-                            <label class="govuk-label govuk-radios__label" for="journey-type-supportworker">
-                              Human Resources Assistant at Google
-                            </label>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </div>
-
-
-
-              <input type="hidden" name="multiple-employers" value="true">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
+            {{ govukRadios({
+                name: "journey-type",
+                fieldset: {
+                  legend: {
+                    text: "Which job do you want to view claims for?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                items: [
+                  {
+                    value: "multipleawards",
+                    text: "Finance Analyst at Deaf Action Charity"
+                  },
+                  {
+                    value: "supportworker",
+                    text: "Human Resources Assistant at Google"
+                  }
+                ]
+              }) }}
+      
+              {{ govukButton({
+                text: "Continue"
+              }) }}
 
         </form>
     </div>

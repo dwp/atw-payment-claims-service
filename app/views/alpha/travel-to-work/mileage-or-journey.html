@@ -4,51 +4,42 @@
 Claim money back from Access to Work
 {% endblock %}
 
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 {% block content %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form action="claiming-for-month" method="post" class="form">
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="transport-option-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-
-                        <h1 class="govuk-fieldset__heading">
-                            How would you like to tell us about your travel to or from work?
-                        </h1>
-                    </legend>
-
-                    <p>If you work at more than one location, you should tell us the total miles you travelled each day.</p>
-
-                    <div class="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="way-of-claiming-yes" name="way-of-claiming"
-                                   type="radio"
-                                   value="journeys">
-                            <label class="govuk-label govuk-radios__label" for="way-of-claiming-yes">
-                                Total number of journeys taken to or from work each day
-                            </label>
-                        </div>
-
-
-
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="way-of-claiming-no" name="way-of-claiming"
-                                   type="radio"
-                                   value="mileage">
-                            <label class="govuk-label govuk-radios__label" for="way-of-claiming-no">
-                                Total distance in miles travelled to or from work each day
-                            </label>
-                        </div>
-
-                    </div>
-                </fieldset>
-            </div>
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
-
-        </form>
+            {{ govukRadios({
+                name: "way-of-claiming",
+                hint: {
+                  text: "If you work at more than one location, tell us the distance in miles?"
+                },
+                fieldset: {
+                  legend: {
+                    text: "How would you like to tell us about your travel to or from work?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                items: [
+                  {
+                    value: "journeys",
+                    text: "Total number of journeys taken to or from work each day"
+                  },
+                  {
+                    value: "mileage",
+                    text: "Total distance in miles travelled to or from work each day"
+                  }
+                ]
+              }) }}
+      
+              {{ govukButton({
+                text: "Continue"
+              }) }}
     </div>
 </div>
 
