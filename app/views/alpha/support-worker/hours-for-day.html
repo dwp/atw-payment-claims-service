@@ -81,8 +81,11 @@ Claim money back from Access to Work
 
         <form id="form" method="post" action="#">
 
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Which days in {{data["support-month"] | numberMonth}}
-                did you have support at work?</h1>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+                Support you had in
+                {{data["support-month"] | numberMonth}}
+                {{data["support-year"] | numberMonth}}
+            </h1>
 
 
             <div data-module="moj-add-another">
@@ -94,7 +97,7 @@ Claim money back from Access to Work
                     <h2 class="govuk-heading-m testclass">Entry 1</h2>
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="support[0][day]">
-                            Day you had support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+                            Date of support
                         </label>
 
                         <div id="support-day-hint" class="govuk-hint">
@@ -145,7 +148,7 @@ Claim money back from Access to Work
                             </label>
 
                             <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 27 minutes
+                                For example, 8 hours and 30 minutes
                             </div>
                             {% for error in hoursFieldErrors %}
                             <p id="support[0][support_hours]-error" class="govuk-error-message">
@@ -215,7 +218,7 @@ Claim money back from Access to Work
                                 </h1>
                             </label>
                             <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 27 minutes
+                                For example, 8 hours and 30 minutes
                             </div>
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
@@ -311,7 +314,7 @@ Claim money back from Access to Work
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                             for="support[{{loopIndex}}][day]">
-                            Day you had support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+                            Date of support
                         </label>
 
                         <div id="support-day-hint" class="govuk-hint">
@@ -362,7 +365,7 @@ Claim money back from Access to Work
                             </label>
 
                             <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 27 minutes
+                                For example, 8 hours and 30 minutes
                             </div>
                             {% for error in hoursFieldErrors %}
                             <p id="support[{{loopIndex}}][support_hours]-error" class="govuk-error-message">
@@ -436,7 +439,7 @@ Claim money back from Access to Work
                                 </h1>
                             </label>
                             <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 27 minutes
+                                For example, 8 hours and 30 minutes
                             </div>
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
