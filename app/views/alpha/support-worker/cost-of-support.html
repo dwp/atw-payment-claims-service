@@ -4,6 +4,8 @@
 Claim money back from Access to Work
 {% endblock %}
 
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
 {% block content %}
 
 
@@ -11,18 +13,23 @@ Claim money back from Access to Work
     <div class="govuk-grid-column-two-thirds">
         <form action="cost-of-support-answer" method="post" class="form">
 
-            {% from "govuk/components/input/macro.njk" import govukInput %}
+
             {{ govukInput({
-            label: {
-            text: "How much did your support cost in total, in pounds?",
-            classes: "govuk-label--l",
-            isPageHeading: true
-            },
-            hint: {
-            text: "Include any additional costs like food or accomodation your grant covers."
-            },
             id: "cost-of-support",
-            name: "cost-of-support"
+            name: "cost-of-support",
+            hint: {
+                text: "Include any related costs like travel or accomodation your grant covers."
+            },
+            label: {
+                text: "How much did your support cost in total, in pounds?",
+                classes: "govuk-label--l",
+                isPageHeading: true
+            },
+            prefix: {
+                text: "£"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
             }) }}
 
 

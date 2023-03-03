@@ -4,49 +4,112 @@
 Claim money back from Access to Work
 {% endblock %}
 
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back"
+}) }}
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            Interview needs
+        </h1>
+
+        <p class="govuk-body">
+            Providers do not usually have much flexibility when setting a date and time for interview unless you need
+            adjustments due to a <a href="#" class="govuk-link">health condition or disability</a>.
+        </p>
+
+        <p class="govuk-body">
+            However, if you need flexibility for other reasons you can tell us about it here.
+        </p>
+
+        <p class="govuk-body">
+            For example, you have commitments like caring responsibilites or employment.
+        </p>
+
+        <p class="govuk-body">
+            Contact your provider if you’re concerned about the interview process.
+        </p>
+
+        <form action="/form-handler" method="post" novalidate>
+
+            {{ govukRadios({
+            name: "interview-needs",
+            fieldset: {
+            legend: {
+            text: "Do you have any interview needs?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+            }
+            },
+            items: [
+            {
+            value: "yes",
+            text: "Yes"
+            },
+            {
+            value: "no",
+            text: "No"
+            }
+            ]
+            }) }}
+
+            {{ govukButton({
+            text: "Continue"
+            }) }}
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">Section 4 of 5</span>
+
+        <h1 class="govuk-heading-l">
+            Employment status
+        </h1>
+
+        <p class="govuk-body">
+            We might need someone to confirm the journeys you’re claiming for. This will depend on whether you’re
+            employed or self-employed.
+        </p>
+
         <form action="employment-status-answer" method="post" class="form">
-          <span class="govuk-caption-l">Section 4 of 5</span>
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="employment-status-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                          What's your employment status?
 
-                        </h1>
-                    </legend>
+            {{ govukRadios({
+            name: "employment-status",
+            fieldset: {
+            legend: {
+            text: "What's your employment status at the job you're claiming for?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+            }
+            },
+            items: [
+            {
+            value: "Employed",
+            text: "Employed"
+            },
+            {
+            value: "Self-employed",
+            text: "Self-employed"
+            }
+            ]
+            }) }}
 
-
-                    <p>We might need someone to confirm the journeys you’re claiming for. This will depend on whether you’re employed or self-employed.</p>
-
-
-
-                    <div class="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="employment-status-yes" name="employment-status"
-                                   type="radio"
-                                   value="Employed">
-                            <label class="govuk-label govuk-radios__label" for="employment-status-yes">
-                                Employed
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="employment-status-no" name="employment-status"
-                                   type="radio"
-                                   value="Self-employed">
-                            <label class="govuk-label govuk-radios__label" for="employment-status-no">
-                                Self-employed
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
+            {{ govukButton({
+            text: "Continue"
+            }) }}
 
         </form>
     </div>

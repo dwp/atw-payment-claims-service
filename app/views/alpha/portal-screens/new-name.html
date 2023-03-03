@@ -5,44 +5,47 @@ What is your new name? – Claim money back from Access to Work – GOV.UK
 {% endblock %}
 
 
+
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 {% block content %}
-
-
-<div class="govuk-grid-row">
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Your name</h1>
 
-        <form action="personal-information-change" method="post" class="form">
+      <form action="personal-information-change" method="post" class="form">
 
-            <h1 class="govuk-heading-l">What's your new name?</h1>
-            <div id="new-name-hint" class="govuk-body">Your new name must match your name on official documents, for example your driving licence, passport or marriage certificate. </div>
+        {{ govukInput({
+          label: {
+            text: "First name",
+            classes: "govuk-label--m"
+          },
+          classes: "",
+          spellcheck: false,
+          id: "new-name",
+          name: "new-name"
+        }) }}
 
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="name">
-                    First name
-                  </label>
+        {{ govukInput({
+          label: {
+            text: "Last name",
+            classes: "govuk-label--m"
+          },
+          classes: "",
+          spellcheck: false,
+          id: "last-name",
+          name: "last-name"
+        }) }}
 
-                  <input class="govuk-input" id="new-name" name="new-name" type="name" spellcheck="false" aria-describedby="name-hint" autocomplete="name">
-                </div>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="last-name">
-                    Last name
-                  </label>
-
-                  <input class="govuk-input" id="last-name" name="last-name" type="name" spellcheck="false" aria-describedby="last-name-hint" autocomplete="last-name">
-                </div>
-
-
-
-
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
-
-        </form>
+      </form>
     </div>
-</div>
+  </div>
 
 
 {% endblock %}

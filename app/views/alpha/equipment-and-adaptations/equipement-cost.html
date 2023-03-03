@@ -8,40 +8,31 @@ Claim money back from Access to Work
 {{ data.equipment | length }}
 {% endset %}
 
+{% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form action="cost-answer" method="post" class="form">
-            <div class="govuk-form-group">
 
-                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="equipment-cost">
-                    How much did your specialist equipment cost in total?
-                </label></h1>
-
-                  {% if equipmentLength|int === 1 %}
-                <div id="equipment-name-body" class="govuk-body">
-                    Include any delivery, training or installation costs your grant covers.
-                </div>
-
-                {% else %}
-
-                <div id="equipment-name-body" class="govuk-body">
-                
-                </div>
-
-                <p>You’ll need to add up the cost of all your equipment to get the total. Include any delivery, training or installation costs your grant covers.</p>
-
-                {% endif %}
-
-                <div class="govuk-input__wrapper">
-                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                    <input class="govuk-input govuk-input--width-5" id="equipment-cost" name="equipment-cost"
-                           type="text" spellcheck="false">
-                </div>
-            </div>
-
+            {{ govukInput({
+                id: "equipment-cost",
+                name: "equipment-cost",
+                hint: {
+                    text: "Include any delivery, training or installation costs your grant covers."
+                },
+                label: {
+                    text: "How much did your specialist equipment cost in total, in pounds?",
+                    classes: "govuk-label--l",
+                    isPageHeading: true
+                },
+                prefix: {
+                    text: "£"
+                },
+                classes: "govuk-input--width-5",
+                spellcheck: false
+                }) }}
 
             <button type="submit" class="govuk-button" data-module="govuk-button">
                 Continue
