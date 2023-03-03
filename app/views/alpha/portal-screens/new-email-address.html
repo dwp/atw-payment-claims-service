@@ -5,38 +5,37 @@ What is your new email address? – Claim money back from Access to Work – GOV
 {% endblock %}
 
 
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
 {% block content %}
-
-
+  
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
         <form action="personal-information-change" method="post" class="form">
 
-            <h1 class="govuk-heading-l">What's your new email address?</h1>
-            <div id="new-email-address-hint" class="govuk-body">We'll use this email address to contact you about your claims.</div>
+            {{ govukInput({
+                label: {
+                  text: "What's your email address?",
+                  classes: "govuk-label--l",
+                  isPageHeading: true
+                },
+                hint: {
+                  text: "We'll use this email address to contact you about your claims."
+                },
+                id: "new-email-address",
+                name: "new-email-address",
+                spellcheck: false
+              }) }}
 
-            <p>You'll still need to sign in with the email address you used when you created your account to claim money from your grant.</p>
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="payee-email">
-                    Email address
-                  </label>
-
-                  <input class="govuk-input" id="new-email-address" name="new-email-address" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
-                </div>
-
-
-
-
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
+              {{ govukButton({
+                text: "Continue"
+              }) }}
 
         </form>
     </div>
 </div>
-
 
 {% endblock %}

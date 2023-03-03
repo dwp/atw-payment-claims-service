@@ -9,21 +9,17 @@ Claim money back from Access to Work
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">Section 3 of 5</span>
+
         <form action="existing-payee-answers" method="post" class="form">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="support-for-workplace-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                      <span class="govuk-caption-l">Section 3 of 5</span>
                         <h1 class="govuk-fieldset__heading">
-                            What's the name of the person or company we need to pay?
+                            Details of the person or company we need to pay
                         </h1>
                     </legend>
 
-                    {% if data['existing-payee'] !== "New" %}
-                      <p>You’ll need to add new payment details if we need to pay another company or person.</p>
-                    {% endif %}
-
-                      <h3 class="govuk-body">People we've paid before:</h3>
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="existing-payee-one" name="existing-payee"

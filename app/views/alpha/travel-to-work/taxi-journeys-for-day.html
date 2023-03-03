@@ -26,9 +26,17 @@ Claim money back from Access to Work
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Which dates did you travel to or from work in
-                {{data["travel-to-work-date-month"] | numberMonth}}?</h1>
-
+            {% if data['transport-option'] == "taxi"%}
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Your taxi travel in
+                {{data["travel-to-work-date-month"] | numberMonth}}
+                {{data["travel-to-work-date-year"]}}
+            </h1>
+            {% else %}
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Lifts you had in
+                {{data["travel-to-work-date-month"] | numberMonth}}
+                {{data["travel-to-work-date-year"]}}
+            </h1>
+            {% endif %}
 
             <div data-module="moj-add-another">
                 <!-- START HERE -->
@@ -36,15 +44,8 @@ Claim money back from Access to Work
 
                     <div class="govuk-form-group">
                         <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="travel[0][day]">
-                            Day of travel in {{data["travel-to-work-date-month"] | numberMonth}}
-                            {{data["travel-to-work-date-year"]}}
-
+                            Date of travel
                         </label>
-
-                        <div id="date-of-travel" class="govuk-hint">
-                            For example, 3
-                        </div>
-
 
                         <div class="govuk-input__wrapper">
                             <input class="govuk-input govuk-input--width-2" value="{{data.travel[0].day}}"
