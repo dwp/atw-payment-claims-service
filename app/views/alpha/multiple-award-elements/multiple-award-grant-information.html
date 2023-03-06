@@ -198,9 +198,7 @@ Claim money back from Access to Work
           </div>
 
         </dl>
-
-        {% elseif (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type-secondary'] == "traveltoworkpb") %}
-
+        {% elseif (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type'] == "multipleemployers") %}
         {% if (data['journey-type-multipleawards'] == "financeanalyst") %}
 
         <h2 class="govuk-heading-m">Finance Analyst at Deaf Action Charity</h2>
