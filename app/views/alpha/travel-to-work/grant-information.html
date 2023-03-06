@@ -32,119 +32,7 @@ Claim money back from Access to Work
 
         {% endif %}
 
-        {% if data['multiple-employers'] == "true" %}
-
-        <p>If your needs change, you need to <a href="../portal-screens/contact-atw">contact us</a>.</p>
-
-        <h3 class="govuk-heading-s"> Travel to or from work grant 1</h3>
-
-          <p>Your support starts from 5 March 2021 and is available until 5 March 2024.</p>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Agreed support and cost
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £45.00 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £7,200
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount you or your employer have agreed to contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £7.50 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount Access to Work will contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £37.50 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Amount of grant left
-            </dt>
-            {% if data ['grant-valid'] == "notvalid" %}
-            <dd class="govuk-summary-list__value">
-              £0
-            </dd>
-            {% else %}
-            <dd class="govuk-summary-list__value">
-              £6,500
-            </dd>
-            {% endif %}
-          </div>
-
-        </dl>
-
-        <h3 class="govuk-heading-s"> Travel to or from work grant 2</h3>
-
-          <p>Your support starts from 5 March 2019 and is available until 5 March 2022.</p>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Agreed support and cost
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £19.00 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £3200
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount you or your employer have agreed to contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £0 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount Access to Work will contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £19 per journey
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Amount of grant left
-            </dt>
-            {% if data ['grant-valid'] == "notvalid" %}
-            <dd class="govuk-summary-list__value">
-              £0
-            </dd>
-            {% else %}
-            <dd class="govuk-summary-list__value">
-              £510
-            </dd>
-            {% endif %}
-          </div>
-
-        </dl>
-
-        {% else %}
+        
 
         <p>Your support starts from 5 March 2021 and is available until 5 March 2024.</p>
 
@@ -204,7 +92,6 @@ Claim money back from Access to Work
 
                 </dl>
 
-                {% endif %}
 
         <form action="before-you-continue" method="post" class="form">
 
