@@ -62,6 +62,7 @@ html: 'This is a new service – your <a class="govuk-link"
 
                 {%if (data['journey-type'] == "traveltowork-ammendment") and (data['claim-incorrect'] =="true") and
                 (data['citizen-delared'] !=="true")%}
+               
                 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
                     <div class="govuk-notification-banner__header">
                       <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -69,9 +70,12 @@ html: 'This is a new service – your <a class="govuk-link"
                       </h2>
                     </div>
                     <div class="govuk-notification-banner__content">
-                      <p class="govuk-notification-banner__heading">
-                        You have <b>1</b> claim that has not been confirmed. You need to correct the claim and resubmit it.
-                        <a class="govuk-notification-banner__link" href="./portal-screens/claims-history">View claim</a>.
+                      <h3 class="govuk-notification-banner__heading">
+                        1 claim has not been confirmed
+                      </h3>
+                      <p class="govuk-body">
+                        You need to correct and resubmit the following claims:</br>
+                        <a class="govuk-notification-banner__link" href="./portal-screens/claims-history">Support worker claim for £350</a>.
                       </p>
                     </div>
                   </div>
