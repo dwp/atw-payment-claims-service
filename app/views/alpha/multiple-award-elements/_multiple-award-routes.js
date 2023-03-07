@@ -1,12 +1,11 @@
 module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/multiple-award-elements/employers-grant-information', function (req, res) {
-    const award = req.session.data['journey-type-secondary']
+    const award = req.session.data['journey-type']
 
     if (award === 'traveltowork') {
-      res.redirect(`/${urlPrefix}/travel-to-work/grant-information`)
+      res.redirect(`/${urlPrefix}/portal-screens/grant-information`)
     } else if (award === 'specialaidsandequipment') {
-      req.session.data['journey-type'] = 'specialaidsandequipment'
       res.redirect(`/${urlPrefix}/portal-screens/grant-information`)
     } else if (award === 'wrong-award') {
       res.redirect(`/${urlPrefix}/multiple-award-elements/contact-dwp`)

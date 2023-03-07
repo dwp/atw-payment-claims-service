@@ -10,13 +10,7 @@ Claim money back from Access to Work
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        {% if data['journey-type-secondary'] == "traveltowork" %}
         <h1 class="govuk-heading-l">Grant summary</h1>
-        {% elseif data['journey-type-secondary'] == "specialaidsandequipment" %}
-        <h1 class="govuk-heading-l">Grant summary</h1>
-        {% else %}
-        <h1 class="govuk-heading-l">Grant summary</h1>
-        {% endif %}
 
         {% if data ['grant-valid'] == "notvalid" %}
 
@@ -36,172 +30,26 @@ Claim money back from Access to Work
 
         {% endif %}
 
-        {% if (data['journey-type-secondary'] == "supportworker") and (data['multiple-employers'] == "true") %}
-        <p>This support can be used while you work as a Human Resources Assistant at Google. </p>
-        {% elseif (data['multiple-employers'] == "true") %}
-        <p>This support can be used while you work as a Finance Analyst at Deaf Action Charity. </p>
+        {% if data['journey-type-multipleawards'] == "financeanalyst" %}
+          <p>This support can be used while you work as a Finance Analyst at Deaf Action Charity. </p>
+        {% elseif data['journey-type-multipleawards'] == "humanresources" %}
+          <p>This support can be used while you work as a Human Resources Assistant at Google. </p>
+        {% else %}
+          <p>This support can be used while you work as a Finance Analyst at Deaf Action Charity. </p>
         {% endif %}
 
-        {% if (data['journey-type-secondary'] == "multipleawards") or (data['multiple-awards'] == "true") %}
+        <p>You should have already received a copy of your grant approval letter by post.</p>
+
+        {% if (data['multiple-employers']) and (data['multiple-awards']) %}
+        <p>You can also <a href="../multiple-awards-and-employers/grant-summary-support-type">view a grant summary for other types of support</a>.</p>
+        {% elseif (data['multiple-awards']) %}
         <p>You can also <a href="../multiple-award-elements/grant-summary-support-type">view a grant summary for other types of support</a>.</p>
         {% endif %}
-
-        {%if (data['journey-type-secondary'] == "specialaidsandequipment") or (data['journey-type-secondary'] == "specialaidsandequipmentdev") or (data['journey-type-secondary'] == "specialaidsandequipmentpb") %}
-
-        <h2 class="govuk-heading-m">Developer at Deaf Action Charity</h2>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £2089.98 - Hearing aid <br>
-              £102.00 - Keyboard <br>
-              £474.00 - Magnifier and speech software <br>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £2665.98
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount you or your employer have agreed to contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £266.59
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount Access to Work will contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £2399.39
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Amount of grant left
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £2089.98
-            </dd>
-          </div>
-        </dl>
-
-        {% elseif (data['journey-type-secondary'] == "adaptations") %}
-
-        <h2 class="govuk-heading-m">What support you’ll get</h2>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £1340.00 - adaptations to vehicle<br>
-
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £1340.00
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount you or your employer have agreed to contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £382.85
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount Access to Work will contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £957.15
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Amount of grant left
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £568.20
-            </dd>
-          </div>
-        </dl>
-
-        {% elseif (data['journey-type-secondary'] == "supportworker") or (data['journey-type-secondary'] == "supportworkerdev") or (data['journey-type-secondary'] == "supportworkerpb") %}
-
-        <h2 class="govuk-heading-m">What support you’ll get</h2>
-
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Support type
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Support worker
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £45.00 per hour
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total cost of support
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £7,200
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount you or your employer have agreed to contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £7.50 per hour
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Total amount Access to Work will contribute
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £37.50 per hour
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Amount of grant left
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £6,500
-            </dd>
-          </div>
-
-        </dl>
-        {% elseif (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type'] == "multipleemployers") %}
+                
+        {% if (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type'] == "multipleemployers") %}
         {% if (data['journey-type-multipleawards'] == "financeanalyst") %}
 
-        <h2 class="govuk-heading-m">Finance Analyst at Deaf Action Charity</h2>
+        <h2 class="govuk-heading-m">Support from 12 December 2022 until 12 December 2025</h2>
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -253,9 +101,8 @@ Claim money back from Access to Work
 
         </dl>
 
-        <p>You should have already received a copy of your grant approval letter by post.</p>
 
-        <p>Your support starts from <b>12 December 2022</b> until <b>12 December 2025</b> if your needs do not change.</p>
+        <h2 class="govuk-heading-m">Support from 12 December 2019 until 12 December 2022</h2>
 
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
@@ -307,13 +154,11 @@ Claim money back from Access to Work
   
           </dl>
 
-          <p>You should have already received a copy of your grant approval letter by post.</p>
 
-        <p>Your support starts from <b>12 December 2019</b> until <b>12 December 2022</b> if your needs do not change.</p>
 
         {% elseif (data['journey-type-multipleawards'] == "humanresources") %}
 
-        <h2 class="govuk-heading-m">Human Resources Assistant at Google</h2>
+        <h2 class="govuk-heading-m">Support from 12 December 2021 until 12 December 2024</h2>
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -364,10 +209,6 @@ Claim money back from Access to Work
           </div>
 
         </dl>
-
-        <p>You should have already received a copy of your grant approval letter by post.</p>
-
-        <p>Your support starts from <b>12 December 2021</b> until <b>12 December 2024</b> if your needs do not change.</p>
 
         {% endif %}
 
@@ -516,19 +357,6 @@ Claim money back from Access to Work
          <!-- {% if (data['journey-type-secondary'] == "multipleawards") or (data['multiple-awards'] == "true") %}
         <p>The total cost of your travel for work support is <b>£11635.71</b>. Access to Work will pay a maximum of <b>£9,696.43</b>.</p>
         {% endif %} -->
-
-        {% if (data['journey-type-secondary'] == "traveltowork") or (data['journey-type-secondary'] == "traveltoworkdev") or (data['journey-type-secondary'] == "traveltoworkpb") %}
-
-        {% else %}
-
-        <p>You should have already received a copy of your grant approval letter by post.</p>
-
-        {% if (data['journey-type-secondary'] == "supportworker") and (data['multiple-employers'] == "true") %}
-        <p>Your support starts from <b>12 February 2022</b> until <b>12 February 2025</b> if your needs do not change.</p>
-        {% else %}
-        <p>Your support starts from <b>5 March 2021</b> until <b>5 March 2024</b> if your needs do not change.</p>
-        {% endif %}
-        {% endif %}
 
 
 
