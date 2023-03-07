@@ -92,13 +92,14 @@ html: 'This is a new service – your <a class="govuk-link"
 
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
 
-                    {% if ((data['journey-type'] == "multipleawards") or (data['multiple-employers'] == "true"))
-                    and (data['multiple-employers'] !== "true") %}
+                    {% if ((data['journey-type'] == "multipleawards")) %}
                     {% set sendClaimLink %}./multiple-award-elements/start-a-claim{% endset %}
 
-                    {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] ==
-                    "true") %}
+                    {% elseif (data['journey-type'] == "multipleemployers") %}
                     {% set sendClaimLink %}./multiple-employers/start-a-claim{% endset %}
+
+                    {% elseif (data['journey-type'] == "multipleawardsandemployers") %}
+                    {% set sendClaimLink %}./multiple-awards-and-employers/start-a-claim{% endset %}
 
                     {% elseif (data['journey-type'] == "specialaidsandequipment") %}
                     {% set sendClaimLink %}./equipment-and-adaptations/special-aids-and-equipment{% endset %}
@@ -221,6 +222,8 @@ html: 'This is a new service – your <a class="govuk-link"
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
                     {% if (data['journey-type'] == "multipleawards") %}
                       {% set grantSummaryLink %}./multiple-award-elements/grant-summary-support-type{% endset %}
+                    {% elseif ((data['journey-type'] == "multipleawardsandemployers")) %}
+                      {% set grantSummaryLink %}./multiple-awards-and-employers/grant-summary-support-type{% endset %}
                     {% elseif ((data['journey-type'] == "multipleemployers")) %}
                       {% set grantSummaryLink %}./multiple-employers/employers-grant-information{% endset %}
                     {% else %}

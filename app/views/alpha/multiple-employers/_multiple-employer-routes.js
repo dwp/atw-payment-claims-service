@@ -1,7 +1,4 @@
 module.exports = function (folderForViews, urlPrefix, router) {
-  router.get('/multiple/start-a-claim', function (req, res) {
-    res.render(`./${folderForViews}/travel-to-work/start-a-claim`)
-  })
 
   router.post('/multiple-employers/multiple-employer-answers', function (req, res) {
     const employer = req.session.data['journey-type']
@@ -13,6 +10,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (employer === 'wrong-award') {
       res.redirect(`/${urlPrefix}/multiple-employers/contact-dwp`)
     }
+  })
+
+  router.post('/multiple-employers/start-a-claim', function (req, res) {
+    const employer = req.session.data['journey-type']
+
+    res.redirect(`/${urlPrefix}/travel-to-work/grant-information`)
   })
 
 

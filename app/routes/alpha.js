@@ -28,6 +28,7 @@ require(`../views/${folderWithinViews}/travel-to-work-old/_travel-to-work-routes
 require(`../views/${folderWithinViews}/adaptation-to-vehicle/_adaptation-to-vehicle-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/multiple-award-elements/_multiple-award-routes`)(folderWithinViews, urlPrefix, router)
 require(`../views/${folderWithinViews}/multiple-employers/_multiple-employer-routes`)(folderWithinViews, urlPrefix, router)
+require(`../views/${folderWithinViews}/multiple-awards-and-employers/_multiple-awards-and-employers-routes`)(folderWithinViews, urlPrefix, router)
 
 
 
