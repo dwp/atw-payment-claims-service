@@ -61,9 +61,9 @@ Claim money back from Access to Work
         {% for month_data in data['month-list'] %}
 
         <h2 class="govuk-heading-s">Support in {{month_data.month | numberMonth}}</h2>
+        <dl class="govuk-summary-list">
 
         {% for item in month_data.support | sortBy('day') %}
-        <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}}
@@ -85,7 +85,7 @@ Claim money back from Access to Work
 
               {% endif %}
 
-              <br>{{item.providor}}
+              from {{item.providor}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a id="{{item.day}}-change" class="govuk-link" 
@@ -96,12 +96,13 @@ Claim money back from Access to Work
               </a>
             </dd>
           </div>
-        </dl>
         {% else %}
         <div class="govuk-inset-text">
           Tell us about the support you received to continue.
         </div>
         {% endfor %}
+      </dl>
+
         {% endfor %}
 
 

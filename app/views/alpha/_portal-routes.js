@@ -1,6 +1,23 @@
 module.exports = function (folderForViews, urlPrefix, router) {
 
   router.post('/start-journey', function (req, res) {
+    if (req.session.data['journey-type'] == "multipleawards"){
+      req.session.data['multiple-awards'] = true
+      req.session.data['multiple-employers'] = false
+    }
+    else if (req.session.data['journey-type'] == "multipleemployers"){
+      req.session.data['multiple-employers'] = true
+      req.session.data['multiple-awards'] = false
+    }
+    else if (req.session.data['journey-type'] == "multipleawardsandemployers"){
+      req.session.data['multiple-awards'] = true
+      req.session.data['multiple-employers'] = true
+    }
+    else{
+      req.session.data['multiple-employers'] = false
+      req.session.data['multiple-awards'] = false
+    }
+
     res.redirect(`/${urlPrefix}/portal`)
   })
 

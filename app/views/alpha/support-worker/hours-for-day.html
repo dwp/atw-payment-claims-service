@@ -32,6 +32,7 @@ Claim money back from Access to Work
 
         <form id="form" method="post" action="#">
 
+
             <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Hours of support in {{data["support-month"] | numberMonth}}</h1>
 
 
@@ -76,6 +77,10 @@ Claim money back from Access to Work
                                 </h1>
                             </legend>
 
+                            <div id="support-hours-hint" class="govuk-hint">
+                                For example, 8 hours and 30 minutes
+                            </div>
+                            
                             {% for error in hoursFieldErrors %}
                             <p id="support[{{loopIndex}}][support_hours]-error" class="govuk-error-message">
                                 <span class="govuk-visually-hidden">Error:</span> {{error.message}}
@@ -147,6 +152,10 @@ Claim money back from Access to Work
                                     Total support on {{item.day}} {{data["support-month"] | numberMonth}}
                                 </h1>
                             </label>
+                            <div id="support-hours-hint" class="govuk-hint">
+                                For example, 8 hours and 30 minutes
+                            </div>
+
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">

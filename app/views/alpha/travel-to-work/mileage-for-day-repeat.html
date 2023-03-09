@@ -19,7 +19,11 @@ Claim money back from Access to Work
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form id="form" method="post" action="#">
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Which dates did you travel to or from work in {{data["travel-to-work-date-month-repeat"] | numberMonth}}?</h1>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">
+                Lifts you had in 
+                {{data["travel-to-work-date-month-repeat"] | numberMonth}}
+                {{data["travel-to-work-date-year-repeat"]}}
+            </h1>
 
 
             <div data-module="moj-add-another">
@@ -30,7 +34,7 @@ Claim money back from Access to Work
                     <!-- // new stuff -->
                   <div class="govuk-form-group">
                       <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[0][day]">
-                          Day of travel in {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year"]}}
+                        Date of travel in {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year"]}}
 
                       </label>
 
@@ -116,7 +120,7 @@ Claim money back from Access to Work
 
                   <div class="govuk-form-group">
                       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s" for="repeatmilage[{{loop.index0}}][day]">
-                          Day of travel in {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
+                        Date of travel in {{data["travel-to-work-date-month-repeat"] | numberMonth}} {{data["travel-to-work-date-year-repeat"]}}
                       </legend>
 
                       <div id="date-of-birth-hint" class="govuk-hint">
@@ -162,7 +166,7 @@ Claim money back from Access to Work
                         </label>
 
                         <div id="repeatmilage-name-hint" class="govuk-hint">
-                              For example, 15 miles
+                              For example, 15
                         </div>
 
                         <div class="govuk-input__wrapper">

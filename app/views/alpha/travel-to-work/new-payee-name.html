@@ -4,6 +4,10 @@
 Claim money back from Access to Work
 {% endblock %}
 
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block content %}
 
@@ -24,32 +28,40 @@ Claim money back from Access to Work
           {% else %}
           <span class="govuk-caption-l">Section 2 of 4</span>
           {% endif %}
-            <h1 class="govuk-heading-l">Details of the person or company we need to pay</h1>
 
-            <p>This could be anyone who paid for your travel. This includes yourself, a friend, family member, your employer or a transport company. We’ll store this information for any new claims you make.</p>
+          <h1 class="govuk-heading-l">The person or company we need to pay</h1>
 
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="new-payee-full-name">
-                    Full name
-                  </label>
-                  <div id="payee-name-hint" class="govuk-hint">This can be the name of a person or company</div>
-                <input class="govuk-input" id="new-payee-full-name" name="new-payee-full-name" type="text" spellcheck="false" autocomplete="name"></div>
-
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="payee-email">
-                    Email address
-                  </label>
-                  <div id="email-hint" class="govuk-hint">We’ll only use this to let them know we’ve paid them</div>
-                  <input class="govuk-input" id="payee-email" name="payee-email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
-                </div>
-
-
-
-
-
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
+          {{ govukInput({
+            label: {
+              text: "Full name",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "This could be anyone who paid for your travel, including yourself."
+            },
+            classes: "govuk-input--width-10",
+            id: "new-payee-full-name",
+            name: "new-payee-full-name",
+            spellcheck: false
+          }) }}
+  
+          {{ govukInput({
+            label: {
+              text: "Email address",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "We’ll only use this to let them know we’ve paid them."
+            },
+            classes: "govuk-input--width-10",
+            id: "payee-email",
+            name: "payee-email",
+            spellcheck: false
+          }) }}
+  
+          {{ govukButton({
+            text: "Continue"
+          }) }}
 
         </form>
     </div>
