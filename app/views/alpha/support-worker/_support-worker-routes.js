@@ -85,6 +85,41 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (month === 'no' && journeytype === 'supportworker') {
       res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
     }
+
+
+    var monthList = req.session.data['month-list']
+    if (monthList) {
+      monthList.forEach(function (month) {
+        if (month.support) {
+          var minuteTotal = 0
+          var hourTotal = 0
+          month.support.forEach(function (day) {
+            if (day.support_minutes) {
+              minuteTotal = minuteTotal + parseInt(day.support_minutes)
+            }
+            if (day.support_hours) {
+              hourTotal = hourTotal + parseInt(day.support_hours)
+            }
+            if (day.repeatsupport_minutes) {
+              minuteTotal = minuteTotal + parseInt(day.repeatsupport_minutes)
+            }
+            if (day.repeatsupport_hours) {
+              hourTotal = hourTotal + parseInt(day.repeatsupport_hours)
+            }
+          });
+          while (minuteTotal >= 60) {
+            hourTotal += 1
+            minuteTotal -= 60
+          }
+          month['totalhours'] = hourTotal
+          month['totalminutes'] = minuteTotal
+        }
+      });
+    }
+
+    req.session.data['month-list2'] = monthList
+
+
   })
 
   router.get('/support-worker/hours-for-day-summary', function (req, res) {
@@ -138,6 +173,38 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   router.post('/support-worker/month-claim-answer', function (req, res) {
+    var days = new Array(7);
+    days[0] = "Sunday";
+    days[1] = "Monday";
+    days[2] = "Tuesday";
+    days[3] = "Wednesday";
+    days[4] = "Thursday";
+    days[5] = "Friday";
+    days[6] = "Saturday";
+
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    var month = req.session.data["support-month"]
+    var year = req.session.data["support-year"]
+
+    const getDays = (year, month) => {
+      return new Date(year, month, 0).getDate();
+    };
+
+    var monthLength = getDays(year, month);
+    var monthDayList = []
+
+    for (let i = 1; i <= monthLength; i++) {
+      var a = new Date(year, month - 1, i);
+      var r = days[a.getDay()];
+      var monthDay = { value: i, text: r + " " + i + " " + monthNames[a.getMonth()] }
+      monthDayList.push(monthDay)
+    }
+
+    req.session.data.dataList = monthDayList
     res.redirect(`/${urlPrefix}/support-worker/days-for-month`)
   })
 
@@ -145,11 +212,116 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
   })
 
-  router.post('/support-worker/days-for-month1', function (req, res) {
-    res.redirect(`/${urlPrefix}/support-worker/hours-for-day1`)
+  router.get('/support-worker/days-for-month', function (req, res) {
+    var days = new Array(7);
+    days[0] = "Sunday";
+    days[1] = "Monday";
+    days[2] = "Tuesday";
+    days[3] = "Wednesday";
+    days[4] = "Thursday";
+    days[5] = "Friday";
+    days[6] = "Saturday";
+
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    var month = req.session.data["support-month"]
+    var year = req.session.data["support-year"]
+
+    const getDays = (year, month) => {
+      return new Date(year, month, 0).getDate();
+    };
+
+    var monthLength = getDays(year, month);
+    var monthDayList = []
+
+    for (let i = 1; i <= monthLength; i++) {
+      var a = new Date(year, month - 1, i);
+      var r = days[a.getDay()];
+      var monthDay = { value: i, text: r + " " + i + " " + monthNames[a.getMonth()] }
+      monthDayList.push(monthDay)
+    }
+
+    req.session.data.dataList = monthDayList
+    res.render(`./${folderForViews}/support-worker/days-for-month`)
+
+  })
+
+  router.get('/support-worker/days-for-month-repeat', function (req, res) {
+    var days = new Array(7);
+    days[0] = "Sunday";
+    days[1] = "Monday";
+    days[2] = "Tuesday";
+    days[3] = "Wednesday";
+    days[4] = "Thursday";
+    days[5] = "Friday";
+    days[6] = "Saturday";
+
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    var month = req.session.data["repeatsupport-month"]
+    var year = req.session.data["repeatsupport-year"]
+
+    const getDays = (year, month) => {
+      return new Date(year, month, 0).getDate();
+    };
+
+    var monthLength = getDays(year, month);
+    var monthDayList = []
+
+    for (let i = 1; i <= monthLength; i++) {
+      var a = new Date(year, month - 1, i);
+      var r = days[a.getDay()];
+      var monthDay = { value: i, text: r + " " + i + " " + monthNames[a.getMonth()] }
+      monthDayList.push(monthDay)
+    }
+
+    req.session.data.dataList = monthDayList
+    res.render(`./${folderForViews}/support-worker/days-for-month-repeat`)
   })
 
   router.post('/support-worker/month-claim-answer-repeat', function (req, res) {
+    var days = new Array(7);
+    days[0] = "Sunday";
+    days[1] = "Monday";
+    days[2] = "Tuesday";
+    days[3] = "Wednesday";
+    days[4] = "Thursday";
+    days[5] = "Friday";
+    days[6] = "Saturday";
+
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    var month = req.session.data["repeatsupport-month"]
+    var year = req.session.data["repeatsupport-year"]
+
+    const getDays = (year, month) => {
+      return new Date(year, month, 0).getDate();
+    };
+
+    var monthLength = getDays(year, month);
+    var monthDayList = []
+
+    for (let i = 1; i <= monthLength; i++) {
+      var a = new Date(year, month - 1, i);
+      var r = days[a.getDay()];
+      var monthDay = { value: i, text: r + " " + i + " " + monthNames[a.getMonth()] }
+      monthDayList.push(monthDay)
+    }
+
+    req.session.data.dataList = monthDayList
+    res.redirect(`/${urlPrefix}/support-worker/days-for-month-repeat`)
+  })
+
+  router.post('/support-worker/days-for-month-repeat', function (req, res) {
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
   })
 
@@ -175,24 +347,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
     month_support_check.forEach(function (day_support) {
       //Enter hours of support
       if (!day_support.support_hours) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Enter hours of support", message: "Enter hours of support", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Enter hours of support", message: "Enter hours of support", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
       }
       //Hours of support must be between 1 and 24
       else if (day_support.support_hours < 1 || day_support.support_hours > 24) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
       }
       //Hours must be a whole number
       else if (isNaN(day_support.support_hours)) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours must be a whole number", message: "Hours must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours must be a whole number", message: "Hours must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
       }
 
       //Minutes of support must be below 60
       if (day_support.support_minutes > 60) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
       }
       //Minutes must be a whole number
       else if (isNaN(day_support.support_minutes)) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
       }
 
     });
@@ -306,24 +478,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
     month_support_check.forEach(function (day_support) {
       //Enter hours of support
       if (!day_support.repeatsupport_hours) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Enter hours of support", message: "Enter hours of support", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Enter hours of support", message: "Enter hours of support", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
       }
       //Hours of support must be between 1 and 24
       else if (day_support.repeatsupport_hours < 1 || day_support.repeatsupport_hours > 24) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
       }
       //Hours must be a whole number
       else if (isNaN(day_support.repeatsupport_hours)) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Hours must be a whole number", message: "Hours must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours must be a whole number", message: "Hours must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
       }
 
       //Minutes of support must be below 60
       if (day_support.repeatsupport_minutes >= 60) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
       }
       //Minutes must be a whole number
       else if (isNaN(day_support.repeatsupport_minutes)) {
-        errors.push({ text: "Entry "+(indexOf(month_support_check, day_support) + 1)+": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
+        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
       }
 
     });
@@ -421,23 +593,55 @@ module.exports = function (folderForViews, urlPrefix, router) {
   // Get
   router.get('/support-worker/hours-for-day-change', function (req, res) {
     if (req.query.month) {
+      var days = new Array(7);
+      days[0] = "Sunday";
+      days[1] = "Monday";
+      days[2] = "Tuesday";
+      days[3] = "Wednesday";
+      days[4] = "Thursday";
+      days[5] = "Friday";
+      days[6] = "Saturday";
+
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      var month = req.query.month
+      var year = req.query.year
+
+      const getDays = (year, month) => {
+        return new Date(year, month, 0).getDate();
+      };
+
+      var monthLength = getDays(year, month);
+      var monthDayList = []
+
+      for (let i = 1; i <= monthLength; i++) {
+        var a = new Date(year, month - 1, i);
+        var r = days[a.getDay()];
+        var monthDay = { value: i, text: r + " " + i + " " + monthNames[a.getMonth()] }
+        monthDayList.push(monthDay)
+      }
+
+      req.session.data.dataList = monthDayList
       var month_list = req.session.data['month-list']
       var month_data = month_list.find((month) => month.month === req.query.month && month.year === req.query.year);
       if (month_data.support[0]["repeatsupport_hours"]) {
-        req.session.data["repeatsupport-month-repeat"] = req.query.month
-        req.session.data["repeatsupport-year-repeat"] = req.query.year
+        req.session.data["repeatsupport-month"] = req.query.month
+        req.session.data["repeatsupport-year"] = req.query.year
         req.session.data["repeatsupport"] = month_data.support
-        res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
+        res.redirect(`/${urlPrefix}/support-worker/days-for-month-repeat`)
       }
       else {
         req.session.data["support-month"] = req.query.month
         req.session.data["support-year"] = req.query.year
         req.session.data["support"] = month_data.support
-        res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+        res.redirect(`/${urlPrefix}/support-worker/days-for-month`)
       }
     }
     else {
-      res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
+      res.redirect(`/${urlPrefix}/support-worker/days-for-month`)
     }
   })
 
@@ -580,6 +784,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  router.get('/support-worker/check-your-answers', function (req, res) {
 
+    res.render(`./${folderForViews}/support-worker/check-your-answers`)
+  })
 
 }

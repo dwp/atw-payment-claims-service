@@ -33,13 +33,13 @@ Claim money back from Access to Work
 
         <form id="form" method="post" action="#">
 
-            {% set title = "Days you had support you had in "+data["support-month"] | numberMonth + " " + data["support-year"] %}
+            {% set title = "Days you had support you had in "+data["repeatsupport-month"] | numberMonth + " " + data["repeatsupport-year"] %}
 
             {% set dataList = data['dataList'] %}
 
             {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
             {{ govukCheckboxes({
-            name: "support",
+            name: "repeatsupport",
             classes: "govuk-checkboxes--small",
             fieldset: {
             legend: {

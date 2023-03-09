@@ -42,42 +42,21 @@
         {% endif %}
         {% endif %}
 
-
-
-        {% for month_data in data['month-list'] %}
-
         <h3 class="govuk-heading-m">
-            Support received for {{month_data.month | numberMonth}} {{month_data.year}}
+            Total monthly support
         </h3>
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-6">
-            {% for item in month_data.support | sortBy('day') %}
+        
 
+        <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+            {% for month_data in data['month-list'] %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    {{item.day}} {{month_data.month | numberMonth}} {{month_data.year}}
+                    {{month_data.month | numberMonth}} {{month_data.year}}
                 </dt>
                 <dd class="govuk-summary-list__value">
+                    {{month_data['total-hours']}}
 
-                    {% if item.support_hours %}
-                    {{item.support_hours}} {% if item.support_hours == 1 %} hour {% else %} hours {% endif %}
-                    {% elif item.repeatsupport_hours %}
-                    {{item.repeatsupport_hours}} {% if item.repeatsupport_hours == 1 %} hour {% else %} hours {% endif
-                    %}
-                    {% endif %}
-
-                    {% if item.support_minutes %}
-                    {{item.support_minutes}} {% if item.support_minutes == 1 %} minute {% else %} minutes {% endif %}
-                    {% elif item.repeatsupport_minutes %}
-                    {{item.repeatsupport_minutes}} {% if item.repeatsupport_minutes == 1 %} minute {% else %} minutes {% endif
-                    %}
-                    {% endif %}
-
-                    from
-                    {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                    {% else %}
-                    {{item.providor}}
-                    {% endif %} <br>
 
                 </dd>
                 {% if print != true %}
@@ -97,10 +76,11 @@
                 </dd>
                 {% endif %}
             </div>
+            
             {% endfor %}
+
         </dl>
 
-        {% endfor %}
 
         <h3 class="govuk-heading-m">
             Total hours and costs
