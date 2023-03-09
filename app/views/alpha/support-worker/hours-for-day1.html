@@ -32,13 +32,14 @@ Claim money back from Access to Work
 
         <form id="form" method="post" action="#">
 
-
             <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Hours of support in {{data["support-month"] | numberMonth}}</h1>
 
 
             <div data-module="moj-add-another">
                 {% if supportLength > 1 %}
                 {% for item in data.support %}
+                {% if item > 0 %}
+
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
 
@@ -77,10 +78,6 @@ Claim money back from Access to Work
                                 </h1>
                             </legend>
 
-                            <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 30 minutes
-                            </div>
-                            
                             {% for error in hoursFieldErrors %}
                             <p id="support[{{loopIndex}}][support_hours]-error" class="govuk-error-message">
                                 <span class="govuk-visually-hidden">Error:</span> {{error.message}}
@@ -149,13 +146,9 @@ Claim money back from Access to Work
                             <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="support[{{loopIndex}}][support_hours]">
                                 <h1 class="govuk-fieldset__heading">
-                                    Total support on {{item.day}} {{data["support-month"] | numberMonth}}
+                                    Total support on {{item}} {{data["support-month"] | numberMonth}}
                                 </h1>
                             </label>
-                            <div id="support-hours-hint" class="govuk-hint">
-                                For example, 8 hours and 30 minutes
-                            </div>
-
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
@@ -192,6 +185,8 @@ Claim money back from Access to Work
 
                 </fieldset>
                 <!-- ENDS HERE -->
+                {% endif %}
+
                 {% endfor %}
                 {% endif %}
 
