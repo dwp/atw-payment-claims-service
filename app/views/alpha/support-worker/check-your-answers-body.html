@@ -46,8 +46,6 @@
             Total monthly support
         </h3>
 
-        
-
         <dl class="govuk-summary-list govuk-!-margin-bottom-6">
             {% for month_data in data['month-list'] %}
             <div class="govuk-summary-list__row">
@@ -55,8 +53,12 @@
                     {{month_data.month | numberMonth}} {{month_data.year}}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{month_data['total-hours']}}
 
+                    {{month_data['totalhours']}}
+                    {% if month_data['totalhours'] == 1 %} hour {% else %} hours {% endif %}
+                    and
+                    {{month_data['totalminutes']}}
+                    {% if month_data['totalminutes'] == 1 %} minute {% else %} minutes {% endif %}
 
                 </dd>
                 {% if print != true %}
@@ -86,7 +88,7 @@
             Total hours and costs
         </h3>
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Total support
@@ -95,7 +97,6 @@
                     {{data['hour-total']}} {% if data['hour-total'] == 1 %} hour {% else %} hours {% endif %}
                     and {{data['minute-total']}}
                     {% if data.minute-total == 1 %} minute {% else %} minutes {% endif %}
-                    of support
                 </dd>
                 {% if print != true %}
                 <dd class="govuk-summary-list__actions govuk-!-display-none-print">
@@ -174,7 +175,7 @@
         <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
 
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Name

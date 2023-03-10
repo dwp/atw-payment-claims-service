@@ -74,19 +74,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
     const journeytype = req.session.data['journey-type']
     const checked = req.session.data['contact-confirmed']
 
-    if (req.session.data.support === undefined || req.session.data.support.length == 0) {
-      res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
-    } else if (month === 'yes') {
-      res.redirect(`/${urlPrefix}/support-worker/claiming-for-month-repeat`)
-    } else if (month === 'no' && journeytype === 'traveltowork-ammendment') {
-      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
-    } else if (month === 'no' && checked) {
-      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
-    } else if (month === 'no' && journeytype === 'supportworker') {
-      res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
-    }
-
-
     var monthList = req.session.data['month-list']
     if (monthList) {
       monthList.forEach(function (month) {
@@ -117,8 +104,19 @@ module.exports = function (folderForViews, urlPrefix, router) {
       });
     }
 
-    req.session.data['month-list2'] = monthList
+    req.session.data["month-list"] = monthList
 
+    if (req.session.data.support === undefined || req.session.data.support.length == 0) {
+      res.redirect(`/${urlPrefix}/support-worker/no-hours-entered`)
+    } else if (month === 'yes') {
+      res.redirect(`/${urlPrefix}/support-worker/claiming-for-month-repeat`)
+    } else if (month === 'no' && journeytype === 'traveltowork-ammendment') {
+      res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
+    } else if (month === 'no' && checked) {
+      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+    } else if (month === 'no' && journeytype === 'supportworker') {
+      res.redirect(`/${urlPrefix}/support-worker/cost-of-support`)
+    }
 
   })
 
