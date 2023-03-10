@@ -787,4 +787,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.render(`./${folderForViews}/support-worker/check-your-answers`)
   })
 
+  router.post('/support-worker/cya-version', function (req, res) {
+
+    res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+  })
+
 }

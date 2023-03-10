@@ -23,11 +23,218 @@
 {{ data.repeatsupport | length }}
 {% endset %}
 
+<style>
+    .govuk-summary-card {
+        margin-bottom: 20px;
+        border: 1px solid #b1b4b6
+    }
 
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card {
+            margin-bottom: 30px
+        }
+    }
+
+    .govuk-summary-card__title-wrapper {
+        padding: 15px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0);
+        background-color: #f3f2f1
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__title-wrapper {
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: flex;
+            -ms-flex-pack: justify;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            padding: 15px 20px
+        }
+    }
+
+    .govuk-summary-card__title {
+        font-family: "GDS Transport", arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 700;
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 1.25;
+        margin: 5px 20px 10px 0
+    }
+
+    @media print {
+        .govuk-summary-card__title {
+            font-family: sans-serif
+        }
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__title {
+            font-size: 19px;
+            font-size: 1.1875rem;
+            line-height: 1.3157894737
+        }
+    }
+
+    @media print {
+        .govuk-summary-card__title {
+            font-size: 14pt;
+            line-height: 1.15
+        }
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__title {
+            margin-bottom: 5px
+        }
+    }
+
+    .govuk-summary-card__actions {
+        font-family: "GDS Transport", arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 700;
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 1.25;
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        margin: 5px 0;
+        padding: 0;
+        list-style: none
+    }
+
+    @media print {
+        .govuk-summary-card__actions {
+            font-family: sans-serif
+        }
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__actions {
+            font-size: 19px;
+            font-size: 1.1875rem;
+            line-height: 1.3157894737
+        }
+    }
+
+    @media print {
+        .govuk-summary-card__actions {
+            font-size: 14pt;
+            line-height: 1.15
+        }
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__actions {
+            -ms-flex-pack: right;
+            -webkit-box-pack: right;
+            justify-content: right;
+            text-align: right
+        }
+    }
+
+    .govuk-summary-card__action {
+        display: inline;
+        margin: 0 10px 0 0;
+        padding-right: 10px;
+        border-right: 1px solid #b1b4b6
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__action {
+            margin-right: 0
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
+        .govuk-summary-card__action {
+            margin-bottom: 5px
+        }
+    }
+
+    .govuk-summary-card__action:last-child {
+        margin: 0;
+        padding-right: 0;
+        border-right: none
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__action:last-child {
+            padding-left: 10px
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
+        .govuk-summary-card__action:last-child {
+            margin-bottom: 0
+        }
+    }
+
+    .govuk-summary-card__content {
+        padding: 15px 15px 0
+    }
+
+    @media (min-width: 40.0625em) {
+        .govuk-summary-card__content {
+            padding: 15px 20px
+        }
+    }
+
+    .govuk-summary-card__content .govuk-summary-list {
+        margin-bottom: 0
+    }
+
+    .govuk-summary-card__content .govuk-summary-list__row:last-of-type {
+        margin-bottom: 0;
+        border-bottom: none
+    }
+</style>
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+        <form action="cya-version" method="post">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        Select version
+                    </legend>
+                    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cya-option-1" name="cya-option" type="radio"
+                                value="1">
+                            <label class="govuk-label govuk-radios__label" for="cya-option-1">
+                                Option 1
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="cya-option-2" name="cya-option" type="radio"
+                                value="2">
+                            <label class="govuk-label govuk-radios__label" for="cya-option-2">
+                                Option 2
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Change version
+            </button>
+
+        </form>
 
 
         {% if data['sw-declaration'] %}
@@ -42,11 +249,483 @@
         {% endif %}
         {% endif %}
 
+        {% if data['cya-option'] == 2 %}
+
+
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Total monthly support</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    {% for month_data in data['month-list'] %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            {{month_data.month | numberMonth}} {{month_data.year}}
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+
+                            {{month_data['totalhours']}}
+                            {% if month_data['totalhours'] == 1 %} hour {% else %} hours {% endif %}
+                            and
+                            {{month_data['totalminutes']}}
+                            {% if month_data['totalminutes'] == 1 %} minute {% else %} minutes {% endif %}
+
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+
+                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                            <a href="../support-worker/hours-for-day-summary">
+                                Change
+                                <span class="govuk-visually-hidden"> Hours of support received</span>
+                            </a>
+                            {% else %}
+                            <a href="hours-for-day-summary">
+                                Change
+                                <span class="govuk-visually-hidden"> Hours of support received</span>
+                            </a>
+                            {% endif %}
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    {% endfor %}
+
+                </dl>
+            </div>
+        </div>
+
+
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Total hours and costs</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Total support
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data['hour-total']}} {% if data['hour-total'] == 1 %} hour {% else %} hours {% endif %}
+                            and {{data['minute-total']}}
+                            {% if data.minute-total == 1 %} minute {% else %} minutes {% endif %}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                            <a href="../support-worker/hours-for-day-summary">
+                                Change
+                                <span class="govuk-visually-hidden"> Hours of support received</span>
+                            </a>
+                            {% else %}
+                            <a href="hours-for-day-summary">
+                                Change
+                                <span class="govuk-visually-hidden"> Total claimed</span>
+                            </a>
+                            {% endif %}
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Total cost of support workers
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            £{{data['cost-of-support']}}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                            <a href="../support-worker/cost-of-support">
+                                Change
+                                <span class="govuk-visually-hidden"> total cost of support received</span>
+                            </a>
+                            {% else %}
+                            <a href="cost-of-support">
+                                Change
+                                <span class="govuk-visually-hidden"> total cost of support received</span>
+                            </a>
+                            {% endif %}
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            {% if data['uploads'].length == 1 %}
+                            Receipt or invoice uploaded
+                            {% else %}
+                            Receipts or invoices uploaded
+                            {% endif %}
+                        </dt>
+
+                        <dd class="govuk-summary-list__value">
+                            {% for file in data['uploads'] %}
+
+                            {{file['file']}}<br>
+                            {% endfor %}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="upload-summary">
+                                Change
+                                <span class="govuk-visually-hidden"> Supporting evidence</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                </dl>
+            </div>
+        </div>
+
+        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+
+        {% elseif (data['existing-payee'] == "one") or (data['existing-payee'] == "two") or (data['existing-payee'] ==
+        "three") %}
+
+
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Details of the person or company being paid</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {% if (data['existing-payee'] == "one") %}
+                            John Doe
+                            {% elseif (data['existing-payee'] == "two") %}
+                            Jane Green
+                            {% elseif (data['existing-payee'] == "three") %}
+                            Sanjid Kelly
+                            {% elseif (data['existing-payee'] == "New") %}
+                            New person or company being paid
+                            {% endif %}
+
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                            <a href="../support-worker/existing-payee-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Payee name</span>
+                            </a>
+                            {% else %}
+                            <a href="existing-payee-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Payee name</span>
+                            </a>
+                            {% endif %}
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {% if (data['existing-payee'] == "one") %}
+                            john.doe@deafactioncharity.com
+                            {% elseif (data['existing-payee'] == "two") %}
+                            jane.green@bsl-interpreters.com
+                            {% elseif (data['existing-payee'] == "three") %}
+                            jane.green@bsl-interpreters.com
+
+                            {% endif %}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                            <a href="../support-worker/existing-payee-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Payee email</span>
+                            </a>
+                            {% else %}
+                            <a href="existing-payee-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Payee email</span>
+                            </a>
+                            {% endif %}
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                </dl>
+            </div>
+        </div>
+
+        {% elseif (data['existing-payee'] == "New") %}
+
+        {% if print != true %}
+        <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
+
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Details of the person or company being paid</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["new-payee-full-name"]}}
+
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="new-payee-name">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                    {%if (data["payee-email"]) %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["payee-email"]}}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="new-payee-address">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {% if data ["new-payee-address-line-1"] %}
+                            {{data["new-payee-address-line-1"]}}<br>
+                            {% if data["new-payee-address-line-2"] %}{{data["new-payee-address-line-2"]}}<br>{% endif %}
+                            {{data["new-payee-address-town"]}}<br>
+                            {{data["new-payee-address-county"]}}<br>
+                            {{data["new-payee-address-postcode"]}}
+                            {% endif %}
+
+                            {% if data["new-payee-address-select"] == "123" %}
+                            123 Hudsen House<br>
+                            Cresent Lane<br>
+                            Leeds<br>
+                            West Yorkshire<br>
+                            {{data["new-payee-postcode"]}}
+
+                            {% elif data["new-payee-address-select"] == "124" %}
+                            124 Hudsen House<br>
+                            Cresent Lane<br>
+                            Leeds<br>
+                            West Yorkshire<br>
+                            {{data["new-payee-postcode"]}}
+
+                            {% elif data["new-payee-address-select"] == "125" %}
+                            125 Hudsen House<br>
+                            Cresent Lane<br>
+                            Leeds<br>
+                            West Yorkshire<br>
+                            {{data["new-payee-postcode"]}}
+
+                            {% elif data["new-payee-address-select"] == "126" %}
+                            126 Hudsen House<br>
+                            Cresent Lane<br>
+                            Leeds<br>
+                            West Yorkshire<br>
+                            {{data["new-payee-postcode"]}}
+
+                            {% elif data["new-payee-address-select"] == "127" %}
+                            127 Hudsen House<br>
+                            Cresent Lane<br>
+                            Leeds<br>
+                            West Yorkshire<br>
+                            {{data["new-payee-postcode"]}}
+
+                            {% endif %}
+
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="new-payee-address">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name on bank account
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["name-on-the-account"]}}
+
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="banking-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Sort code
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["sort-code"]}}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="banking-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Account number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["account-number"]}}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="banking-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+
+                    {%if (data['roll-number']) %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Building society roll number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["roll-number"]}}
+                        </dd>
+                        {% if print != true %}
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            <a href="banking-details">
+                                Change
+                                <span class="govuk-visually-hidden"> Bank or building society account details</span>
+                            </a>
+                        </dd>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+        <div class="govuk-inset-text">
+            You can change these details to <a class="govuk-link" href="existing-payee-details">pay a person or company
+                we've paid before</a>.
+        </div>
+
+        {% endif %}
+        {% endif %}
+
+
+
+
+
+        {% if print != true %}
+
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Details of the person or company who can confirm support costs
+                </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+
+                <p>This is the person or company we’ll contact to confirm you received the support you're claiming for.
+                </p>
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["counter-signatory-full-name"]}}
+
+                        </dd>
+
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                            <a href="../support-worker/counter-signatory-name">
+                                Change
+                                <span class="govuk-visually-hidden"> name of counter signatory</span>
+                            </a>
+                            {% else %}
+                            <a href="counter-signatory-name">
+                                Change
+                                <span class="govuk-visually-hidden"> name of counter signatory</span>
+                            </a>
+                            {% endif %}
+                        </dd>
+
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{data["counter-signatory-email"]}}
+
+                        </dd>
+
+                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                            <a href="../support-worker/counter-signatory-name">
+                                Change
+                                <span class="govuk-visually-hidden"> name of counter signatory</span>
+                            </a>
+                            {% else %}
+                            <a href="counter-signatory-name">
+                                Change
+                                <span class="govuk-visually-hidden"> email of counter signatory</span>
+                            </a>
+                            {% endif %}
+                        </dd>
+
+                    </div>
+                </dl>
+            </div>
+        </div>
+        {% endif %}
+
+
+        {% else %}
+
         <h3 class="govuk-heading-m">
             Total monthly support
         </h3>
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+        <dl class="govuk-summary-list">
             {% for month_data in data['month-list'] %}
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -78,7 +757,7 @@
                 </dd>
                 {% endif %}
             </div>
-            
+
             {% endfor %}
 
         </dl>
@@ -249,7 +928,7 @@
         <h2 class="govuk-heading-m">Details of the person or company being paid</h2>
 
 
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <dl class="govuk-summary-list">
 
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -433,7 +1112,7 @@
         <h2 class="govuk-heading-m">Details of the person or company who can confirm support costs</h2>
 
         <p>This is the person or company we’ll contact to confirm you received the support you're claiming for.</p>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Name
@@ -484,6 +1163,8 @@
             </div>
         </dl>
         {% endif %}
+        {% endif %}
+
 
         <!-- {% if print != true %}
         <p>You can also <a target="_blank"
