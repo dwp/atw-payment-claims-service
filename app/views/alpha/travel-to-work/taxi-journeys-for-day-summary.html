@@ -76,6 +76,7 @@ Claim money back from Access to Work
         {% endif %}
 
         {% for month_data in data['month-list'] %}
+        {% if month_data['travel'] %}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -100,7 +101,6 @@ Claim money back from Access to Work
               {% endif %}
             </dd>
           </div>
-
           {% for item in month_data['travel'] | sortBy('day') %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -128,6 +128,7 @@ Claim money back from Access to Work
           </div>
           {% endfor %}
         </dl>
+        {% endif %}
 
         {% endfor %}
 

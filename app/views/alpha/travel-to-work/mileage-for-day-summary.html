@@ -46,6 +46,7 @@ Claim money back from Access to Work
 
         {% for month_data in data['month-list'] %}
 
+        {% if month_data['milage'] %}
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -93,6 +94,8 @@ Claim money back from Access to Work
         </div>
         {% endfor %}
       </dl>
+      {% endif %}
+
         {% endfor %}
 
       </div>
