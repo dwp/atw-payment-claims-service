@@ -41,7 +41,7 @@ Claim money back from Access to Work
             <div data-module="moj-add-another">
                 {% if supportLength > 0 %}
                 {% for item in data.support %}
-                {% if item >= 0 %}
+                {% if item.day >= 0 %}
 
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
@@ -50,22 +50,22 @@ Claim money back from Access to Work
 
                     {% set outerFieldErrors = [] %}
                     {% for error in data["support-worker-errors"] %}
-                    {% if ((error.href == "#support["+loopIndex+"][support_hours]") or (error.href ==
-                    "#support["+loopIndex+"][support_minutes]") ) %}
+                    {% if ((error.href == "#support["+item.day+"][support_hours]") or (error.href ==
+                    "#support["+item.day+"][support_minutes]") ) %}
                     {% set outerFieldErrors = (outerFieldErrors.push(error), outerFieldErrors) %}
                     {% endif %}
                     {% endfor %}
 
                     {% set hoursFieldErrors = [] %}
                     {% for error in outerFieldErrors %}
-                    {% if (error.href == "#support["+loopIndex+"][support_hours]") %}
+                    {% if (error.href == "#support["+item.day+"][support_hours]") %}
                     {% set hoursFieldErrors = (hoursFieldErrors.push(error), hoursFieldErrors) %}
                     {% endif %}
                     {% endfor %}
 
                     {% set minutesFieldErrors = [] %}
                     {% for error in outerFieldErrors %}
-                    {% if (error.href == "#support["+loopIndex+"][support_minutes]") %}
+                    {% if (error.href == "#support["+item.day+"][support_minutes]") %}
                     {% set minutesFieldErrors = (minutesFieldErrors.push(error), minutesFieldErrors) %}
                     {% endif %}
                     {% endfor %}
@@ -74,20 +74,27 @@ Claim money back from Access to Work
 
                     <div class="govuk-form-group govuk-form-group--error">
                         <fieldset class="govuk-fieldset" role="group" aria-describedby="support-hours-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"
-                                for="support[{{item}}][support_hours]">
+
+                            <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
+                                for="support[{{item.day}}][support_hours]">
                                 <h1 class="govuk-fieldset__heading">
-                                    Total support on {{item}} {{data["support-month"] | numberMonth}}
+                                    Total support on {{item.day}} {{data["support-month"] | numberMonth}}
                                 </h1>
-                            </legend>
+                            </label>
+                            <input class="govuk-input govuk-input__input"
+                                            value="{{item.day}}" id="support[{{item.day}}][day]"
+                                            name="support[{{item.day}}][day]" type="text"
+                                            data-name="support[{{item.day}}][day]"
+                                            data-id="support[{{item.day}}][day]" inputmode="numeric"
+                                            style="display: none">
 
                             {% for error in hoursFieldErrors %}
-                            <p id="support[{{item}}][support_hours]-error" class="govuk-error-message">
+                            <p id="support[{{item.day}}][support_hours]-error" class="govuk-error-message">
                                 <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
                             {% for error in minutesFieldErrors %}
-                            <p id="support[{{item}}][support_minutes]-error" class="govuk-error-message">
+                            <p id="support[{{item.day}}][support_minutes]-error" class="govuk-error-message">
                                 <span class="govuk-visually-hidden">Error:</span> {{error.message}}
                             </p>
                             {% endfor %}
@@ -95,46 +102,46 @@ Claim money back from Access to Work
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
                                         <label class="govuk-label govuk-input__label"
-                                            for="support[{{item}}][support_hours]">
+                                            for="support[{{item.day}}][support_hours]">
                                             Hours
                                         </label>
                                         {% if hoursFieldErrors | length %}
                                         <input
                                             class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
-                                            value="{{item.support_hours}}" id="support[{{item}}][support_hours]"
-                                            name="support[{{item}}][support_hours]" type="text"
-                                            data-name="support[{{item}}][support_hours]"
-                                            data-id="support[{{item}}][support_hours]" inputmode="numeric">
+                                            value="{{item.support_hours}}" id="support[{{item.day}}][support_hours]"
+                                            name="support[{{item.day}}][support_hours]" type="text"
+                                            data-name="support[{{item.day}}][support_hours]"
+                                            data-id="support[{{item.day}}][support_hours]" inputmode="numeric">
                                         {% else %}
                                         <input class="govuk-input govuk-input__input govuk-input--width-2"
-                                            value="{{item.support_hours}}" id="support[{{item}}][support_hours]"
-                                            name="support[{{item}}][support_hours]" type="text"
-                                            data-name="support[{{item}}][support_hours]"
-                                            data-id="support[{{item}}][support_hours]" inputmode="numeric">
+                                            value="{{item.support_hours}}" id="support[{{item.day}}][support_hours]"
+                                            name="support[{{item.day}}][support_hours]" type="text"
+                                            data-name="support[{{item.day}}][support_hours]"
+                                            data-id="support[{{item.day}}][support_hours]" inputmode="numeric">
                                         {% endif %}
                                     </div>
                                 </div>
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
                                         <label class="govuk-label govuk-input__label"
-                                            for="support[{{item}}][support_minutes]">
+                                            for="support[{{item.day}}][support_minutes]">
                                             Minutes
                                         </label>
                                         {% if minutesFieldErrors | length %}
                                         <input
                                             class="govuk-input govuk-input--error govuk-input__input govuk-input--width-2"
                                             value="{{item.support_minutes}}"
-                                            id="support[{{item}}][support_minutes]"
-                                            name="support[{{item}}][support_minutes]" type="text"
-                                            data-name="support[{{item}}][support_minutes]"
-                                            data-id="support[{{item}}][support_minutes]" inputmode="numeric">
+                                            id="support[{{item.day}}][support_minutes]"
+                                            name="support[{{item.day}}][support_minutes]" type="text"
+                                            data-name="support[{{item.day}}][support_minutes]"
+                                            data-id="support[{{item.day}}][support_minutes]" inputmode="numeric">
                                         {% else %}
                                         <input class="govuk-input govuk-input__input govuk-input--width-2"
                                             value="{{item.support_minutes}}"
-                                            id="support[{{item}}][support_minutes]"
-                                            name="support[{{item}}][support_minutes]" type="text"
-                                            data-name="support[{{item}}][support_minutes]"
-                                            data-id="support[{{item}}][support_minutes]" inputmode="numeric">
+                                            id="support[{{item.day}}][support_minutes]"
+                                            name="support[{{item.day}}][support_minutes]" type="text"
+                                            data-name="support[{{item.day}}][support_minutes]"
+                                            data-id="support[{{item.day}}][support_minutes]" inputmode="numeric">
                                         {% endif %}
                                     </div>
                                 </div>
@@ -147,43 +154,43 @@ Claim money back from Access to Work
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset" role="group" aria-describedby="support-hours-hint">
                             <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
-                                for="support[{{item}}][support_hours]">
+                                for="support[{{item.day}}][support_hours]">
                                 <h1 class="govuk-fieldset__heading">
-                                    Total support on {{item}} {{data["support-month"] | numberMonth}}
+                                    Total support on {{item.day}} {{data["support-month"] | numberMonth}}
                                 </h1>
                             </label>
                             <input class="govuk-input govuk-input__input"
-                                            value="{{item}}" id="support[{{item}}][day]"
-                                            name="support[{{item}}][day]" type="text"
-                                            data-name="support[{{item}}][day]"
-                                            data-id="support[{{item}}][day]" inputmode="numeric"
+                                            value="{{item.day}}" id="support[{{item.day}}][day]"
+                                            name="support[{{item.day}}][day]" type="text"
+                                            data-name="support[{{item.day}}][day]"
+                                            data-id="support[{{item.day}}][day]" inputmode="numeric"
                                             style="display: none">
                             <div class="govuk-date-input" id="support-hours">
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
                                         <label class="govuk-label govuk-input__label"
-                                            for="support[{{item}}][support_hours]">
+                                            for="support[{{item.day}}][support_hours]">
                                             Hours
                                         </label>
                                         <input class="govuk-input govuk-input__input govuk-input--width-2"
-                                            value="{{item.support_hours}}" id="support[{{item}}][support_hours]"
-                                            name="support[{{item}}][support_hours]" type="text"
-                                            data-name="support[{{item}}][support_hours]"
-                                            data-id="support[{{item}}][support_hours]" inputmode="numeric">
+                                            value="{{item.support_hours}}" id="support[{{item.day}}][support_hours]"
+                                            name="support[{{item.day}}][support_hours]" type="text"
+                                            data-name="support[{{item.day}}][support_hours]"
+                                            data-id="support[{{item.day}}][support_hours]" inputmode="numeric">
                                     </div>
                                 </div>
                                 <div class="govuk-date-input__item">
                                     <div class="govuk-form-group">
                                         <label class="govuk-label govuk-input__label"
-                                            for="support[{{item}}][support_minutes]">
+                                            for="support[{{item.day}}][support_minutes]">
                                             Minutes
                                         </label>
                                         <input class="govuk-input govuk-input__input govuk-input--width-2"
                                             value="{{item.support_minutes}}"
-                                            id="support[{{item}}][support_minutes]"
-                                            name="support[{{item}}][support_minutes]" type="text"
-                                            data-name="support[{{item}}][support_minutes]"
-                                            data-id="support[{{item}}][support_minutes]" inputmode="numeric">
+                                            id="support[{{item.day}}][support_minutes]"
+                                            name="support[{{item.day}}][support_minutes]" type="text"
+                                            data-name="support[{{item.day}}][support_minutes]"
+                                            data-id="support[{{item.day}}][support_minutes]" inputmode="numeric">
                                     </div>
                                 </div>
                             </div>

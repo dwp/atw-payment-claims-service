@@ -21,19 +21,9 @@ Claim money back from Access to Work
     <div class="govuk-grid-column-two-thirds">
 
 
-
-        {% if data["support-worker-errors"]|length %}
-        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-        {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: data["support-worker-errors"]
-        }) }}
-        {% endif %}
-
-
         <form id="form" method="post" action="#">
 
-            {% set title = "Days you had support you had in "+data["support-month"] | numberMonth + " " + data["support-year"] %}
+            {% set title = "Days you had support in "+data["support-month"] | numberMonth + " " + data["support-year"] %}
 
             {% set dataList = data['dataList'] %}
 
@@ -43,14 +33,14 @@ Claim money back from Access to Work
                 <fieldset class="govuk-fieldset">
                   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
-                        Days you had support you had in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+                        Days you had support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
                     </h1>
                   </legend>
                   {% for day in dataList %}
 
                   <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
                     <div class="govuk-checkboxes__item">
-                      <input class="govuk-checkboxes__input" id="support-{{day.value}}" name="support" type="checkbox" value={{day.value}}>
+                      <input class="govuk-checkboxes__input" id="support-{{day.value}}" name="support-days" type="checkbox" value={{day.value}}>
                       <label class="govuk-label govuk-checkboxes__label" for="organisation">
                         {{day.text}}
                       </label>

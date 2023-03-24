@@ -207,6 +207,14 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   router.post('/support-worker/days-for-month', function (req, res) {
+    var selectedDays = req.session.data['support-days']
+    var support = []
+    selectedDays.forEach(supportDay => {
+      support.push({day: supportDay})
+    });
+    req.session.data['support'] = support
+    req.session.data["support-worker-errors"] = []
+
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
   })
 
@@ -320,6 +328,13 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   router.post('/support-worker/days-for-month-repeat', function (req, res) {
+    var selectedDays = req.session.data['repeatsupport-days']
+    var support = []
+    selectedDays.forEach(supportDay => {
+      support.push({day: supportDay})
+    });
+    req.session.data['repeatsupport'] = support
+    req.session.data["support-worker-errors"] = []
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day-repeat`)
   })
 
@@ -327,6 +342,15 @@ module.exports = function (folderForViews, urlPrefix, router) {
     console.log(req.session.data.support)
     var month = req.session.data['support-month']
     var year = req.session.data['support-year']
+
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    var a = new Date(year, month - 1, 1);
+
+    var monthName = monthNames[a.getMonth()]
 
     var daysInMonth = function (month, year) {
       switch (month) {
@@ -345,24 +369,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
     month_support_check.forEach(function (day_support) {
       //Enter hours of support
       if (!day_support.support_hours) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Enter hours of support", message: "Enter hours of support", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Enter hours of support", message: "Enter hours of support", href: "#support[" + day_support.day + "][support_hours]" })
       }
       //Hours of support must be between 1 and 24
       else if (day_support.support_hours < 1 || day_support.support_hours > 24) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#support[" + day_support.day + "][support_hours]" })
       }
       //Hours must be a whole number
       else if (isNaN(day_support.support_hours)) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours must be a whole number", message: "Hours must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_hours]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Hours must be a whole number", message: "Hours must be a whole number", href: "#support[" + day_support.day + "][support_hours]" })
       }
 
       //Minutes of support must be below 60
       if (day_support.support_minutes > 60) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#support[" + day_support.day + "][support_minutes]" })
       }
       //Minutes must be a whole number
       else if (isNaN(day_support.support_minutes)) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#support[" + indexOf(month_support_check, day_support) + "][support_minutes]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#support[" + day_support.day + "][support_minutes]" })
       }
 
     });
@@ -459,6 +483,15 @@ module.exports = function (folderForViews, urlPrefix, router) {
     var month = req.session.data['repeatsupport-month']
     var year = req.session.data['repeatsupport-year']
 
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    var a = new Date(year, month - 1, 1);
+
+    var monthName = monthNames[a.getMonth()]
+
     var daysInMonth = function (month, year) {
       switch (month) {
         case 1:
@@ -476,24 +509,24 @@ module.exports = function (folderForViews, urlPrefix, router) {
     month_support_check.forEach(function (day_support) {
       //Enter hours of support
       if (!day_support.repeatsupport_hours) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Enter hours of support", message: "Enter hours of support", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Enter hours of support", message: "Enter hours of support", href: "#repeatsupport[" + day_support.day + "][repeatsupport_hours]" })
       }
       //Hours of support must be between 1 and 24
       else if (day_support.repeatsupport_hours < 1 || day_support.repeatsupport_hours > 24) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Hours of support must be between 1 and 24", message: "Hours of support must be between 1 and 24", href: "#repeatsupport[" + day_support.day + "][repeatsupport_hours]" })
       }
       //Hours must be a whole number
       else if (isNaN(day_support.repeatsupport_hours)) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Hours must be a whole number", message: "Hours must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_hours]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Hours must be a whole number", message: "Hours must be a whole number", href: "#repeatsupport[" + day_support.day + "][repeatsupport_hours]" })
       }
 
       //Minutes of support must be below 60
       if (day_support.repeatsupport_minutes >= 60) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Minutes of support must be below 60", message: "Minutes of support must be below 60", href: "#repeatsupport[" + day_support.day + "][repeatsupport_minutes]" })
       }
       //Minutes must be a whole number
       else if (isNaN(day_support.repeatsupport_minutes)) {
-        errors.push({ text: "Entry " + (indexOf(month_support_check, day_support) + 1) + ": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#repeatsupport[" + indexOf(month_support_check, day_support) + "][repeatsupport_minutes]" })
+        errors.push({ text: day_support.day  + " " + monthName + ": Minutes must be a whole number", message: "Minutes must be a whole number", href: "#repeatsupport[" + day_support.day + "][repeatsupport_minutes]" })
       }
 
     });
