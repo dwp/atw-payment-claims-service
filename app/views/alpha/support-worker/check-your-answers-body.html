@@ -199,6 +199,12 @@
         margin-bottom: 0;
         border-bottom: none
     }
+
+
+    th,
+    td {
+        border-bottom: none !important
+    }
 </style>
 
 <div class="govuk-grid-row">
@@ -222,42 +228,45 @@
                 <h2 class="govuk-summary-card__title">Total monthly support</h2>
             </div>
             <div class="govuk-summary-card__content">
-                <dl class="govuk-summary-list">
-                    {% for month_data in data['month-list'] %}
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            {{month_data.month | numberMonth}} {{month_data.year}}
-                        </dt>
-                        <dd class="govuk-summary-list__value">
 
-                            {{month_data['totalhours']}}
-                            {% if month_data['totalhours'] == 1 %} hour {% else %} hours {% endif %}
-                            and
-                            {{month_data['totalminutes']}}
-                            {% if month_data['totalminutes'] == 1 %} minute {% else %} minutes {% endif %}
+                <table class="govuk-summary-list govuk-!-margin-bottom-0">
+                    <tbody class="govuk-summary-list">
+                        {% for month_data in data['month-list'] %}
 
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                        <tr class="govuk-summary-list__row">
+                            <th scope="row" class="govuk-summary-list__key">
+                                {{month_data.month | numberMonth}} {{month_data.year}}
+                            </th>
+                            <td class="govuk-summary-list__value">
+                                {{month_data['totalhours']}}
+                                {% if month_data['totalhours'] == 1 %} hour {% else %} hours {% endif %}
+                                and
+                                {{month_data['totalminutes']}}
+                                {% if month_data['totalminutes'] == 1 %} minute {% else %} minutes {% endif %}
+                            </td>
+                            {% if print != true %}
 
-                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                            <a href="../support-worker/hours-for-day-summary">
-                                Change
-                                <span class="govuk-visually-hidden"> Hours of support received</span>
-                            </a>
-                            {% else %}
-                            <a href="hours-for-day-summary">
-                                Change
-                                <span class="govuk-visually-hidden"> Hours of support received</span>
-                            </a>
+                            <td class="govuk-summary-list__actions govuk-!-display-none-print">
+                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                                <a href="../support-worker/hours-for-day-summary">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Hours of support received</span>
+                                </a>
+                                {% else %}
+                                <a href="hours-for-day-summary">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Hours of support received</span>
+                                </a>
+                                {% endif %}
+                            </td>
                             {% endif %}
-                        </dd>
-                        {% endif %}
-                    </div>
 
-                    {% endfor %}
+                        </tr>
 
-                </dl>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
             </div>
         </div>
 
@@ -267,83 +276,94 @@
                 <h2 class="govuk-summary-card__title">Total hours and costs</h2>
             </div>
             <div class="govuk-summary-card__content">
-                <dl class="govuk-summary-list">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Total support
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{data['hour-total']}} {% if data['hour-total'] == 1 %} hour {% else %} hours {% endif %}
-                            and {{data['minute-total']}}
-                            {% if data.minute-total == 1 %} minute {% else %} minutes {% endif %}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                            <a href="../support-worker/hours-for-day-summary">
-                                Change
-                                <span class="govuk-visually-hidden"> Hours of support received</span>
-                            </a>
-                            {% else %}
-                            <a href="hours-for-day-summary">
-                                Change
-                                <span class="govuk-visually-hidden"> Total claimed</span>
-                            </a>
+
+                <table class="govuk-summary-list govuk-!-margin-bottom-0">
+                    <tbody class="govuk-summary-list">
+
+                        <tr class="govuk-summary-list__row">
+                            <th scope="row" class="govuk-summary-list__key">
+                                Total support
+                            </th>
+                            <td class="govuk-summary-list__value">
+                                {{data['hour-total']}} {% if data['hour-total'] == 1 %} hour {% else %} hours {% endif
+                                %}
+                                and {{data['minute-total']}}
+                                {% if data.minute-total == 1 %} minute {% else %} minutes {% endif %}
+                            </td>
+                            {% if print != true %}
+
+                            <td class="govuk-summary-list__actions govuk-!-display-none-print">
+                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                                <a href="../support-worker/hours-for-day-summary">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Hours of support received</span>
+                                </a>
+                                {% else %}
+                                <a href="hours-for-day-summary">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Total claimed</span>
+                                </a>
+                                {% endif %}
+                            </td>
                             {% endif %}
-                        </dd>
-                        {% endif %}
-                    </div>
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Total cost of support workers
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            £{{data['cost-of-support']}}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                            <a href="../support-worker/cost-of-support">
-                                Change
-                                <span class="govuk-visually-hidden"> total cost of support received</span>
-                            </a>
-                            {% else %}
-                            <a href="cost-of-support">
-                                Change
-                                <span class="govuk-visually-hidden"> total cost of support received</span>
-                            </a>
+                        </tr>
+
+                        <tr class="govuk-summary-list__row">
+                            <th scope="row" class="govuk-summary-list__key">
+                                Total cost of support workers
+                            </th>
+                            <td class="govuk-summary-list__value">
+                                £{{data['cost-of-support']}}
+                            </td>
+                            {% if print != true %}
+
+                            <td class="govuk-summary-list__actions govuk-!-display-none-print">
+                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                                <a href="../support-worker/cost-of-support">
+                                    Change
+                                    <span class="govuk-visually-hidden"> total cost of support received</span>
+                                </a>
+                                {% else %}
+                                <a href="cost-of-support">
+                                    Change
+                                    <span class="govuk-visually-hidden"> total cost of support received</span>
+                                </a>
+                                {% endif %}
+                            </td>
                             {% endif %}
-                        </dd>
-                        {% endif %}
-                    </div>
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            {% if data['uploads'].length == 1 %}
-                            Receipt or invoice uploaded
-                            {% else %}
-                            Receipts or invoices uploaded
+                        </tr>
+
+                        <tr class="govuk-summary-list__row">
+                            <th scope="row" class="govuk-summary-list__key">
+                                {% if data['uploads'].length == 1 %}
+                                Receipt or invoice uploaded
+                                {% else %}
+                                Receipts or invoices uploaded
+                                {% endif %}
+                            </th>
+                            <td class="govuk-summary-list__value">
+                                {% for file in data['uploads'] %}
+
+                                {{file['file']}}<br>
+                                {% endfor %}
+                            </td>
+                            {% if print != true %}
+
+                            <td class="govuk-summary-list__actions govuk-!-display-none-print">
+                                <a href="upload-summary">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Supporting evidence</span>
+                                </a>
+                            </td>
                             {% endif %}
-                        </dt>
 
-                        <dd class="govuk-summary-list__value">
-                            {% for file in data['uploads'] %}
+                        </tr>
 
-                            {{file['file']}}<br>
-                            {% endfor %}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            <a href="upload-summary">
-                                Change
-                                <span class="govuk-visually-hidden"> Supporting evidence</span>
-                            </a>
-                        </dd>
-                        {% endif %}
-                    </div>
+                    </tbody>
+                </table>
 
-                </dl>
             </div>
         </div>
 
@@ -358,72 +378,80 @@
                 <h2 class="govuk-summary-card__title">Details of the person or company being paid</h2>
             </div>
             <div class="govuk-summary-card__content">
-                <dl class="govuk-summary-list">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Name
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {% if (data['existing-payee'] == "one") %}
-                            John Doe
-                            {% elseif (data['existing-payee'] == "two") %}
-                            Jane Green
-                            {% elseif (data['existing-payee'] == "three") %}
-                            Sanjid Kelly
-                            {% elseif (data['existing-payee'] == "New") %}
-                            New person or company being paid
+
+                <table class="govuk-summary-list govuk-!-margin-bottom-0">
+                    <tbody class="govuk-summary-list">
+
+                        <tr class="govuk-summary-list__row">
+                            <th scope="row" class="govuk-summary-list__key">
+                                Name
+                            </th>
+                            <td class="govuk-summary-list__value">
+                                {% if (data['existing-payee'] == "one") %}
+                                John Doe
+                                {% elseif (data['existing-payee'] == "two") %}
+                                Jane Green
+                                {% elseif (data['existing-payee'] == "three") %}
+                                Sanjid Kelly
+                                {% elseif (data['existing-payee'] == "New") %}
+                                New person or company being paid
+                                {% endif %}
+                            </td>
+                            {% if print != true %}
+
+                            <td class="govuk-summary-list__actions govuk-!-display-none-print">
+                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                                <a href="../support-worker/existing-payee-details">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Payee name</span>
+                                </a>
+                                {% else %}
+                                <a href="existing-payee-details">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Payee name</span>
+                                </a>
+                                {% endif %}
+                            </td>
                             {% endif %}
 
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                            <a href="../support-worker/existing-payee-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Payee name</span>
-                            </a>
-                            {% else %}
-                            <a href="existing-payee-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Payee name</span>
-                            </a>
-                            {% endif %}
-                        </dd>
-                        {% endif %}
-                    </div>
+                        </tr>
 
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Email address
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {% if (data['existing-payee'] == "one") %}
-                            john.doe@deafactioncharity.com
-                            {% elseif (data['existing-payee'] == "two") %}
-                            jane.green@bsl-interpreters.com
-                            {% elseif (data['existing-payee'] == "three") %}
-                            jane.green@bsl-interpreters.com
+                        <tr class="govuk-summary-list__row">
+                            <th scope="row" class="govuk-summary-list__key">
+                                Email address
+                            </th>
+                            <td class="govuk-summary-list__value">
+                                {% if (data['existing-payee'] == "one") %}
+                                john.doe@deafactioncharity.com
+                                {% elseif (data['existing-payee'] == "two") %}
+                                jane.green@bsl-interpreters.com
+                                {% elseif (data['existing-payee'] == "three") %}
+                                jane.green@bsl-interpreters.com
 
-                            {% endif %}
-                        </dd>
-                        {% if print != true %}
-                        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                            <a href="../support-worker/existing-payee-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Payee email</span>
-                            </a>
-                            {% else %}
-                            <a href="existing-payee-details">
-                                Change
-                                <span class="govuk-visually-hidden"> Payee email</span>
-                            </a>
-                            {% endif %}
-                        </dd>
-                        {% endif %}
-                    </div>
+                                {% endif %}
+                            </td>
+                            {% if print != true %}
 
-                </dl>
+                            <td class="govuk-summary-list__actions govuk-!-display-none-print">
+                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+                                <a href="../support-worker/existing-payee-details">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Payee email</span>
+                                </a>
+                                {% else %}
+                                <a href="existing-payee-details">
+                                    Change
+                                    <span class="govuk-visually-hidden"> Payee email</span>
+                                </a>
+                                {% endif %}
+                            </td>
+                            {% endif %}
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
             </div>
         </div>
 
@@ -684,7 +712,7 @@
         {% endif %}
 
 
-        
+
 
 
         <!-- {% if print != true %}
