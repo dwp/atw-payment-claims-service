@@ -41,7 +41,7 @@ Claim money back from Access to Work
             <div data-module="moj-add-another">
                 {% if supportLength > 0 %}
                 {% for item in data.support %}
-                {% if item.day >= 0 %}
+                {% if item.day != '_unchecked' %}
 
                 <!-- START HERE -->
                 <fieldset class="govuk-fieldset moj-add-another__item">
@@ -78,7 +78,7 @@ Claim money back from Access to Work
                             <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="support[{{item.day}}][support_hours]">
                                 <h1 class="govuk-fieldset__heading">
-                                    Total support on {{item.day}} {{data["support-month"] | numberMonth}}
+                                    Total support on {{item.day | weekDay(data["support-month"], data["support-year"]) }} {{data["support-month"] | numberMonth}}
                                 </h1>
                             </label>
                             <input class="govuk-input govuk-input__input"
@@ -156,7 +156,7 @@ Claim money back from Access to Work
                             <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="support[{{item.day}}][support_hours]">
                                 <h1 class="govuk-fieldset__heading">
-                                    Total support on {{item.day}} {{data["support-month"] | numberMonth}}
+                                    Total support on {{item.day | weekDay(data["support-month"], data["support-year"]) }} {{data["support-month"] | numberMonth}}
                                 </h1>
                             </label>
                             <input class="govuk-input govuk-input__input"
