@@ -217,6 +217,11 @@ Claim money back from Access to Work
     margin-bottom: 0;
     border-bottom:none
 }
+
+@media (min-width: 40.0625em){
+.govuk-summary-list__key {
+    width: 40%;
+}}
 </style>
 
 
@@ -246,7 +251,7 @@ Claim money back from Access to Work
               {% for item in month_data.support | sortBy('day') %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  {{item.day}} {{month_data.month | numberMonth}}
+                  {{item.day | weekDay(month_data.month, month_data.year) }} {{month_data.month | numberMonth}}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% if item.support_hours %}

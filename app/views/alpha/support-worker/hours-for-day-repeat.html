@@ -74,7 +74,7 @@ Claim money back from Access to Work
                             <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="repeatsupport[{{item.day}}][repeatsupport_hours]">
                                 <h1 class="govuk-fieldset__heading">
-                                    Total support on {{item.day}} {{data["repeatsupport-month"] | numberMonth}}
+                                    Total support on {{item.day | weekDay(data["repeatsupport-month"], data["repeatsupport-year"]) }} {{data["repeatsupport-month"] | numberMonth}}
                                 </h1>
                             </label>
                             <input class="govuk-input govuk-input__input"
@@ -152,7 +152,7 @@ Claim money back from Access to Work
                             <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
                                 for="repeatsupport[{{item.day}}][repeatsupport_hours]">
                                 <h1 class="govuk-fieldset__heading">
-                                    Total support on {{item.day}} {{data["repeatsupport-month"] | numberMonth}}
+                                    Total support on {{item.day | weekDay(data["repeatsupport-month"], data["repeatsupport-year"]) }} {{data["repeatsupport-month"] | numberMonth}}
                                 </h1>
                             </label>
                             <input class="govuk-input govuk-input__input"
