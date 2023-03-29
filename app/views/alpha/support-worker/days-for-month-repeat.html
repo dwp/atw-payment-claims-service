@@ -23,29 +23,42 @@ Claim money back from Access to Work
 
         <form id="form" method="post" action="#">
 
-            {% set title = "Days you had support in "+data["repeatsupport-month"] | numberMonth + " " + data["repeatsupport-year"] %}
-
             {% set dataList = data['dataList'] %}
 
-            {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-            {{ govukCheckboxes({
-            name: "repeatsupport-days",
-            classes: "govuk-checkboxes--small",
-            fieldset: {
-            legend: {
-            text: title,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-            }
-            },
-            hint: {
-            text: "Select all that apply."
-            },
-            items: dataList
-            
-            }) }}
+            <div class="govuk-form-group">
 
-
+                <h1 class="govuk-heading-l">
+                  Days you had support in {{data["repeatsupport-month"] | numberMonth}} {{data["repeatsupport-year"]}}
+                </h1>
+                {% for week in dataList %}
+        
+                <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+        
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h1 class="govuk-fieldset__heading">
+                      <!-- Week starting on {{week.days[0].text}} -->
+                      Week {{week.weekNumber}}
+                    </h1>
+                  </legend>
+        
+                  <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    {% for day in week.days %}
+        
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="support-{{day.value}}" name="repeatsupport-days" type="checkbox"
+                        value={{day.value}}>
+                      <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                        {{day.text}}
+                      </label>
+        
+                    </div>
+                    {% endfor %}
+        
+                  </div>
+                </fieldset>
+                {% endfor %}
+        
+              </div>
 
             <div class="moj-button-action">
                 <button class="govuk-button" data-module="govuk-button" name="action" value="continue">

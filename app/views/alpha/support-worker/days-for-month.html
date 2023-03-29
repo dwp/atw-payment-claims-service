@@ -18,51 +18,56 @@ Claim money back from Access to Work
 
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
 
 
-        <form id="form" method="post" action="#">
+    <form id="form" method="post" action="#">
 
-            {% set title = "Days you had support in "+data["support-month"] | numberMonth + " " + data["support-year"] %}
+      {% set dataList = data['dataList'] %}
 
-            {% set dataList = data['dataList'] %}
+      <div class="govuk-form-group">
 
- 
+        <h1 class="govuk-heading-l">
+          Days you had support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+        </h1>
+        {% for week in dataList %}
 
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        Days you had support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
-                    </h1>
-                  </legend>
-                  {% for day in dataList %}
+        <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
 
-                  <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-                    <div class="govuk-checkboxes__item">
-                      <input class="govuk-checkboxes__input" id="support-{{day.value}}" name="support-days" type="checkbox" value={{day.value}}>
-                      <label class="govuk-label govuk-checkboxes__label" for="organisation">
-                        {{day.text}}
-                      </label>
-                      {% if 'Sunday' in day.text %}
-                    <br>
-                    <hr class="govuk-section-break govuk-section-break--visible" style="margin-top: 30px; margin-bottom: 16px;">
-                    {% endif %}
-                    </div>
-                    
-                  </div>
-                  {% endfor %}
-                </fieldset>
-              </div>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              <!-- Week starting on {{week.days[0].text}} -->
+              Week {{week.weekNumber}}
+            </h1>
+          </legend>
 
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+            {% for day in week.days %}
 
-            <div class="moj-button-action">
-                <button class="govuk-button" data-module="govuk-button" name="action" value="continue">
-                    Continue
-                </button>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="support-{{day.value}}" name="support-days" type="checkbox"
+                value={{day.value}}>
+              <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                {{day.text}}
+              </label>
+
             </div>
-        </form>
-    </div>
-    {# /govuk-grid-column-two-thirds #}
+            {% endfor %}
+
+          </div>
+        </fieldset>
+        {% endfor %}
+
+      </div>
+
+
+      <div class="moj-button-action">
+        <button class="govuk-button" data-module="govuk-button" name="action" value="continue">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+  {# /govuk-grid-column-two-thirds #}
 </div>{# /govuk-grid-row #}
 {% endblock %}
