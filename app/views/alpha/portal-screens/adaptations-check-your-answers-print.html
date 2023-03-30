@@ -10,7 +10,8 @@ tag: {
 text: "alpha"
 },
 classes: "govuk-!-display-none-print",
-html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-print" href="#">feedback</a> will help us to improve it.'
+html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-print" href="#">feedback</a> will help us
+to improve it.'
 }) }}
 
 <div class="govuk-breadcrumbs govuk-!-display-none-print">
@@ -22,7 +23,8 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
             <a class="govuk-breadcrumbs__link govuk-!-display-none-print" href="claims-history.html">Claims History</a>
         </li>
         <li class="govuk-breadcrumbs__list-item govuk-!-display-none-print">
-            <a class="govuk-breadcrumbs__link govuk-!-display-none-print" href="e-a-check-your-answers-print.html">Adaptation to a vehicle claim submission</a>
+            <a class="govuk-breadcrumbs__link govuk-!-display-none-print"
+                href="e-a-check-your-answers-print.html">Adaptation to a vehicle claim submission</a>
         </li>
     </ol>
 </div>
@@ -34,41 +36,39 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
 {% set print = true %}
 
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-bottom-4">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Adaptation to a vehicle claim submission</h1>
 
-<p>These are the details of the claim you submitted. You can also save and print a copy of your claim submission.</p>
+        <a href="" onClick="window.print()" class="govuk-link  govuk-!-display-none-print">Save and print claim details
+            (opens in new window).</a>
 
-<input type="button" class="govuk-button govuk-!-display-none-print" data-module="govuk-button" value="Save and print this page" onClick="window.print()">
-
-
-  </div>
-  </div>
+    </div>
+</div>
 {% include "alpha/portal-screens/adaptations-check-your-answers-body.html" %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-<h2 class="govuk-heading-m">Claim declaration</h2>
-<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-    <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-            Citizen declaration
-        </dt>
-        <dd class="govuk-summary-list__value">
-            Yes
+        <h2 class="govuk-heading-m">Claim declaration</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Citizen declaration
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    Yes
 
-        </dd>
-        {% if print != true %}
-        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-            <a href="counter-signatory-name">
-                Change
-                <span class="govuk-visually-hidden"> Citizen declaration</span>
-            </a>
-        </dd>
-        {% endif %}
-    </div>
-    <!-- <div class="govuk-summary-list__row">
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="counter-signatory-name">
+                        Change
+                        <span class="govuk-visually-hidden"> Citizen declaration</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+            <!-- <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
             Claim reference number
         </dt>
@@ -85,26 +85,26 @@ html: 'This is a new service – your <a class="govuk-link govuk-!-display-none-
         </dd>
         {% endif %}
     </div> -->
-    <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-            Claim submission date
-        </dt>
-        <dd class="govuk-summary-list__value">
-            06 March - 2021
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Claim submission date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    6 March - 2021
 
-        </dd>
-        {% if print != true %}
-        <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-            <a href="counter-signatory-name">
-                Change
-                <span class="govuk-visually-hidden"> Claim submission date</span>
-            </a>
-        </dd>
-        {% endif %}
+                </dd>
+                {% if print != true %}
+                <dd class="govuk-summary-list__actions govuk-!-display-none-print">
+                    <a href="counter-signatory-name">
+                        Change
+                        <span class="govuk-visually-hidden"> Claim submission date</span>
+                    </a>
+                </dd>
+                {% endif %}
+            </div>
+        </dl>
+
     </div>
-</dl>
-
-</div>
 </div>
 
 
