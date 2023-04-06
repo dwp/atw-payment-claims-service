@@ -84,8 +84,10 @@ Claim money back from Access to Work
               {% endif %}
 
               {% endif %}
-
+              {% if item.providor %}
               from {{item.providor}}
+              {% endif %}
+
             </dd>
             <dd class="govuk-summary-list__actions">
               <a id="{{item.day}}-change" class="govuk-link" 
