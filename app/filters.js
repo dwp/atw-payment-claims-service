@@ -56,6 +56,16 @@ module.exports = function (env) {
 
   }
 
+  filters.dayLetters = function(day) {
+    if (day > 3 && day < 21) return day+"th";
+    switch (day % 10) {
+      case 1:  return day+"st";
+      case 2:  return day+"nd";
+      case 3:  return day+"rd";
+      default: return day+"th";
+    }
+  }
+
   filters.sortBy = function (arr, prop) {
     const isNum = val => val == +val;
     const sorter = (a, b) => isNum(a[prop]) && isNum(b[prop]) ? +a[prop] - b[prop] : a[prop] < b[prop];

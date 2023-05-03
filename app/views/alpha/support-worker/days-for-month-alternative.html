@@ -34,14 +34,17 @@ Claim money back from Access to Work
 
         <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
 
-          {% if week.days.length == 7 or week.days[0].value != 1 %}
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h1 class="govuk-fieldset__heading">
               <!-- Week starting on {{week.days[0].text}} -->
-              Week beginning {{week.days[0].value | dayLetters}} {{data["support-month"] | numberMonth}}
+              {% if week.days.length == 1 %}
+                Week of {{week.days[0].value | dayLetters}} {{data["support-month"] | numberMonth}}
+              {% else %}
+                Week from {{week.days[0].value | dayLetters}} to {{week.days[week.days.length-1].value | dayLetters}} {{data["support-month"] | numberMonth}}
+              {% endif %}
+
             </h1>
           </legend>
-          {% endif %}
 
           <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
             {% for day in week.days %}
