@@ -38,9 +38,9 @@ Claim money back from Access to Work
             <h1 class="govuk-fieldset__heading">
               <!-- Week starting on {{week.days[0].text}} -->
               {% if week.days.length == 1 %}
-                Week of {{week.days[0].value | dayLetters}} {{data["support-month"] | numberMonth}}
+                {{week.days[0].value}} {{data["support-month"] | numberMonth}}
               {% else %}
-                Week from {{week.days[0].value | dayLetters}} to {{week.days[week.days.length-1].value | dayLetters}} {{data["support-month"] | numberMonth}}
+                {{week.days[0].value}} {{data["support-month"] | numberMonth}} to {{week.days[week.days.length-1].value }} {{data["support-month"] | numberMonth}}
               {% endif %}
 
             </h1>
