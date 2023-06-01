@@ -15,7 +15,13 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/multiple-employers/start-a-claim', function (req, res) {
     const employer = req.session.data['journey-type']
 
-    res.redirect(`/${urlPrefix}/travel-to-work/grant-information`)
+    if (employer === 'wrong-award') {
+      res.redirect(`/${urlPrefix}/multiple-employers/contact-dwp`)
+    }
+    else{
+      res.redirect(`/${urlPrefix}/travel-to-work/grant-information`)
+    }
+
   })
 
 
