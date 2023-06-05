@@ -10,53 +10,86 @@ Claim money back from Access to Work
 
 {% block content %}
 
-
-
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="post" action="#">
-
-        <div class="govuk-form-group">
-
-
-
-            {% if adaptationLength|int === 1 %}
-            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{adaptationLength}} adaptation</h1>
-            {% else %}
-            <h1 class="govuk-heading-l">You’ve told us you want to claim for {{adaptationLength}} adaptations</h1>
-            {% endif %}
-
-                <!-- < new stuff > -->
-                {% for item in data['adaptation'] | sortByDate('') %}
-                <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-
-                      {{item.day}} {{item.month| numberMonth}} {{item.year}}
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                  {{item.adaptation_name}}
-                  </dd>
-                  <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="adaptation-description">
-                      Change<span class="govuk-visually-hidden"> name</span>
-                    </a>
-                  </dd>
-                </div>
-              </dl>
-              {% else %}
-              <div class="govuk-inset-text">
-                Tell us about the specialist adaptation you received to continue.
-              </div>
-              {% endfor %}
-            </div>
+  <div class="govuk-grid-column">
+    {% if adaptationLength|int === 1 %}
+    <h1 class="govuk-heading-l">You’ve told us you want to claim for {{adaptationLength}} adaptation</h1>
+    {% else %}
+    <h1 class="govuk-heading-l">You’ve told us you want to claim for {{adaptationLength}} adaptations</h1>
+    {% endif %}<div class="govuk-form-group">
 
 
-            <button class="govuk-button" data-module="govuk-button">
-                Continue
-            </button>
-        </form>
+      {% if data['adaptation'] %}
+      <dl class="govuk-summary-list">
+        {% for item in data['adaptation'] | sortByDate('') %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {{item.day}} {{item.month| numberMonth}} {{item.year}}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{item.adaptation_name}}
+            {{item.key}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <ul class="govuk-summary-list__actions-list">
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="adaptation-description?key={{item.key}}">
+                  <span>Change</span>
+                  <span class="govuk-visually-hidden">{{item.adaptation_name}}</span>
+                </a>
+              </li>
+              <li class="govuk-summary-list__actions-list-item">
+                <a class="govuk-link" href="#">
+                  <span>Remove</span>
+                  <span class="govuk-visually-hidden">{{item.adaptation_name}} from the list</span>
+                </a>
+              </li>
+            </ul>
+          </dd>
+        </div>
+        {%endfor%}
+      </dl>
+      {% else %}
+      <div class="govuk-inset-text">
+        Tell us about the vehicle adaptation you received to continue.
+      </div>
+      {% endif %}
+
+
+
+
+
     </div>
+    <form method="post" action="#">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-vehicle-adaptation-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you need to claim for another vehicle adaptation?
+          </legend>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-vehicle-adaptation-yes" name="add-vehicle-adaptation" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="add-vehicle-adaptation-yes">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-vehicle-adaptation-no" name="add-vehicle-adaptation" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="add-vehicle-adaptation-no">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
 </div>
 
 {% endblock %}
