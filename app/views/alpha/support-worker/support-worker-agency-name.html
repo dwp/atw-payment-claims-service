@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="#" method="post" class="form">
+
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {{ govukInput({
+            label: {
+            text: "What is the name of your support worker or agency?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+            },
+            id: "providor",
+            name: "providor",
+            value: data.providor
+            }) }}
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

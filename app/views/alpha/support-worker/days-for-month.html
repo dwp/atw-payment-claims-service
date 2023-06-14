@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+{% set supportLength %}
+{{ data.support | length }}
+{% endset %}
+
+{% set hourTotal = 0 %}
+{% for day in data['support_hours'] %}
+{% set hourTotal = hourTotal | float + item.support_hours | float %}
+{% else %}
+{% set hourTotal = 0 | float %}
+{% endfor %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <form id="form" method="post" action="#">
+
+      {% set dataList = data['dataList'] %}
+
+      <div class="govuk-form-group">
+
+        <h1 class="govuk-heading-l">
+          Days you had support in {{data["support-month"] | numberMonth}} {{data["support-year"]}}
+        </h1>
+        {% for week in dataList %}
+
+        <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+
+          {% if week.days.length == 7 or week.days[0].value != 1 %}
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              <!-- Week starting on {{week.days[0].text}} -->
+              Week beginning {{week.days[0].value}} {{data["support-month"] | numberMonth}}
+            </h1>
+          </legend>
+          {% endif %}
+
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+            {% for day in week.days %}
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="support-{{day.value}}" name="support-days" type="checkbox"
+                value={{day.value}}>
+              <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                {{day.text}}
+              </label>
+
+            </div>
+            {% endfor %}
+
+          </div>
+        </fieldset>
+        {% endfor %}
+
+      </div>
+
+
+      <div class="moj-button-action">
+        <button class="govuk-button" data-module="govuk-button" name="action" value="continue">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+  {# /govuk-grid-column-two-thirds #}
+</div>{# /govuk-grid-row #}
+{% endblock %}
