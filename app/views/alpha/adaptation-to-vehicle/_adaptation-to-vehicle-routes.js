@@ -20,8 +20,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   router.get('/adaptation-to-vehicle/adaptation-description', function (req, res) {
-    req.session.data.adaptation_name = ""
-    req.session.data.adaptation_name2 = "Test"+req.query['key']
 
     if (req.query['key']) {
       var match = req.session.data.adaptation.filter(obj => {
@@ -60,7 +58,8 @@ module.exports = function (folderForViews, urlPrefix, router) {
       })
 
       if (match[0]) {
-        req.session.data.adaptation[0] = {
+        var matchingIndex = req.session.data.adaptation.indexOf(match[0])
+        req.session.data.adaptation[matchingIndex] = {
           key: req.session.data.key,
           adaptation_name: req.session.data.adaptation_name,
           day: req.session.data.adaptation_day,
@@ -115,6 +114,50 @@ module.exports = function (folderForViews, urlPrefix, router) {
         res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-summary`)
       }
     }
+  })
+
+  router.get('/adaptation-to-vehicle/adaptation-remove', function (req, res) {
+
+    if (req.query['key']) {
+      var match = req.session.data.adaptation.filter(obj => {
+        return obj.key == req.query['key']
+      })
+      req.session.data.adaptation_name = match[0].adaptation_name
+      req.session.data.key = match[0].key
+      req.session.data.adaptation_day = match[0].day
+      req.session.data.adaptation_month = match[0].month
+      req.session.data.adaptation_year = match[0].year
+    }
+    else {
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-summary`)
+    }
+    res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-confirm-remove`)
+  })
+
+  router.get('/adaptation-to-vehicle/adaptation-confirm-remove', function (req, res) {
+    res.render(`./${folderForViews}/adaptation-to-vehicle/adaptation-remove`)
+  })
+
+  router.post('/adaptation-to-vehicle/adaptation-confirm-remove', function (req, res) {
+    if (req.session.data.delete == "Yes"){
+      keyToDelete = req.session.data.key
+
+      var match = req.session.data.adaptation.filter(obj => {
+        return obj.key == keyToDelete
+      })
+
+      if (match[0]){
+        matchingIndex = req.session.data.adaptation.indexOf(match[0])
+
+        req.session.data.adaptation.splice(matchingIndex, 1);
+
+        for (let i = 0; i < req.session.data.adaptation.length; i++) {
+          req.session.data.adaptation[i].key = i
+        }
+      }
+    }
+
+    res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-summary`)
   })
 
   router.post('/adaptation-to-vehicle/adaptation-summary', function (req, res) {

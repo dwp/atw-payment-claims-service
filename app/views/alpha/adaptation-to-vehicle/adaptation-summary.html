@@ -29,7 +29,6 @@ Claim money back from Access to Work
           </dt>
           <dd class="govuk-summary-list__value">
             {{item.adaptation_name}}
-            {{item.key}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <ul class="govuk-summary-list__actions-list">
@@ -40,7 +39,7 @@ Claim money back from Access to Work
                 </a>
               </li>
               <li class="govuk-summary-list__actions-list-item">
-                <a class="govuk-link" href="#">
+                <a class="govuk-link" href="adaptation-remove?key={{item.key}}">
                   <span>Remove</span>
                   <span class="govuk-visually-hidden">{{item.adaptation_name}} from the list</span>
                 </a>
