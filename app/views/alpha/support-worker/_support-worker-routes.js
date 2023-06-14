@@ -233,30 +233,6 @@ module.exports = function (folderForViews, urlPrefix, router) {
     req.session.data['support'] = support
     req.session.data["support-worker-errors"] = []
 
-    res.redirect(`/${urlPrefix}/support-worker/days-for-month-alternative`)
-  })
-
-  router.post('/support-worker/days-for-month-alternative', function (req, res) {
-    var selectedDays = req.session.data['support-days']
-    var support = []
-    selectedDays.forEach(supportDay => {
-      support.push({ day: supportDay })
-    });
-    req.session.data['support'] = support
-    req.session.data["support-worker-errors"] = []
-
-    res.redirect(`/${urlPrefix}/support-worker/days-for-month-second-alternative`)
-  })
-
-  router.post('/support-worker/days-for-month-second-alternative', function (req, res) {
-    var selectedDays = req.session.data['support-days']
-    var support = []
-    selectedDays.forEach(supportDay => {
-      support.push({ day: supportDay })
-    });
-    req.session.data['support'] = support
-    req.session.data["support-worker-errors"] = []
-
     res.redirect(`/${urlPrefix}/support-worker/hours-for-day`)
   })
 
