@@ -81,23 +81,25 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
+
 {% block footer %}
-{{ govukFooter({
-classes: "govuk-!-display-none-print",
-meta: {
-items: [
-{
-href: "https://govuk-prototype-kit.herokuapp.com/",
-text: "GOV.UK Prototype Kit " + releaseVersion
-},
-{
-href: "/prototype-admin/clear-data",
-text: "Clear data"
-}
-]
-}
-}) }}
+  {{ govukFooter({
+    classes: "govuk-!-display-none-print",
+    meta: {
+      items: [
+        {
+          href: "/prototype-admin/clear-data",
+          text: "Clear data"
+        },
+        {
+          href: "/accessibility",
+          text: "Accessibility"
+        }
+      ]
+    }
+  }) }}
 {% endblock %}
+
 {% endif %}
 
 {% block bodyEnd %}
