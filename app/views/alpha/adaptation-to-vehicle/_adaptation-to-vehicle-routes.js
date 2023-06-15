@@ -52,7 +52,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       req.session.data.adaptation = []
     }
 
-    if (req.session.data.key >= 0) {
+    if (req.session.data.key != null) {
       var match = req.session.data.adaptation.filter(obj => {
         return obj.key == req.session.data.key
       })
