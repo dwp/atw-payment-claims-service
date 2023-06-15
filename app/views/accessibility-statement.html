@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Claim money back from Access to Work
+  Accessibility statement – Claim money back from Access to Work – GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
-tag: {
-text: "alpha"
-},
-classes: "govuk-!-display-none-print",
-html: 'This is a new service – your <a class="govuk-link" href="./feedback-page">feedback</a> will help us to improve
-it.'
-}) }}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "alpha"
+  },
+  classes: "govuk-!-display-none-print",
+  html: 'This is a new service – your <a class="govuk-link" href="./feedback-page">feedback</a> will help us to improve
+    it.'
+  }) }}
 {% set print = true %}
 
 {% endblock %}
