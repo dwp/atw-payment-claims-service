@@ -9,87 +9,180 @@ Claim money back from Access to Work
 {% endset %}
 {% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <form id="form" method="post" action="#">
-      <span class="govuk-caption-l">Section 1 of 4</span>
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tells us about the adaptation to the vehicle</h1>
+    <div class="govuk-grid-column-two-thirds">
+        <form id="form" method="post" action="#">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Tells us about the adaptation to the vehicle</h1>
 
-      <div data-module="moj-add-another">
-        <!-- START HERE -->
-        <fieldset class="govuk-fieldset moj-add-another__item">
-          <div class="govuk-form-group">
+            <div data-module="moj-add-another">
+                <!-- START HERE -->
+                <fieldset class="govuk-fieldset moj-add-another__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="adaptation[0][adaptation_name]">
+                            Name or description of the adaptation
+                        </label>
+
+                        <div id="adaptation-name-hint" class="govuk-hint">
+                              For example, changing the car from manual to automatic
+                        </div>
+                        <input class="govuk-input"
+                               value = "{{data.adaptation[0].adaptation_name}}"
+                               id="adaptation[0][adaptation_name]"
+                               name="adaptation[0][adaptation_name]" type="text"
+                               data-name="adaptation[%index%][adaptation_name]"
+                               data-id="adaptation[%index%][adaptation_name]">
+                    </div> <!-- govuk-form-group -->
+                    <div class="govuk-form-group">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Date the work was completed
+                        </legend>
 
 
-            <label class="govuk-fieldset__legend govuk-fieldset__legend--s" for="adaptation_name" value="adaptation_month">
-              Name or description of the adaptation
-            </label>
+                        <div id="date-of-purchase-hint" class="govuk-hint">
+                          You'll find this on the invoice or receipt. For example, 21 05 2021
+                        </div>
 
-            <div id="adaptation-name-hint" class="govuk-hint">
-              For example, changing the car from manual to automatic
-            </div>
-            <input class="govuk-input" id="adaptation_name" name="adaptation_name" value="{{data['adaptation_name']}}" type="text">
-          </div> <!-- govuk-form-group -->
-          <div class="govuk-form-group">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-              Date the work was completed
-            </legend>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-date-input" id="date-of-birth">
 
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="adaptation[0][day]">
+                                    Day
+                                  </label>
 
-            <div id="date-of-purchase-hint" class="govuk-hint">
-              You'll find this on the invoice or receipt. For example, 21 05 2021
-            </div>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.adaptation[0].day}}" id="adaptation[0][day]" name="adaptation[0][day]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="adaptation[%index%][day]" data-id="adaptation[%index%][day]">
+                                </div>
+                              </div>
 
-            <div class="govuk-date-input__item">
-              <div class="govuk-date-input" id="adaptation-date">
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="adaptation[0][month]">
+                                    Month
+                                  </label>
 
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="adaptation_day">
-                      Day
-                    </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" value = "{{data.adaptation[0].month}}" id="adaptation[0][month]" name="adaptation[0][month]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="adaptation[%index%][month]" data-id="adaptation[%index%][month]">
+                              </div>
+                              </div>
 
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="adaptation_day"
-                      name="adaptation_day" type="text" pattern="[0-9]*" inputmode="numeric" value={{data['adaptation_day']}}>
-                  </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="adaptation[0][year]">
+                                    Year
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" value = "{{data.adaptation[0].year}}" id="adaptation[0][year]" name="adaptation[0][year]" type="text" pattern="[0-9]*" inputmode="numeric" data-name="adaptation[%index%][year]" data-id="adaptation[%index%][year]">
+                              </div>
+                              </div>
+
+                            </div>
+                        </div> <!-- govuk-date-input__item -->
+                    </div> <!-- govuk-form-group -->
+
+                    {% if adaptationLength > 1 %}
+                    <div class="moj-button-action">
+                    <button class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
+                            value="0">
+                        Remove
+                    </button>
+                    </div>
+                    {% endif %}
+                </fieldset>
+                <!-- ENDS HERE -->
+                {% if adaptationLength > 1 %}
+                {% for item in data.adaptation %}
+                {% if not loop.first %}
+                <!-- START HERE -->
+                <fieldset class="govuk-fieldset moj-add-another__item">
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-fieldset__legend govuk-fieldset__legend--s"
+                               for="adaptation[{{loop.index0}}][adaptation_name]">
+                            Name or description of adaptation
+                        </label>
+                        <div id="adaptation-name-hint" class="govuk-hint">
+                              For example, changing the car from manual to automatic
+                        </div>
+
+                        <input class="govuk-input" id="adaptation[{{loop.index0}}][adaptation_name]"
+                               name="adaptation[{{loop.index0}}][adaptation_name]" type="text"
+                               value="{{item.adaptation_name}}" data-name="adaptation[%index%][adaptation_name]"
+                               data-id="adaptation[%index%][adaptation_name]">
+                    </div> <!-- govuk-form-group -->
+                    <div class="govuk-form-group">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Date the work was completed
+                        </legend>
+                        <div id="date-of-birth-hint" class="govuk-hint">
+                            You'll find this on the invoice or receipt. For example, 21 05 2021
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-date-input" id="date-adaptation-purchased">
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="adaptation[{{loop.index0}}][day]">
+                                    Day
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="adaptation[{{loop.index0}}][day]" name="adaptation[{{loop.index0}}][day]" type="text"  inputmode="numeric" data-name="adaptation[%index%][day]" data-id="adaptation[%index%][day]"
+                                  value="{{item.day}}">
+                                </div>
+                              </div>
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="adaptation[{{loop.index0}}][month]">
+                                    Month
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="adaptation[{{loop.index0}}][month]" name="adaptation[{{loop.index0}}][month]" type="text"  inputmode="numeric" data-name="adaptation[%index%][month]"
+                                  data-id="adaptation[%index%][month]" value="{{item.month}}">
+                              </div>
+                              </div>
+
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="adaptation[{{loop.index0}}][year]">
+                                    Year
+                                  </label>
+
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="adaptation[{{loop.index0}}][year]" name="adaptation[{{loop.index0}}][year]" type="text"  inputmode="numeric"
+                                  data-name="adaptation[%index%][year]" data-id="adaptation[%index%][year]" value="{{item.year}}">
+                              </div>
+                              </div>
+
+                            </div>
+                        </div> <!-- govuk-date-input__item -->
+                    </div> <!-- govuk-form-group -->
+                    <button  class="govuk-button govuk-button--secondary moj-add-another__remove-button" name="remove"
+                            value="{{loop.index0}}">
+                        Remove
+                    </button>
+
+                </fieldset>
+                <!-- ENDS HERE -->
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <div class="moj-button-action">
+                    <button
+                            class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
+                            data-module="govuk-button"
+                            name="action"
+                            value="add">
+                        Claim for another adaptation
+                    </button>
                 </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="adaptation_month">
-                      Month
-                    </label>
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="adaptation_month"
-                      name="adaptation_month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{data['adaptation_month']}}">
-                  </div>
+                <div class="moj-button-action">
+                    <button class="govuk-button" data-module="govuk-button"
+                            name="action"
+                            value="Continue">
+                        Continue
+                    </button>
                 </div>
-
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="adaptation_year">
-                      Year
-                    </label>
-
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="adaptation_year"
-                      name="adaptation_year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{data['adaptation_year']}}">
-                  </div>
-                </div>
-
-              </div>
-            </div> <!-- govuk-date-input__item -->
-          </div> <!-- govuk-form-group -->
-
-        </fieldset>
-        <!-- ENDS HERE -->
-
-        <div class="moj-button-action">
-          <button class="govuk-button" data-module="govuk-button" name="action" value="Continue">
-            Continue
-          </button>
-        </div>
-      </div> <!-- data module -->
-    </form>
-  </div>
-  {# /govuk-grid-column-two-thirds #}
+            </div> <!-- data module -->
+        </form>
+    </div>
+    {# /govuk-grid-column-two-thirds #}
 </div>{# /govuk-grid-row #}
 {% endblock %}
