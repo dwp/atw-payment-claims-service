@@ -3,38 +3,113 @@
 
 {% extends "govuk/template.njk" %}
 
-{% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
-{% from "govuk/components/back-link/macro.njk"           import govukBackLink %}
-{% from "govuk/components/breadcrumbs/macro.njk"         import govukBreadcrumbs %}
-{% from "govuk/components/button/macro.njk"              import govukButton %}
-{% from "govuk/components/character-count/macro.njk"     import govukCharacterCount %}
-{% from "govuk/components/checkboxes/macro.njk"          import govukCheckboxes %}
-{% from "govuk/components/cookie-banner/macro.njk"       import govukCookieBanner %}
-{% from "govuk/components/date-input/macro.njk"          import govukDateInput %}
-{% from "govuk/components/details/macro.njk"             import govukDetails %}
-{% from "govuk/components/error-message/macro.njk"       import govukErrorMessage %}
-{% from "govuk/components/error-summary/macro.njk"       import govukErrorSummary %}
-{% from "govuk/components/fieldset/macro.njk"            import govukFieldset %}
-{% from "govuk/components/file-upload/macro.njk"         import govukFileUpload %}
-{% from "govuk/components/input/macro.njk"               import govukInput %}
-{% from "govuk/components/inset-text/macro.njk"          import govukInsetText %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/error-message/macro.njk" import govukErrorMessage %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-{% from "govuk/components/panel/macro.njk"               import govukPanel %}
-{% from "govuk/components/phase-banner/macro.njk"        import govukPhaseBanner %}
-{% from "govuk/components/radios/macro.njk"              import govukRadios %}
-{% from "govuk/components/select/macro.njk"              import govukSelect %}
-{% from "govuk/components/skip-link/macro.njk"           import govukSkipLink %}
-{% from "govuk/components/summary-list/macro.njk"        import govukSummaryList %}
-{% from "govuk/components/table/macro.njk"               import govukTable %}
-{% from "govuk/components/tabs/macro.njk"                import govukTabs %}
-{% from "govuk/components/tag/macro.njk"                 import govukTag %}
-{% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
-{% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% from "hmrc/components/header/macro.njk" import hmrcHeader %}
 {% from "card/macro.njk" import card %}
 
+
+
 {% block head %}
 {% include "includes/head.html" %}
+{% if ((data['analytics-cookies'] == "show")) %}
+
+<div class="govuk-cookie-banner " data-nosnippet="" role="region" aria-label="Cookies on GOV.UK Design System"
+  data-module="govuk-cookie-banner">
+  <div class="govuk-cookie-banner__message govuk-width-container app-width-container js-cookie-banner-message">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on GOV.UK Design System</h2>
+
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the Design System
+            and make improvements.</p>
+          <p class="govuk-body">We also use essential cookies to remember if you’ve accepted analytics cookies.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button type="button" class="govuk-button js-cookie-banner-accept" data-module="govuk-button">
+        Accept analytics cookies
+      </button>
+      <button type="button" class="govuk-button js-cookie-banner-reject" data-module="govuk-button">
+        Reject analytics cookies
+      </button>
+      <a class="govuk-link" href="/alpha/portal-screens/cookies">View cookies</a>
+    </div>
+  </div>
+
+  <div
+    class="govuk-cookie-banner__message govuk-width-container js-cookie-banner-confirmation-accept app-width-container"
+    role="alert" hidden="">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">You’ve accepted analytics cookies. You can <a class="govuk-link" href="/alpha/portal-screens/cookies">change
+              your cookie settings</a> at any time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button class="govuk-button js-cookie-banner-hide js-cookie-banner-hide--accept" data-module="govuk-button">
+        Hide cookie message
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="govuk-cookie-banner__message govuk-width-container js-cookie-banner-confirmation-reject app-width-container"
+    role="alert" hidden="">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">You’ve rejected analytics cookies. You can <a class="govuk-link" href="/alpha/portal-screens/cookies">change
+              your cookie settings</a> at any time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button class="govuk-button js-cookie-banner-hide js-cookie-banner-hide--reject" data-module="govuk-button">
+        Hide cookie message
+      </button>
+    </div>
+  </div>
+</div>
+{% endif %}
+
 {% endblock %}
 
 {% block pageTitle %}
@@ -67,7 +142,8 @@ tag: {
 text: "alpha"
 },
 classes: "govuk-!-display-none-print",
-html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to improve it.'
+html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedback-page">feedback</a> will help us to
+improve it.'
 }) }}
 
 {% if print != true %}
@@ -83,21 +159,21 @@ html: 'This is a new service – your <a class="govuk-link" href="/alpha/feedbac
 {% if useAutoStoreData %}
 
 {% block footer %}
-  {{ govukFooter({
-    classes: "govuk-!-display-none-print",
-    meta: {
-      items: [
-        {
-          href: "/prototype-admin/clear-data",
-          text: "Clear data"
-        },
-        {
-          href: "/accessibility-statement",
-          text: "Accessibility statement"
-        }
-      ]
-    }
-  }) }}
+{{ govukFooter({
+classes: "govuk-!-display-none-print",
+meta: {
+items: [
+{
+href: "/prototype-admin/clear-data",
+text: "Clear data"
+},
+{
+href: "/accessibility-statement",
+text: "Accessibility statement"
+}
+]
+}
+}) }}
 {% endblock %}
 
 {% endif %}

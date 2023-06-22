@@ -150,4 +150,15 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/portal-screens/telephone-number-change`)
   })
 
+  router.post('/portal-screens/cookies', function (req, res) {
+    const analyticsCookies = req.session.data['analytics-cookies']
+
+    if (analyticsCookies){
+      res.redirect(`/${urlPrefix}/portal-screens/yes`)
+
+    }
+
+    res.redirect(`/${urlPrefix}/portal-screens/no`)
+  })
+
 }
