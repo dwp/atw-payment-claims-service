@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Personal details change declaration – Claim money back from Access to Work – GOV.UK
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-l">How we use cookies</h1>
+
+    <p class="summary">
+      A cookie is a small file which is stored on your device for a short time to make this service work.
+    </p>
+
+    <p class="govuk-body">
+      We use cookies that are:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        essential for the service to work, like remembering your answers to certain questions
+      </li>
+      <li>
+        optional and will not stop the service from working, but will give us information to help us make it better
+      </li>
+    </ul>
+
+    <p class="govuk-body">
+      We will not:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        use any essential cookies until you use the service
+      </li>
+      <li>
+        use any optional cookies unless you tell us we can
+      </li>
+      <li>
+        be able to identify you through using cookies
+      </li>
+    </ul>
+
+    <a class="govuk-link" href="/alpha/portal-screens/cookie-details">
+      Find out more about cookies on this service
+    </a>
+
+    <h2 class="govuk-heading-m " style="margin-top: 20px;" id="cookie-settings">
+      Cookie settings
+    </h2>
+    <h3 class="govuk-heading-s" id="optional-cookie-settings">
+      Optional cookie settings
+    </h3>
+    <p class="govuk-body">
+      We use Google Analytics to get information about how you use this service and help us make it better.
+    </p>
+
+    <div class="cookie-settings__form-wrapper">
+      <form data-notify-module="cookie-settings">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class=" govuk-heading-s ">
+              Can we use cookies to help us improve the service?
+            </legend>
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="analytics-cookies-yes" name="analytics-cookies" type="radio"
+                  value="yes">
+                <label class="govuk-label govuk-radios__label" for="analytics-cookies-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="analytics-cookies-no" name="analytics-cookies" type="radio"
+                  value="no">
+                <label class="govuk-label govuk-radios__label" for="analytics-cookies-no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">
+          Save
+          <span class="govuk-visually-hidden"> cookie settings</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
