@@ -150,4 +150,14 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/portal-screens/telephone-number-change`)
   })
 
+
+  router.get('/portal-screens/view-claim', function (req, res) {
+    const type = req.query.type
+    const claim = req.query.claim
+
+    if (type === 'supportworker') {
+
+    }
+    res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
+  })
 }

@@ -18,16 +18,6 @@ improve it.'
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
     </li>
-    {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="multiple-employer-history.html">Employer history</a>
-    </li>
-    {% endif %}
-    {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="multiple-claims-history.html">Claims history type</a>
-    </li>
-    {% endif %}
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="open-claims.html">Your claims</a>
     </li>
@@ -230,37 +220,23 @@ improve it.'
       <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            Payment history
+            Your claims
           </h1>
         </legend>
 
         <p>
-          Paragraph to explain that payment history for all paid claims is shown for the selected grant type for the current grant. e.g. 2 July 2022 to 2 July 2025
+          Paragraph to explain that your open claims are shown here for all valid grants.
         </p>
         <p>
-          To view previous grant for this grant type 
+          To view closed/paid claims go to claims history 
           <a href="multiple-claims-history">
-            (link to previous grant. e.g. 2 July 2019 to 1 July 2022).
+            (link to claims history?).
           </a>
         </p>
-        <p>
-          To view open claims go to your claims 
-          <a href="multiple-claims-history">
-            (link to your claims?).
-          </a>
-        </p>
-
-        {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) %}
-        <p>
-          You can also 
-          <a href="multiple-claims-history">
-            view claims for other types of support
-          </a>.
-        </p>
-        {% endif %}
 
       </fieldset>
     </div>
+
 
     {% if (data['journey-type'] == "supportworker") or (1==1) %}
 
