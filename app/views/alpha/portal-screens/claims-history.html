@@ -230,23 +230,17 @@ improve it.'
       <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            Payment history
+            Paid claims
           </h1>
         </legend>
 
         <p>
-          Paragraph to explain that payment history for all paid claims is shown for the selected grant type for the current grant. e.g. 2 July 2022 to 2 July 2025
+          Claims we’ve paid from your support workers grant, valid from 2 July 2022 to 2 July 2025.
         </p>
         <p>
-          To view previous grant for this grant type 
+          You can also
           <a href="multiple-claims-history">
-            (link to previous grant. e.g. 2 July 2019 to 1 July 2022).
-          </a>
-        </p>
-        <p>
-          To view open claims go to your claims 
-          <a href="multiple-claims-history">
-            (link to your claims?).
+            view claims we’ve paid from your previous support workers grant.
           </a>
         </p>
 
@@ -262,7 +256,7 @@ improve it.'
       </fieldset>
     </div>
 
-    {% if (data['journey-type'] == "supportworker") or (1==1) %}
+    {% if (data['journey-type'] == "supportworker") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -280,7 +274,7 @@ improve it.'
                 Support worker name
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company paid
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -355,7 +349,7 @@ improve it.'
 
     {% endif %}
 
-    {% if (data['journey-type'] == "traveltowork") or (1==1) %}
+    {% if (data['journey-type'] == "traveltowork") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -373,7 +367,7 @@ improve it.'
                 Type of travel
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company paid
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -455,7 +449,7 @@ improve it.'
     {% endif %}
 
 
-    {% if (data['journey-type'] == "specialaidsandequipment") or (1==1) %}
+    {% if (data['journey-type'] == "specialaidsandequipment") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -473,7 +467,7 @@ improve it.'
                 Equipment
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company paid
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -555,7 +549,7 @@ improve it.'
     {% endif %}
 
 
-    {% if (data['journey-type'] == "adaptations") or (1==1) %}
+    {% if (data['journey-type'] == "adaptations") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -573,7 +567,7 @@ improve it.'
                 Adaptations
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company paid
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost

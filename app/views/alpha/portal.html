@@ -189,7 +189,7 @@ html: 'This is a new service – your <a class="govuk-link"
                     "clickable": "true",
                     "heading": claimHistoryTitle | safe,
                     "headingClasses": "govuk-heading-m",
-                    "description": "View your open claims"
+                    "description": "View your open claims."
                     }) }}
                 </li>
 
@@ -203,14 +203,14 @@ html: 'This is a new service – your <a class="govuk-link"
                       {% set claimsHistoryLink %}./portal-screens/claims-history{% endset %}
                   {% endif %}
                   
-                      {% set claimHistoryTitle %}Claims history{% endset %}
+                      {% set claimHistoryTitle %}Paid claims{% endset %}
 
                   {{ card({
                   "href": claimsHistoryLink | safe,
                   "clickable": "true",
                   "heading": claimHistoryTitle | safe,
                   "headingClasses": "govuk-heading-m",
-                  "description": "View history of paid history"
+                  "description": "View claims we’ve paid."
                   }) }}
               </li>
 

@@ -225,13 +225,19 @@ improve it.'
         </legend>
 
         <p>
-          Paragraph to explain that your open claims are shown here for all valid grants.
+          Claims you’ve submitted.
         </p>
         <p>
-          To view closed/paid claims go to claims history 
+          When we’ve paid a claim, it will show in your 
+          {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) %}
           <a href="multiple-claims-history">
-            (link to claims history?).
+            paid claims.
           </a>
+          {% else %}
+          <a href="claims-history">
+            paid claims.
+          </a>
+          {% endif %}
         </p>
 
       </fieldset>
@@ -256,7 +262,7 @@ improve it.'
                 Support worker name
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -349,7 +355,7 @@ improve it.'
                 Type of travel
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -449,7 +455,7 @@ improve it.'
                 Equipment
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -549,7 +555,7 @@ improve it.'
                 Adaptations
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Payee
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
