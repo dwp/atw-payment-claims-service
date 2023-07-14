@@ -28,11 +28,13 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        {% if data['sw-declaration'] %}
+        {% if data['view-claim'] %}
         {% if print != true %}
-        <h1 class="govuk-heading-xl govuk-!-display-none-print">About your claim </h1>
-        <p>This is the information you gave us in your claim. You should make any changes and then send us your claim
-            again.</p>
+        <h1 class="govuk-heading-xl govuk-!-display-none-print">Your claim </h1>
+        <p>
+            This is the information you gave us in your claim. If you need to make any changes please contact Access to
+            Work
+        </p>
         {% endif %}
         {% else %}
         {% if print != true %}
@@ -65,11 +67,7 @@
                             {% if print != true %}
 
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
-                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                                <a href="../support-worker/hours-for-day-summary">
-                                    Change
-                                    <span class="govuk-visually-hidden"> Hours of support received</span>
-                                </a>
+                                {% if (data['view-claim']) %}
                                 {% else %}
                                 <a href="hours-for-day-summary">
                                     Change
@@ -111,11 +109,7 @@
                             {% if print != true %}
 
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
-                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                                <a href="../support-worker/hours-for-day-summary">
-                                    Change
-                                    <span class="govuk-visually-hidden"> Hours of support received</span>
-                                </a>
+                                {% if (data['view-claim']) %}
                                 {% else %}
                                 <a href="hours-for-day-summary">
                                     Change
@@ -137,11 +131,7 @@
                             {% if print != true %}
 
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
-                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                                <a href="../support-worker/cost-of-support">
-                                    Change
-                                    <span class="govuk-visually-hidden"> total cost of support received</span>
-                                </a>
+                                {% if (data['view-claim']) %}
                                 {% else %}
                                 <a href="cost-of-support">
                                     Change
@@ -168,13 +158,15 @@
                                 {% endfor %}
                             </td>
                             {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="upload-summary">
                                     Change
                                     <span class="govuk-visually-hidden"> Supporting evidence</span>
                                 </a>
                             </td>
+                            {% endif %}
                             {% endif %}
 
                         </tr>
@@ -218,11 +210,7 @@
                             {% if print != true %}
 
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
-                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                                <a href="../support-worker/existing-payee-details">
-                                    Change
-                                    <span class="govuk-visually-hidden"> Payee name</span>
-                                </a>
+                                {% if (data['view-claim']) %}
                                 {% else %}
                                 <a href="existing-payee-details">
                                     Change
@@ -251,11 +239,7 @@
                             {% if print != true %}
 
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
-                                {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                                <a href="../support-worker/existing-payee-details">
-                                    Change
-                                    <span class="govuk-visually-hidden"> Payee email</span>
-                                </a>
+                                {% if (data['view-claim']) %}
                                 {% else %}
                                 <a href="existing-payee-details">
                                     Change
@@ -294,12 +278,15 @@
 
                         </dd>
                         {% if print != true %}
+                        {% if (data['view-claim']) %}
+                        {% else %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                             <a href="new-payee-name">
                                 Change
                                 <span class="govuk-visually-hidden"> Bank or building society account details</span>
                             </a>
                         </dd>
+                        {% endif %}
                         {% endif %}
                     </div>
                     {%if (data["payee-email"]) %}
@@ -311,12 +298,15 @@
                             {{data["payee-email"]}}
                         </dd>
                         {% if print != true %}
+                        {% if (data['view-claim']) %}
+                        {% else %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                             <a href="new-payee-address">
                                 Change
                                 <span class="govuk-visually-hidden"> Bank or building society account details</span>
                             </a>
                         </dd>
+                        {% endif %}
                         {% endif %}
                     </div>
                     {% endif %}
@@ -372,12 +362,15 @@
 
                         </dd>
                         {% if print != true %}
+                        {% if (data['view-claim']) %}
+                        {% else %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                             <a href="new-payee-address">
                                 Change
                                 <span class="govuk-visually-hidden"> Bank or building society account details</span>
                             </a>
                         </dd>
+                        {% endif %}
                         {% endif %}
                     </div>
                     <div class="govuk-summary-list__row">
@@ -389,12 +382,15 @@
 
                         </dd>
                         {% if print != true %}
+                        {% if (data['view-claim']) %}
+                        {% else %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                             <a href="banking-details">
                                 Change
                                 <span class="govuk-visually-hidden"> Bank or building society account details</span>
                             </a>
                         </dd>
+                        {% endif %}
                         {% endif %}
                     </div>
                     <div class="govuk-summary-list__row">
@@ -405,12 +401,15 @@
                             {{data["sort-code"]}}
                         </dd>
                         {% if print != true %}
+                        {% if (data['view-claim']) %}
+                        {% else %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                             <a href="banking-details">
                                 Change
                                 <span class="govuk-visually-hidden"> Bank or building society account details</span>
                             </a>
                         </dd>
+                        {% endif %}
                         {% endif %}
                     </div>
 
@@ -422,12 +421,15 @@
                             {{data["account-number"]}}
                         </dd>
                         {% if print != true %}
+                        {% if (data['view-claim']) %}
+                        {% else %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                             <a href="banking-details">
                                 Change
                                 <span class="govuk-visually-hidden"> Bank or building society account details</span>
                             </a>
                         </dd>
+                        {% endif %}
                         {% endif %}
                     </div>
 
@@ -440,6 +442,8 @@
                             {{data["roll-number"]}}
                         </dd>
                         {% if print != true %}
+                        {% if (data['view-claim']) %}
+                        {% else %}
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
                             <a href="banking-details">
                                 Change
@@ -447,6 +451,8 @@
                             </a>
                         </dd>
                         {% endif %}
+                        {% endif %}
+
                     </div>
                     {% endif %}
                 </dl>
@@ -486,11 +492,7 @@
                         </dd>
 
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                            <a href="../support-worker/counter-signatory-name">
-                                Change
-                                <span class="govuk-visually-hidden"> name of counter signatory</span>
-                            </a>
+                            {% if (data['view-claim']) %}
                             {% else %}
                             <a href="counter-signatory-name">
                                 Change
@@ -510,11 +512,7 @@
                         </dd>
 
                         <dd class="govuk-summary-list__actions govuk-!-display-none-print">
-                            {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
-                            <a href="../support-worker/counter-signatory-name">
-                                Change
-                                <span class="govuk-visually-hidden"> name of counter signatory</span>
-                            </a>
+                            {% if (data['view-claim']) %}
                             {% else %}
                             <a href="counter-signatory-name">
                                 Change
@@ -539,17 +537,12 @@
         {% endif %} -->
 
         {% if print != true %}
-        {%if (data['journey-type'] == "traveltowork-ammendment") or (data['sw-declaration']) %}
+        {% if (data['view-claim']) %}
 
-        <form action="citizen-new-declaration" method="post" novalidate>
-
-            <input type="hidden" name="answers-checked-sw" value="true">
-
-            <button type="submit" class="govuk-button govuk-!-display-none-print" data-module="govuk-button">
-                Continue
-            </button>
-
-        </form>
+        <a href="/alpha/portal-screens/open-claims" class="govuk-button govuk-!-display-none-print"
+            data-module="govuk-button">
+            Return to your claims
+        </a>
 
         {% else %}
         <form action="declaration" method="post" novalidate>
