@@ -149,7 +149,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (anotherReceipt === 'No' && journeytype === 'traveltowork') {
+    } else if (anotherReceipt === 'No' && (journeytype === 'traveltowork' || journeytype === 'travel-to-work')) {
       res.redirect(`/${urlPrefix}/travel-to-work/new-payee-name`)
     }
   })
@@ -454,11 +454,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked && addmonth === 'no') {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (addmonth === 'no' && journeytype === 'traveltowork' && lift === 'journeys') {
+    } else if (addmonth === 'no' && (journeytype === 'traveltowork' || journeytype === 'travel-to-work') && lift === 'journeys') {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-amount-paid`)
-    } else if (addmonth === 'no' && journeytype === 'traveltowork') {
-      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
-    } else if (addmonth === 'no' && journeytype === 'travel-to-work') {
+    } else if (addmonth === 'no' && (journeytype === 'traveltowork' || journeytype === 'travel-to-work')) {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     } else if (addmonth === 'yes') {
       res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month-repeat`)
@@ -592,9 +590,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (transport === 'taxi-during-work' && checked) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (transport === 'taxi' && journeytype === 'traveltowork') {
+    } else if (transport === 'taxi' && (journeytype === 'traveltowork' || journeytype === 'travel-to-work')) {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
-    } else if (transport === 'taxi-during-work' && journeytype === 'traveltowork') {
+    } else if (transport === 'taxi-during-work' && (journeytype === 'traveltowork' || journeytype === 'travel-to-work')) {
       res.redirect(`/${urlPrefix}/travel-to-work/providing-evidence`)
     } else if (transport === 'lift' && journeytype === 'traveltowork-ammendment') {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
@@ -604,9 +602,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     } else if (transport === 'lift-during-work' && checked) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
-    } else if (transport === 'lift' && journeytype === 'traveltowork') {
+    } else if (transport === 'lift' && (journeytype === 'traveltowork' || journeytype === 'travel-to-work')) {
       res.redirect(`/${urlPrefix}/travel-to-work/new-payee-name`)
-    } else if (transport === 'lift-during-work' && journeytype === 'traveltowork') {
+    } else if (transport === 'lift-during-work' && (journeytype === 'traveltowork' || journeytype === 'travel-to-work')) {
       res.redirect(`/${urlPrefix}/travel-to-work/new-payee-name`)
     }
   })
@@ -621,7 +619,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/portal-screens/check-your-answers`)
     } else if (checked === 'true') {
       res.redirect(`/${urlPrefix}/portal-screens/citizen-new-declaration-pre-confirm`)
-    } else if (journeytype === 'traveltowork') {
+    } else if ((journeytype === 'traveltowork' || journeytype === 'travel-to-work')) {
       res.redirect(`/${urlPrefix}/travel-to-work/check-your-answers`)
     }
   })
