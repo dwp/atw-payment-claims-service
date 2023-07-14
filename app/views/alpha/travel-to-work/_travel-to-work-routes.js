@@ -458,6 +458,8 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/travel-to-work/mileage-amount-paid`)
     } else if (addmonth === 'no' && journeytype === 'traveltowork') {
       res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
+    } else if (addmonth === 'no' && journeytype === 'travel-to-work') {
+      res.redirect(`/${urlPrefix}/travel-to-work/taxi-cost`)
     } else if (addmonth === 'yes') {
       res.redirect(`/${urlPrefix}/travel-to-work/claiming-for-month-repeat`)
     }
