@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="existing-account-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="support-for-workplace-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Select 
+                            {% if (data['existing-payee'] == 'one') %}
+                            John Doe's
+                            {% elseif (data['existing-payee'] == 'two') %}
+                            Jane Green's
+                            {% elseif (data['existing-payee'] == 'three') %}
+                            Sanjid Kelly's
+                            {% endif %}
+                            payment details
+                        </h1>
+                    </legend>
+
+
+                    <div class="govuk-radios">
+                        {% if (data['existing-payee'] == 'one') %}
+
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-account-one" name="existing-account"
+                                   type="radio"
+                                   value="one">
+                            <label class="govuk-label govuk-radios__label" for="existing-account-one">
+                                Ployds Bank, 12345678</br>
+                                Sort code 123456
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-account-two" name="existing-account"
+                                   type="radio"
+                                   value="two">
+                            <label class="govuk-label govuk-radios__label" for="existing-account-two">
+                                Qloyds Bank, 12555678</br>
+                                Sort code 123656
+                            </label>
+                        </div>
+                        {% elseif (data['existing-payee'] == 'two') %}
+
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-account-three" name="existing-account"
+                                   type="radio"
+                                   value="three">
+                            <label class="govuk-label govuk-radios__label" for="existing-account-three">
+                                Doe and Brothers LLP</br>
+                                Acme Bank, 00456789</br>
+                                Sort code 654321
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              jane.green@bsl-interpreters.com
+                            </div>
+                        </div>
+
+                        {% elseif (data['existing-payee'] == 'three') %}
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-account-four" name="existing-account"
+                                   type="radio"
+                                   value="four">
+                            <label class="govuk-label govuk-radios__label" for="existing-account-four">
+                                Sanjid Burns Kelly</br>
+                                McB Bank, 54532222</br>
+                                Sort code 112233
+                            </label>
+                        </div>
+                        {% endif %}
+
+                        {% if data['existing-payee'] !== "New" %}
+
+                        <div class="govuk-radios__divider">or</div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-new" name="existing-payee"
+                                   type="radio"
+                                   value="New">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-new">
+                                Add a bank account
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              When you add a new bank account, it will take a few days for the details to be saved in your account.
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
