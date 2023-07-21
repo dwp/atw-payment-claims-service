@@ -75,7 +75,7 @@ html: 'This is a new service – your <a class="govuk-link"
                       </h3>
                       <p class="govuk-body">
                         You need to correct and resubmit the following claims:</br>
-                        <a class="govuk-notification-banner__link" href="./portal-screens/claims-history">Support worker claim for £350</a>.
+                        <a class="govuk-notification-banner__link" href="./portal-screens/open-claims">Support worker claim for £350</a>.
                       </p>
                     </div>
                   </div>
@@ -179,25 +179,40 @@ html: 'This is a new service – your <a class="govuk-link"
 
 
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-                    {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and
-                    (data['multiple-employers'] !== "true") %}
-                        {% set claimHistoryLink %}./portal-screens/multiple-claims-history{% endset %}
-                    {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-                        {% set claimHistoryLink %}./portal-screens/multiple-employer-history{% endset %}
-                    {% else %}
-                        {% set claimHistoryLink %}./portal-screens/claims-history{% endset %}
-                    {% endif %}
+
+                        {% set openClaimsLink %}./portal-screens/open-claims{% endset %}
                     
                         {% set claimHistoryTitle %}Your claims{% endset %}
 
                     {{ card({
-                    "href": claimHistoryLink | safe,
+                    "href": openClaimsLink | safe,
                     "clickable": "true",
                     "heading": claimHistoryTitle | safe,
                     "headingClasses": "govuk-heading-m",
-                    "description": "Check what stage a claim is at and view previous claims we’ve paid."
+                    "description": "View your open claims."
                     }) }}
                 </li>
+
+                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+                  {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) and
+                  (data['multiple-employers'] !== "true") %}
+                      {% set claimsHistoryLink %}./portal-screens/multiple-claims-history{% endset %}
+                  {% elseif (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
+                      {% set claimsHistoryLink %}./portal-screens/multiple-employer-history{% endset %}
+                  {% else %}
+                      {% set claimsHistoryLink %}./portal-screens/claims-history{% endset %}
+                  {% endif %}
+                  
+                      {% set claimHistoryTitle %}Paid claims{% endset %}
+
+                  {{ card({
+                  "href": claimsHistoryLink | safe,
+                  "clickable": "true",
+                  "heading": claimHistoryTitle | safe,
+                  "headingClasses": "govuk-heading-m",
+                  "description": "View claims we’ve paid."
+                  }) }}
+              </li>
 
                 <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
                     {% set title %}
@@ -240,15 +255,6 @@ html: 'This is a new service – your <a class="govuk-link"
                     "heading": "Grant summary",
                     "headingClasses": "govuk-heading-m",
                     "description": "Your grant total, how much you have left and when you'll need to renew."
-                    }) }}
-                </li>
-                <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-                    {{ card({
-                    "href": "./portal-screens/contact-atw",
-                    "clickable": "true",
-                    "heading": "Get help",
-                    "headingClasses": "govuk-heading-m",
-                    "description": "Contact us if you need help with a claim."
                     }) }}
                 </li>
             </ul>

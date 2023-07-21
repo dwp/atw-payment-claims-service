@@ -18,16 +18,6 @@ improve it.'
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="../portal.html">Home</a>
     </li>
-    {% if (data['journey-type'] == "multipleemployers") or (data['multiple-employers'] == "true") %}
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="multiple-employer-history.html">Employer history</a>
-    </li>
-    {% endif %}
-    {% if (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="multiple-claims-history.html">Claims history type</a>
-    </li>
-    {% endif %}
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="open-claims.html">Your claims</a>
     </li>
@@ -230,33 +220,31 @@ improve it.'
       <fieldset class="govuk-fieldset" aria-describedby="claims-history-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            Paid claims
+            Your claims
           </h1>
         </legend>
 
         <p>
-          Claims we’ve paid from your support workers grant, valid from 2 July 2022 to 2 July 2025.
+          Claims you’ve submitted.
         </p>
         <p>
-          You can also
+          When we’ve paid a claim, it will show in your 
+          {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) %}
           <a href="multiple-claims-history">
-            view claims we’ve paid from your previous support workers grant.
+            paid claims.
           </a>
+          {% else %}
+          <a href="claims-history">
+            paid claims.
+          </a>
+          {% endif %}
         </p>
-
-        {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) %}
-        <p>
-          You can also 
-          <a href="multiple-claims-history">
-            view claims for other types of support
-          </a>.
-        </p>
-        {% endif %}
 
       </fieldset>
     </div>
 
-    {% if (data['journey-type'] == "supportworker") %}
+
+    {% if (data['journey-type'] == "supportworker") or (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -274,7 +262,7 @@ improve it.'
                 Support worker or agency name
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Person or company paid
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -288,13 +276,13 @@ improve it.'
                 3 July 2023
               </th>
               <td class="govuk-summary-list__value">
-                John Smith
+                John Doe
               </td>
               <td class="govuk-summary-list__value">
-                Agency
+                John Doe
               </td>
               <td class="govuk-summary-list__value">
-                £400
+                £1450
               </td>
               <td class="govuk-summary-list__actions">
                 <a id="{{item.day}}-change" class="govuk-link" href="view-claim?type=supportworker&claim=1">
@@ -307,13 +295,13 @@ improve it.'
                 2 July 2023
               </th>
               <td class="govuk-summary-list__value">
-                Jane Smith
+                Jane Green
               </td>
               <td class="govuk-summary-list__value">
-                Agency
+                Jane Green
               </td>
               <td class="govuk-summary-list__value">
-                £350
+                £980
               </td>
               <td class="govuk-summary-list__actions">
                 <a id="{{item.day}}-change" class="govuk-link" href="view-claim?type=supportworker&claim=2">
@@ -326,13 +314,13 @@ improve it.'
                 4 June 2023
               </th>
               <td class="govuk-summary-list__value">
-                Jane Smith
+                John Doe
               </td>
               <td class="govuk-summary-list__value">
-                Agency
+                John Doe
               </td>
               <td class="govuk-summary-list__value">
-                £300
+                £1600
               </td>
               <td class="govuk-summary-list__actions">
                 <a id="{{item.day}}-change" class="govuk-link" href="view-claim?type=supportworker&claim=3">
@@ -349,7 +337,7 @@ improve it.'
 
     {% endif %}
 
-    {% if (data['journey-type'] == "traveltowork") %}
+    {% if (data['journey-type'] == "traveltowork") or (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -367,7 +355,7 @@ improve it.'
                 Type of travel
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Person or company paid
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -449,7 +437,7 @@ improve it.'
     {% endif %}
 
 
-    {% if (data['journey-type'] == "specialaidsandequipment") %}
+    {% if (data['journey-type'] == "specialaidsandequipment") or (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -467,7 +455,7 @@ improve it.'
                 Equipment
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Person or company paid
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
@@ -549,7 +537,7 @@ improve it.'
     {% endif %}
 
 
-    {% if (data['journey-type'] == "adaptations") %}
+    {% if (data['journey-type'] == "adaptations") or (data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true") %}
 
     <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper">
@@ -567,7 +555,7 @@ improve it.'
                 Adaptations
               </th>
               <th scope="col" class="govuk-summary-list__key">
-                Person or company paid
+                Person or company we need to pay
               </th>
               <th scope="col" class="govuk-summary-list__key">
                 Cost
