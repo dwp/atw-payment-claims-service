@@ -19,7 +19,80 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-description`)
   })
 
-  router.post('/adaptation-to-vehicle/adaptation-description', function (req, res) {
+  router.get('/adaptation-to-vehicle/adaptation-description', function (req, res) {
+
+    if (req.query['key']) {
+      var match = req.session.data.adaptation.filter(obj => {
+        return obj.key == req.query['key']
+      })
+      req.session.data.adaptation_name = match[0].adaptation_name
+      req.session.data.key = match[0].key
+      req.session.data.adaptation_day = match[0].day
+      req.session.data.adaptation_month = match[0].month
+      req.session.data.adaptation_year = match[0].year
+    }
+    else {
+      req.session.data.adaptation_name = ""
+      req.session.data.key = null
+      req.session.data.adaptation_day = null
+      req.session.data.adaptation_month = null
+      req.session.data.adaptation_year = null
+    }
+
+    res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-description2`)
+  })
+
+  router.get('/adaptation-to-vehicle/adaptation-description2', function (req, res) {
+    res.render(`./${folderForViews}/adaptation-to-vehicle/adaptation-description`)
+  })
+
+  router.post('/adaptation-to-vehicle/adaptation-description2', function (req, res) {
+
+    if (!req.session.data.adaptation) {
+      req.session.data.adaptation = []
+    }
+
+    if (req.session.data.key != null) {
+      var match = req.session.data.adaptation.filter(obj => {
+        return obj.key == req.session.data.key
+      })
+
+      if (match[0]) {
+        var matchingIndex = req.session.data.adaptation.indexOf(match[0])
+        req.session.data.adaptation[matchingIndex] = {
+          key: req.session.data.key,
+          adaptation_name: req.session.data.adaptation_name,
+          day: req.session.data.adaptation_day,
+          month: req.session.data.adaptation_month,
+          year: req.session.data.adaptation_year
+        }
+      }
+      else {
+        req.session.data.adaptation.push({
+          key: req.session.data.adaptation.length,
+          adaptation_name: req.session.data.adaptation_name,
+          day: req.session.data.adaptation_day,
+          month: req.session.data.adaptation_month,
+          year: req.session.data.adaptation_year
+        })
+      }
+    }
+    else {
+      req.session.data.adaptation.push({
+        key: req.session.data.adaptation.length,
+        adaptation_name: req.session.data.adaptation_name,
+        day: req.session.data.adaptation_day,
+        month: req.session.data.adaptation_month,
+        year: req.session.data.adaptation_year
+      })
+    }
+
+    req.session.data.adaptation_name = ""
+    req.session.data.key = null
+    req.session.data.adaptation_day = null
+    req.session.data.adaptation_month = null
+    req.session.data.adaptation_year = null
+
     if (req.session.data.remove !== undefined) {
       console.log('Remove')
       req.session.data.remove = undefined
@@ -43,17 +116,72 @@ module.exports = function (folderForViews, urlPrefix, router) {
     }
   })
 
+  router.get('/adaptation-to-vehicle/adaptation-remove', function (req, res) {
+
+    if (req.query['key']) {
+      var match = req.session.data.adaptation.filter(obj => {
+        return obj.key == req.query['key']
+      })
+      req.session.data.adaptation_name = match[0].adaptation_name
+      req.session.data.key = match[0].key
+      req.session.data.adaptation_day = match[0].day
+      req.session.data.adaptation_month = match[0].month
+      req.session.data.adaptation_year = match[0].year
+    }
+    else {
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-summary`)
+    }
+    res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-confirm-remove`)
+  })
+
+  router.get('/adaptation-to-vehicle/adaptation-confirm-remove', function (req, res) {
+    res.render(`./${folderForViews}/adaptation-to-vehicle/adaptation-remove`)
+  })
+
+  router.post('/adaptation-to-vehicle/adaptation-confirm-remove', function (req, res) {
+    if (req.session.data.delete == "Yes"){
+      keyToDelete = req.session.data.key
+
+      var match = req.session.data.adaptation.filter(obj => {
+        return obj.key == keyToDelete
+      })
+
+      if (match[0]){
+        matchingIndex = req.session.data.adaptation.indexOf(match[0])
+
+        req.session.data.adaptation.splice(matchingIndex, 1);
+
+        for (let i = 0; i < req.session.data.adaptation.length; i++) {
+          req.session.data.adaptation[i].key = i
+        }
+      }
+    }
+
+    res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-summary`)
+  })
+
   router.post('/adaptation-to-vehicle/adaptation-summary', function (req, res) {
     console.log(req.session.data.adaptation)
     const checked = req.session.data['contact-confirmed']
+    const add_vehicle_adaptation = req.session.data['add-vehicle-adaptation']
 
-    if (req.session.data.adaptation === undefined || req.session.data.adaptation.length == 0) {
-      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/no-hours-entered`)
-    } else if (checked) {
-      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/check-your-answers`)
-    } else {
-      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-cost`)
+    if (add_vehicle_adaptation == "Yes") {
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-description`)
     }
+    else if (add_vehicle_adaptation == "No") {
+      if (req.session.data.adaptation === undefined || req.session.data.adaptation.length == 0) {
+        res.redirect(`/${urlPrefix}/adaptation-to-vehicle/no-hours-entered`)
+      } else if (checked) {
+        res.redirect(`/${urlPrefix}/adaptation-to-vehicle/check-your-answers`)
+      } else {
+        res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-cost`)
+      }
+    }
+    else {
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/adaptation-summary`)
+    }
+
+
   })
 
   router.post('/adaptation-to-vehicle/cost-answer', function (req, res) {
@@ -64,7 +192,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
       res.redirect(`/${urlPrefix}/adaptation-to-vehicle/employer-contribution`)
     } else if (cost === '2500') {
       res.redirect(`/${urlPrefix}/adaptation-to-vehicle/too-much-claimed`)
-    } else if (checked){
+    } else if (checked) {
       res.redirect(`/${urlPrefix}/adaptation-to-vehicle/check-your-answers`)
     } else {
       res.redirect(`/${urlPrefix}/adaptation-to-vehicle/providing-evidence`)
