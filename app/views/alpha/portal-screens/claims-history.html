@@ -235,13 +235,7 @@ improve it.'
         </legend>
 
         <p>
-          Claims we’ve paid from your support workers grant, valid from 2 July 2022 to 2 July 2025.
-        </p>
-        <p>
-          You can also
-          <a href="multiple-claims-history">
-            view claims we’ve paid from your previous support workers grant.
-          </a>
+          Claims we’ve paid from your adaptations to vehicle grant, valid from 2 July 2022 to 2 July 2025.
         </p>
 
         {% if ((data['journey-type'] == "multipleawards") or (data['multiple-awards'] == "true")) %}
@@ -578,46 +572,26 @@ improve it.'
             </tr>
             <tr class="govuk-summary-list__row">
               <th scope="row" class="govuk-summary-list__key">
-                3 July 2023
+                11 January 2023
               </th>
               <td class="govuk-summary-list__value">
-                3
+                1
               </td>
               <td class="govuk-summary-list__value">
-                Mechanic shop
+                John Doe
               </td>
               <td class="govuk-summary-list__value">
-                £100
+                £550
               </td>
               <td class="govuk-summary-list__actions">
                 <a id="{{item.day}}-change" class="govuk-link"
-                  href="hours-for-day-change?month={{month_data.month}}&year={{month_data.year}}">
-                  View claim<span class="govuk-visually-hidden"> support in {{month_data.month | numberMonth}}
+                href="view-claim?type=adaptations&claim=3">
+                View claim<span class="govuk-visually-hidden"> support in {{month_data.month | numberMonth}}
                     {{month_data.year}}</span>
                 </a>
               </td>
             </tr>
-            <tr class="govuk-summary-list__row">
-              <th scope="row" class="govuk-summary-list__key">
-                4 June 2023
-              </th>
-              <td class="govuk-summary-list__value">
-                4
-              </td>
-              <td class="govuk-summary-list__value">
-                Mechanic shop
-              </td>
-              <td class="govuk-summary-list__value">
-                £100
-              </td>
-              <td class="govuk-summary-list__actions">
-                <a id="{{item.day}}-change" class="govuk-link"
-                  href="hours-for-day-change?month={{month_data.month}}&year={{month_data.year}}">
-                  View claim<span class="govuk-visually-hidden"> support in {{month_data.month | numberMonth}}
-                    {{month_data.year}}</span>
-                </a>
-              </td>
-            </tr>
+            
           </tbody>
         </table>
 

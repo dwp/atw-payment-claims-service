@@ -207,8 +207,8 @@
                             <td class="govuk-summary-list__value">
                                 {{data['adaptation'].length}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="adaptation-summary">
                                     Change
@@ -224,8 +224,8 @@
                             <td class="govuk-summary-list__value">
                                 £{{data["adaptation-cost"]}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="adaptation-cost">
                                     Change
@@ -243,8 +243,8 @@
 
                                 {{file['file']}} <br>
                                 {% endfor %} </td>
-                            {% if print != true %}
-
+                                {% if (data['view-claim']) %}
+                                {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="upload-summary">
                                     Change
@@ -285,8 +285,8 @@
                             <td class="govuk-summary-list__value">
                                 {{data["new-payee-full-name"]}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="new-payee-name">
                                     Change
@@ -304,8 +304,8 @@
                             <td class="govuk-summary-list__value">
                                 {{data["payee-email"]}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="new-payee-address">
                                     Change
@@ -367,8 +367,8 @@
 
                                 {% endif %}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="new-payee-address">
                                     Change
@@ -384,8 +384,8 @@
                             <td class="govuk-summary-list__value">
                                 {{data["name-on-the-account"]}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="banking-details">
                                     Change
@@ -401,8 +401,8 @@
                             <td class="govuk-summary-list__value">
                                 {{data["sort-code"]}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="banking-details">
                                     Change
@@ -418,8 +418,8 @@
                             <td class="govuk-summary-list__value">
                                 {{data["account-number"]}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="banking-details">
                                     Change
@@ -436,8 +436,8 @@
                             <td class="govuk-summary-list__value">
                                 {{data["roll-number"]}}
                             </td>
-                            {% if print != true %}
-
+                            {% if (data['view-claim']) %}
+                            {% else %}
                             <td class="govuk-summary-list__actions govuk-!-display-none-print">
                                 <a href="banking-details">
                                     Change
@@ -462,6 +462,14 @@
         {% endif %} -->
 
         {% if print != true %}
+        {% if (data['view-claim']) %}
+
+        <a href="/alpha/portal-screens/open-claims" class="govuk-button govuk-!-display-none-print"
+            data-module="govuk-button">
+            Return to your claims
+        </a>
+
+        {% else %}
         <form action="declaration" method="post" novalidate>
 
             <input type="hidden" name="answers-checked" value="true">
@@ -471,6 +479,7 @@
             </button>
 
         </form>
+        {% endif %}
         {% endif %}
 
     </div>

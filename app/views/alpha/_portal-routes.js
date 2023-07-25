@@ -153,7 +153,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post('/portal-screens/cookies', function (req, res) {
     const analyticsCookies = req.session.data['analytics-cookies']
 
-    if (analyticsCookies){
+    if (analyticsCookies) {
       res.redirect(`/${urlPrefix}/portal-screens/yes`)
 
     }
@@ -165,6 +165,167 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.get('/portal-screens/view-claim', function (req, res) {
     const type = req.query.type
     const claim = req.query.claim
+
+    if (type === 'adaptations') {
+
+      if (claim == 1) {
+        req.session.data =
+        {
+          "journey-type": "adaptations",
+          "multiple-employers": false,
+          "multiple-awards": false,
+          "adaptation-to-vehicle": "Yes",
+          adaptation_name: "",
+          key: null,
+          adaptation_day: null,
+          adaptation_month: null,
+          adaptation_year: null,
+          action: "Continue",
+          adaptation: [
+            {
+              key: 0,
+              adaptation_name: "Wheelchair lift",
+              day: "5",
+              month: "6",
+              year: "2023",
+            },
+            {
+              key: 1,
+              adaptation_name: "Hand controls",
+              day: "5",
+              month: "6",
+              year: "2023",
+            },
+            {
+              key: 2,
+              adaptation_name: "Steering wheel handle",
+              day: "8",
+              month: "6",
+              year: "2023",
+            },
+          ],
+          "add-vehicle-adaptation": "No",
+          "adaptation-cost": "850",
+          "file-upload": "",
+          uploads: [
+            {
+              file: "",
+            },
+          ],
+          "add-another-receipt": "No",
+          "existing-payee": "one",
+          "existing-account": "two",
+          "new-payee-full-name": "John Doe",
+          "payee-email": "john.doe@deafactioncharity.com",
+          "new-payee-address-line-1": "100 Gorgie Park Rd",
+          "new-payee-address-line-2": "",
+          "new-payee-address-town": "Edinburgh",
+          "new-payee-address-county": "Midlothian",
+          "new-payee-address-postcode": "EH11 2QL",
+          "sort-code": "123656",
+          "account-number": "12555678",
+          "roll-number": "",
+        }
+      }
+      else if (claim == 2) {
+        req.session.data =
+        {
+          "journey-type": "adaptations",
+          "multiple-employers": false,
+          "multiple-awards": false,
+          "adaptation-to-vehicle": "Yes",
+          adaptation_name: "",
+          key: null,
+          adaptation_day: null,
+          adaptation_month: null,
+          adaptation_year: null,
+          action: "Continue",
+          adaptation: [
+            {
+              key: 0,
+              adaptation_name: "Manual to automatic conversion",
+              day: "30",
+              month: "4",
+              year: "2023",
+            },
+          ],
+          "add-vehicle-adaptation": "No",
+          "adaptation-cost": "1010",
+          "file-upload": "",
+          uploads: [
+            {
+              file: "",
+            },
+          ],
+          "add-another-receipt": "No",
+          "existing-payee": "one",
+          "existing-account": "one",
+          "new-payee-full-name": "John Doe",
+          "payee-email": "john.doe@deafactioncharity.com",
+          "new-payee-address-line-1": "100 Gorgie Park Rd",
+          "new-payee-address-line-2": "",
+          "new-payee-address-town": "Edinburgh",
+          "new-payee-address-county": "Midlothian",
+          "new-payee-address-postcode": "EH11 2QL",
+          "sort-code": "123456",
+          "account-number": "12345678",
+          "roll-number": "",
+        }
+      }
+      else if (claim == 3) {
+        req.session.data = 
+        {
+          "journey-type": "adaptations",
+          "multiple-employers": false,
+          "multiple-awards": false,
+          "adaptation-to-vehicle": "Yes",
+          adaptation_name: "Manual to automatic conversion",
+          key: 0,
+          adaptation_day: "30",
+          adaptation_month: "4",
+          adaptation_year: "2023",
+          action: "Continue",
+          adaptation: [
+            {
+              key: 0,
+              adaptation_name: "Access adjustments",
+              day: "20",
+              month: "12",
+              year: "2022",
+            },
+          ],
+          "add-vehicle-adaptation": "No",
+          "adaptation-cost": "550",
+          "file-upload": "",
+          uploads: [
+            {
+              file: "",
+            },
+          ],
+          "add-another-receipt": "No",
+          "existing-payee": "one",
+          "existing-account": "one",
+          "new-payee-full-name": "John Doe",
+          "payee-email": "john.doe@deafactioncharity.com",
+          "new-payee-address-line-1": "100 Gorgie Park Rd",
+          "new-payee-address-line-2": "",
+          "new-payee-address-town": "Edinburgh",
+          "new-payee-address-county": "Midlothian",
+          "new-payee-address-postcode": "EH11 2QL",
+          "sort-code": "123456",
+          "account-number": "12345678",
+          "roll-number": "",
+          "view-claim": true,
+          delete: "Yes",
+          removeId: "1",
+          "file-receipt-to-remove": null,
+          "file-upload-remove": "Yes",
+          "confirm-file-upload-remove": null,
+        }
+      }
+      req.session.data['view-claim'] = true
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/check-your-answers`)
+    }
 
     if (type === 'supportworker') {
 
@@ -727,7 +888,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       }
       else if (claim == 3) {
-        req.session.data = 
+        req.session.data =
         {
           "journey-type": "supportworker",
           "multiple-employers": false,
@@ -1012,8 +1173,8 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
       }
       req.session.data['view-claim'] = true
+      res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
 
     }
-    res.redirect(`/${urlPrefix}/support-worker/check-your-answers`)
   })
 }
