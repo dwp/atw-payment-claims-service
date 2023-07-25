@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Claim money back from Access to Work
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="existing-payee-answers" method="post" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="support-for-workplace-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            The person or company we need to pay
+                        </h1>
+                    </legend>
+
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-one" name="existing-payee"
+                                   type="radio"
+                                   value="one">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-one">
+                                John Doe
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              john.doe@deafactioncharity.com
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-two" name="existing-payee"
+                                   type="radio"
+                                   value="two">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-two">
+                                Jane Green
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              jane.green@bsl-interpreters.com
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-three" name="existing-payee"
+                                   type="radio"
+                                   value="three">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-three">
+                                Sanjid Kelly
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              sanjid.kelly@deafactioncharity.com
+                            </div>
+                        </div>
+                        {% if data['existing-payee'] !== "New" %}
+
+                        <div class="govuk-radios__divider">or</div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="existing-payee-new" name="existing-payee"
+                                   type="radio"
+                                   value="New">
+                            <label class="govuk-label govuk-radios__label" for="existing-payee-new">
+                                Add a new person or company
+                            </label>
+                            <div id="existing-payee-one-hint" class="govuk-hint govuk-radios__hint">
+                              When you add a new person or company, it will take a few days for their details to be saved in your account.
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

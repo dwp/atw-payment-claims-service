@@ -211,7 +211,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (checked) {
       res.redirect(`/${urlPrefix}/adaptation-to-vehicle/check-your-answers`)
     } else {
-      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/new-payee-name`)
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/existing-payee-details`)
     }
   })
 
@@ -254,6 +254,80 @@ module.exports = function (folderForViews, urlPrefix, router) {
     res.redirect(`/${urlPrefix}/adaptation-to-vehicle/upload-summary`)
   })
 
+  router.post('/adaptation-to-vehicle/existing-payee-answers', function (req, res) {
+    const payee = req.session.data['existing-payee']
+
+    if (payee === 'New') {
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/new-payee-name`)
+    } else {
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/existing-account-details`)
+    }
+  })
+
+  router.post('/adaptation-to-vehicle/existing-account-answers', function (req, res) {
+    const payee = req.session.data['existing-payee']
+    const account = req.session.data['existing-account']
+
+    if (payee === 'New') {
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/new-payee-name`)
+    } else {
+      if (payee == "one"){
+        req.session.data["new-payee-full-name"] = 'John Doe'
+        req.session.data["payee-email"] = 'john.doe@deafactioncharity.com'
+
+        req.session.data["new-payee-address-line-1"] = '100 Gorgie Park Rd'
+        req.session.data["new-payee-address-line-2"] = ''
+        req.session.data["new-payee-address-town"] = 'Edinburgh'
+        req.session.data["new-payee-address-county"] = 'Midlothian'
+        req.session.data["new-payee-address-postcode"] = 'EH11 2QL'
+      }
+      else if (payee == "two"){
+        req.session.data["new-payee-full-name"] = 'Jane Green'
+        req.session.data["payee-email"] = 'jane.green@bsl-interpreters.com'
+
+        req.session.data["new-payee-address-line-1"] = '25 N Devon Rd'
+        req.session.data["new-payee-address-line-2"] = ''
+        req.session.data["new-payee-address-town"] = 'Bristol'
+        req.session.data["new-payee-address-county"] = 'Avon'
+        req.session.data["new-payee-address-postcode"] = 'BS16 2EX'
+      }
+      else if (payee == "three"){
+        req.session.data["new-payee-full-name"] = 'Sanjid Kelly'
+        req.session.data["payee-email"] = 'sanjid.kelly@deafactioncharity.com'
+
+        req.session.data["new-payee-address-line-1"] = '5 Crane St'
+        req.session.data["new-payee-address-line-2"] = ''
+        req.session.data["new-payee-address-town"] = 'Pontypool'
+        req.session.data["new-payee-address-county"] = 'Gwent'
+        req.session.data["new-payee-address-postcode"] = 'NP4 6LY'
+      }
+
+      if (account == "one"){
+        req.session.data["sort-code"] = '123456'
+        req.session.data["account-number"] = '12345678'
+      }
+      else if (account == "two"){
+        req.session.data["sort-code"] = '123656'
+        req.session.data["account-number"] = '12555678'
+      }
+      else if (account == "three"){
+        req.session.data["name-on-the-account"] = 'Doe and Brothers LLP'
+        req.session.data["sort-code"] = '654321'
+        req.session.data["account-number"] = '00456789'
+      }
+      else if (account == "four"){
+        req.session.data["name-on-the-account"] = 'Sanjid Burns Kelly'
+        req.session.data["sort-code"] = '112233'
+        req.session.data["account-number"] = '54532222'
+      }
+
+      
+      req.session.data["roll-number"] = ''
+      res.redirect(`/${urlPrefix}/adaptation-to-vehicle/check-your-answers`)
+    }
+
+
+  })
 
 
 
